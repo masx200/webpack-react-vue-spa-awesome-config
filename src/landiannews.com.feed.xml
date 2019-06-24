@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+    <channel>
+        <title>蓝点网</title>
+        <atom:link href="https://www.landiannews.com/feed" rel="self" type="application/rss+xml" />
+        <link>https://www.landiannews.com</link>
+        <description>给你感兴趣的内容！</description>
+        <lastBuildDate>Wed, 15 May 2019 18:17:46 +0000</lastBuildDate>
+        <language>zh-CN</language>
+        <sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+        <sy:updateFrequency>
+	1	</sy:updateFrequency>
+        <generator>https://wordpress.org/?v=5.2</generator>
+        <item>
+            <title>微软发布Windows 10 20H1 Build 18898测试版改进任务管理器的硬盘标签</title>
+            <link>https://www.landiannews.com/archives/58588.html</link>
+            <comments>https://www.landiannews.com/archives/58588.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 18:17:46 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[Windows]]>
+            </category>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[20H1]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 2003]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[快速]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58588</guid>
+            <description>
+                <![CDATA[我们知道候选版本通常都是某个软件即将推出正式版时，将最后几个稳定的测试版作为候选版发布进行测试。 微软刚刚推出 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58588.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>传统版画图程序竟然枯木逢春 微软不仅不将其删除还要增加新功能</title>
+            <link>https://www.landiannews.com/archives/58584.html</link>
+            <comments>https://www.landiannews.com/archives/58584.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 17:52:18 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[软件资讯]]>
+            </category>
+            <category>
+                <![CDATA[Paint]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 1903]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[画图]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58584</guid>
+            <description>
+                <![CDATA[很久以前微软就说要从Windows 10 里删除传统版画图应用，因为微软已经重新开发新的替代程序 3D 画图。 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58584.html/feed</wfw:commentRss>
+            <slash:comments>3</slash:comments>
+        </item>
+        <item>
+            <title>微软调整Azure AD密码长度限制 由16位直接提升到256位并支持空格</title>
+            <link>https://www.landiannews.com/archives/58581.html</link>
+            <comments>https://www.landiannews.com/archives/58581.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 17:07:35 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[网站应用]]>
+            </category>
+            <category>
+                <![CDATA[AAD]]>
+            </category>
+            <category>
+                <![CDATA[Azure]]>
+            </category>
+            <category>
+                <![CDATA[Azure AD]]>
+            </category>
+            <category>
+                <![CDATA[密码]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58581</guid>
+            <description>
+                <![CDATA[在被大量用户吐槽后微软最近作出个非常有趣的决定 ,  将Azure AD 账户密码限制由16位直接提升至256 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58581.html/feed</wfw:commentRss>
+            <slash:comments>2</slash:comments>
+        </item>
+        <item>
+            <title>华为表示愿意和包括英国在内的各国政府签订无间谍无后门协议</title>
+            <link>https://www.landiannews.com/archives/58577.html</link>
+            <comments>https://www.landiannews.com/archives/58577.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 16:48:13 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[行业资讯]]>
+            </category>
+            <category>
+                <![CDATA[华为]]>
+            </category>
+            <category>
+                <![CDATA[后门]]>
+            </category>
+            <category>
+                <![CDATA[电信设备]]>
+            </category>
+            <category>
+                <![CDATA[美国]]>
+            </category>
+            <category>
+                <![CDATA[英国]]>
+            </category>
+            <category>
+                <![CDATA[间谍]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58577</guid>
+            <description>
+                <![CDATA[据路透社报道华为公司董事长梁华日前表示，该公司愿意与包括英国在内的各国政府签订无间谍无后门协议。 这个承诺的背 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58577.html/feed</wfw:commentRss>
+            <slash:comments>2</slash:comments>
+        </item>
+        <item>
+            <title>每个人不升级都有自己的理由：火狐为旧版用户发布工具修复扩展被禁用问题</title>
+            <link>https://www.landiannews.com/archives/58574.html</link>
+            <comments>https://www.landiannews.com/archives/58574.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 16:24:52 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[软件资讯]]>
+            </category>
+            <category>
+                <![CDATA[firefox]]>
+            </category>
+            <category>
+                <![CDATA[Mozilla]]>
+            </category>
+            <category>
+                <![CDATA[扩展程序]]>
+            </category>
+            <category>
+                <![CDATA[火狐浏览器]]>
+            </category>
+            <category>
+                <![CDATA[谋智基金会]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58574</guid>
+            <description>
+                <![CDATA[早些时候火狐浏览器安全系统证书过期导致扩展程序被禁用，此问题本属于火狐失误而影响到全球所有用户。 后来火狐推出 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58574.html/feed</wfw:commentRss>
+            <slash:comments>2</slash:comments>
+        </item>
+        <item>
+            <title>[下载] 谷歌浏览器稳定版通道更新至74.0.3729.157 附离线安装包</title>
+            <link>https://www.landiannews.com/archives/58569.html</link>
+            <comments>https://www.landiannews.com/archives/58569.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 16:08:07 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[浏览器]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[Chrome]]>
+            </category>
+            <category>
+                <![CDATA[chromium]]>
+            </category>
+            <category>
+                <![CDATA[Google Chrome]]>
+            </category>
+            <category>
+                <![CDATA[离线安装包]]>
+            </category>
+            <category>
+                <![CDATA[谷歌浏览器]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58569</guid>
+            <description>
+                <![CDATA[谷歌浏览器团队目前已经更新稳定版通道至v74.0.3729.157版，该版本属于常规的安全漏洞和问题修复版本。 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58569.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>英特尔处理器又被发现新的推测执行漏洞：Zombieload 僵尸负载漏洞</title>
+            <link>https://www.landiannews.com/archives/58563.html</link>
+            <comments>https://www.landiannews.com/archives/58563.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 14:06:59 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[安全资讯]]>
+            </category>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[CPU]]>
+            </category>
+            <category>
+                <![CDATA[Zombieload]]>
+            </category>
+            <category>
+                <![CDATA[僵尸负载]]>
+            </category>
+            <category>
+                <![CDATA[处理器]]>
+            </category>
+            <category>
+                <![CDATA[推测执行]]>
+            </category>
+            <category>
+                <![CDATA[漏洞]]>
+            </category>
+            <category>
+                <![CDATA[英特尔]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58563</guid>
+            <description>
+                <![CDATA[日前学术界已经公布在英特尔现代处理器中发现的最新漏洞，该漏洞与幽灵和熔断漏洞属于同类的旁路攻击。 简单来说这枚 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58563.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>真爱！避免类似WannaCry蠕虫卷土来袭 微软紧急向Windows XP发布补丁</title>
+            <link>https://www.landiannews.com/archives/58560.html</link>
+            <comments>https://www.landiannews.com/archives/58560.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 07:33:04 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[安全资讯]]>
+            </category>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[Windows XP]]>
+            </category>
+            <category>
+                <![CDATA[漏洞]]>
+            </category>
+            <category>
+                <![CDATA[补丁]]>
+            </category>
+            <category>
+                <![CDATA[远程桌面协议]]>
+            </category>
+            <category>
+                <![CDATA[远程桌面服务]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58560</guid>
+            <description>
+                <![CDATA[前文我们介绍微软在本月例行更新中修复某个关键漏洞，该漏洞可导致使用远程桌面服务的计算机遭到感染。 此漏洞的危害 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58560.html/feed</wfw:commentRss>
+            <slash:comments>3</slash:comments>
+        </item>
+        <item>
+            <title>知名密码管理器LastPass商标被恶意抢注 苹果商店版已被下架处理</title>
+            <link>https://www.landiannews.com/archives/58557.html</link>
+            <comments>https://www.landiannews.com/archives/58557.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 06:51:23 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[软件资讯]]>
+            </category>
+            <category>
+                <![CDATA[LastPass]]>
+            </category>
+            <category>
+                <![CDATA[商标]]>
+            </category>
+            <category>
+                <![CDATA[商标流氓]]>
+            </category>
+            <category>
+                <![CDATA[密码管理]]>
+            </category>
+            <category>
+                <![CDATA[密码管理器]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58557</guid>
+            <description>
+                <![CDATA[知名跨平台密码管理器LastPass目前在苹果商店已被下架，至于下架原因网上众说纷纭但是没有详细的定论。 具体 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58557.html/feed</wfw:commentRss>
+            <slash:comments>7</slash:comments>
+        </item>
+        <item>
+            <title>微软修复关键的远程桌面漏洞阻止蠕虫传播 用户应立即安装最新更新</title>
+            <link>https://www.landiannews.com/archives/58554.html</link>
+            <comments>https://www.landiannews.com/archives/58554.html#comments</comments>
+            <pubDate>Wed, 15 May 2019 04:24:33 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[安全资讯]]>
+            </category>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[RDP]]>
+            </category>
+            <category>
+                <![CDATA[RDS]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[漏洞]]>
+            </category>
+            <category>
+                <![CDATA[蠕虫]]>
+            </category>
+            <category>
+                <![CDATA[远程桌面协议]]>
+            </category>
+            <category>
+                <![CDATA[远程桌面服务]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58554</guid>
+            <description>
+                <![CDATA[微软在凌晨发布的月度累积更新里已经修复远程桌面服务的关键漏洞，该漏洞允许恶意攻击者创建恶意软件。 该漏洞属于远 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58554.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>[下载] 微软向Windows 10 V1809推出KB4494441月度例行累积更新</title>
+            <link>https://www.landiannews.com/archives/58537.html</link>
+            <comments>https://www.landiannews.com/archives/58537.html#comments</comments>
+            <pubDate>Tue, 14 May 2019 18:02:45 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[补丁下载]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[KB4494441]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 1809]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[累积更新]]>
+            </category>
+            <category>
+                <![CDATA[补丁]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58537</guid>
+            <description>
+                <![CDATA[例行更新日微软目前已经向Windows 10分支版本推出新的累积更新用于修复安全漏洞和解决已知问题等等。 这次 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58537.html/feed</wfw:commentRss>
+            <slash:comments>8</slash:comments>
+        </item>
+        <item>
+            <title>[下载] 微软向Windows 10 V1803推出KB4499167月度例行累积更新</title>
+            <link>https://www.landiannews.com/archives/58540.html</link>
+            <comments>https://www.landiannews.com/archives/58540.html#comments</comments>
+            <pubDate>Tue, 14 May 2019 18:02:32 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[补丁下载]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[KB4499167]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 1803]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[累积更新]]>
+            </category>
+            <category>
+                <![CDATA[补丁]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58540</guid>
+            <description>
+                <![CDATA[例行更新日微软目前已经向Windows 10分支版本推出新的累积更新用于修复安全漏洞和解决已知问题等等。 这次 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58540.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>[下载] 微软向Windows 10 V1709推出KB4499179月度例行累积更新</title>
+            <link>https://www.landiannews.com/archives/58541.html</link>
+            <comments>https://www.landiannews.com/archives/58541.html#comments</comments>
+            <pubDate>Tue, 14 May 2019 18:02:21 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[补丁下载]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[KB4499179]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 1709]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[累积更新]]>
+            </category>
+            <category>
+                <![CDATA[补丁]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58541</guid>
+            <description>
+                <![CDATA[例行更新日微软目前已经向Windows 10分支版本推出新的累积更新用于修复安全漏洞和解决已知问题等等。 这次 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58541.html/feed</wfw:commentRss>
+            <slash:comments>2</slash:comments>
+        </item>
+        <item>
+            <title>[下载] 微软向Windows 10 V1703推出KB4499181月度例行累积更新</title>
+            <link>https://www.landiannews.com/archives/58543.html</link>
+            <comments>https://www.landiannews.com/archives/58543.html#comments</comments>
+            <pubDate>Tue, 14 May 2019 18:02:12 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[补丁下载]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[KB4499181]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 1703]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[累积更新]]>
+            </category>
+            <category>
+                <![CDATA[补丁]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58543</guid>
+            <description>
+                <![CDATA[例行更新日微软目前已经向Windows 10分支版本推出新的累积更新用于修复安全漏洞和解决已知问题等等。 这次 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58543.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>[下载] 微软向Windows 10 V1607推出KB4494440月度例行累积更新</title>
+            <link>https://www.landiannews.com/archives/58545.html</link>
+            <comments>https://www.landiannews.com/archives/58545.html#comments</comments>
+            <pubDate>Tue, 14 May 2019 18:01:45 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[补丁下载]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[KB4494440]]>
+            </category>
+            <category>
+                <![CDATA[Windows 10 Version 1607]]>
+            </category>
+            <category>
+                <![CDATA[微软]]>
+            </category>
+            <category>
+                <![CDATA[累积更新]]>
+            </category>
+            <category>
+                <![CDATA[补丁]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58545</guid>
+            <description>
+                <![CDATA[例行更新日微软目前已经向Windows 10分支版本推出新的累积更新用于修复安全漏洞和解决已知问题等等。 这次 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58545.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>火绒推出魔兽争霸蠕虫病毒专杀工具 帮助游戏玩家一键清理病毒</title>
+            <link>https://www.landiannews.com/archives/58534.html</link>
+            <comments>https://www.landiannews.com/archives/58534.html#comments</comments>
+            <pubDate>Tue, 14 May 2019 17:05:03 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[安全资讯]]>
+            </category>
+            <category>
+                <![CDATA[科技资讯]]>
+            </category>
+            <category>
+                <![CDATA[专杀工具]]>
+            </category>
+            <category>
+                <![CDATA[后门]]>
+            </category>
+            <category>
+                <![CDATA[火绒]]>
+            </category>
+            <category>
+                <![CDATA[病毒]]>
+            </category>
+            <category>
+                <![CDATA[魔兽争霸]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58534</guid>
+            <description>
+                <![CDATA[近期火绒威胁情报系统监测到某蠕虫病毒正在通过热门游戏魔兽争霸的游戏地图文件广泛传播感染大量用户。 当玩家下载使 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58534.html/feed</wfw:commentRss>
+            <slash:comments>1</slash:comments>
+        </item>
+        <item>
+            <title>微软镜像文件下载工具Windows/Office ISO Downloader v8.13.0.123版</title>
+            <link>https://www.landiannews.com/archives/58528.html</link>
+            <comments>https://www.landiannews.com/archives/58528.html#respond</comments>
+            <pubDate>Tue, 14 May 2019 16:30:36 +0000</pubDate>
+            <dc:creator>
+                <![CDATA[山外的鸭子哥]]>
+            </dc:creator>
+            <category>
+                <![CDATA[下载工具]]>
+            </category>
+            <category>
+                <![CDATA[软件工具]]>
+            </category>
+            <category>
+                <![CDATA[ISO]]>
+            </category>
+            <category>
+                <![CDATA[office]]>
+            </category>
+            <category>
+                <![CDATA[windows 10]]>
+            </category>
+            <category>
+                <![CDATA[Windows ISO Downloader]]>
+            </category>
+            <category>
+                <![CDATA[镜像]]>
+            </category>
+            <guid isPermaLink="false">https://www.landiannews.com/?p=58528</guid>
+            <description>
+                <![CDATA[Windows ISO Downloader 工具能够直接从微软检索Windows和Office镜像文件的下载 [&#8230;]]]>
+            </description>
+            <wfw:commentRss>https://www.landiannews.com/archives/58528.html/feed</wfw:commentRss>
+            <slash:comments>0</slash:comments>
+        </item>
+    </channel>
+</rss>

@@ -77,5 +77,8 @@
         "workbox-webpack-plugin": "4.3.1",
         "worker-loader": "^2.0.0"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "main": "index.js",
+    "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
+    "author": "masx200 <34191203+masx200@users.noreply.github.com>"
 }

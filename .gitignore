@@ -1,0 +1,7 @@
+node_modules
+*.bak
+.cache
+src/dist/
+*.log
+debug.log
+*.log
