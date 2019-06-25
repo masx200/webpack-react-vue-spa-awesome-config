@@ -161,7 +161,7 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
               limit: 10000,
               name: isEnvDevelopment
                 ? "[name].[hash].[ext]"
-                : "[name].[hash].[ext]"
+                : "[name].[contenthash].[ext]"
             }
           },
           {
@@ -318,7 +318,7 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
             options: {
               name: isEnvDevelopment
                 ? "[name].[hash].[ext]"
-                : "[name].[hash].[ext]"
+                : "[name].[contenthash].[ext]"
             }
           }
         ]
