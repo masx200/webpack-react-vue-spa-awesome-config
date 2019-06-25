@@ -1,3 +1,4 @@
+"use strict";
 // console.log(process.argv);
 /* 从命令行输入 的参数判断模式 */
 if (process.argv.includes("--mode=production")) {
@@ -10,7 +11,7 @@ if (process.argv.includes("--mode=production")) {
 const WebpackDeepScopeAnalysisPlugin = require("webpack-deep-scope-plugin")
   .default;
 // const PurifyCSSPlugin = require("purifycss-webpack");
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
+// process.env.NODE_ENV = process.env.NODE_ENV || "development";
 // const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
@@ -64,12 +65,85 @@ bundle.[name].[contenthash].js
 Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash].js' (use [hash] instead) */
   },
   module: {
+    strictExportPresence: true,
     rules: [
+      {
+        test: /\.worker\.js$/,
+        loader: "worker-loader",
+        options: {
+          name: "[name].[hash].worker.js",
+          inline: true
+        }
+      },
       {
         test: /\.vue$/,
         loader: "vue-loader"
       },
+      {
+        test: /\.(css|sass|scss|less)$/,
+        use: [
+          isEnvDevelopment
+            ? {
+                loader: "style-loader",
+                options: {
+                  sourceMap: shouldUseSourceMap
+                }
+              }
+            : {
+                loader: MiniCssExtractPlugin.loader
+                //   options: shouldUseRelativeAssetPaths ? { publicPath: "../../" } : {}
+              },
+          //   {
+          //     loader: MiniCssExtractPlugin.loader,
+          //     options: {
+          //       sourceMap: shouldUseSourceMap,
+          //       // you can specify a publicPath here
+          //       // by default it uses publicPath in webpackOptions.output
+          //       //   publicPath: "../",
+          //       hmr: process.env.NODE_ENV === "development"
+          //     }
+          //   },
 
+          /* 这里是从后往前执行的 */
+
+          //   {
+          //     loader: MiniCssExtractPlugin.loader,
+          //     options: {
+          //       reloadAll: true,
+          //       // you can specify a publicPath here
+          //       // by default it uses publicPath in webpackOptions.output
+          //       //   publicPath: '../',
+          //       hmr: process.env.NODE_ENV === "development"
+          //     }
+          //   },
+          //   {
+          //     loader: "style-loader",
+          //     options: {
+          //       sourceMap: shouldUseSourceMap
+          //     }
+          //   },
+
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: shouldUseSourceMap
+            }
+          },
+          //   "vue-style-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: shouldUseSourceMap
+            }
+          }
+          //   {
+          //     loader: "less-loader",
+          //     options: {
+          //       sourceMap: true
+          //     }
+          //   }
+        ]
+      },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -89,116 +163,71 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
             }
           },
           {
-            test: /\.worker\.js$/,
-            loader: "worker-loader",
-            options: {
-              name: "[name].[hash].worker.js",
-              inline: true
-            }
-          },
-          {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
             loader: "babel-loader",
             options: {
-              plugins: [
-                // [
-                //   require.resolve("babel-plugin-named-asset-import")
-                //   //   {
-                //   //     loaderMap: {
-                //   //       svg: {
-                //   //         ReactComponent: "@svgr/webpack?-svgo,+ref![path]"
-                //   //       }
-                //   //     }
-                //   //   }
-                // ]
-              ],
-              presets: [
-                "@babel/preset-env",
-                "@babel/preset-react"
-                // [
-                //   "@babel/preset-env",
-                //     {
-                //       targets: {
-                //         edge: "18",
-                //         firefox: "66",
-                //         chrome: "75"
-                //       }
-                //     }
-                // ]
-              ],
+              //   plugins: [
+              //     [
+              //       require.resolve("babel-plugin-named-asset-import")
+              //       //   {
+              //       //     loaderMap: {
+              //       //       svg: {
+              //       //         ReactComponent: "@svgr/webpack?-svgo,+ref![path]"
+              //       //       }
+              //       //     }
+              //       //   }
+              //     ]
+              //   ],
+              //   presets: [
+              //     // "@babel/preset-env",
+              //     // "@babel/preset-react"
+              //     // [
+              //     //   "@babel/preset-env",
+              //     //     {
+              //     //       targets: {
+              //     //         edge: "18",
+              //     //         firefox: "66",
+              //     //         chrome: "75"
+              //     //       }
+              //     //     }
+              //     // ]
+              //   ],
               //   plugins: ["babel-plugin-transform-runtime"],
               customize: require.resolve(
                 "babel-preset-react-app/webpack-overrides"
-              )
+              ),
+              cacheDirectory: true,
+              cacheCompression: isEnvProduction,
+              compact: isEnvProduction
             },
             include: [path.resolve(__dirname, "src")],
             exclude: [path.resolve(__dirname, "node_modules")]
           },
           {
-            test: /\.(css|sass|scss|less)$/,
-            use: [
-              isEnvDevelopment
-                ? {
-                    loader: "style-loader",
-                    options: {
-                      sourceMap: shouldUseSourceMap
-                    }
-                  }
-                : {
-                    loader: MiniCssExtractPlugin.loader
-                    //   options: shouldUseRelativeAssetPaths ? { publicPath: "../../" } : {}
-                  },
-              //   {
-              //     loader: MiniCssExtractPlugin.loader,
-              //     options: {
-              //       sourceMap: shouldUseSourceMap,
-              //       // you can specify a publicPath here
-              //       // by default it uses publicPath in webpackOptions.output
-              //       //   publicPath: "../",
-              //       hmr: process.env.NODE_ENV === "development"
-              //     }
-              //   },
+            test: /\.(js|mjs)$/,
+            exclude: /@babel(?:\/|\\{1,2})runtime/,
+            loader: require.resolve("babel-loader"),
+            options: {
+              babelrc: false,
+              configFile: false,
+              compact: false,
+              presets: [
+                [
+                  require.resolve("babel-preset-react-app/dependencies"),
+                  { helpers: true }
+                ]
+              ],
+              cacheDirectory: true,
+              cacheCompression: isEnvProduction,
 
-              /* 这里是从后往前执行的 */
-
-              //   {
-              //     loader: MiniCssExtractPlugin.loader,
-              //     options: {
-              //       reloadAll: true,
-              //       // you can specify a publicPath here
-              //       // by default it uses publicPath in webpackOptions.output
-              //       //   publicPath: '../',
-              //       hmr: process.env.NODE_ENV === "development"
-              //     }
-              //   },
-              //   {
-              //     loader: "style-loader",
-              //     options: {
-              //       sourceMap: shouldUseSourceMap
-              //     }
-              //   },
-
-              {
-                loader: "css-loader",
-                options: {
-                  sourceMap: shouldUseSourceMap
-                }
-              },
-              //   "vue-style-loader",
-              {
-                loader: "sass-loader",
-                options: {
-                  sourceMap: shouldUseSourceMap
-                }
-              }
-              //   {
-              //     loader: "less-loader",
-              //     options: {
-              //       sourceMap: true
-              //     }
-              //   }
-            ]
+              // If an error happens in a package, it's possible to be
+              // because it was compiled. Thus, we don't want the browser
+              // debugger to show the original code. Instead, the code
+              // being evaluated would be much more helpful.
+              sourceMaps: shouldUseSourceMap
+            }
           },
+
           /* 为什么生产环境加载不出*.less文件? */
           //   {
           //     test: /\.(less)$/,
@@ -291,11 +320,14 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
             }
           }
         ]
-      },
-      {
-        test: /\.js$/,
-        loader: "babel-loader"
       }
+      // Process any JS outside of the app with Babel.
+      // Unlike the application JS, we only compile the standard ES features.
+
+      //   {
+      //     test: /\.js$/,
+      //     loader: "babel-loader"
+      //   }
       //   {
       //     test: /\.json$/,
       //     loader: "json-loader"
@@ -372,6 +404,7 @@ A webpack plugin for prepack.
     })
   ],
   optimization: {
+    runtimeChunk: true,
     splitChunks: {
       chunks: "all",
       minSize: 30000,
@@ -379,20 +412,15 @@ A webpack plugin for prepack.
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
-      automaticNameDelimiter: "~",
-      automaticNameMaxLength: 30,
-      name: true,
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
+      //   automaticNameDelimiter: "~",
+      //   automaticNameMaxLength: 30,
+      name: true
+      //   cacheGroups: {
+      //     vendors: {
+      //       test: /[\\/]node_modules[\\/]/,
+      //       priority: -10
+      //     }
+      //   }
     },
     minimize: isEnvProduction,
     minimizer: [
@@ -448,14 +476,16 @@ A webpack plugin for prepack.
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           parser: safePostCssParser,
-          map: {
-            // `inline: false` forces the sourcemap to be output into a
-            // separate file
-            inline: false,
-            // `annotation: true` appends the sourceMappingURL to the end of
-            // the css file, helping the browser find the sourcemap
-            annotation: true
-          }
+          map: shouldUseSourceMap
+            ? {
+                // `inline: false` forces the sourcemap to be output into a
+                // separate file
+                inline: false,
+                // `annotation: true` appends the sourceMappingURL to the end of
+                // the css file, helping the browser find the sourcemap
+                annotation: true
+              }
+            : false
         }
       })
     ]

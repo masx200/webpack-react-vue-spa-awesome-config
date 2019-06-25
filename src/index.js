@@ -41,7 +41,7 @@ Vue.config.silent = true;
 Vue.config.devtools = true;
 import testvue from "./test-vue.vue";
 (function() {
-  $("<div id='vueapp'/>").appendTo(document.body);
+  $("<div id='vueapp'/>").prependTo(document.body);
   Vue.component("testvue", testvue);
   //   console.log(testvue);
 
@@ -51,8 +51,13 @@ import testvue from "./test-vue.vue";
     },
     template: ` 
       <div id='vueapp'>
+      <h1>
       {{ msg }}Vue
+      </h1>
       <testvue/>
+      <h1>
+      {{ msg }}Vue
+      </h1>
       </div>`,
     data() {
       return { msg: "Hello world!" };

@@ -1,5 +1,5 @@
 "use strict";
-(function(global, undefined) {
+export default (function(global, undefined) {
   //   console.log(global);
   /*jshint sub:true, evil:true */
   ("use strict");
@@ -328,7 +328,7 @@
   function hieroglyphyScript(src) {
     return functionConstructor + "(" + hieroglyphyString(src) + ")()";
   }
-  return global.hieroglyphy;
+  return API;
 })(
   (typeof window !== "undefined" ? window : false) ||
     (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||
