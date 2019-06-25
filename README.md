@@ -10,7 +10,7 @@ webpack-react-vue-spa-awesome-config
 
 
 
-默认关闭了eslint！
+## 默认关闭了eslint！
 
 ## 使用的 loader
 
