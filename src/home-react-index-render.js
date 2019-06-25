@@ -8,7 +8,12 @@ import $ from "jquery";
 // import "./RegisteraServiceWorkerFile.js";
 // import "./myindexrender.css";
 // import "./my-vue-router-project/vue-render-all.css";
-import { Link, Switch, Route, HashRouter } from "./react-router-dom.min.js";
+import {
+  Link,
+  Switch,
+  Route,
+  HashRouter
+} from "react-router-dom/umd/react-router-dom";
 // import Switch from "react-router-dom/Switch";
 // import Route from "react-router-dom/Route";
 // import HashRouter from "react-router-dom/HashRouter";
@@ -320,7 +325,7 @@ prefetchfiles.forEach(addlinkprefetch); */
                           hieroglyphy-ENCODER
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <a
                           href="./my-vue-router-project/index.html"
                           class="nav-link mui-btn mui-btn-primary mui-btn-outlined"
@@ -335,7 +340,7 @@ prefetchfiles.forEach(addlinkprefetch); */
                         >
                           关于Vue
                         </a>
-                      </li>
+                      </li> */}
                     </ul>
                   </div>
                 </nav>

@@ -1,11 +1,15 @@
 import "./index.css";
 import "bootstrap";
+import "./home-react-index-render.js";
+import "./registerserviceworker";
+
+import "./vue-loader-test";
 // import "clipboard.js/dist/clipboard";
 // import "jquery";
 // import "bootstrap/dist/css/bootstrap.css";
 // import "./mui.css";
 // import "./mui.min.js";
-import "./home-react-index-render.js";
+
 // import "./index.src.03a47b71.css.css";
 // import "./indexcss.scss";
 // import "./my-vue-router-project/huami-fp.scss";
@@ -31,53 +35,6 @@ accept */
 // if (module.hot) {
 //   console.log(module.hot.status());
 // }
-/* 测试vue-loader */
-
-import $ from "jquery";
-// $("<div id='root'/>").appendTo(document.body);
-import Vue from "vue/dist/vue.esm.browser";
-Vue.config.productionTip = false;
-Vue.config.silent = true;
-Vue.config.devtools = true;
-import testvue from "./test-vue.vue";
-import vueimg from "./vue.png";
-(function() {
-  $("<div id='vueapp'/>").prependTo(document.body);
-  Vue.component("testvue", testvue);
-  //   console.log(testvue);
-
-  new Vue({
-    components: {
-      testvue
-    },
-    template: ` 
-      <div id='vueapp'>
-      <h1>
-      {{ msg }}Vue
-      </h1>
-      <testvue/>
-      <h1>
-      {{ msg }}Vue
-      </h1>
-      <img :src="vueimg">
-      </div>`,
-    data() {
-      return {
-        vueimg,
-        msg: "Hello world!"
-      };
-    },
-    el: "#vueapp"
-  });
-  //   console.log(vuevm);
-})();
 
 // import testjson from "./PingWest品玩-https___www.pingwest.com_feed-Sun_Jun_23_2019_16_30_22_GMT+0800_(GMT+08_00).json";
 // console.log(testjson);
-(() => {
-  /* 注册google的workbox的serviceworker */
-  "serviceWorker" in navigator &&
-    window.addEventListener("load", function() {
-      navigator.serviceWorker.register("service-worker.js");
-    });
-})();

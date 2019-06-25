@@ -1,13 +1,15 @@
 "use strict";
+/* 使用webpack.config.js配置时,不会根据 参数--mode=development 来自动设置node环境变量*/
 // console.log(process.argv);
 /* 从命令行输入 的参数判断模式 */
 if (process.argv.includes("--mode=production")) {
   process.env.NODE_ENV = "production";
-  console.log("webpack mode is production !");
+  //   console.log("webpack mode is production !");
 } else {
   process.env.NODE_ENV = "development";
-  console.log("webpack mode is development !");
+  //   console.log("webpack mode is development !");
 }
+console.log(`\nwebpack mode is ${process.env.NODE_ENV} !\n`);
 // const WebpackDeepScopeAnalysisPlugin = require("webpack-deep-scope-plugin")
 //   .default;
 // const PurifyCSSPlugin = require("purifycss-webpack");
@@ -359,7 +361,7 @@ A webpack plugin for prepack.
     // new HtmlWebpackPlugin({
     //   title: " Progressive Web Application"
     // }),
-    new webpack.NamedModulesPlugin(),
+    isEnvDevelopment && new webpack.NamedModulesPlugin(),
     // new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
@@ -407,14 +409,19 @@ A webpack plugin for prepack.
     })
   ].filter(Boolean),
   optimization: {
-    runtimeChunk: true,
+    // namedModules: isEnvDevelopment,
+    // runtimeChunk: true,
+    runtimeChunk: {
+      name: entrypoint => `runtime~${entrypoint.name}`
+    },
     splitChunks: {
       chunks: "all",
       minSize: 30000,
       maxSize: 0,
       minChunks: 1,
+      /*  minChunks:     module至少被多少chunk引用才会生成新chunk。 */
       maxAsyncRequests: 5,
-      maxInitialRequests: 3,
+      maxInitialRequests: 5,
       //   automaticNameDelimiter: "~",
       //   automaticNameMaxLength: 30,
       name: true
