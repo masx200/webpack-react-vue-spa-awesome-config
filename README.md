@@ -57,3 +57,5 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
 # 使用 uglifyjs-webpack-plugin 删除注释
 
 # 生产环境自动关闭sourcemap，压缩混淆js和css和html代码
+
+# 开发环境支持模块热更新，和sourcemap
