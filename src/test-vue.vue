@@ -3,7 +3,7 @@
 
     <div v-for="(item, index) in numberarray">
 
-        <h1>{{index}}</h1>
+        <h3>{{index}}</h3>
         <h2>{{item}}</h2>
         <div class="example">Vue{{ msg }}</div>
     </div>
@@ -15,7 +15,7 @@
 export default ({
     data() {
         return {
-            numberarray: Array(3).fill("test"),
+            numberarray: Array(2).fill("test"),
             msg: 'Hello world!'
         }
     }

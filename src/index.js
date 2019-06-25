@@ -40,6 +40,7 @@ Vue.config.productionTip = false;
 Vue.config.silent = true;
 Vue.config.devtools = true;
 import testvue from "./test-vue.vue";
+import vueimg from "./vue.png";
 (function() {
   $("<div id='vueapp'/>").prependTo(document.body);
   Vue.component("testvue", testvue);
@@ -58,9 +59,13 @@ import testvue from "./test-vue.vue";
       <h1>
       {{ msg }}Vue
       </h1>
+      <img :src="vueimg">
       </div>`,
     data() {
-      return { msg: "Hello world!" };
+      return {
+        vueimg,
+        msg: "Hello world!"
+      };
     },
     el: "#vueapp"
   });
@@ -69,3 +74,10 @@ import testvue from "./test-vue.vue";
 
 // import testjson from "./PingWest品玩-https___www.pingwest.com_feed-Sun_Jun_23_2019_16_30_22_GMT+0800_(GMT+08_00).json";
 // console.log(testjson);
+(() => {
+  /* 注册google的workbox的serviceworker */
+  "serviceWorker" in navigator &&
+    window.addEventListener("load", function() {
+      navigator.serviceWorker.register("service-worker.js");
+    });
+})();

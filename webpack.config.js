@@ -16,7 +16,7 @@ if (process.argv.includes("--mode=production")) {
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -471,11 +471,25 @@ A webpack plugin for prepack.
         cache: true,
         sourceMap: shouldUseSourceMap
       }),
-      //   new UglifyJsPlugin({
-      //     cache: true,
-      //     parallel: true,
-      //     sourceMap: true
-      //   }),
+
+      /* vue  webpack打包时如何去掉console.log？ */
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false
+          },
+          mangle: true,
+          warnings: false,
+          compress: {
+            // warnings: false,
+            drop_debugger: true,
+            drop_console: true
+          }
+        },
+        cache: true,
+        parallel: true,
+        sourceMap: shouldUseSourceMap
+      }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           parser: safePostCssParser,

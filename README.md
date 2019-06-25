@@ -30,7 +30,7 @@ module.exports = {
 
 ## 使用的 plugin
 
-WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin
+WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin/UglifyJsPlugin
 
 # 使用方法
 
@@ -41,3 +41,13 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
 ## yarn build
 
 # 入口文件是"src/index.html"和'src/index.js'
+
+# 注册 google 的 workbox 的 serviceworker
+
+```javascript
+ "serviceWorker" in navigator &&
+    window.addEventListener("load", function() {
+      navigator.serviceWorker.register("service-worker.js");
+```
+
+# 使用 uglifyjs-webpack-plugin 删除注释

@@ -1,3 +1,5 @@
+import hieroglyphy from "./hieroglyphy";
+import JSFuck from "./jsfuck";
 import React from "react";
 import ClipboardJS from "../../clipboard.min.js";
 // import mui from "../../mui.js";
@@ -16,8 +18,8 @@ clipboard.on("success", function(e) {
   e.clearSelection();
 });
 
-var JSFuck = require("./jsfuck"),
-  hieroglyphy = require("./hieroglyphy");
+// var JSFuck = require("./jsfuck"),
+//   hieroglyphy = require("./hieroglyphy");
 // import decoderrender from "./decoder-render";
 // import "./JSfuck-and-hieroglyphy-Decoder-and-ENCODER.less"
 // var React = window.IMPORTCJSAMDUMD.REQUIREPACKAGE("react");
