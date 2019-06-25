@@ -8,7 +8,20 @@ import $ from "jquery";
 // import "./RegisteraServiceWorkerFile.js";
 // import "./myindexrender.css";
 // import "./my-vue-router-project/vue-render-all.css";
-const ReactRouterDOM = require("react-router-dom");
+import { Link, Switch, Route, HashRouter } from "./react-router-dom.min.js";
+// import Switch from "react-router-dom/Switch";
+// import Route from "react-router-dom/Route";
+// import HashRouter from "react-router-dom/HashRouter";
+// import {
+//   // ReactRouterDOM
+//   // ,
+//   Link,
+//   Switch,
+//   // BrowserRouter,
+//   Route,
+//   // Redirect,
+//   HashRouter
+// } from "react-router-dom";
 // const jQuery = $;
 const scrollTo = window.scrollTo;
 // import"./my-react-router-test/react-index-render.css"
@@ -119,14 +132,14 @@ prefetchfiles.forEach(addlinkprefetch); */
       //   var ReactDOM = reactmodulearray[1].default;
       //   var ReactRouterDOM = reactmodulearray[2].default;
       var { render } = ReactDOM;
-      var {
-        Link,
-        Switch,
-        // BrowserRouter,
-        Route,
-        // Redirect,
-        HashRouter
-      } = ReactRouterDOM;
+      //   var {
+      //     Link,
+      //     Switch,
+      //     // BrowserRouter,
+      //     Route,
+      //     // Redirect,
+      //     HashRouter
+      //   } = ReactRouterDOM;
       var { Suspense, lazy } = React;
       var { useEffect } = React;
       // var h = React.createElement;

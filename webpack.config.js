@@ -8,8 +8,8 @@ if (process.argv.includes("--mode=production")) {
   process.env.NODE_ENV = "development";
   console.log("webpack mode is development !");
 }
-const WebpackDeepScopeAnalysisPlugin = require("webpack-deep-scope-plugin")
-  .default;
+// const WebpackDeepScopeAnalysisPlugin = require("webpack-deep-scope-plugin")
+//   .default;
 // const PurifyCSSPlugin = require("purifycss-webpack");
 // process.env.NODE_ENV = process.env.NODE_ENV || "development";
 // const PrepackWebpackPlugin = require("prepack-webpack-plugin").default;
@@ -67,6 +67,8 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
   module: {
     strictExportPresence: true,
     rules: [
+      // Disable require.ensure as it's not a standard language feature.
+      { parser: { requireEnsure: false } },
       {
         test: /\.worker\.js$/,
         loader: "worker-loader",
@@ -335,7 +337,8 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
     ]
   },
   plugins: [
-    new WebpackDeepScopeAnalysisPlugin(),
+    /*  WebpackDeepScopeAnalysisPlugin,使用后会出现bug,暂不用*/
+    // new WebpackDeepScopeAnalysisPlugin(),
     /* PurifyCSSPlugin不适用于react或者vue! */
     // new PurifyCSSPlugin({
     //   paths: [path.join(__dirname, "src/index.html")]
@@ -359,7 +362,7 @@ A webpack plugin for prepack.
     new webpack.NamedModulesPlugin(),
     // new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
 
     new WorkboxWebpackPlugin.GenerateSW({
       clientsClaim: true,
@@ -402,7 +405,7 @@ A webpack plugin for prepack.
       },
       template: path.resolve(__dirname, "./src/index.html")
     })
-  ],
+  ].filter(Boolean),
   optimization: {
     runtimeChunk: true,
     splitChunks: {

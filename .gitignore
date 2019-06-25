@@ -5,3 +5,4 @@ src/dist/
 *.log
 debug.log
 *.log
+dist
