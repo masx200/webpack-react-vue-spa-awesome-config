@@ -6,7 +6,11 @@ webpack-react-vue-spa-awesome-config
 
 只使用 webpack.config.js 和 package.json 即可!
 
-借鉴了 [Create-react-app](https://github.com/facebook/create-react-app)
+借鉴了 [Create-react-app](https://github.com/facebook/create-react-app)的webpack配置的一部分
+
+
+
+默认关闭了eslint！
 
 ## 使用的 loader
 
@@ -51,3 +55,5 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
 ```
 
 # 使用 uglifyjs-webpack-plugin 删除注释
+
+# 生产环境自动关闭sourcemap，压缩混淆js代码
