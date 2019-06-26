@@ -18,7 +18,14 @@ webpack-react-vue-spa-awesome-config
 
 ## 默认关闭了eslint！
 
-# 局部刷新：启用Webpack内置的HMR，配合react-hot-loader，增量更新css文件和js文件，修哪更哪，无需刷新页面即可实时看见修改结果
+# 局部刷新：
+
+启用Webpack内置的HMR，配合react-hot-loader，增量更新css文件和js文件，修哪更哪，无需刷新页面即可实时看见修改结果
+
+
+# 动态导入：
+
+可使用动态导入的语法(import().then())，处理代码时会单独分离此模块，执行页面对应操作时才加载此模块，使用才加载不使用则不加载(代码懒加载)，减少首屏加载代码大小和渲染时间
 
 # 入口文件是"src/index.html"和'src/index.js'
 
