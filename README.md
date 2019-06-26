@@ -4,7 +4,7 @@ webpack-react-vue-spa-awesome-config
 
 # 自学 webpack4.x,尝试写一个 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
-# 极简的配置文件
+# 极简的配置文件 
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
 
@@ -12,7 +12,9 @@ webpack-react-vue-spa-awesome-config
  
 借鉴了Facebook开发的 [Create-react-app](https://github.com/facebook/create-react-app)的webpack配置的一部分
 
+# 少学习
 
+您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
 
 ## 默认关闭了eslint！
 
