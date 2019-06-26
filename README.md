@@ -10,6 +10,8 @@ webpack-react-vue-spa-awesome-config
 
 ## 只使用 webpack.config.js 和 package.json 即可!
  
+### 仅仅使用一个 webpack.config.js文件即可同时处理开发模式和生产模式
+
 借鉴了Facebook开发的 [Create-react-app](https://github.com/facebook/create-react-app)的webpack配置的一部分，并进行了大量魔改
 
 https://github.com/facebook/create-react-app
