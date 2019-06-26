@@ -16,6 +16,8 @@ webpack-react-vue-spa-awesome-config
 
 https://github.com/facebook/create-react-app
 
+https://npm.taobao.org/package/react-scripts
+
 # 少学习
 
 您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
