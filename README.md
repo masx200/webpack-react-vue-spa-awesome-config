@@ -2,7 +2,7 @@
 
 webpack-react-vue-spa-awesome-config
 
-# 自学 webpack4.x,写了一个 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
+# 基于 webpack4.x, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
 # 极简的配置文件 
 
