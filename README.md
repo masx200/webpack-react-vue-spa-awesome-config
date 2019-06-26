@@ -27,7 +27,7 @@ webpack-react-vue-spa-awesome-config
 
 可使用动态导入的语法(import().then())，处理代码时会单独分离此模块，执行页面对应操作时才加载此模块，使用才加载不使用则不加载(代码懒加载)，减少首屏加载代码大小和渲染时间
 
-#代码编译 
+# 代码编译 
 
 使用style-loader和css-loader处理CSS，把CSS从JS中单独抽离出来
 
