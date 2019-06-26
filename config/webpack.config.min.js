@@ -154,12 +154,13 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
     },
     plugins: [
       isEnvDevelopment && new webpack.NamedModulesPlugin(),
-      new CleanWebpackPlugin(),
+      isEnvProduction && new CleanWebpackPlugin(),
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
-      new WorkboxWebpackPlugin.GenerateSW({
-        clientsClaim: !0,
-        importWorkboxFrom: "cdn"
-      }),
+      isEnvProduction &&
+        new WorkboxWebpackPlugin.GenerateSW({
+          clientsClaim: !0,
+          importWorkboxFrom: "cdn"
+        }),
       new MiniCssExtractPlugin({
         filename: "[name].[hash].css",
         chunkFilename: "[name].[hash].chunk.css"
