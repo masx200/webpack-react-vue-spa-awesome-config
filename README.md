@@ -51,7 +51,9 @@ CSS压缩：内置MiniCssExtractPlugin和 OptimizeCSSAssetsPlugin，对抽离出
 
 JS压缩：内置uglifyjs和terser，对抽离出来的JS进行压缩去重，uglifyjs用于压缩ES5，terser用于压缩ES6
 
+#  摇树优化：
 
+启用Webpack内置的Tree Shaking，禁止babel把代码转换成Commonjs规范，使用ESM规范的静态声明特点来去除不被引用或不被执行的代码块，起到减包作用
 
 # 入口文件是"src/index.html"和'src/index.js'
 
