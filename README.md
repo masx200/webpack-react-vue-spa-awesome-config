@@ -18,6 +18,14 @@ webpack-react-vue-spa-awesome-config
 
 ## 默认关闭了eslint！
 
+# 入口文件是"src/index.html"和'src/index.js'
+
+# 使用 uglifyjs-webpack-plugin 删除注释和console.lig
+
+# 生产环境自动关闭sourcemap，压缩混淆js和css和html代码
+
+# 开发环境支持模块热更新，和sourcemap
+
 ## 使用的 loader
 
 css-loader / babel-loader /worker-loader/vue-loader/url-loader/style-loader/css-loader/sass-loader/file-loader
@@ -52,7 +60,6 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
 
 ## yarn build
 
-# 入口文件是"src/index.html"和'src/index.js'
 
 # 注册 google 的 workbox 的 serviceworker
 
@@ -62,8 +69,4 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
       navigator.serviceWorker.register("service-worker.js");
 ```
 
-# 使用 uglifyjs-webpack-plugin 删除注释和console.lig
 
-# 生产环境自动关闭sourcemap，压缩混淆js和css和html代码
-
-# 开发环境支持模块热更新，和sourcemap
