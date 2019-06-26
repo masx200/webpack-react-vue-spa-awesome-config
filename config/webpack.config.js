@@ -1,4 +1,7 @@
 "use strict";
+
+console.log(`\n${"The current working directory is "}${process.cwd()}\n`);
+var __dirname = process.cwd();
 /* 使用webpack.config.js配置时,不会根据 参数--mode=development 来自动设置node环境变量*/
 // console.log(process.argv);
 /* 从命令行输入 的参数判断模式 */
