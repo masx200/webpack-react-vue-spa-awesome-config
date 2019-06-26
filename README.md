@@ -12,6 +12,8 @@ webpack-react-vue-spa-awesome-config
  
 借鉴了Facebook开发的 [Create-react-app](https://github.com/facebook/create-react-app)的webpack配置的一部分，并进行了精简
 
+https://github.com/facebook/create-react-app
+
 # 少学习
 
 您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
