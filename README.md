@@ -60,7 +60,7 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
       navigator.serviceWorker.register("service-worker.js");
 ```
 
-# 使用 uglifyjs-webpack-plugin 删除注释
+# 使用 uglifyjs-webpack-plugin 删除注释和console.lig
 
 # 生产环境自动关闭sourcemap，压缩混淆js和css和html代码
 
