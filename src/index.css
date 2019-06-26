@@ -728,7 +728,7 @@ a {
   border: 2px solid #09c;
 }
 
-.flowerpassword .code16h {
+.flowerpassword .code16d:hover {
   border: 2px solid #ff881c;
 }
 
@@ -744,7 +744,15 @@ a {
   border: 2px solid #09c;
 }
 
-.flowerpassword .copycode16h {
+/* $([...$("#code16 "), ...$("#copycode16")]).mouseover(function() {
+        $("#copycode16").addClass("copycode16h");
+        $("#code16").addClass("code16h");
+      });
+      $([...$("#code16 "), ...$("#copycode16")]).mouseout(function() {
+        $("#copycode16").removeClass("copycode16h");
+        $("#code16").removeClass("code16h");
+      }); */
+.flowerpassword .copycode16d:hover {
   background-color: #ff881c;
   border: 2px solid #ff881c;
 }
@@ -1462,7 +1470,7 @@ html {
 .flowerpassword .code16d {
   border: 2px solid #0099cc;
 }
-.flowerpassword .code16h {
+.flowerpassword .code16d:hover {
   border: 2px solid #ff881c;
 }
 .flowerpassword #copycode16 {
@@ -1475,7 +1483,7 @@ html {
   background-color: #0099cc;
   border: 2px solid #0099cc;
 }
-.flowerpassword .copycode16h {
+.flowerpassword .copycode16d:hover {
   background-color: #ff881c;
   border: 2px solid #ff881c;
 }

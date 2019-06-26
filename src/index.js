@@ -1,9 +1,16 @@
 import "./index.css";
-import "bootstrap";
-import "./home-react-index-render.js";
+import("bootstrap");
+import("./home-react-index-render.js");
 import "./registerserviceworker";
 
-import "./vue-loader-test";
+import("./vue-loader-test");
+/* 全局开启剪切板复制功能 */
+import("./clipboard.min.js").then(module => {
+  const ClipboardJS = module.default;
+  new ClipboardJS(".btn").on("success", function(e) {
+    e.clearSelection();
+  });
+});
 // import "clipboard.js/dist/clipboard";
 // import "jquery";
 // import "bootstrap/dist/css/bootstrap.css";

@@ -1,21 +1,27 @@
 import jsfuckworker from "./service-worker-jsfuck.worker.js";
-import ClipboardJS from "../../clipboard.min.js";
+// import ClipboardJS from "../../clipboard.min.js";
+import("../../clipboard.min.js").then(module => {
+  const ClipboardJS = module.default;
+  new ClipboardJS(".btn").on("success", function(e) {
+    e.clearSelection();
+  });
+});
 import mui from "../../mui.min.js";
 import $ from "jquery";
 import React from "react";
 const jQuery = $;
-const clipboard = new ClipboardJS(".btn");
+// const clipboard = new ClipboardJS(".btn");
 
-clipboard.on("success", function(e) {
-  if (!e.text) {
-    console.log("复制内容空");
-  } else {
-    //   console.info("Action:", e.action);
-    //   console.info("Text:", e.text);
-  }
-  /* 不显示选择的区域形式 */
-  e.clearSelection();
-});
+// clipboard.on("success", function(e) {
+//   if (!e.text) {
+//     console.log("复制内容空");
+//   } else {
+//     //   console.info("Action:", e.action);
+//     //   console.info("Text:", e.text);
+//   }
+//   /* 不显示选择的区域形式 */
+//   e.clearSelection();
+// });
 //new ClipboardJS(".btn");
 // import jsfuckencoderender, { 关闭所有worker } from "./jsfuck-encode-render";
 // var React = window.IMPORTCJSAMDUMD.REQUIREPACKAGE("react");
@@ -165,8 +171,8 @@ export default function Jsfuck() {
       />
       <br />
       <button
-        onClick={() => {
-          encode(btnencode.current);
+        onClick={e => {
+          encode(e.target);
         }}
         ref={btnencode}
         class="btn btn-outline-primary btn-lg"

@@ -403,8 +403,10 @@ export default () => {
           data-loading-icon="mui-spinner mui-spinner-custom"
           class="mui-btn mui-btn-primary btn btn-info  btn btn-outline-primary mui-btn mui-btn-outline-primary"
           id="start-big"
-          onClick={() => {
-            mystart(btnele.current);
+          onClick={e => {
+            // console.log(e.target);
+            // mystart(btnele.current);
+            mystart(e.target);
           }}
           type="button"
           style={{ width: "100%" }}
@@ -418,6 +420,7 @@ export default () => {
           ref={outtext1}
           value={outputtext1}
           onChange={e => {
+            // console.log(e);
             onchangeoutputtext1(e);
             lashentextarea(e.target);
           }}

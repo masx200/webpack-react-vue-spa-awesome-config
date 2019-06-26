@@ -318,7 +318,7 @@ export default function() {
               piwei +
               "位" +
               p.toString()[0] +
-              "." +
+              //   "." +
               p.toString().slice(1)
           );
           //   console.log(outputtext1 + eventdata);
@@ -400,8 +400,10 @@ export default function() {
           data-loading-icon="mui-spinner mui-spinner-custom"
           class="mui-btn mui-btn-primary btn btn-info  btn btn-outline-primary mui-btn mui-btn-outline-primary"
           id="start-big"
-          onClick={() => {
-            mystart(btnele.current);
+          onClick={e => {
+            // console.log(e);
+            // mystart(btnele.current);
+            mystart(e.target);
           }}
           type="button"
           style={{ width: "100%" }}

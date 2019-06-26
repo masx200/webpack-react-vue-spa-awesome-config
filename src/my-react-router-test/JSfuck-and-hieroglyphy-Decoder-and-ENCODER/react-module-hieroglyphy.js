@@ -1,22 +1,29 @@
 import hieroglyphyworker from "./service-worker-hieroglyphy.worker";
 import React from "react";
-import ClipboardJS from "../../clipboard.min.js";
+
+import("../../clipboard.min.js").then(module => {
+  const ClipboardJS = module.default;
+  new ClipboardJS(".btn").on("success", function(e) {
+    e.clearSelection();
+  });
+});
+// import ClipboardJS from "../../clipboard.min.js";
 // import mui from "@/mui.js";
 import mui from "../../mui.min.js";
 import $ from "jquery";
 const jQuery = $;
-const clipboard = new ClipboardJS(".btn");
+// const clipboard = new ClipboardJS(".btn");
 
-clipboard.on("success", function(e) {
-  if (!e.text) {
-    console.log("复制内容空");
-  } else {
-    //   console.info("Action:", e.action);
-    //   console.info("Text:", e.text);
-  }
-  /* 不显示选择的区域形式 */
-  e.clearSelection();
-});
+// clipboard.on("success", function(e) {
+//   if (!e.text) {
+//     console.log("复制内容空");
+//   } else {
+//     //   console.info("Action:", e.action);
+//     //   console.info("Text:", e.text);
+//   }
+//   /* 不显示选择的区域形式 */
+//   e.clearSelection();
+// });
 
 // new ClipboardJS(".btn");
 // import hieroglyphyencoderender, {
@@ -166,8 +173,8 @@ export default function Hieroglyphy() {
           ref={btnencodescript}
           class="btn btn-outline-success btn-lg"
           id="encodescript"
-          onClick={() => {
-            encodeall("encodescript", btnencodescript.current);
+          onClick={e => {
+            encodeall("encodescript", e.target);
           }}
           data-loading-icon="mui-spinner mui-spinner-custom"
           type="text"
@@ -180,8 +187,8 @@ export default function Hieroglyphy() {
           type="text"
           data-loading-icon="mui-spinner mui-spinner-custom"
           class="btn btn-outline-info btn-lg"
-          onClick={() => {
-            encodeall("encodestring", btnencodestring.current);
+          onClick={e => {
+            encodeall("encodestring", e.target);
           }}
         >
           Encode string

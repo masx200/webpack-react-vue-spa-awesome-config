@@ -23,10 +23,10 @@ addEventListener("message", e => {
   var d = e.data;
 
   console.log("副线程" + "从主线程接收" + "event.data\n");
-  console.log(...d);
-//   if (typeof hieroglyphy === "undefined") {
-//     var hieroglyphy = d[2];
-//   }
+  console.log(JSON.stringify(d));
+  //   if (typeof hieroglyphy === "undefined") {
+  //     var hieroglyphy = d[2];
+  //   }
 
   //   importScripts(d[2]);
   //   var hieroglyphy = WorkerGlobalScope.hieroglyphy;
