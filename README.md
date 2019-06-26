@@ -6,6 +6,8 @@ webpack-react-vue-spa-awesome-config
 
 # 极简的配置文件
 
+## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
+
 ## 只使用 webpack.config.js 和 package.json 即可!
  
 借鉴了Facebook开发的 [Create-react-app](https://github.com/facebook/create-react-app)的webpack配置的一部分
