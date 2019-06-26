@@ -39,6 +39,8 @@ https://github.com/facebook/create-react-app
 
 使用babel-loader根据预设环境和browserslist处理编写的ES6代码和TS代码，并生成浏览器可识别的ES5代码
 
+使用vue-loader把*.vue文件编译成vue组件转成js代码
+
 #  代码分割：
 
 对业务代码进行打包，分割成WebpackRuntime代码块、第三方依赖代码块、公共业务代码块、单个业务代码块
