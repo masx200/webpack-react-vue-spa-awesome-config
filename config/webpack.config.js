@@ -72,6 +72,32 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
   module: {
     strictExportPresence: true,
     rules: [
+    
+    
+    
+    
+            {
+          test: /\.(less)$/,
+          use: [
+            isEnvDevelopment
+              ? {
+                  loader: "style-loader",
+                  options: { sourceMap: shouldUseSourceMap }
+                }
+              : { loader: MiniCssExtractPlugin.loader },
+            {
+              loader: "css-loader",
+              options: { sourceMap: shouldUseSourceMap }
+            },
+            {
+              loader: "less-loader",
+              options: { sourceMap: shouldUseSourceMap }
+            }
+          ]
+        },
+    
+    
+    
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
       {
@@ -87,7 +113,7 @@ Cannot use [chunkhash] or [contenthash] for chunk in 'bundle.[name].[contenthash
         loader: "vue-loader"
       },
       {
-        test: /\.(css|sass|scss|less)$/,
+        test: /\.(css|sass|scss)$/,
         use: [
           isEnvDevelopment
             ? {
