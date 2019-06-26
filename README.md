@@ -73,6 +73,8 @@ css-loader / babel-loader /worker-loader/vue-loader/url-loader/style-loader/css-
 
 # worker-loader可以加载webworker的文件，文件后缀名要写成.worker.js
 
+https://www.webpackjs.com/loaders/worker-loader/
+
 ### 修复了使用 webpack.HotModuleReplacementPlugin 和 worker-loader 不兼容的 bug
 
 该错误来自 Web 工作者，因为 Web worker window 上不可用。
