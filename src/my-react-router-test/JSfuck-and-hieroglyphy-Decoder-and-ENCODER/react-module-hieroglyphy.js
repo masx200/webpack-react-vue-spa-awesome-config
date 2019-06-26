@@ -1,12 +1,12 @@
 import hieroglyphyworker from "./service-worker-hieroglyphy.worker";
 import React from "react";
 
-import("../../clipboard.min.js").then(module => {
-  const ClipboardJS = module.default;
-  new ClipboardJS(".btn").on("success", function(e) {
-    e.clearSelection();
-  });
-});
+// import("../../clipboard.min.js").then(module => {
+//   const ClipboardJS = module.default;
+//   new ClipboardJS(".btn").on("success", function(e) {
+//     e.clearSelection();
+//   });
+// });
 // import ClipboardJS from "../../clipboard.min.js";
 // import mui from "@/mui.js";
 import mui from "../../mui.min.js";

@@ -1,11 +1,11 @@
 import jsfuckworker from "./service-worker-jsfuck.worker.js";
 // import ClipboardJS from "../../clipboard.min.js";
-import("../../clipboard.min.js").then(module => {
-  const ClipboardJS = module.default;
-  new ClipboardJS(".btn").on("success", function(e) {
-    e.clearSelection();
-  });
-});
+// import("../../clipboard.min.js").then(module => {
+//   const ClipboardJS = module.default;
+//   new ClipboardJS(".btn").on("success", function(e) {
+//     e.clearSelection();
+//   });
+// });
 import mui from "../../mui.min.js";
 import $ from "jquery";
 import React from "react";

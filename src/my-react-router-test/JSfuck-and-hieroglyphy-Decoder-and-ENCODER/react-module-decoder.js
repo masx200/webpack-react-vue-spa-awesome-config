@@ -4,12 +4,12 @@ import React from "react";
 
 // 改为动态引入剪贴板
 
-import("../../clipboard.min.js").then(module => {
-  const ClipboardJS = module.default;
-  new ClipboardJS(".btn").on("success", function(e) {
-    e.clearSelection();
-  });
-});
+// import("../../clipboard.min.js").then(module => {
+//   const ClipboardJS = module.default;
+//   new ClipboardJS(".btn").on("success", function(e) {
+//     e.clearSelection();
+//   });
+// });
 // import ClipboardJS from "../../clipboard.min.js";
 // import mui from "../../mui.js";
 import $ from "jquery";

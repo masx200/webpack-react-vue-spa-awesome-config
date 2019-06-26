@@ -1,14 +1,14 @@
-import("./clipboard.min.js").then(
-  //   console.log
+// import("./clipboard.min.js").then(
+//   //   console.log
 
-  module => {
-    const ClipboardJS = module.default;
-    new ClipboardJS(".btn").on("success", function(e) {
-      e.clearSelection();
-    });
-    // new ClipboardJS(".btn");
-  }
-);
+//   module => {
+//     const ClipboardJS = module.default;
+//     new ClipboardJS(".btn").on("success", function(e) {
+//       e.clearSelection();
+//     });
+//     // new ClipboardJS(".btn");
+//   }
+// );
 
 import React from "react";
 import {
