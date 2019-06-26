@@ -37,6 +37,21 @@ webpack-react-vue-spa-awesome-config
 
 使用babel-loader根据预设环境和browserslist处理编写的ES6代码和TS代码，并生成浏览器可识别的ES5代码
 
+#  代码分割：
+
+对业务代码进行打包，分割成WebpackRuntime代码块、第三方依赖代码块、公共业务代码块、单个业务代码块
+
+# 代码合并：
+
+通过对相同模块、相同功能或复用多次的代码进行整体合并，起到减包作用
+
+# 压缩合并：
+
+CSS压缩：内置MiniCssExtractPlugin和 OptimizeCSSAssetsPlugin，对抽离出来的CSS进行压缩去重
+
+JS压缩：内置uglifyjs和terser，对抽离出来的JS进行压缩去重，uglifyjs用于压缩ES5，terser用于压缩ES6
+
+
 
 # 入口文件是"src/index.html"和'src/index.js'
 
