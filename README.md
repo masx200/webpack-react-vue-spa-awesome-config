@@ -18,6 +18,8 @@ webpack-react-vue-spa-awesome-config
 
 ## 默认关闭了eslint！
 
+# 局部刷新：启用Webpack内置的HMR，配合react-hot-loader，增量更新css文件和js文件，修哪更哪，无需刷新页面即可实时看见修改结果
+
 # 入口文件是"src/index.html"和'src/index.js'
 
 # 使用 uglifyjs-webpack-plugin 删除注释和console.lig
