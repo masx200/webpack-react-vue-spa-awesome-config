@@ -93,9 +93,38 @@ WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpack
 
 ## yarn install
 
+安装依赖
+
 ## yarn start
 
+开发模式
+
 ## yarn build
+
+
+生产模式
+
+# workbox 
+
+JavaScript Libraries for adding offline support to web apps
+
+Workbox is a set of libraries and Node modules that make it easy to cache assets and take full advantage of features used to build Progressive Web Apps.
+
+
+
+## 性能
+
+停止在网络上等待！您可以通过缓存和提供文件来提高Web应用程序的性能，这些文件由服务工作人员提供支持。
+
+
+## 弹性
+
+即使在不可靠的连接上，您的Web应用程序仍然可以使用正确的运行时缓存策略。
+
+
+## 增强
+
+想要构建一个渐进的Web应用程序？Workbox可以轻松创建离线初次体验。
 
 
 # 注册 google 的 workbox 的 serviceworker
