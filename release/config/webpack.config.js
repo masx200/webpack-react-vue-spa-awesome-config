@@ -1,12 +1,13 @@
 "use strict";
-console.log(`\nThe current working directory is ${process.cwd()}\n`);
+console.log(`\nwebpack config filename : ${__filename}\n`);
+console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
 process.argv.includes("--mode=production")
   ? (process.env.NODE_ENV = "production")
   : (process.env.NODE_ENV = "development");
 const webpack = require("webpack");
 // var WatchIgnorePlugin = webpack.WatchIgnorePlugin;
-console.log(`\nwebpack mode is ${process.env.NODE_ENV} !\n`);
+console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
 var CopyFilesPlugin = require("webpack-copyfiles-plugin");
 // '）
 // var WebpackCopyPlugin = require("webpack-copy-plugin");
@@ -32,7 +33,9 @@ process.env.BABEL_ENV = process.env.NODE_ENV;
 
 // We inferred the "public path" (such as / or /my-project) from homepage.
 // We use "/" in development.
+/* 开发模式必须设置 publicPath 为 ""或者"/"
 
+*/
 const publicPath = isEnvProduction ? "./" : "/";
 module.exports = {
   devServer: {
