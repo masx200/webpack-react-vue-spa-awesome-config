@@ -25,7 +25,15 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
   HtmlWebpackPlugin = require("html-webpack-plugin");
 // { CleanWebpackPlugin: CleanWebpackPlugin } = require("clean-webpack-plugin");
 process.env.BABEL_ENV = process.env.NODE_ENV;
-const publicPath = "./";
+
+// Webpack uses `publicPath` to determine where the app is being served from.
+// It requires a trailing slash, or the file assets will get an incorrect path.
+// In development, we always serve from the root. This makes config easier.
+
+// We inferred the "public path" (such as / or /my-project) from homepage.
+// We use "/" in development.
+
+const publicPath = isEnvProduction ? "./" : "/";
 module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
@@ -39,6 +47,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry: path.join(__dirname, "src", "index.js"),
   output: {
+    //https://www.webpackjs.com/configuration/output/#output-publicpath
     publicPath,
     globalObject:
       '( (typeof window !== "undefined" ? window : false) ||\n    (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||\n    this)',
