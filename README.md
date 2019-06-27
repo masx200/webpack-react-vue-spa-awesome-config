@@ -68,9 +68,9 @@ JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去�
 
 启用 Webpack 内置的 Tree Shaking，禁止 babel 把代码转换成 Commonjs 规范，使用 ESM 规范的静态声明特点来去除不被引用或不被执行的代码块，起到减包作用
 
-# 入口文件是"src/index.html"和'public/index.js'
+# 入口文件是"public/index.html"和'src/index.js'
 
-# 使用 uglifyjs-webpack-plugin 删除注释和 console.lig
+# 使用 uglifyjs-webpack-plugin 删除注释和 console.log
 
 # 生产环境自动关闭 sourcemap，压缩混淆 js 和 css 和 html 代码
 
