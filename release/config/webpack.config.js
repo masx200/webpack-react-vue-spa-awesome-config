@@ -3,9 +3,13 @@ console.log(`\nThe current working directory is ${process.cwd()}\n`);
 var __dirname = process.cwd();
 process.argv.includes("--mode=production")
   ? (process.env.NODE_ENV = "production")
-  : (process.env.NODE_ENV = "development"),
-  console.log(`\nwebpack mode is ${process.env.NODE_ENV} !\n`);
-
+  : (process.env.NODE_ENV = "development");
+const webpack = require("webpack");
+// var WatchIgnorePlugin = webpack.WatchIgnorePlugin;
+console.log(`\nwebpack mode is ${process.env.NODE_ENV} !\n`);
+var CopyFilesPlugin = require("webpack-copyfiles-plugin");
+// '）
+// var WebpackCopyPlugin = require("webpack-copy-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
   safePostCssParser = require("postcss-safe-parser"),
   OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
@@ -16,13 +20,12 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
   webpackEnv = process.env.NODE_ENV,
   isEnvDevelopment = "development" === webpackEnv,
   shouldUseSourceMap = isEnvDevelopment,
-  webpack = require("webpack"),
   isEnvProduction = "production" === webpackEnv,
   path = require("path"),
-  HtmlWebpackPlugin = require("html-webpack-plugin"),
-  { CleanWebpackPlugin: CleanWebpackPlugin } = require("clean-webpack-plugin");
+  HtmlWebpackPlugin = require("html-webpack-plugin");
+// { CleanWebpackPlugin: CleanWebpackPlugin } = require("clean-webpack-plugin");
 process.env.BABEL_ENV = process.env.NODE_ENV;
-const publicPath = "./"
+const publicPath = "./";
 module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
@@ -177,8 +180,29 @@ module.exports = {
     ]
   },
   plugins: [
+    isEnvProduction &&
+      new CopyFilesPlugin({
+        sourceRoot: path.join(__dirname, "public"),
+        targetRoot: path.join(__dirname, "dist"),
+        files: ["favicon.ico"],
+        // renameTargetDir: true,
+        // dirHashVarName: '__dirhash__',
+        cleanDirs: [path.join(__dirname, "dist")]
+      }),
+    // isEnvProduction &&
+    // new WatchIgnorePlugin([path.join(__dirname, "public", "index.html")]),
+    // isEnvProduction &&
+    // new WebpackCopyPlugin({
+    //   dirs: [
+    //     {
+    //       from: path.join(__dirname, "public"),
+    //       to: path.join(__dirname, "dist")
+    //     }
+    //   ],
+    //   options: {}
+    // }),
     isEnvDevelopment && new webpack.NamedModulesPlugin(),
-    isEnvProduction && new CleanWebpackPlugin(),
+    // isEnvProduction && new CleanWebpackPlugin(),
     isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
     new WorkboxWebpackPlugin.GenerateSW({
       clientsClaim: !0,
