@@ -161,10 +161,29 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
       isEnvDevelopment && new webpack.NamedModulesPlugin(),
       isEnvProduction && new CleanWebpackPlugin(),
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
-
       new WorkboxWebpackPlugin.GenerateSW({
         clientsClaim: !0,
-        importWorkboxFrom: "cdn"
+        importWorkboxFrom: "cdn",
+        runtimeCaching: [
+          {
+            urlPattern: /.*\.(?:js|html|\/)$/,
+            handler: "NetworkFirst",
+            options: {}
+          },
+          {
+            urlPattern: /.*\.(?:xml|json|md|css)$/,
+            handler: "StaleWhileRevalidate",
+            options: {}
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "image-cache",
+              expiration: { maxEntries: 10 }
+            }
+          }
+        ]
       }),
       new MiniCssExtractPlugin({
         filename: "[name].[hash].css",
