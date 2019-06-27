@@ -22,7 +22,7 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
   { CleanWebpackPlugin: CleanWebpackPlugin } = require("clean-webpack-plugin");
 process.env.BABEL_ENV = process.env.NODE_ENV;
-const publicPath = path.join(__dirname, "public");
+const publicPath = "./"
 module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
@@ -225,7 +225,7 @@ module.exports = {
         minifyURLs: !0,
         removeAttributeQuotes: !1
       },
-      template: path.resolve(publicPath, "index.html")
+      template: path.join(__dirname, "public", "index.html")
     })
   ].filter(Boolean),
   optimization: {
