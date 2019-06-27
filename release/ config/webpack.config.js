@@ -104,8 +104,8 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
               test: /\.(js|mjs|jsx|ts|tsx)$/,
               loader: "babel-loader",
               options: {
-                presets: ["@babel/preset-env", "@babel/preset-react"],
-                plugins: ["@babel/plugin-syntax-dynamic-import"],
+              //  presets: ["@babel/preset-env", "@babel/preset-react"],
+               // plugins: ["@babel/plugin-syntax-dynamic-import"],
                 customize: require.resolve(
                   "babel-preset-react-app/webpack-overrides"
                 ),
@@ -119,15 +119,15 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin"),
             {
               test: /\.(js|mjs)$/,
               exclude: /@babel(?:\/|\\{1,2})runtime/,
-              loader: require.resolve("babel-loader"),
+              loader: ("babel-loader"),
               options: {
-                plugins: ["@babel/plugin-syntax-dynamic-import"],
+               // plugins: ["@babel/plugin-syntax-dynamic-import"],
                 babelrc: !1,
                 configFile: !1,
                 compact: !1,
                 presets: [
-                  "@babel/preset-env",
-                  "@babel/preset-react",
+                 // "@babel/preset-env",
+                 // "@babel/preset-react",
                   [
                     require.resolve("babel-preset-react-app/dependencies"),
                     { helpers: !0 }
