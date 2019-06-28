@@ -12,38 +12,7 @@
 
 # 使用方法
 
-### 全局安装
-
-```
-npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git -g
-```
-
-或者
-
-```
-yarn global add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
-
-```
-
-## 开发模式
-
-启动 webpack-dev-server
-
-```
-webpack-react-vue-spa-awesome-config start
-```
-
-## 生产模式
-
-启动 webpack
-
-```
-webpack-react-vue-spa-awesome-config build
-```
-
-
-
-### 局部安装
+## 局部安装
 
 ```
 npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git --save
@@ -106,6 +75,39 @@ yarn build
 ```
 npm run build
 ```
+
+## 全局安装
+
+```
+npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git -g
+```
+
+或者
+
+```
+yarn global add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
+
+```
+
+## 开发模式
+
+启动 webpack-dev-server
+
+```
+webpack-react-vue-spa-awesome-config start
+```
+
+## 生产模式
+
+启动 webpack
+
+```
+webpack-react-vue-spa-awesome-config build
+```
+
+# 入口文件是"public/index.html"和'src/index.js'
+
+如果人口文件不存在,则会自动生成入口文件
 
 # 极简的配置文件
 
@@ -180,8 +182,6 @@ JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去�
 # 摇树优化：
 
 启用 Webpack 内置的 Tree Shaking，禁止 babel 把代码转换成 Commonjs 规范，使用 ESM 规范的静态声明特点来去除不被引用或不被执行的代码块，起到减包作用
-
-# 入口文件是"public/index.html"和'src/index.js'
 
 # 使用 uglifyjs-webpack-plugin 删除注释和 console.log
 
