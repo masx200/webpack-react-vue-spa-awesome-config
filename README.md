@@ -1,16 +1,16 @@
 # webpack-react-vue-spa-awesome-config
 
-webpack-react-vue-spa-awesome-config
+## webpack-react-vue-spa-awesome-config 是一个命令行工具
+
+### 极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持
+
+### Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support
 
 # 基于 webpack4.x, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
-## webpack-react-vue-spa-awesome-config 是一个命令行工具
 
-极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持
-
-Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support
 
 ### 全局安装
 
