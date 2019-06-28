@@ -217,6 +217,11 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        // convert code to unicode
+        test: /\.js?$/,
+        loader: "unicode-loader"
       }
     ]
   },
@@ -306,17 +311,6 @@ module.exports = {
     },
     minimize: isEnvProduction,
     minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          parse: { ecma: 8 },
-          compress: { ecma: 5, warnings: !1, comparisons: !1, inline: 2 },
-          mangle: { safari10: !0 },
-          output: { ecma: 5, comments: !1, ascii_only: !0 }
-        },
-        parallel: !0,
-        cache: !0,
-        sourceMap: shouldUseSourceMap
-      }),
       new UglifyJsPlugin({
         uglifyOptions: {
           output: { comments: !1 },
@@ -328,6 +322,18 @@ module.exports = {
         parallel: !0,
         sourceMap: shouldUseSourceMap
       }),
+      new TerserPlugin({
+        terserOptions: {
+          parse: { ecma: 8 },
+          compress: { ecma: 5, warnings: !1, comparisons: !1, inline: 2 },
+          mangle: { safari10: !0 },
+          output: { ecma: 5, comments: !1, ascii_only: !0 }
+        },
+        parallel: !0,
+        cache: !0,
+        sourceMap: shouldUseSourceMap
+      }),
+
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           parser: safePostCssParser,

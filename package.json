@@ -68,7 +68,8 @@
         "webpack-dev-server": "^3.7.2",
         "workbox-webpack-plugin": "4.3.1",
         "webpack-copyfiles-plugin": "^1.0.6",
-        "worker-loader": "^2.0.0"
+        "worker-loader": "^2.0.0",
+        "unicode-loader": "^1.0.7"
     },
     "devDependencies": {},
     "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
