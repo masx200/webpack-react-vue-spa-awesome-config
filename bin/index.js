@@ -48,10 +48,11 @@ if (process.argv.includes("start")) {
 // });
 console.log(commandstring);
 exec(commandstring, (error, stdout, stderr) => {
+  stderr && console.error(`stderr: ${stderr}`);
   if (error) {
     console.error(`Error: ${error}`);
     return;
   }
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
+
+  console.log(` ${stdout}`);
 });

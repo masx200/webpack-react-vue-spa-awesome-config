@@ -6,6 +6,8 @@ webpack-react-vue-spa-awesome-config
 
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
+# 使用方法
+
 ```
 npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git --save
 ```
@@ -27,8 +29,6 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
   }
 }
 ```
-
-# 使用方法
 
 ## yarn install
 
