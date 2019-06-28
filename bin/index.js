@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-const { exec, spawn } = require("child_process");
+const { spawn } = require("child_process");
 
 // let spawnObj;
 let commandstring, command, commandargs;
 const path = require("path");
+console.log("\n");
 console.log("webpack-react-vue-spa-awesome-config");
-
+console.log("\n");
 const webpackconfigfile = path.resolve(
   __dirname,
   "../",
@@ -14,7 +15,13 @@ const webpackconfigfile = path.resolve(
 );
 
 const commandfind = t =>
-  path.resolve(__dirname, "../", "node_modules", ".bin", t);
+  path.join(
+    __dirname,
+    "..",
+    "node_modules",
+    ".bin",
+    t.trim() + (process.platform === "win32" ? ".cmd" : "")
+  );
 if (process.argv.includes("start")) {
   command = commandfind(`webpack-dev-server `);
   commandargs = ["--config", webpackconfigfile, "--mode=development"];
@@ -29,7 +36,9 @@ if (process.argv.includes("start")) {
   //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
 } else {
   console.log("usage:");
+  console.log("\n");
   console.log("webpack-react-vue-spa-awesome-config start");
+  console.log("\n");
   console.log("webpack-react-vue-spa-awesome-config build");
   return;
 }
@@ -47,11 +56,25 @@ if (process.argv.includes("start")) {
 //   console.log("exit code : " + code);
 // });
 console.log(commandstring);
+console.log("\n");
+/* [Error: spawn ENOENT]  
 
-spawn(command, commandargs, {
+windows下执行文件为
+.cmd
+*/
+const runobj = spawn(command, commandargs, {
   stdio: ["pipe", "pipe", "pipe"]
 });
-exec(commandstring, (error, stdout, stderr) => {
+runobj.stdout.on("data", data => {
+  console.log(` ${data}`);
+  console.log("\n");
+});
+
+runobj.stderr.on("data", data => {
+  console.error(` ${data}`);
+  console.log("\n");
+});
+/* exec(commandstring, (error, stdout, stderr) => {
   stderr && console.error(`stderr: ${stderr}`);
   if (error) {
     console.error(`Error: ${error}`);
@@ -60,3 +83,4 @@ exec(commandstring, (error, stdout, stderr) => {
 
   console.log(` ${stdout}`);
 });
+ */
