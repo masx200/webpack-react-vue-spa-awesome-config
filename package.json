@@ -1,7 +1,5 @@
 {
-    "bin": {
-        "webpack-react-vue-spa-awesome-config": "./bin/index.js"
-    },
+    "bin": "./bin/index.js",
     "main": "./release/config/webpack.config.js",
     "scripts": {
         "start": "webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development",
