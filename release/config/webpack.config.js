@@ -217,12 +217,13 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        // convert code to unicode
-        test: /\.js?$/,
-        loader: "unicode-loader"
       }
+      /* unicode-loader不需要了,因为在terserplugin中可以转换成unicode */
+      //   {
+      //     // convert code to unicode
+      //     test: /\.js?$/,
+      //     loader: "unicode-loader"
+      //   }
     ]
   },
   plugins: [
@@ -327,7 +328,12 @@ module.exports = {
           parse: { ecma: 8 },
           compress: { ecma: 5, warnings: !1, comparisons: !1, inline: 2 },
           mangle: { safari10: !0 },
-          output: { ecma: 5, comments: !1, ascii_only: !0 }
+          output: {
+            ecma: 5,
+            comments: !1,
+            /* 在terserplugin中可以转换成unicode  */
+            ascii_only: !0
+          }
         },
         parallel: !0,
         cache: !0,
