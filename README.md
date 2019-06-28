@@ -46,7 +46,7 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
 
-## 只使用 webpack.config.js 和 package.json 即可!
+## 内部 只使用 webpack.config.js 和 package.json
 
 ### 借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
 
