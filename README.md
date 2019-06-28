@@ -8,6 +8,10 @@
 
 # 基于 webpack4.x, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
+[查看源代码 ./bin/index.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/bin/index.js)
+
+[查看源代码 ./release/config/webpack.config.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/release/config/webpack.config.js)
+
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
 # 使用方法
