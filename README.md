@@ -4,15 +4,26 @@ webpack-react-vue-spa-awesome-config
 
 # 基于 webpack4.x, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
+# 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
+
+```
+npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git --save
+```
+
+或者
+
+```
+yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
+
+```
+
 # 极简的配置文件
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
 
 ## 只使用 webpack.config.js 和 package.json 即可!
 
-### 仅仅使用一个 webpack.config.js 文件即可同时处理开发模式和生产模式
-
-借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
+### 借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
 
 https://github.com/facebook/create-react-app
 
@@ -23,6 +34,18 @@ https://npm.taobao.org/package/react-scripts
 您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
 
 ## 默认关闭了 eslint！
+
+### 内部实现原理 仅仅使用一个 webpack.config.js 文件即可同时处理开发模式和生产模式
+
+webpack 使用配置文件启动的时候,默认不支持通过`--mode=development`或者`--mode=production`来设置 webpack 的模式,
+
+在 `webpack.config.js`文件中通过如下方式来判断 webpack 的模式,即读取`process.argv`变量来获得传入的参数设置的模式
+
+```javascript
+process.argv.includes("--mode=production")
+  ? (process.env.NODE_ENV = "production")
+  : (process.env.NODE_ENV = "development");
+```
 
 # 局部刷新：
 
