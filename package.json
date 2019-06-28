@@ -6,7 +6,7 @@
         "build": "webpack  --config ./release/config/webpack.config.js     --mode=production"
     },
     "name": "webpack-react-vue-spa-awesome-config",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "license": "MIT",
     "babel": {
         "presets": [
