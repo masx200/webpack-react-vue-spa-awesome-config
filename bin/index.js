@@ -38,18 +38,21 @@ function 判断并创建目录(p) {
     fs.mkdirSync(p);
   }
 }
-destfiles.forEach((p, i, a) => {
-  if (!fs.existsSync(p)) {
-    console.log(`inputfile  not exsited! ${p}\n`);
-    console.log(`initialize inputfile from ${sourcefiles[i]}\n`);
-    ["public", "src"]
-      .map(t => path.resolve(pwddir, t))
-      .forEach(e => 判断并创建目录(e));
+function 生成入口文件() {
+  destfiles.forEach((p, i, a) => {
+    if (!fs.existsSync(p)) {
+      console.log(`inputfile  not exsited! ${p}\n`);
+      console.log(`initialize inputfile from ${sourcefiles[i]}\n`);
+      ["public", "src"]
+        .map(t => path.resolve(pwddir, t))
+        .forEach(e => 判断并创建目录(e));
 
-    /* 判断文件夹是否存在! */
-    fs.copyFileSync(sourcefiles[i], a[i]);
-  }
-});
+      /* 判断文件夹是否存在! */
+      fs.copyFileSync(sourcefiles[i], a[i]);
+    }
+  });
+}
+
 //   .map(p => fs.existsSync(p));
 
 // console.log(existbool);
@@ -74,12 +77,14 @@ const commandfind = t =>
     t.trim() + (process.platform === "win32" ? ".cmd" : "")
   );
 if (process.argv.includes("start")) {
+  生成入口文件();
   command = commandfind(`webpack-dev-server `);
   commandargs = ["--config", webpackconfigfile, "--mode=development"];
   commandstring = command + " " + commandargs.join(" ");
 
   //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
 } else if (process.argv.includes("build")) {
+  生成入口文件();
   command = commandfind(`webpack `);
   commandargs = ["--config", webpackconfigfile, "--mode=production"];
   commandstring = command + " " + commandargs.join(" ");
