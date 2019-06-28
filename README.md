@@ -31,35 +31,45 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 ```
 
 ## 安装依赖
+
 ```
 yarn install
 ```
+
 或者
+
 ```
 npm install
 ```
-## 开发模式 
+
+## 开发模式
 
 启动 webpack-dev-server
 
 ```
 yarn start
 ```
+
 或者
+
 ```
 npm start
 ```
-## 生产模式 
+
+## 生产模式
 
 启动 webpack
 
 ```
 yarn build
 ```
+
 或者
+
 ```
 npm build
 ```
+
 # 极简的配置文件
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
