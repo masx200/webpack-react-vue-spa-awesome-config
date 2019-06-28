@@ -10,7 +10,7 @@
 
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
-
+# 使用方法
 
 ### 全局安装
 
@@ -41,7 +41,7 @@ webpack-react-vue-spa-awesome-config start
 webpack-react-vue-spa-awesome-config build
 ```
 
-# 使用方法
+
 
 ### 局部安装
 
