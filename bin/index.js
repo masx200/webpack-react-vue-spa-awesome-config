@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { exec } = require("child_process");
+const { exec, spawn } = require("child_process");
 
 // let spawnObj;
-let commandstring;
+let commandstring, command, commandargs;
 const path = require("path");
 console.log("webpack-react-vue-spa-awesome-config");
 
@@ -16,14 +16,14 @@ const webpackconfigfile = path.resolve(
 const commandfind = t =>
   path.resolve(__dirname, "../", "node_modules", ".bin", t);
 if (process.argv.includes("start")) {
-  const command = commandfind(`webpack-dev-server `);
-  const commandargs = ["--config", webpackconfigfile, "--mode=development"];
+  command = commandfind(`webpack-dev-server `);
+  commandargs = ["--config", webpackconfigfile, "--mode=development"];
   commandstring = command + " " + commandargs.join(" ");
 
   //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
 } else if (process.argv.includes("build")) {
-  const command = commandfind(`webpack `);
-  const commandargs = ["--config", webpackconfigfile, "--mode=production"];
+  command = commandfind(`webpack `);
+  commandargs = ["--config", webpackconfigfile, "--mode=production"];
   commandstring = command + " " + commandargs.join(" ");
   //   console.log(commandstring);
   //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
@@ -47,6 +47,10 @@ if (process.argv.includes("start")) {
 //   console.log("exit code : " + code);
 // });
 console.log(commandstring);
+
+spawn(command, commandargs, {
+  stdio: ["pipe", "pipe", "pipe"]
+});
 exec(commandstring, (error, stdout, stderr) => {
   stderr && console.error(`stderr: ${stderr}`);
   if (error) {
