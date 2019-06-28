@@ -1,4 +1,30 @@
 "use strict";
+const defaultport = 10080;
+const port = defaultport + parseInt(10000 * Math.random());
+/* 利用Node.js检测端口是否被占用的方法 */
+// var net = require("net");
+
+// // 检测端口是否被占用
+// function portIsOccupied(port) {
+//   // 创建服务并监听该端口
+//   var server = net.createServer().listen(port);
+
+//   server.on("listening", function() {
+//     // 执行这块代码说明端口未被占用
+//     server.close(); // 关闭服务
+//     //  console.log('The port【' + port + '】 is available.') // 控制台输出信息
+//   });
+
+//   server.on("error", function(err) {
+//     if (err.code === "EADDRINUSE") {
+//       // 端口已经被使用
+//       //   console.log('The port【' + port + '】 is occupied, please change other port.')
+//     }
+//   });
+// }
+
+// 执行
+// portIsOccupied(1987)
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
@@ -41,7 +67,10 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
     hot: !0,
-    port: 18080,
+    port,
+
+    /* 改为随机端口了!,防止端口占用! */
+    // port: 18080,
     inline: !0,
     open: !0,
     watchContentBase: !0
