@@ -17,6 +17,31 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 ```
 
+设置`package.json`
+
+```json
+{
+  "scripts": {
+    "start": "webpack-react-vue-spa-awesome-config start",
+    "build": "webpack-react-vue-spa-awesome-config build"
+  }
+}
+```
+
+# 使用方法
+
+## yarn install
+
+安装依赖
+
+## yarn start
+
+开发模式
+
+## yarn build
+
+生产模式
+
 # 极简的配置文件
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
@@ -126,20 +151,6 @@ module.exports = {
 ## 使用的 plugin
 
 WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin/UglifyJsPlugin
-
-# 使用方法
-
-## yarn install
-
-安装依赖
-
-## yarn start
-
-开发模式
-
-## yarn build
-
-生产模式
 
 # workbox
 
