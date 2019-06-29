@@ -219,6 +219,15 @@ https://www.webpackjs.com/loaders/worker-loader/
 
 ### 修复了使用 webpack.HotModuleReplacementPlugin 和 worker-loader 不兼容的 bug
 
+
+https://github.com/webpack/webpack-dev-server/issues/1595
+
+
+https://github.com/webpack/webpack/issues/6642
+
+https://github.com/webpack-contrib/worker-loader/issues/174
+
+
 该错误来自 Web 工作者，因为 Web worker window 上不可用。
 
 webpack.config.js
