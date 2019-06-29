@@ -1,5 +1,7 @@
 # webpack-react-vue-spa-awesome-config
 
+https://github.com/masx200/webpack-react-vue-spa-awesome-config
+
 ## webpack-react-vue-spa-awesome-config 是一个命令行工具
 
 ### 极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持
