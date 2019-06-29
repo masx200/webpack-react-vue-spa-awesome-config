@@ -16,6 +16,22 @@
 
 # 使用方法
 
+### 初始化package.json
+
+如果没有初始化package.json，请先初始化
+
+运行
+
+```
+yarn init
+```
+
+或者
+
+```
+npm init
+```
+
 ## 局部安装
 
 ```
