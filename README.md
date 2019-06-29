@@ -244,7 +244,10 @@ Workbox is a set of libraries and Node modules that make it easy to cache assets
 # 注册 google 的 workbox 的 serviceworker
 
 ```javascript
- "serviceWorker" in navigator &&
+try {
+  "serviceWorker" in navigator &&
     window.addEventListener("load", function() {
       navigator.serviceWorker.register("service-worker.js");
+    });
+} catch (error) {}
 ```
