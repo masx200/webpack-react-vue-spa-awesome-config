@@ -18,6 +18,15 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 [查看源代码 ./release/config/webpack.config.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/release/config/webpack.config.js)
 
+![](https://user-gold-cdn.xitu.io/2019/6/30/16ba77d5b4b4390e?w=870&h=252&f=png&s=30968)
+
+
+![](https://user-gold-cdn.xitu.io/2019/6/30/16ba77dd48d5c017?w=128&h=128&f=png&s=7707)
+
+
+![](https://user-gold-cdn.xitu.io/2019/6/30/16ba77e1751e651f?w=225&h=225&f=png&s=2638)
+
+
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
 # 使用方法
