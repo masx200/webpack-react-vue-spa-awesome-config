@@ -12,6 +12,8 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
 
+# 少学习 您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
+
 [查看源代码 ./bin/index.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/bin/index.js)
 
 [查看源代码 ./release/config/webpack.config.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/release/config/webpack.config.js)
@@ -144,10 +146,6 @@ https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/
 https://github.com/facebook/create-react-app
 
 https://npm.taobao.org/package/react-scripts
-
-# 少学习
-
-您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
 
 ## 默认关闭了 eslint！
 
