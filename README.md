@@ -10,6 +10,8 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 # 基于 webpack4.x, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
+## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
+
 [查看源代码 ./bin/index.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/bin/index.js)
 
 [查看源代码 ./release/config/webpack.config.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/release/config/webpack.config.js)
@@ -18,9 +20,9 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 # 使用方法
 
-### 初始化package.json
+### 初始化 package.json
 
-如果没有初始化package.json，请先初始化
+如果没有初始化 package.json，请先初始化
 
 运行
 
@@ -129,11 +131,9 @@ webpack-react-vue-spa-awesome-config build
 
 # 入口文件是"public/index.html"和'src/index.js'
 
-如果人口文件不存在,则会自动生成入口文件
+如果入口口文件不存在,则会自动生成入口文件
 
-# 极简的配置文件
-
-## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
+# 内部极简的配置文件
 
 ## 内部 只使用 webpack.config.js 和 package.json
 
@@ -187,7 +187,7 @@ process.argv.includes("--mode=production")
 
 使用 babel-loader 根据预设环境和 browserslist 处理编写的 ES6 代码和 TS 代码，并生成浏览器可识别的 ES5 代码
 
-使用 vue-loader 把\*.vue 文件编译成 vue 组件转成 js 代码
+使用 vue-loader 把`*.vue` 文件编译成 vue 组件转成 js 代码
 
 # 代码分割：
 
@@ -223,14 +223,11 @@ https://www.webpackjs.com/loaders/worker-loader/
 
 ### 修复了使用 webpack.HotModuleReplacementPlugin 和 worker-loader 不兼容的 bug
 
-
 https://github.com/webpack/webpack-dev-server/issues/1595
-
 
 https://github.com/webpack/webpack/issues/6642
 
 https://github.com/webpack-contrib/worker-loader/issues/174
-
 
 该错误来自 Web 工作者，因为 Web worker window 上不可用。
 
