@@ -192,8 +192,8 @@ module.exports = {
             }
           },
           {
-            loader: "sass-loader",
-            options: { sourceMap: shouldUseSourceMap }
+            loader: "fast-sass-loader",
+            options: {  }
           }
         ]
       },
