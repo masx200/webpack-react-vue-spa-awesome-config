@@ -6,7 +6,7 @@
         "build": "webpack  --config ./release/config/webpack.config.js     --mode=production"
     },
     "name": "webpack-react-vue-spa-awesome-config",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "license": "MIT",
     "babel": {
         "presets": [
@@ -47,6 +47,7 @@
         "postcss-cssnext": "^3.1.0",
         "postcss-flexbugs-fixes": "^4.1.0",
         "postcss-loader": "^3.0.0",
+        "postcss-normalize": "^8.0.1",
         "postcss-preset-env": "^6.6.0",
         "postcss-safe-parser": "^4.0.1",
         "purify-css": "^1.2.5",
