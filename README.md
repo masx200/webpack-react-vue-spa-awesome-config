@@ -133,7 +133,7 @@ webpack-react-vue-spa-awesome-config build
 
 # 入口文件是"public/index.html"和'src/index.js'
 
-如果入口口文件不存在,则会自动生成入口文件
+如果入口文件不存在,则会自动生成入口文件
 
 # 内部极简的配置文件
 
