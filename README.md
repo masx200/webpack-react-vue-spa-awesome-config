@@ -139,6 +139,8 @@ webpack-react-vue-spa-awesome-config build
 
 ### 借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
 
+https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.js
+
 https://github.com/facebook/create-react-app
 
 https://npm.taobao.org/package/react-scripts
