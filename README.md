@@ -139,8 +139,6 @@ webpack-react-vue-spa-awesome-config build
 
 ## 内部 只使用 webpack.config.js 和 package.json
 
-## 默认关闭了 eslint！
-
 ### 内部实现原理 仅仅使用一个 webpack.config.js 文件即可同时处理开发模式和生产模式
 
 webpack 使用配置文件启动的时候,默认不支持通过`--mode=development`或者`--mode=production`来设置 webpack 的模式,
@@ -152,6 +150,14 @@ process.argv.includes("--mode=production")
   ? (process.env.NODE_ENV = "production")
   : (process.env.NODE_ENV = "development");
 ```
+
+## 默认关闭了 eslint！
+
+# 集成 postcss,自动增加前缀
+
+# webpack 中 alias 别名配置,
+
+可以使用`@`代替`src`目录
 
 # 局部刷新：
 

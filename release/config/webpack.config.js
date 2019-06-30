@@ -64,6 +64,15 @@ process.env.BABEL_ENV = process.env.NODE_ENV;
 */
 const publicPath = isEnvProduction ? "./" : "/";
 module.exports = {
+  resolve: {
+    extension: ["", ".js", ".jsx", ".vue"],
+    alias: {
+      "@": path.join(__dirname, "src")
+      //   pages: path.join(__dirname, "src/pages"),
+      //   router: path.join(__dirname, "src/router")
+    }
+  },
+
   devServer: {
     contentBase: path.resolve(__dirname, "./dist"),
     hot: !0,
@@ -103,6 +112,7 @@ module.exports = {
             loader: "css-loader",
             options: { sourceMap: shouldUseSourceMap }
           },
+          "postcss-loader",
           {
             loader: "less-loader",
             options: { sourceMap: shouldUseSourceMap }
@@ -125,10 +135,12 @@ module.exports = {
                 options: { sourceMap: shouldUseSourceMap }
               }
             : { loader: MiniCssExtractPlugin.loader },
+
           {
             loader: "css-loader",
             options: { sourceMap: shouldUseSourceMap }
           },
+          "postcss-loader",
           {
             loader: "sass-loader",
             options: { sourceMap: shouldUseSourceMap }
@@ -300,6 +312,7 @@ module.exports = {
     })
   ].filter(Boolean),
   optimization: {
+    usedExports: true,
     runtimeChunk: { name: e => `runtime~${e.name}` },
     splitChunks: {
       chunks: "all",
