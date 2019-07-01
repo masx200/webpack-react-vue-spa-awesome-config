@@ -338,8 +338,8 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].[hash].css",
-      chunkFilename: "[name].[hash].chunk.css"
+      filename: "[name].[chunkhash].css",
+      chunkFilename: "[name].[chunkhash].css"
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
