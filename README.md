@@ -55,7 +55,7 @@ npm init
 ## 局部安装
 
 ```
-npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git --save
+cnpm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git --save
 ```
 
 或者
