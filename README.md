@@ -49,7 +49,7 @@ npm init
 ### 解决安装 node-sass 太慢的问题的方法
 
 ```
- cnpm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+ cnpm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/ --save
 ```
 
 ## 局部安装
