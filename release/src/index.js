@@ -1,5 +1,5 @@
-// alert("hello world");
-import React from "react";
+alert("hello world");
+/*import React from "react";
 import { render } from "react-dom";
 
 function 主页() {
@@ -7,3 +7,4 @@ function 主页() {
 }
 
 render(<主页 />, document.getElementById("root"));
+*/
