@@ -4,7 +4,7 @@
 
 https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
-## webpack-react-vue-spa-awesome-config 是一个命令行工具，也可以下载本软件包，自定义webpack配置，启动示例
+## webpack-react-vue-spa-awesome-config 是一个命令行工具，也可以下载本软件包，自定义 webpack 配置，启动示例
 
 ### 极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持
 
@@ -22,12 +22,9 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ![](https://camo.githubusercontent.com/743bed5b5f374e4d10666b96a39a808b0f14089e/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737646434386435633031373f773d31323826683d31323826663d706e6726733d37373037)
 
-
 ![](https://camo.githubusercontent.com/e142ef7e29012ba7eb4e483621c53e2c8ee98aa1/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737653137353165363531663f773d32323526683d32323526663d706e6726733d32363338)
 
-
 ![](https://camo.githubusercontent.com/53b510c8236e20ad20417ceebf1b4246c2475473/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737643562346234333930653f773d38373026683d32353226663d706e6726733d3330393638)
-
 
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
@@ -47,6 +44,12 @@ yarn init
 
 ```
 npm init
+```
+
+### 解决安装 node-sass 太慢的问题的方法
+
+```
+ cnpm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 ```
 
 ## 局部安装
@@ -146,9 +149,7 @@ webpack-react-vue-spa-awesome-config build
 
 如果入口文件不存在,则会自动生成入口文件
 
-
-
-# 修改自定义的webpack配置文件
+# 修改自定义的 webpack 配置文件
 
 下载软件包
 
@@ -162,7 +163,6 @@ git clone https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 启动 webpack-dev-server
 
-
 ```
 yarn start
 ```
@@ -172,7 +172,6 @@ yarn start
 ```
 yarn build
 ```
-
 
 # 内部极简的配置文件
 
