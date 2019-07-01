@@ -4,7 +4,7 @@
 
 https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
-## webpack-react-vue-spa-awesome-config 是一个命令行工具
+## webpack-react-vue-spa-awesome-config 是一个命令行工具，也可以下载本软件包，自定义webpack配置，启动示例
 
 ### 极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持
 
@@ -145,6 +145,34 @@ webpack-react-vue-spa-awesome-config build
 # 入口文件是"public/index.html"和'src/index.js'
 
 如果入口文件不存在,则会自动生成入口文件
+
+
+
+# 修改自定义的webpack配置文件
+
+下载软件包
+
+```
+
+git clone https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
+
+```
+
+修改文件`./release/config/webpack.config.js`即可
+
+启动 webpack-dev-server
+
+
+```
+yarn start
+```
+
+启动 webpack
+
+```
+yarn build
+```
+
 
 # 内部极简的配置文件
 
