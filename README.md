@@ -319,6 +319,7 @@ try {
     });
 } catch (error) {}
 ```
+## 站在巨人的肩膀上
 
 ### 借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
 
