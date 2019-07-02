@@ -161,18 +161,26 @@ git clone https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 修改文件`./release/config/webpack.config.js`即可
 
-启动 webpack-dev-server
+[查看package.json](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/package.json)
+
+- 启动 webpack-dev-server
 
 ```
 yarn start
 ```
-
-启动 webpack
+相当于执行
+```
+webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development
+```
+- 启动 webpack
 
 ```
 yarn build
 ```
-
+相当于执行
+```
+webpack  --config ./release/config/webpack.config.js     --mode=production
+```
 # 内部极简的配置文件
 
 ## 内部 只使用 webpack.config.js 和 package.json
