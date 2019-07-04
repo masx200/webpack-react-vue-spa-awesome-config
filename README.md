@@ -49,14 +49,13 @@ npm init
 ### 解决安装 node-sass 太慢的问题的方法
 
 ```shell
- cnpm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/ --save
+ cnpm install --save  node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 ```
+
 ## 局部安装
 
-
-
 ```shell
-cnpm --save install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git 
+cnpm install --save  https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 ```
 
 或者
