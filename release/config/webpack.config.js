@@ -1,31 +1,8 @@
 "use strict";
 const postcssNormalize = require("postcss-normalize");
-const defaultport = 10080;
+const defaultport = 10000;
 const port = defaultport + parseInt(10000 * Math.random());
-/* 利用Node.js检测端口是否被占用的方法 */
-// var net = require("net");
 
-// // 检测端口是否被占用
-// function portIsOccupied(port) {
-//   // 创建服务并监听该端口
-//   var server = net.createServer().listen(port);
-
-//   server.on("listening", function() {
-//     // 执行这块代码说明端口未被占用
-//     server.close(); // 关闭服务
-//     //  console.log('The port【' + port + '】 is available.') // 控制台输出信息
-//   });
-
-//   server.on("error", function(err) {
-//     if (err.code === "EADDRINUSE") {
-//       // 端口已经被使用
-//       //   console.log('The port【' + port + '】 is occupied, please change other port.')
-//     }
-//   });
-// }
-
-// 执行
-// portIsOccupied(1987)
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
@@ -68,7 +45,7 @@ module.exports = {
   resolve: {
     // extension: ["", ".js", ".jsx", ".vue"],
     alias: {
-      "@": path.join(__dirname, "src")
+      "@/": path.join(__dirname, "src")
       //   pages: path.join(__dirname, "src/pages"),
       //   router: path.join(__dirname, "src/router")
     }
@@ -105,12 +82,12 @@ module.exports = {
         use: [
           isEnvDevelopment
             ? {
-                loader: "style-loader",
+                loader: require.resolve("style-loader"),
                 options: { sourceMap: shouldUseSourceMap }
               }
             : { loader: MiniCssExtractPlugin.loader },
           {
-            loader: "css-loader",
+            loader: require.resolve("css-loader"),
             options: { sourceMap: shouldUseSourceMap }
           },
           {
@@ -140,7 +117,7 @@ module.exports = {
             }
           },
           {
-            loader: "less-loader",
+            loader: require.resolve("less-loader"),
             options: { sourceMap: shouldUseSourceMap }
           }
         ]
@@ -148,22 +125,22 @@ module.exports = {
       { parser: { requireEnsure: !1 } },
       {
         test: /\.worker\.js$/,
-        loader: "worker-loader",
+        loader: require.resolve("worker-loader"),
         options: { name: "[name].[hash].worker.js", inline: !0 }
       },
-      { test: /\.vue$/, loader: "vue-loader" },
+      { test: /\.vue$/, loader: require.resolve("vue-loader") },
       {
         test: /\.(css|sass|scss)$/,
         use: [
           isEnvDevelopment
             ? {
-                loader: "style-loader",
+                loader: require.resolve("style-loader"),
                 options: { sourceMap: shouldUseSourceMap }
               }
             : { loader: MiniCssExtractPlugin.loader },
 
           {
-            loader: "css-loader",
+            loader: require.resolve("css-loader"),
             options: { sourceMap: shouldUseSourceMap }
           },
           {
@@ -192,7 +169,7 @@ module.exports = {
             }
           },
           {
-            loader: "fast-sass-loader",
+            loader: require.resolve("fast-sass-loader"),
             options: {}
           }
         ]
@@ -201,7 +178,7 @@ module.exports = {
         oneOf: [
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.svg$/],
-            loader: "url-loader",
+            loader: require.resolve("url-loader"),
             options: {
               limit: 1e4,
               name: isEnvDevelopment
@@ -211,7 +188,7 @@ module.exports = {
           },
           {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
-            loader: "babel-loader",
+            loader: require.resolve("babel-loader"),
             options: {
               sourceMaps: shouldUseSourceMap,
               //   plugins: [
@@ -244,7 +221,7 @@ module.exports = {
           {
             test: /\.(js|mjs)$/,
             exclude: /@babel(?:\/|\\{1,2})runtime/,
-            loader: "babel-loader",
+            loader: require.resolve("babel-loader"),
             options: {
               // plugins: ["@babel/plugin-syntax-dynamic-import"],
               babelrc: !1,
@@ -380,7 +357,9 @@ module.exports = {
           output: { comments: !1 },
           mangle: !0,
           warnings: !1,
-          compress: { drop_debugger: !0, drop_console: !0 }
+          compress: { drop_debugger: !0, drop_console: !0 ,
+pure_funcs: ['console.log']
+}
         },
         cache: !0,
         parallel: !0,
@@ -388,8 +367,15 @@ module.exports = {
       }),
       new TerserPlugin({
         terserOptions: {
+        	
           parse: { ecma: 8 },
-          compress: { ecma: 5, warnings: !1, comparisons: !1, inline: 2 },
+          compress: { ecma: 5, warnings: !1, comparisons: !1, inline: 2
+,
+drop_console: true,
+drop_debugger: true,
+pure_funcs: ['console.log']
+
+ },
           mangle: { safari10: !0 },
           output: {
             ecma: 5,
