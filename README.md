@@ -116,35 +116,6 @@ yarn build
 npm run build
 ```
 
-## 全局安装
-
-```
-npm install https://github.com/masx200/webpack-react-vue-spa-awesome-config.git -g
-```
-
-或者
-
-```
-yarn global add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
-
-```
-
-## 开发模式
-
-启动 webpack-dev-server
-
-```
-webpack-react-vue-spa-awesome-config start
-```
-
-## 生产模式
-
-启动 webpack
-
-```
-webpack-react-vue-spa-awesome-config build
-```
-
 # 入口文件是"public/index.html"和'src/index.js'
 
 如果入口文件不存在,则会自动生成入口文件
@@ -161,26 +132,32 @@ git clone https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 修改文件`./release/config/webpack.config.js`即可
 
-[查看package.json](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/package.json)
+[查看 package.json](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/package.json)
 
 - 启动 webpack-dev-server
 
 ```
 yarn start
 ```
+
 相当于执行
+
 ```
 webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development
 ```
+
 - 启动 webpack
 
 ```
 yarn build
 ```
+
 相当于执行
+
 ```
 webpack  --config ./release/config/webpack.config.js     --mode=production
 ```
+
 # 内部极简的配置文件
 
 ## 内部 只使用 webpack.config.js 和 package.json
@@ -319,6 +296,7 @@ try {
     });
 } catch (error) {}
 ```
+
 ## 站在巨人的肩膀上
 
 ### 借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
