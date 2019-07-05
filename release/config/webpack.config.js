@@ -357,9 +357,11 @@ module.exports = {
           output: { comments: !1 },
           mangle: !0,
           warnings: !1,
-          compress: { drop_debugger: !0, drop_console: !0 ,
-pure_funcs: ['console.log']
-}
+          compress: {
+            drop_debugger: !0,
+            drop_console: !0,
+            pure_funcs: ["console.log"]
+          }
         },
         cache: !0,
         parallel: !0,
@@ -367,15 +369,16 @@ pure_funcs: ['console.log']
       }),
       new TerserPlugin({
         terserOptions: {
-        	
           parse: { ecma: 8 },
-          compress: { ecma: 5, warnings: !1, comparisons: !1, inline: 2
-,
-drop_console: true,
-drop_debugger: true,
-pure_funcs: ['console.log']
-
- },
+          compress: {
+            ecma: 5,
+            warnings: !1,
+            comparisons: !1,
+            inline: 2,
+            drop_console: true,
+            drop_debugger: true,
+            pure_funcs: ["console.log"]
+          },
           mangle: { safari10: !0 },
           output: {
             ecma: 5,
