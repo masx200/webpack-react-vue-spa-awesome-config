@@ -203,6 +203,8 @@ process.argv.includes("--mode=production")
 
 ## 默认关闭了 eslint！
 
+可以在`vscode`中安装`eslint`插件来检查代码
+
 # 集成 postcss,自动增加前缀
 
 # webpack 中 alias 别名配置,
