@@ -115,10 +115,11 @@ yarn build
 ```
 npm run build
 ```
+
 ## 全局安装
 
 ```shell
-npm install -g https://github.com/masx200/webpack-react-vue-spa-awesome-config.git 
+npm install -g https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 ```
 
 或者
@@ -143,6 +144,7 @@ webpack-react-vue-spa-awesome-config start
 ```
 webpack-react-vue-spa-awesome-config build
 ```
+
 # 入口文件是"public/index.html"和'src/index.js'
 
 如果入口文件不存在,则会自动生成入口文件
