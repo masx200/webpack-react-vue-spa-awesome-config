@@ -98,7 +98,7 @@ if (process.argv.includes("start")) {
   console.log("\n");
   console.log("webpack-react-vue-spa-awesome-config build");
   console.log("\n");
-  return;
+  //   return;
 }
 // console.log(spawnObj);
 // spawnObj.stdout.on("data", function(chunk) {
