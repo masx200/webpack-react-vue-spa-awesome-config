@@ -70,9 +70,16 @@ module.exports = {
     publicPath,
     globalObject:
       '( (typeof window !== "undefined" ? window : false) ||\n    (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||\n    this)',
-    filename: "bundle.[name].[hash].js",
+    // filename: "bundle.[name].[hash].js",
+    // path: path.join(__dirname, "dist"),
+    // chunkFilename: "chunk.[name].[hash].js"
+    filename: isEnvDevelopment
+      ? "bundle.[name].[hash].js"
+      : "bundle.[name].[chunkhash].js",
     path: path.join(__dirname, "dist"),
-    chunkFilename: "chunk.[name].[hash].js"
+    chunkFilename: isEnvDevelopment
+      ? "chunk.[name].[hash].js"
+      : "chunk.[name].[chunkhash].js"
   },
   module: {
     strictExportPresence: !0,
