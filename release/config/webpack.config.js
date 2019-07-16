@@ -45,7 +45,7 @@ module.exports = {
   resolve: {
     // extension: ["", ".js", ".jsx", ".vue"],
     alias: {
-      "@/": path.join(__dirname, "src")
+      "@": path.join(__dirname, "src")
       //   pages: path.join(__dirname, "src/pages"),
       //   router: path.join(__dirname, "src/router")
     }
