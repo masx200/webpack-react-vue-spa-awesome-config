@@ -9,16 +9,10 @@
   "version": "2.2.2",
   "license": "MIT",
   "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "presets": ["react-app"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
@@ -26,11 +20,8 @@
     ]
   },
   "dependencies": {
-"@babel/runtime": "https://github.com/masx200/-babel-runtime.git",
-      
-        
-          "regenerator-runtime": "https://github.com/masx200/regenerator-runtime.git",
-        
+    "@babel/runtime": "https://github.com/masx200/-babel-runtime.git",
+    "regenerator-runtime": "https://github.com/masx200/regenerator-runtime.git",
     "@babel/core": "7.4.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
