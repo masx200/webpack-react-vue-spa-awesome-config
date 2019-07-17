@@ -845,19 +845,11 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.3.2"
 
-"@babel/runtime@7.4.3":
-  version "7.4.3"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.4.3.tgz#79888e452034223ad9609187a0ad1fe0d2ad4bdc"
-  integrity sha1-eYiORSA0IjrZYJGHoK0f4NKtS9w=
-  dependencies:
-    regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.2", "@babel/runtime@https://github.com/masx200/-babel-runtime.git":
   version "7.4.5"
-  resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
-  integrity sha1-WCu1MfX53GfS/LaCl5iU914lPxI=
+  resolved "https://github.com/masx200/-babel-runtime.git#2014a2ad746e6dd068fb14a0c7310df26b4aa35d"
   dependencies:
-    regenerator-runtime "^0.13.2"
+    regenerator-runtime "https://github.com/masx200/regenerator-runtime.git"
 
 "@babel/template@^7.1.0", "@babel/template@^7.4.0", "@babel/template@^7.4.4":
   version "7.4.4"
@@ -1549,10 +1541,9 @@ babel-plugin-transform-runtime@^6.23.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-preset-react-app@^9.0.0:
+"babel-preset-react-app@https://github.com/masx200/babel-preset-react-app.git":
   version "9.0.0"
-  resolved "https://registry.npm.taobao.org/babel-preset-react-app/download/babel-preset-react-app-9.0.0.tgz#703108142bc9dd7173bde6a1a0138a762abc76f9"
-  integrity sha1-cDEIFCvJ3XFzveahoBOKdiq8dvk=
+  resolved "https://github.com/masx200/babel-preset-react-app.git#d2d771a42efdd2e7edcd761e9be0ffe36abf0c88"
   dependencies:
     "@babel/core" "7.4.3"
     "@babel/plugin-proposal-class-properties" "7.4.0"
@@ -1568,7 +1559,7 @@ babel-preset-react-app@^9.0.0:
     "@babel/preset-env" "7.4.3"
     "@babel/preset-react" "7.0.0"
     "@babel/preset-typescript" "7.3.3"
-    "@babel/runtime" "7.4.3"
+    "@babel/runtime" "https://github.com/masx200/-babel-runtime.git"
     babel-plugin-dynamic-import-node "2.2.0"
     babel-plugin-macros "2.5.1"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
@@ -6970,7 +6961,7 @@ regenerate@^1.4.0:
   resolved "https://registry.npm.taobao.org/regenerate/download/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha1-SoVuxLVuQHfFV1icroXnpMiGmhE=
 
-regenerator-runtime@0.13.2, regenerator-runtime@^0.13.2:
+regenerator-runtime@0.13.2:
   version "0.13.2"
   resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.13.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fregenerator-runtime%2Fdownload%2Fregenerator-runtime-0.13.2.tgz#32e59c9a6fb9b1a4aff09b4930ca2d4477343447"
   integrity sha1-MuWcmm+5saSv8JtJMMotRHc0NEc=
@@ -6979,6 +6970,10 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.npm.taobao.org/regenerator-runtime/download/regenerator-runtime-0.11.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fregenerator-runtime%2Fdownload%2Fregenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk=
+
+"regenerator-runtime@https://github.com/masx200/regenerator-runtime.git":
+  version "1.0.0"
+  resolved "https://github.com/masx200/regenerator-runtime.git#f6db6e1301f941acf7f7e4f88156908b8255ed96"
 
 regenerator-transform@^0.14.0:
   version "0.14.0"
