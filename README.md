@@ -203,9 +203,32 @@ process.argv.includes("--mode=production")
   : (process.env.NODE_ENV = "development");
 ```
 
-## 默认关闭了 eslint！
+# 默认关闭了 eslint！
 
 可以在`vscode`中安装`eslint`插件来检查代码
+
+创建`.eslintrc.json`配置文件
+
+```json
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "worker": true,
+    "commonjs": true
+  },
+  "extends": "eslint:recommended",
+  "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "rules": {}
+}
+
+```
 
 # 集成 postcss,自动增加前缀
 
