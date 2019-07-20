@@ -1,12 +1,52 @@
 alert("hello world");
+//import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
 
-//alert("hello world");
 /*import React from "react";
 import { render } from "react-dom";
 
-function 主页() {
+function App() {
   return <div>hello world</div>;
 }
 
-render(<主页 />, document.getElementById("root"));
+render(<App />, document.getElementById("root"));
+*/
+
+/* 
+import Vue from "vue/dist/vue.esm.browser";
+ const App = Vue.extend({
+    template: `
+    <div>
+    {{msg}}
+    </div>
+    
+    `
+
+
+
+    ,
+    name: "App",
+    data() {
+      return {
+      msg: "Welcome to Your Vue.js App"
+      };
+    },
+    methods: {
+    
+    },
+    mounted() {
+     
+    }
+  });
+
+new Vue({
+    el: "#root",
+    router,
+    components: {
+      App
+    },
+    template: "<App/>",
+    data() {
+      return {};
+    }
+  });
 */
