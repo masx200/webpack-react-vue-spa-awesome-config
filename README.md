@@ -320,7 +320,7 @@ module.exports = {
 
 WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin/UglifyJsPlugin
 
-# workbox
+# 提供workbox支持单页面应用缓存
 
 https://developers.google.cn/web/tools/workbox/
 
