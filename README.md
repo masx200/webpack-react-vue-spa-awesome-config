@@ -331,7 +331,7 @@ if ("production" === process.env.NODE_ENV) {
 ```
 或者
 
-```
+```javascript
 import "webpack-react-vue-spa-awesome-config/registerserviceworker.js"
 
 ```
