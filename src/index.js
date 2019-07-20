@@ -1,7 +1,7 @@
 alert("hello world");
-//import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
+// import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
 
-/*import React from "react";
+/* import React from "react";
 import { render } from "react-dom";
 
 function App() {
@@ -9,44 +9,36 @@ function App() {
 }
 
 render(<App />, document.getElementById("root"));
-*/
-
+ */
 /* 
 import Vue from "vue/dist/vue.esm.browser";
- const App = Vue.extend({
-    template: `
+const App = Vue.extend({
+  template: `
     <div>
     {{msg}}
     </div>
     
-    `
+    `,
 
-
-
-    ,
-    name: "App",
-    data() {
-      return {
+  name: "App",
+  data() {
+    return {
       msg: "Welcome to Your Vue.js App"
-      };
-    },
-    methods: {
-    
-    },
-    mounted() {
-     
-    }
-  });
+    };
+  },
+  methods: {},
+  mounted() {}
+});
 
 new Vue({
-    el: "#root",
-    router,
-    components: {
-      App
-    },
-    template: "<App/>",
-    data() {
-      return {};
-    }
-  });
-*/
+  el: "#root",
+  // router,
+  components: {
+    App
+  },
+  template: "<App/>",
+  data() {
+    return {};
+  }
+});
+ */
