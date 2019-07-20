@@ -321,10 +321,12 @@ Workbox is a set of libraries and Node modules that make it easy to cache assets
 
 ```javascript
 if ("production" === process.env.NODE_ENV) {
-  "serviceWorker" in navigator &&
-    window.addEventListener("load", function() {
-      navigator.serviceWorker.register("service-worker.js").catch(() => {});
-    });
+  if (location.hostname !== "localhost" && "127.0.0.1" !== location.hostname) {
+    "serviceWorker" in navigator &&
+      window.addEventListener("load", function() {
+        navigator.serviceWorker.register("service-worker.js").catch(() => {});
+      });
+  }
 }
 ```
 
