@@ -96,8 +96,15 @@ if (process.argv.includes("start")) {
   console.log("\n");
   console.log("webpack-react-vue-spa-awesome-config start");
   console.log("\n");
+
+console.log(`
+开发模式
+启动 webpack-dev-server`)
   console.log("webpack-react-vue-spa-awesome-config build");
   console.log("\n");
+console.log(`
+生产模式
+启动 webpack`)
   //   return;
 }
 // console.log(spawnObj);
