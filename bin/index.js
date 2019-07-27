@@ -1,24 +1,5 @@
 #!/usr/bin/env node
 "use strict";
-console.log("\n");
-console.log("webpack-react-vue-spa-awesome-config");
-console.log("\n");
-console.log(
-  `极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持,基于webpack 4.x`
-);
-console.log("\n");
-console.log(
-  "Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support"
-);
-console.log("\n");
-console.log(`\nworking directory : ${process.cwd()}\n`);
-console.log(`\ncommand filename : ${__filename}\n`);
-/* 如果不存在入口文件,则复制过去
-
-入口文件是"public/index.html"和'src/index.js'
-
-"public/favicon.ico"
-*/
 const path = require("path");
 const fs = require("fs");
 const pwddir = process.cwd();
@@ -31,6 +12,34 @@ const sourcefiles = inputfiles.map(p =>
 );
 // console.log(sourcefiles);
 const destfiles = inputfiles.map(p => path.resolve(pwddir, p));
+const webpackconfigfile = path.resolve(
+  __dirname,
+  "../",
+  "./release/config/webpack.config.js"
+);
+consolehello();
+function consolehello() {
+  console.log("\n");
+  console.log("webpack-react-vue-spa-awesome-config");
+  console.log("\n");
+  console.log(
+    `极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持,基于webpack 4.x`
+  );
+  console.log("\n");
+  console.log(
+    "Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support"
+  );
+  console.log("\n");
+  console.log(`\nworking directory : ${process.cwd()}\n`);
+  console.log(`\ncommand filename : ${__filename}\n`);
+}
+/* 如果不存在入口文件,则复制过去
+
+入口文件是"public/index.html"和'src/index.js'
+
+"public/favicon.ico"
+*/
+
 function 判断并创建目录(p) {
   if (!fs.existsSync(p)) {
     console.log("所需的目录不存在,创建目录", p);
@@ -38,7 +47,7 @@ function 判断并创建目录(p) {
     fs.mkdirSync(p);
   }
 }
-function 生成入口文件() {
+function 生成入口文件(sourcefiles, destfiles) {
   destfiles.forEach((p, i, a) => {
     if (!fs.existsSync(p)) {
       console.log(`inputfile  not exsited! ${p}\n`);
@@ -60,43 +69,47 @@ function 生成入口文件() {
 // path.resolve();
 // fs.existsSync(path)
 // let spawnObj;
-let commandstring, command, commandargs;
+// let commandstring, command, commandargs;
 
-const webpackconfigfile = path.resolve(
-  __dirname,
-  "../",
-  "./release/config/webpack.config.js"
-);
-
-const commandfind = t =>
-  path.join(
+function commandfind(t) {
+  return path.join(
     __dirname,
     "..",
     "node_modules",
     ".bin",
     t.trim() + (process.platform === "win32" ? ".cmd" : "")
   );
+}
 
 解析命令();
 
 function 解析命令() {
+  let commandstring, command, commandargs;
   if (process.argv.includes("start")) {
-    生成入口文件();
+    生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack-dev-server `);
     commandargs = ["--config", webpackconfigfile, "--mode=development"];
     commandstring = command + " " + commandargs.join(" ");
 
     //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
+    console.log("\n");
 
-    执行命令();
+    console.log(`开发模式
+启动 webpack-dev-server`);
+    console.log("\n");
+    执行命令(commandstring, command, commandargs);
   } else if (process.argv.includes("build")) {
-    生成入口文件();
+    生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack `);
     commandargs = ["--config", webpackconfigfile, "--mode=production"];
     commandstring = command + " " + commandargs.join(" ");
     //   console.log(commandstring);
     //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
-    执行命令();
+    console.log("\n");
+    console.log(`生产模式
+启动 webpack`);
+    console.log("\n");
+    执行命令(commandstring, command, commandargs);
   } else {
     console.log("\n");
     console.log("usage:");
@@ -104,18 +117,18 @@ function 解析命令() {
     console.log("webpack-react-vue-spa-awesome-config start");
     console.log("\n");
 
-    console.log(`
-开发模式
+    console.log(`开发模式
 启动 webpack-dev-server`);
+    console.log("\n");
     console.log("webpack-react-vue-spa-awesome-config build");
     console.log("\n");
-    console.log(`
-生产模式
+    console.log(`生产模式
 启动 webpack`);
+    console.log("\n");
     //  return;
   }
 }
-function 执行命令() {
+function 执行命令(commandstring, command, commandargs) {
   // console.log(spawnObj);
   // spawnObj.stdout.on("data", function(chunk) {
   //   console.log(chunk.toString());
@@ -140,12 +153,22 @@ windows下执行文件为
     stdio: ["pipe", "pipe", "pipe"]
   });
   runobj.stdout.on("data", data => {
-    console.log(` ${data}`);
+    console.log(
+      ` ${data}`
+        .split("\n")
+        .filter(t => t !== "")
+        .join("\n\n")
+    );
     console.log("\n");
   });
 
   runobj.stderr.on("data", data => {
-    console.error(` ${data}`);
+    console.error(
+      ` ${data}`
+        .split("\n")
+        .filter(t => t !== "")
+        .join("\n\n")
+    );
     console.log("\n");
   });
   /* exec(commandstring, (error, stdout, stderr) => {
