@@ -76,6 +76,13 @@ const commandfind = t =>
     ".bin",
     t.trim() + (process.platform === "win32" ? ".cmd" : "")
   );
+
+解析命令()
+
+function 解析命令(){
+
+
+
 if (process.argv.includes("start")) {
   生成入口文件();
   command = commandfind(`webpack-dev-server `);
@@ -112,7 +119,7 @@ console.log(`
 }
 
 
-
+}
 function 执行命令(){
 
 
