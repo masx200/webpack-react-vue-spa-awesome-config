@@ -77,85 +77,78 @@ const commandfind = t =>
     t.trim() + (process.platform === "win32" ? ".cmd" : "")
   );
 
-解析命令()
+解析命令();
 
-function 解析命令(){
+function 解析命令() {
+  if (process.argv.includes("start")) {
+    生成入口文件();
+    command = commandfind(`webpack-dev-server `);
+    commandargs = ["--config", webpackconfigfile, "--mode=development"];
+    commandstring = command + " " + commandargs.join(" ");
 
+    //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
 
+    执行命令();
+  } else if (process.argv.includes("build")) {
+    生成入口文件();
+    command = commandfind(`webpack `);
+    commandargs = ["--config", webpackconfigfile, "--mode=production"];
+    commandstring = command + " " + commandargs.join(" ");
+    //   console.log(commandstring);
+    //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
+    执行命令();
+  } else {
+    console.log("\n");
+    console.log("usage:");
+    console.log("\n");
+    console.log("webpack-react-vue-spa-awesome-config start");
+    console.log("\n");
 
-if (process.argv.includes("start")) {
-  生成入口文件();
-  command = commandfind(`webpack-dev-server `);
-  commandargs = ["--config", webpackconfigfile, "--mode=development"];
-  commandstring = command + " " + commandargs.join(" ");
-
-  //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
-
-执行命令()
-} else if (process.argv.includes("build")) {
-  生成入口文件();
-  command = commandfind(`webpack `);
-  commandargs = ["--config", webpackconfigfile, "--mode=production"];
-  commandstring = command + " " + commandargs.join(" ");
-  //   console.log(commandstring);
-  //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
-执行命令()
-} else {
-  console.log("\n");
-  console.log("usage:");
-  console.log("\n");
-  console.log("webpack-react-vue-spa-awesome-config start");
-  console.log("\n");
-
-console.log(`
+    console.log(`
 开发模式
-启动 webpack-dev-server`)
-  console.log("webpack-react-vue-spa-awesome-config build");
-  console.log("\n");
-console.log(`
+启动 webpack-dev-server`);
+    console.log("webpack-react-vue-spa-awesome-config build");
+    console.log("\n");
+    console.log(`
 生产模式
-启动 webpack`)
-   //  return;
+启动 webpack`);
+    //  return;
+  }
 }
-
-
-}
-function 执行命令(){
-
-
-// console.log(spawnObj);
-// spawnObj.stdout.on("data", function(chunk) {
-//   console.log(chunk.toString());
-// });
-// spawnObj.stderr.on("data", data => {
-//   console.log(data);
-// });
-// spawnObj.on("close", function(code) {
-//   console.log("close code : " + code);
-// });
-// spawnObj.on("exit", code => {
-//   console.log("exit code : " + code);
-// });
-console.log(commandstring);
-console.log("\n");
-/* [Error: spawn ENOENT]  
+function 执行命令() {
+  // console.log(spawnObj);
+  // spawnObj.stdout.on("data", function(chunk) {
+  //   console.log(chunk.toString());
+  // });
+  // spawnObj.stderr.on("data", data => {
+  //   console.log(data);
+  // });
+  // spawnObj.on("close", function(code) {
+  //   console.log("close code : " + code);
+  // });
+  // spawnObj.on("exit", code => {
+  //   console.log("exit code : " + code);
+  // });
+  console.log(commandstring);
+  console.log("\n");
+  /* [Error: spawn ENOENT]  
 
 windows下执行文件为
 .cmd
 */
-const runobj = spawn(command, commandargs, {
-  stdio: ["pipe", "pipe", "pipe"]
-});
-runobj.stdout.on("data", data => {
-  console.log(` ${data}`);
-  console.log("\n");
-});
+  const runobj = spawn(command, commandargs, {
+    stdio: ["pipe", "pipe", "pipe"]
+  });
+  runobj.stdout.on("data", data => {
+    console.log(` ${data}`);
+    console.log("\n");
+  });
 
-runobj.stderr.on("data", data => {
-  console.error(` ${data}`);
-  console.log("\n");
-});
-/* exec(commandstring, (error, stdout, stderr) => {
+  runobj.stderr.on("data", data => {
+    console.error(` ${data}`);
+    console.log("\n");
+  });
+  /* exec(commandstring, (error, stdout, stderr) => {
   stderr && console.error(`stderr: ${stderr}`);
   if (error) {
     console.error(`Error: ${error}`);
