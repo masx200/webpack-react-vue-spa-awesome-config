@@ -83,6 +83,8 @@ if (process.argv.includes("start")) {
   commandstring = command + " " + commandargs.join(" ");
 
   //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
+
+执行命令()
 } else if (process.argv.includes("build")) {
   生成入口文件();
   command = commandfind(`webpack `);
@@ -90,6 +92,7 @@ if (process.argv.includes("start")) {
   commandstring = command + " " + commandargs.join(" ");
   //   console.log(commandstring);
   //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
+执行命令()
 } else {
   console.log("\n");
   console.log("usage:");
@@ -105,8 +108,14 @@ console.log(`
 console.log(`
 生产模式
 启动 webpack`)
-  //   return;
+   //  return;
 }
+
+
+
+function 执行命令(){
+
+
 // console.log(spawnObj);
 // spawnObj.stdout.on("data", function(chunk) {
 //   console.log(chunk.toString());
@@ -149,3 +158,4 @@ runobj.stderr.on("data", data => {
   console.log(` ${stdout}`);
 });
  */
+}
