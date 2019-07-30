@@ -123,10 +123,11 @@ function 解析命令() {
         publicpath参数.indexOf("--output-public-path=") +
           "--output-public-path=".length
       );
-
-      commandargs.push("--output-public-path=" + 解析参数publicpath);
-      console.log(`  output-public-path    is       ${解析参数publicpath}`);
-      console.log("\n");
+      if (解析参数publicpath.length) {
+        commandargs.push("--output-public-path=" + 解析参数publicpath);
+        console.log(`  output-public-path    is       ${解析参数publicpath}`);
+        console.log("\n");
+      }
     }
 
     commandstring = command + " " + commandargs.join(" ");

@@ -9,6 +9,7 @@ var __dirname = process.cwd();
 process.argv.includes("--mode=production")
   ? (process.env.NODE_ENV = "production")
   : (process.env.NODE_ENV = "development");
+
 const webpack = require("webpack");
 // var WatchIgnorePlugin = webpack.WatchIgnorePlugin;
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
@@ -40,7 +41,31 @@ process.env.BABEL_ENV = process.env.NODE_ENV;
 /* 开发模式必须设置 publicPath 为 ""或者"/"
 
 */
-const publicPath = isEnvProduction ? "./" : "/";
+let publicPath = isEnvProduction ? "./" : "/";
+
+if ("production" === process.env.NODE_ENV) {
+  if (
+    process.argv.filter(t => String(t).startsWith("--output-public-path="))
+      .length
+  ) {
+    const publicpath参数 = process.argv.filter(t =>
+      String(t).startsWith("--output-public-path=")
+    )[0];
+
+    const 解析参数publicpath = publicpath参数.slice(
+      publicpath参数.indexOf("--output-public-path=") +
+        "--output-public-path=".length
+    );
+
+    if (解析参数publicpath.length) {
+      // commandargs.push("--output-public-path=" + 解析参数publicpath);
+      console.log(`  output-public-path    is       ${解析参数publicpath}`);
+      console.log("\n");
+      publicPath = 解析参数publicpath;
+    }
+  }
+}
+
 module.exports = {
   resolve: {
     // extension: ["", ".js", ".jsx", ".vue"],
