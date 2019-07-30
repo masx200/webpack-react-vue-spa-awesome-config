@@ -26,6 +26,12 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ![](https://camo.githubusercontent.com/53b510c8236e20ad20417ceebf1b4246c2475473/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737643562346234333930653f773d38373026683d32353226663d706e6726733d3330393638)
 
+# 更新!可以通过命令行传入 --output-public-path= 参数
+
+`publicPath`指定在浏览器中引用时输出文件的公共 URL 地址。
+
+The `publicPath` specifies the public URL address of the output files when referenced in a browser.
+
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
 # 使用方法
@@ -227,7 +233,6 @@ process.argv.includes("--mode=production")
   },
   "rules": {}
 }
-
 ```
 
 # 集成 postcss,自动增加前缀
@@ -320,7 +325,7 @@ module.exports = {
 
 WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin/UglifyJsPlugin
 
-# 提供workbox支持单页面应用缓存
+# 提供 workbox 支持单页面应用缓存
 
 https://developers.google.cn/web/tools/workbox/
 
@@ -352,12 +357,13 @@ if ("production" === process.env.NODE_ENV) {
   }
 }
 ```
+
 或者
 
 ```javascript
-import "webpack-react-vue-spa-awesome-config/registerserviceworker.js"
-
+import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
 ```
+
 ## 站在巨人的肩膀上
 
 ### 借鉴了 Facebook 开发的 [Create-react-app](https://github.com/facebook/create-react-app)的 webpack 配置的一部分，并进行了大量魔改
