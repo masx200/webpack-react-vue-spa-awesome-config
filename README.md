@@ -32,6 +32,10 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 The `publicPath` specifies the public URL address of the output files when referenced in a browser.
 
+
+```shell
+webpack-react-vue-spa-awesome-config build --output-public-path=https://masx200.github.io/
+```
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
 # 使用方法
