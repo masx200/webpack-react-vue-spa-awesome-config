@@ -86,6 +86,10 @@ function commandfind(t) {
 function 解析命令() {
   let commandstring, command, commandargs;
   if (process.argv.includes("start")) {
+    
+    
+    process.env.NODE_ENV = "development"
+    
     生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack-dev-server `);
     commandargs = ["--config", webpackconfigfile, "--mode=development"];
@@ -99,6 +103,11 @@ function 解析命令() {
     console.log("\n");
     执行命令(commandstring, command, commandargs);
   } else if (process.argv.includes("build")) {
+    
+    
+    process.env.NODE_ENV = "production"
+    
+    
     生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack `);
     commandargs = ["--config", webpackconfigfile, "--mode=production"];
