@@ -86,10 +86,8 @@ function commandfind(t) {
 function 解析命令() {
   let commandstring, command, commandargs;
   if (process.argv.includes("start")) {
-    
-    
-    process.env.NODE_ENV = "development"
-    
+    process.env.NODE_ENV = "development";
+
     生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack-dev-server `);
     commandargs = ["--config", webpackconfigfile, "--mode=development"];
@@ -103,21 +101,38 @@ function 解析命令() {
     console.log("\n");
     执行命令(commandstring, command, commandargs);
   } else if (process.argv.includes("build")) {
-    
-    
-    process.env.NODE_ENV = "production"
-    
-    
-    生成入口文件(sourcefiles, destfiles);
-    command = commandfind(`webpack `);
-    commandargs = ["--config", webpackconfigfile, "--mode=production"];
-    commandstring = command + " " + commandargs.join(" ");
-    //   console.log(commandstring);
-    //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
     console.log("\n");
     console.log(`生产模式
 启动 webpack`);
     console.log("\n");
+    process.env.NODE_ENV = "production";
+
+    生成入口文件(sourcefiles, destfiles);
+    command = commandfind(`webpack `);
+    commandargs = ["--config", webpackconfigfile, "--mode=production"];
+
+    if (
+      process.argv.filter(t => String(t).startsWith("--output-public-path="))
+        .length
+    ) {
+      const publicpath参数 = process.argv.filter(t =>
+        String(t).startsWith("--output-public-path=")
+      )[0];
+
+      const 解析参数publicpath = publicpath参数.slice(
+        publicpath参数.indexOf("--output-public-path=") +
+          "--output-public-path=".length
+      );
+
+      commandargs.push("--output-public-path=" + 解析参数publicpath);
+      console.log(`  output-public-path    is       ${解析参数publicpath}`);
+      console.log("\n");
+    }
+
+    commandstring = command + " " + commandargs.join(" ");
+    //   console.log(commandstring);
+    //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
+
     执行命令(commandstring, command, commandargs);
   } else {
     console.log("\n");
