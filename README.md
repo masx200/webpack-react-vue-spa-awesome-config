@@ -377,3 +377,22 @@ https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/
 https://github.com/facebook/create-react-app
 
 https://npm.taobao.org/package/react-scripts
+
+# 给 IE 浏览器自动添加 babel-polyfill
+
+```javascript
+(() => {
+  /* 判断ie11 */
+  if (navigator.userAgent.indexOf("Trident") > -1) {
+    var s = document.createElement("script");
+    s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
+    document.head.appendChild(s);
+  }
+})();
+```
+
+或者
+
+```javascript
+import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
+```
