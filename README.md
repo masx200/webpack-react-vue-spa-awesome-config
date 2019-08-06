@@ -380,7 +380,7 @@ https://npm.taobao.org/package/react-scripts
 
 # 给 IE 浏览器自动添加 babel-polyfill
 
-```javascript
+<!-- ```javascript
 (() => {
   /* 判断ie11 */
   if (navigator.userAgent.indexOf("Trident") > -1) {
@@ -391,7 +391,7 @@ https://npm.taobao.org/package/react-scripts
 })();
 ```
 
-或者
+或者 -->
 
 ```javascript
 import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
