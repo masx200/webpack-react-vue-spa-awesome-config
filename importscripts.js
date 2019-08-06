@@ -30,4 +30,4 @@ if (!importScripts) {
     };
   })(eval);
 }
-export default importScripts;
+module.exports = importScripts;
