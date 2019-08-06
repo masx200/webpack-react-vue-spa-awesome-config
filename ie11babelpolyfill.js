@@ -1,3 +1,4 @@
+import "./fetch.js";
 (() => {
   /* 判断ie11 */
   if (navigator.userAgent.indexOf("Trident") > -1) {
