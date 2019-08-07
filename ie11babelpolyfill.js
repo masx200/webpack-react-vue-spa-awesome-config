@@ -22,3 +22,10 @@ var importScripts = require("./importscripts.js");
     }
   }
 })();
+/* 
+“URLSearchParams”未定义
+URL.prototype
+undefined
+typeof URL
+"object"
+*/
