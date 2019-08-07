@@ -18,7 +18,11 @@ var importScripts = require("./importscripts.js");
     // importScripts("https://cdn.staticfile.org/fetch/3.0.0/fetch.min.js");
 
     if (typeof fetch != "function") {
-      require("./fetch.js");
+      require("./fetch-polyfill.js");
+    }
+
+    if ("function" != typeof URL || !URL.prototype) {
+      require("./url-polyfill.min.js");
     }
   }
 })();
