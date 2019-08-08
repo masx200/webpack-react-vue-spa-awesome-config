@@ -378,7 +378,9 @@ https://github.com/facebook/create-react-app
 
 https://npm.taobao.org/package/react-scripts
 
-# 自动判断浏览器，给 IE 浏览器自动添加 babel-polyfill 和 fetch-polyfill和URL-ployfill
+# 自动判断浏览器，给 IE 浏览器自动添加 polyfill
+
+babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill
 
 <!-- ```javascript
 (() => {
