@@ -59,7 +59,7 @@ if ("production" === process.env.NODE_ENV) {
 
     if (解析参数publicpath.length) {
       // commandargs.push("--output-public-path=" + 解析参数publicpath);
-      console.log(`  output-public-path    is       ${解析参数publicpath}`);
+      console.log(`  output-public-path  :  ${解析参数publicpath}`);
       console.log("\n");
       publicPath = 解析参数publicpath;
     }

@@ -125,7 +125,7 @@ function 解析命令() {
       );
       if (解析参数publicpath.length) {
         commandargs.push("--output-public-path=" + 解析参数publicpath);
-        console.log(`  output-public-path    is       ${解析参数publicpath}`);
+        console.log(`  output-public-path  :  ${解析参数publicpath}`);
         console.log("\n");
       }
     }
