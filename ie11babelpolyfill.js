@@ -21,7 +21,7 @@ var importScripts = require("./importscripts.js");
       require("./fetch-polyfill.js");
     }
 
-    if ("function" != typeof URL || !URL.prototype) {
+    if ("function" != typeof URL || "function" != typeof URLSearchParams) {
       require("./url-polyfill.min.js");
     }
   }
