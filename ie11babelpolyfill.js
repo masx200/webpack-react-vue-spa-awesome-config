@@ -37,7 +37,7 @@ if ("production" === process.env.NODE_ENV) {
       typeof Reflect != "object"
     ) {
       importScripts(
-        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.6/lib/polyfill.min.js"
+        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.7/lib/polyfill.min.js"
       );
     }
   }
