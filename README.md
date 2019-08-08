@@ -217,6 +217,15 @@ babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill
 ```javascript
 import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
 ```
+
+
+或者
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.8/lib/polyfill.min.js">
+
+</script>
+```
 # 内部极简的配置文件
 
 ## 内部 只使用 webpack.config.js 和 package.json
