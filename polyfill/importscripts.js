@@ -55,7 +55,8 @@ function importScripts(url) {
   xhr.open("GET", url, false);
   xhr.send(null);
   var data = xhr.responseText;
-  eval(data);
+  // eval(data);
+  new Function(data)();
   //   }
   //   globalEval(data);
   // }

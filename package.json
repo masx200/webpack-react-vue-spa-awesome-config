@@ -7,7 +7,7 @@
     "packpolyfill": " webpack --output-library-target=umd -p  -o ./lib/polyfill.min.js  --verbose ./polyfill/ie11babelpolyfill.js  "
   },
   "name": "webpack-react-vue-spa-awesome-config",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "license": "MIT",
   "babel": {
     "presets": [
