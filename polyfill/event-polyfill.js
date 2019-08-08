@@ -59,3 +59,24 @@ eventInit可选
 "cancelable"，可选，Boolean类型，默认值为 false， 表示该事件能否被取消。
 "composed"，可选，Boolean类型，默认值为 false，指示事件是否会在影子DOM根节点之外触发侦听器。
 */
+(function() {
+  var oldevent = window.Event;
+  function Event(typeArg /* eventInit = {} */) {
+    if (typeof typeArg !== "string") {
+      throw new TypeError("");
+    }
+    var event = document.createEvent("Event");
+    event.initEvent(typeArg, true, true);
+    // event.type = typeArg;
+    return event;
+  }
+  if ("function" != typeof window.Event) {
+    //
+
+    Object.keys(oldevent).forEach(function(k) {
+      Event[k] = oldevent[k];
+    });
+    Event.prototype = oldevent.prototype;
+    window.Event = Event;
+  }
+})();
