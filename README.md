@@ -197,6 +197,26 @@ yarn build
 webpack  --config ./release/config/webpack.config.js     --mode=production
 ```
 
+# 自动判断浏览器，给 IE 浏览器自动添加 polyfill
+
+babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill
+
+<!-- ```javascript
+(() => {
+  /* 判断ie11 */
+  if (navigator.userAgent.indexOf("Trident") > -1) {
+    var s = document.createElement("script");
+    s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
+    document.head.appendChild(s);
+  }
+})();
+```
+
+或者 -->
+
+```javascript
+import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
+```
 # 内部极简的配置文件
 
 ## 内部 只使用 webpack.config.js 和 package.json
@@ -378,23 +398,3 @@ https://github.com/facebook/create-react-app
 
 https://npm.taobao.org/package/react-scripts
 
-# 自动判断浏览器，给 IE 浏览器自动添加 polyfill
-
-babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill
-
-<!-- ```javascript
-(() => {
-  /* 判断ie11 */
-  if (navigator.userAgent.indexOf("Trident") > -1) {
-    var s = document.createElement("script");
-    s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
-    document.head.appendChild(s);
-  }
-})();
-```
-
-或者 -->
-
-```javascript
-import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
-```
