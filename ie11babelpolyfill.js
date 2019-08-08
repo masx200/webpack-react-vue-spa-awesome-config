@@ -1,35 +1,43 @@
-var importScripts = require("./importscripts.js");
-(() => {
-  /* 判断ie11 */
+function importScripts(url) {
+  var xhr = new XMLHttpRequest();
+  // var args = Array.prototype.slice.call(arguments),
+  //   len = args.length,
+  //   i = 0,
+  //   meta,
+  //   data,
+  //   content;
+  // for (; i < len; i++) {
+  //   if (args[i].substr(0, 5).toLowerCase() === "data:") {
+  //     data = args[i];
+  //     content = data.indexOf(",");
+  //     meta = data.substr(5, content).toLowerCase();
+  //     data = decodeURIComponent(data.substr(content + 1));
+  //     if (/;\s*base64\s*[;,]/.test(meta)) {
+  //       data = atob(data);
+  //     }
+  //     if (/;\s*charset=[uU][tT][fF]-?8\s*[;,]/.test(meta)) {
+  //       data = decodeURIComponent(escape(data));
+  //     }
+  //   } else {
+  // xhr.open("GET", args[i], false);
+  xhr.open("GET", url, false);
+  xhr.send(null);
+  var data = xhr.responseText;
+  eval(data);
+  //   }
+  //   globalEval(data);
+  // }
+}
+if ("production" === process.env.NODE_ENV) {
   if (navigator.userAgent.indexOf("Trident") > -1) {
-    // var s = document.createElement("script");
-    // s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
-    // document.head.appendChild(s);
     if (
       typeof Promise != "function" ||
       typeof Symbol != "function" ||
       typeof Reflect != "object"
     ) {
       importScripts(
-        "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js"
+        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.6/lib/polyfill.min.js"
       );
     }
-
-    // importScripts("https://cdn.staticfile.org/fetch/3.0.0/fetch.min.js");
-
-    if (typeof fetch != "function"||typeof Response != "function") {
-      require("./fetch-polyfill.js");
-    }
-
-    if ("function" != typeof URL || "function" != typeof URLSearchParams) {
-      require("./url-polyfill.min.js");
-    }
   }
-})();
-/* 
-“URLSearchParams”未定义
-URL.prototype
-undefined
-typeof URL
-"object"
-*/
+}
