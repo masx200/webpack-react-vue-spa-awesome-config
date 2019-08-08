@@ -1,3 +1,18 @@
+var importScripts = require("./polyfill/importscripts.js");
+if ("production" === process.env.NODE_ENV) {
+  if (navigator.userAgent.indexOf("Trident") > -1) {
+    if (
+      typeof Promise != "function" ||
+      typeof Symbol != "function" ||
+      typeof Reflect != "object"
+    ) {
+      importScripts(
+        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.8/lib/polyfill.min.js"
+      );
+    }
+  }
+}
+
 // function importScripts(url) {
 //   var xhr = new XMLHttpRequest();
 //   // var args = Array.prototype.slice.call(arguments),
@@ -28,17 +43,3 @@
 //   //   globalEval(data);
 //   // }
 // }
-var importScripts = require("./polyfill/importscripts.js");
-if ("production" === process.env.NODE_ENV) {
-  if (navigator.userAgent.indexOf("Trident") > -1) {
-    if (
-      typeof Promise != "function" ||
-      typeof Symbol != "function" ||
-      typeof Reflect != "object"
-    ) {
-      importScripts(
-        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.7/lib/polyfill.min.js"
-      );
-    }
-  }
-}

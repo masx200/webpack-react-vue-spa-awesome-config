@@ -17,12 +17,16 @@ var importScripts = require("./importscripts.js");
 
     // importScripts("https://cdn.staticfile.org/fetch/3.0.0/fetch.min.js");
 
-    if (typeof fetch != "function"||typeof Response != "function") {
+    if (typeof fetch != "function" || typeof Response != "function") {
       require("./fetch-polyfill.js");
     }
 
     if ("function" != typeof URL || "function" != typeof URLSearchParams) {
       require("./url-polyfill.min.js");
+    }
+
+    if ("function" != typeof Event) {
+      require("./event-polyfill.js");
     }
   }
 })();
