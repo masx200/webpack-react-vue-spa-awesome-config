@@ -201,18 +201,7 @@ webpack  --config ./release/config/webpack.config.js     --mode=production
 
 babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill
 
-<!-- ```javascript
-(() => {
-  /* 判断ie11 */
-  if (navigator.userAgent.indexOf("Trident") > -1) {
-    var s = document.createElement("script");
-    s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
-    document.head.appendChild(s);
-  }
-})();
-```
 
-或者 -->
 
 ```javascript
 import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
@@ -222,7 +211,7 @@ import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
 或者
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.8/lib/polyfill.min.js">
+<script nomodule src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.8/lib/polyfill.min.js">
 
 </script>
 ```
