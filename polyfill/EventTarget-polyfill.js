@@ -1,4 +1,4 @@
-import EventTarget from "event-target-shim/dist/event-target-shim.mjs";
+import { EventTarget } from "event-target-shim";
 if ("function" != typeof window.EventTarget) {
   window.EventTarget = EventTarget;
 }
