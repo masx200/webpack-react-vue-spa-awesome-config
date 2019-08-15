@@ -25,7 +25,7 @@ var importScripts = require("./importscripts.js");
       require("./url-polyfill.min.js");
     }
 
-    if ("function" != typeof Event) {
+    if ("function" != typeof Event||"function" != typeof window.CustomEvent) {
       require("./event-polyfill.js");
     }
   }
