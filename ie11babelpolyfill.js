@@ -1,6 +1,7 @@
-var importScripts = require("./polyfill/importscripts.js");
+
 if ("production" === process.env.NODE_ENV) {
-  if (navigator.userAgent.indexOf("Trident") > -1) {
+var importScripts = require("./polyfill/importscripts.js");  
+if (navigator.userAgent.indexOf("Trident") > -1) {
     if (
       typeof Promise != "function" ||
       typeof Symbol != "function" ||
