@@ -104,7 +104,12 @@ if (isSupportEventConstrucor()) {
       throw new TypeError("");
     }
     var event = document.createEvent("CustomEvent");
-    event.initCustomEvent(typeArg, true, true, initopt.detail);
+    event.initCustomEvent(
+      typeArg,
+      !!initopt.bubbles,
+      !!initopt.cancelable,
+      initopt.detail
+    );
     // event.type = typeArg;
     return event;
   }
@@ -118,3 +123,4 @@ if (isSupportEventConstrucor()) {
     window.CustomEvent = CustomEvent;
   }
 })();
+// CustomEvent()
