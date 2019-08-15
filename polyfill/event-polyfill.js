@@ -89,3 +89,24 @@ if (isSupportEventConstrucor()) {
     e.initCustomEvent("hello", false, false, "detail")
     foo.dispatchEvent(e)
 }*/
+(function() {
+  var oldevent = window.CustomEvent;
+  function CustomEvent(typeArg, initopt = {} /* eventInit = {} */) {
+    if (typeof typeArg !== "string") {
+      throw new TypeError("");
+    }
+    var event = document.createEvent("CustomEvent");
+    event.initCustomEvent(typeArg, true, true, initopt.detail);
+    // event.type = typeArg;
+    return event;
+  }
+  if ("function" != typeof window.CustomEvent) {
+    //
+
+    Object.keys(oldevent).forEach(function(k) {
+      CustomEvent[k] = oldevent[k];
+    });
+    CustomEvent.prototype = oldevent.prototype;
+    window.CustomEvent = CustomEvent;
+  }
+})();
