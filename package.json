@@ -38,6 +38,7 @@
     "babel-preset-react-app": "^9.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.1.0",
+    "event-target-shim": "^5.0.1",
     "fast-sass-loader": "^1.5.0",
     "file-loader": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
@@ -75,12 +76,12 @@
     "worker-loader": "^2.0.0"
   },
   "devDependencies": {
-    "vue-router": "^3.0.7",
-    "vue": "^2.6.10",
+    "eslint": "^6.1.0",
+    "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react": "^16.8.6",
-    "eslint": "^6.1.0"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.7"
   },
   "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
   "author": "masx200 <34191203+masx200@users.noreply.github.com>",
