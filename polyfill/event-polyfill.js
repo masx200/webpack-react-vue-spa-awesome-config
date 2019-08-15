@@ -80,3 +80,12 @@ eventInit可选
     window.Event = Event;
   }
 })();
+
+/*
+if (isSupportEventConstrucor()) {
+    foo.dispatchEvent(new CustomEvent("hello", { detail: "detail" }))
+} else {
+    var e = document.createEvent("CustomEvent")
+    e.initCustomEvent("hello", false, false, "detail")
+    foo.dispatchEvent(e)
+}*/
