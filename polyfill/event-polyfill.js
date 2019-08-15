@@ -64,7 +64,7 @@ eventInit可选
   function Event(typeArg, initopt = {} /* eventInit = {} */) {
     /*  */
     if (typeof typeArg !== "string") {
-      throw new TypeError("");
+      throw new TypeError("invalid type");
     }
     var event = document.createEvent("Event");
     // event.initEvent(typeArg, true, true);
@@ -101,7 +101,7 @@ if (isSupportEventConstrucor()) {
   var oldevent = window.CustomEvent;
   function CustomEvent(typeArg, initopt = {} /* eventInit = {} */) {
     if (typeof typeArg !== "string") {
-      throw new TypeError("");
+      throw new TypeError("invalid type");
     }
     var event = document.createEvent("CustomEvent");
     event.initCustomEvent(
