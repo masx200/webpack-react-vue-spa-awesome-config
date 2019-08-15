@@ -61,13 +61,15 @@ eventInit可选
 */
 (function() {
   var oldevent = window.Event;
-  function Event(typeArg /* eventInit = {} */) {
+  function Event(typeArg, initopt = {} /* eventInit = {} */) {
+    /*  */
     if (typeof typeArg !== "string") {
       throw new TypeError("");
     }
     var event = document.createEvent("Event");
-    event.initEvent(typeArg, true, true);
+    // event.initEvent(typeArg, true, true);
     // event.type = typeArg;
+    event.initEvent(typeArg, !!initopt.bubbles, !!initopt.cancelable);
     return event;
   }
   if ("function" != typeof window.Event) {
@@ -80,7 +82,13 @@ eventInit可选
     window.Event = Event;
   }
 })();
-
+/* interface EventInit {
+    bubbles?: boolean;
+    cancelable?: boolean;
+    composed?: boolean;
+} */
+// Event()
+// EventInit
 /*
 if (isSupportEventConstrucor()) {
     foo.dispatchEvent(new CustomEvent("hello", { detail: "detail" }))
