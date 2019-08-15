@@ -28,6 +28,10 @@ var importScripts = require("./importscripts.js");
     if ("function" != typeof Event||"function" != typeof window.CustomEvent) {
       require("./event-polyfill.js");
     }
+
+if ("function" != typeof EventTarget) {
+      require("./EventTarget-polyfill.js");
+    }
   }
 })();
 /* 
