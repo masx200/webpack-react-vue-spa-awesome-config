@@ -1,3 +1,4 @@
+"use strict";
 /* eslint-disable no-irregular-whitespace */
 /* typeof Event 
 'object'
@@ -61,8 +62,10 @@ eventInit可选
 */
 (function() {
   var oldevent = window.Event;
-  function Event(typeArg, initopt = {} /* eventInit = {} */) {
+  /* es5不支持默认参数! */
+  function Event(typeArg, initopt /* eventInit = {} */) {
     /*  */
+    initopt = initopt || {};
     if (typeof typeArg !== "string") {
       throw new TypeError("invalid type");
     }
@@ -99,7 +102,9 @@ if (isSupportEventConstrucor()) {
 }*/
 (function() {
   var oldevent = window.CustomEvent;
-  function CustomEvent(typeArg, initopt = {} /* eventInit = {} */) {
+  /*  */
+  function CustomEvent(typeArg, initopt /* eventInit = {} */) {
+    initopt = initopt || {};
     if (typeof typeArg !== "string") {
       throw new TypeError("invalid type");
     }
