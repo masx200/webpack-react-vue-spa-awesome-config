@@ -4,7 +4,7 @@
   "scripts": {
     "start": "webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development",
     "build": "webpack  --config ./release/config/webpack.config.js     --mode=production",
-    "packpolyfill": " webpack --output-library-target=umd -p  -o ./lib/polyfill.min.js  --verbose ./polyfill/ie11babelpolyfill.js  "
+    "packpolyfill": " webpack --output-library-target=umd -p  -o ./lib/polyfill.min.js  --verbose ./polyfill/index.js  "
   },
   "name": "webpack-react-vue-spa-awesome-config",
   "version": "2.4.0",
