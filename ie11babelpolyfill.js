@@ -1,14 +1,13 @@
-
 if ("production" === process.env.NODE_ENV) {
-var importScripts = require("./polyfill/importscripts.js");  
-if (navigator.userAgent.indexOf("Trident") > -1) {
+  var importScripts = require("./polyfill/importscripts.js");
+  if (navigator.userAgent.indexOf("Trident") > -1) {
     if (
       typeof Promise != "function" ||
       typeof Symbol != "function" ||
       typeof Reflect != "object"
     ) {
       importScripts(
-        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.3.8/lib/polyfill.min.js"
+        "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.0/lib/polyfill.min.js"
       );
     }
   }
