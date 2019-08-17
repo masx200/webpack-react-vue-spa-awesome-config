@@ -25,11 +25,11 @@ var importScripts = require("./importscripts.js");
       require("./url-polyfill.min.js");
     }
 
-    if ("function" != typeof Event||"function" != typeof window.CustomEvent) {
+    if ("function" != typeof Event || "function" != typeof CustomEvent) {
       require("./event-polyfill.js");
     }
 
-if ("function" != typeof EventTarget) {
+    if ("function" != typeof EventTarget) {
       require("./EventTarget-polyfill.js");
     }
   }

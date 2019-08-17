@@ -1,16 +1,20 @@
 if ("production" === process.env.NODE_ENV) {
- // var importScripts = require("./polyfill/importscripts.js");
+  // var importScripts = require("./polyfill/importscripts.js");
   if (navigator.userAgent.indexOf("Trident") > -1) {
     if (
       typeof Promise != "function" ||
       typeof Symbol != "function" ||
-      typeof Reflect != "object"
+      typeof Reflect != "object" ||
+      typeof fetch != "function" ||
+      typeof Response != "function" ||
+      "function" != typeof URL ||
+      "function" != typeof URLSearchParams ||
+      "function" != typeof Event ||
+      "function" != typeof CustomEvent ||
+      "function" != typeof EventTarget
     ) {
-
-
-
-require("./lib/polyfill.min.js")
-     /* importScripts(
+      require("./lib/polyfill.min.js");
+      /* importScripts(
         "https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.0/lib/polyfill.min.js"
       );*/
     }
