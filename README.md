@@ -256,6 +256,16 @@ process.argv.includes("--mode=production")
 }
 ```
 
+## 适用于 `vue.js`的`ESlint`配置文件
+
+https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/master/vue.eslintrc.json
+
+## 适用于 `react.js`的`ESlint`配置文件
+
+https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/master/react.eslintrc.json
+
+
+
 # 集成 postcss,自动增加前缀
 
 # webpack 中 alias 别名配置,
