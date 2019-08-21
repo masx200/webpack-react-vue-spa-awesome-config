@@ -230,7 +230,7 @@ process.argv.includes("--mode=production")
   : (process.env.NODE_ENV = "development");
 ```
 
-# 默认关闭了 eslint！
+# 默认关闭了 `eslint`！
 
 可以在`vscode`中安装`eslint`插件来检查代码
 
