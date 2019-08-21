@@ -93,8 +93,8 @@ module.exports = {
   output: {
     //https://www.webpackjs.com/configuration/output/#output-publicpath
     publicPath,
-    globalObject:
-      '( (typeof window !== "undefined" ? window : false) ||\n    (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||\n    this)',
+    globalObject:`new Function('return this')()`,
+    //  '( (typeof window !== "undefined" ? window : false) ||\n    (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||\n    this)',
     // filename: "bundle.[name].[hash].js",
     // path: path.join(__dirname, "dist"),
     // chunkFilename: "chunk.[name].[hash].js"
