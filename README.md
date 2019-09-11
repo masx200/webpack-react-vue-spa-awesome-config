@@ -214,6 +214,11 @@ import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
 ```html
 <script
   nomodule
+  src=
+"https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"
+></script>
+<script
+  nomodule
   src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.0/lib/polyfill.min.js"
 ></script>
 ```
