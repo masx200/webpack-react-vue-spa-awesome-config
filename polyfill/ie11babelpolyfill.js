@@ -11,7 +11,7 @@ var importScripts = require("./importscripts.js");
       typeof Reflect != "object"
     ) {
       importScripts(
-        "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js"
+        "https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"
       );
     }
 
