@@ -93,7 +93,7 @@ module.exports = {
   output: {
     //https://www.webpackjs.com/configuration/output/#output-publicpath
     publicPath,
-    globalObject:`(new Function('return this')())`,
+    globalObject: `(new Function('return this')())`,
     //  '( (typeof window !== "undefined" ? window : false) ||\n    (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||\n    this)',
     // filename: "bundle.[name].[hash].js",
     // path: path.join(__dirname, "dist"),
@@ -288,13 +288,56 @@ module.exports = {
             }
           }
         ]
-      }
+      },
       /* unicode-loader不需要了,因为在terserplugin中可以转换成unicode */
       //   {
       //     // convert code to unicode
       //     test: /\.js?$/,
       //     loader: "unicode-loader"
       //   }
+      {
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
+        loader: require.resolve("babel-loader"),
+        options: {
+          sourceMaps: shouldUseSourceMap,
+          plugins: [
+            [
+              require.resolve("babel-plugin-htm"),
+              {
+                pragma: "h",
+                tag: "html",
+                useBuiltIns: true,
+                useNativeSpread: true
+              }
+            ]
+          ],
+          //   plugins: [
+          //     [
+          //       require.resolve("babel-plugin-named-asset-import")
+          //       //   {
+          //       //     loaderMap: {
+          //       //       svg: {
+          //       //         ReactComponent: '@svgr/webpack?-svgo,+ref![path]',
+          //       //       },
+          //       //     },
+          //       //   },
+          //     ]
+          //   ],
+          //   presets: [require.resolve("babel-preset-react-app")],
+          babelrc: false,
+          configFile: false,
+          //  presets: ["@babel/preset-env", "@babel/preset-react"],
+          // plugins: ["@babel/plugin-syntax-dynamic-import"],
+          //   customize: require.resolve(
+          //     "babel-preset-react-app/webpack-overrides"
+          //   ),
+          cacheDirectory: !0,
+          cacheCompression: isEnvProduction,
+          compact: isEnvProduction
+        },
+        include: [path.resolve(__dirname, "src")]
+        // exclude: [path.resolve(__dirname, "node_modules")]
+      }
     ]
   },
   plugins: [
