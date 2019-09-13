@@ -16,9 +16,7 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 # 少学习 您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化。
 
-
-愿世上再无webpack配置师
-
+愿世上再无 webpack 配置师
 
 [查看源代码 ./bin/index.js](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/bin/index.js)
 
@@ -29,6 +27,10 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 ![](https://camo.githubusercontent.com/e142ef7e29012ba7eb4e483621c53e2c8ee98aa1/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737653137353165363531663f773d32323526683d32323526663d706e6726733d32363338)
 
 ![](https://camo.githubusercontent.com/53b510c8236e20ad20417ceebf1b4246c2475473/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737643562346234333930653f773d38373026683d32353226663d706e6726733d3330393638)
+
+# 更新 新增 babel-plugin-htm
+
+https://github.com/developit/htm
 
 # 更新!可以通过命令行传入 --output-public-path= 参数
 
@@ -203,7 +205,7 @@ webpack  --config ./release/config/webpack.config.js     --mode=production
 
 # 自动判断浏览器，给 IE 浏览器自动添加 polyfill
 
-babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill和 EventTarget-ployfill
+babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill 和 EventTarget-ployfill
 
 ```javascript
 import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
@@ -214,8 +216,7 @@ import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
 ```html
 <script
   nomodule
-  src=
-"https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"
+  src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"
 ></script>
 <script
   nomodule
@@ -272,8 +273,6 @@ https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/maste
 ## 适用于 `react.js`的`ESlint`配置文件
 
 https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/master/react.eslintrc.json
-
-
 
 # 集成 postcss,自动增加前缀
 
