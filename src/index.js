@@ -42,3 +42,15 @@ new Vue({
   }
 });
  */
+/* function h(type, props, ...children) {
+  return { type, props, children };
+}
+console.log(html`
+  <a href="/">Hello!</a>
+  <App />
+  <div>hello world</div>
+  <div>
+    {{msg}}
+  </div>
+`);
+ */
