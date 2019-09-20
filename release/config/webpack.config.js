@@ -301,6 +301,9 @@ module.exports = {
         options: {
           sourceMaps: shouldUseSourceMap,
           plugins: [
+require.resolve(
+"@babel/plugin-proposal-class-properties")
+,
             [
               require.resolve("babel-plugin-htm"),
               {
