@@ -301,6 +301,8 @@ module.exports = {
         options: {
           sourceMaps: shouldUseSourceMap,
           plugins: [
+
+//babel-preset-react-app已经包含了 "@babel/plugin-proposal-class-properties"
 /*require.resolve(
 "@babel/plugin-proposal-class-properties")
 ,*/
