@@ -116,9 +116,7 @@ module.exports = {
           sourceMaps: shouldUseSourceMap,
           plugins: [
             //babel-preset-react-app已经包含了 "@babel/plugin-proposal-class-properties"
-            /*require.resolve(
-    "@babel/plugin-proposal-class-properties")
-    ,*/
+            require.resolve("@babel/plugin-proposal-class-properties"),
             [
               require.resolve("babel-plugin-htm"),
               {
@@ -129,6 +127,7 @@ module.exports = {
               }
             ]
           ],
+          presets: [require.resolve("babel-preset-react-app")],
           //   plugins: [
           //     [
           //       require.resolve("babel-plugin-named-asset-import")
