@@ -28,7 +28,7 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ![](https://camo.githubusercontent.com/53b510c8236e20ad20417ceebf1b4246c2475473/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737643562346234333930653f773d38373026683d32353226663d706e6726733d3330393638)
 
-# 更新 新增 babel-plugin-htm
+# 更新 新增 `babel-plugin-htm` ,支持`HTM (Hyperscript Tagged Markup)`
 
 https://github.com/developit/htm
 
