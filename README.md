@@ -204,7 +204,7 @@ yarn build
 webpack  --config ./release/config/webpack.config.js     --mode=production
 ```
 
-# 自动判断浏览器，给 `IE`和`Edge` 浏览器自动添加 polyfill
+# 自动判断浏览器API，给 `IE`和`Edge` 浏览器自动添加 polyfill
 
 `babel-polyfill` 和 `fetch-polyfill` 和 `URL-ployfill` 和 `Event-ployfill` 和 `EventTarget-ployfill`
 
