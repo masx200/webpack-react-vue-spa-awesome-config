@@ -132,6 +132,7 @@ yarn build
 npm run build
 ```
 
+<!--
 ## 全局安装
 
 ```shell
@@ -160,7 +161,7 @@ webpack-react-vue-spa-awesome-config start
 ```
 webpack-react-vue-spa-awesome-config build
 ```
-
+-->
 # 入口文件是"public/index.html"和'src/index.js'
 
 如果入口文件不存在,则会自动生成入口文件
@@ -205,7 +206,7 @@ webpack  --config ./release/config/webpack.config.js     --mode=production
 
 # 自动判断浏览器，给 IE 浏览器自动添加 polyfill
 
-babel-polyfill 和 fetch-polyfill 和 URL-ployfill 和 Event-ployfill 和 EventTarget-ployfill
+`babel-polyfill` 和 `fetch-polyfill` 和 `URL-ployfill` 和 `Event-ployfill` 和 `EventTarget-ployfill`
 
 <!--
 ```javascript
