@@ -1,7 +1,7 @@
 var importScripts = require("./importscripts.js");
 (() => {
   /* 判断ie11 */
-  if (navigator.userAgent.indexOf("Trident") > -1) {
+ // if (navigator.userAgent.indexOf("Trident") > -1) {
     // var s = document.createElement("script");
     // s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
     // document.head.appendChild(s);
@@ -29,10 +29,17 @@ var importScripts = require("./importscripts.js");
       require("./event-polyfill.js");
     }
 
+//发现Edge浏览器不支持 new EventTarget！
+
+try{
+new EventTarget()
+}catch(){
+window.EventTarget=undefined
+}
     if ("function" != typeof EventTarget) {
       require("./EventTarget-polyfill.js");
     }
-  }
+ // }
 })();
 /* 
 “URLSearchParams”未定义
