@@ -7,13 +7,8 @@
         "polyfill": "rollup -c ./polyfill/rollup.config.js"
     },
     "name": "webpack-react-vue-spa-awesome-config",
-    "version": "2.4.3",
+    "version": "2.4.4",
     "license": "MIT",
-    "babel": {
-        "presets": [
-            "react-app"
-        ]
-    },
     "browserslist": {
         "production": [
             ">0.2%",
@@ -77,17 +72,18 @@
         "worker-loader": "^2.0.0"
     },
     "devDependencies": {
+        "core-js-pure": "^3.2.1",
+        "eslint": "^6.1.0",
         "event-target-shim": "^5.0.1",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-router-dom": "^5.0.1",
         "rollup": "^1.21.4",
         "rollup-plugin-babel": "^4.3.3",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-json": "^4.0.0",
         "rollup-plugin-node-resolve": "^5.2.0",
         "rollup-plugin-terser": "^5.1.2",
-        "eslint": "^6.1.0",
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "react-router-dom": "^5.0.1",
         "vue": "^2.6.10",
         "vue-router": "^3.0.7"
     },

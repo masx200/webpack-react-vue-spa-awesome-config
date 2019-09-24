@@ -37,7 +37,7 @@ var importScripts = require("./importscripts.js");
     window.EventTarget = undefined;
   }
   if ("function" != typeof EventTarget) {
-    require("./EventTarget-polyfill.js");
+    require("./EventTarget-polyfill.js")();
   }
   // }
 })();
