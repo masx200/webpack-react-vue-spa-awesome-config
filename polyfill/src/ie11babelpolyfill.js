@@ -18,15 +18,15 @@ var importScripts = require("./importscripts.js");
   // importScripts("https://cdn.staticfile.org/fetch/3.0.0/fetch.min.js");
 
   if (typeof fetch != "function" || typeof Response != "function") {
-    require("./fetch-polyfill.js");
+    require("./fetch-polyfill.js")();
   }
 
   if ("function" != typeof URL || "function" != typeof URLSearchParams) {
-    require("./url-polyfill.min.js");
+    require("./url-polyfill.min.js")();
   }
 
   if ("function" != typeof Event || "function" != typeof CustomEvent) {
-    require("./event-polyfill.js");
+    require("./event-polyfill.js")();
   }
 
   //发现Edge浏览器不支持 new EventTarget！

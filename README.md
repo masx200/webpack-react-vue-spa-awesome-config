@@ -225,7 +225,7 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/poly
 
 ```html
 <script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@latest/polyfill/dist/polyfill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.5/polyfill/dist/polyfill.min.js"></script>
 ```
 
 # 内部极简的配置文件

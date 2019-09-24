@@ -7,7 +7,7 @@
         "polyfill": "rollup -c ./polyfill/rollup.config.js"
     },
     "name": "webpack-react-vue-spa-awesome-config",
-    "version": "2.4.4",
+    "version": "2.4.5",
     "license": "MIT",
     "browserslist": {
         "production": [
@@ -22,7 +22,7 @@
         ]
     },
     "dependencies": {
-        "@babel/core": "^7.5.5",
+        "@babel/core": "^7.6.2",
         "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
         "@babel/preset-env": "^7.5.5",
