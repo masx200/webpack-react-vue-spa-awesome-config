@@ -162,6 +162,7 @@ webpack-react-vue-spa-awesome-config start
 webpack-react-vue-spa-awesome-config build
 ```
 -->
+
 # 入口文件是"public/index.html"和'src/index.js'
 
 如果入口文件不存在,则会自动生成入口文件
@@ -204,7 +205,7 @@ yarn build
 webpack  --config ./release/config/webpack.config.js     --mode=production
 ```
 
-# 自动判断浏览器API，给 `IE`和`Edge` 浏览器自动添加 polyfill
+# 自动判断浏览器 API，给 `IE`和`Edge` 浏览器自动添加 polyfill
 
 `babel-polyfill` 和 `fetch-polyfill` 和 `URL-ployfill` 和 `Event-ployfill` 和 `EventTarget-ployfill`
 
@@ -217,14 +218,8 @@ import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
 -->
 
 ```html
-<script
-  
-  src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"
-></script>
-<script
-  
-  src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.0/lib/polyfill.min.js"
-></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.0/lib/polyfill.min.js"></script>
 ```
 
 # 内部极简的配置文件
