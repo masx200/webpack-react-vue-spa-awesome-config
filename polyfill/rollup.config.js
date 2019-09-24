@@ -6,10 +6,10 @@ import { terser } from "rollup-plugin-terser";
 import json from "rollup-plugin-json";
 export default [
   {
-    input: "./polyfill/index.js",
+    input: "./polyfill/src/index.js",
     output: [
       {
-        file: "./lib/polyfill.min.js",
+        file: "./polyfill/dist/polyfill.min.js",
         format: "iife",
         sourcemap: true
       }
