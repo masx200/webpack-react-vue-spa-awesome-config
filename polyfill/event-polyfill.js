@@ -61,7 +61,7 @@ eventInit可选
 "composed"，可选，Boolean类型，默认值为 false，指示事件是否会在影子DOM根节点之外触发侦听器。
 */
 (function() {
-  var oldevent = window.Event;
+  var oldevent = window.Event||{};
   /* es5不支持默认参数! */
   function Event(typeArg, initopt /* eventInit = {} */) {
     /*  */
@@ -81,7 +81,8 @@ eventInit可选
     Object.keys(oldevent).forEach(function(k) {
       Event[k] = oldevent[k];
     });
-    Event.prototype = oldevent.prototype;
+    Event.prototype = oldevent.prototype||{}
+;
     window.Event = Event;
   }
 })();
@@ -101,7 +102,7 @@ if (isSupportEventConstrucor()) {
     foo.dispatchEvent(e)
 }*/
 (function() {
-  var oldevent = window.CustomEvent;
+  var oldevent = window.CustomEvent||{};
   /*  */
   function CustomEvent(typeArg, initopt /* eventInit = {} */) {
     initopt = initopt || {};
@@ -124,7 +125,7 @@ if (isSupportEventConstrucor()) {
     Object.keys(oldevent).forEach(function(k) {
       CustomEvent[k] = oldevent[k];
     });
-    CustomEvent.prototype = oldevent.prototype;
+    CustomEvent.prototype = oldevent.prototype||{};
     window.CustomEvent = CustomEvent;
   }
 })();
