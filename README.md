@@ -86,8 +86,8 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 ```json
 {
   "scripts": {
-    "start": "@masx200/webpack-react-vue-spa-awesome-config start",
-    "build": "@masx200/webpack-react-vue-spa-awesome-config build"
+    "start": "webpack-react-vue-spa-awesome-config start",
+    "build": "webpack-react-vue-spa-awesome-config build"
   }
 }
 ```
