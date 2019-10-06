@@ -86,8 +86,8 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 ```json
 {
   "scripts": {
-    "start": "webpack-react-vue-spa-awesome-config start",
-    "build": "webpack-react-vue-spa-awesome-config build"
+    "start": "@masx200/webpack-react-vue-spa-awesome-config start",
+    "build": "@masx200/webpack-react-vue-spa-awesome-config build"
   }
 }
 ```
@@ -404,7 +404,7 @@ if ("production" === process.env.NODE_ENV) {
 或者
 
 ```javascript
-import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
+import "@masx200/webpack-react-vue-spa-awesome-config/registerserviceworker.js";
 ```
 
 ## 站在巨人的肩膀上
