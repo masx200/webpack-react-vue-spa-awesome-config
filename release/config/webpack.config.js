@@ -114,7 +114,7 @@ module.exports = {
         loader: require.resolve("babel-loader"),
         options: {
           sourceMaps: shouldUseSourceMap,
-          plugins: [
+          plugins: [require.resolve("@babel/plugin-proposal-decorators"),
             //babel-preset-react-app已经包含了 "@babel/plugin-proposal-class-properties"
             require.resolve("@babel/plugin-proposal-class-properties"),
             [
