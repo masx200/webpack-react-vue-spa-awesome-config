@@ -114,9 +114,16 @@ module.exports = {
         loader: require.resolve("babel-loader"),
         options: {
           sourceMaps: shouldUseSourceMap,
-          plugins: [require.resolve("@babel/plugin-proposal-decorators"),
+          plugins: [
+            /* https://babeljs.io/docs/en/next/babel-plugin-proposal-decorators.html */
+            [
+              require.resolve("@babel/plugin-proposal-decorators"),
+              { legacy: true }
+            ],
+            ["@babel/plugin-proposal-class-properties", { loose: true }],
+            /*  require.resolve("@babel/plugin-proposal-decorators"),
             //babel-preset-react-app已经包含了 "@babel/plugin-proposal-class-properties"
-            require.resolve("@babel/plugin-proposal-class-properties"),
+            require.resolve("@babel/plugin-proposal-class-properties"), */
             [
               require.resolve("babel-plugin-htm"),
               {

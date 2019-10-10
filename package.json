@@ -1,4 +1,5 @@
 {
+    "version": "2.4.6",
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
     },
@@ -10,7 +11,6 @@
         "polyfill": "rollup -c ./polyfill/rollup.config.js"
     },
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
-    "version": "2.4.5",
     "license": "MIT",
     "browserslist": {
         "production": [
@@ -25,7 +25,7 @@
         ]
     },
     "dependencies": {
-"@babel/plugin-proposal-decorators":"^7.6.0",
+        "@babel/plugin-proposal-decorators": "^7.6.0",
         "@babel/core": "^7.6.2",
         "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
