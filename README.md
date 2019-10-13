@@ -356,6 +356,31 @@ JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去�
 
 使用`react-hot-loader`实现`React`组件热更新
 
+https://github.com/gaearon/react-hot-loader
+
+React Hot Loader v4:
+
+// App.js
+
+```js
+import React from "react";
+import { hot } from "react-hot-loader";
+
+const App = () => <div>Hello world!</div>;
+
+export default hot(module)(App);
+```
+
+// main.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./containers/App";
+
+ReactDOM.render(<App />, document.getElementById("root"));
+```
+
 使用`vue-loader`实现`Vue`组件热更新
 
 ## 使用的 loader
