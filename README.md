@@ -184,7 +184,7 @@ module.exports = webpackconfig;
 {
   "scripts": {
     "start-custom": "webpack-dev-server  --config ./webpack.config.js --mode=development ",
-    "build-custom": "webpack --config .//webpack.config.js --mode=production "
+    "build-custom": "webpack --config ./webpack.config.js --mode=production "
   }
 }
 ```
