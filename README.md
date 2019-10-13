@@ -167,9 +167,29 @@ webpack-react-vue-spa-awesome-config build
 
 如果入口文件不存在,则会自动生成入口文件
 
-# 修改自定义的 webpack 配置文件
+# 修改自定义的 `webpack` 配置文件
 
-下载软件包
+`webpack.config.js`
+
+```js
+const webpackconfig = require("@masx200/webpack-react-vue-spa-awesome-config");
+console.log(webpackconfig);
+//do something with webpackconfig
+module.exports = webpackconfig;
+```
+
+`package.json`
+
+```json
+{
+  "scripts": {
+    "start-custom": "webpack-dev-server  --config ./webpack.config.js --mode=development ",
+    "build-custom": "webpack --config .//webpack.config.js --mode=production "
+  }
+}
+```
+
+<!-- 下载软件包
 
 ```
 
@@ -179,7 +199,7 @@ git clone https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 修改文件`./release/config/webpack.config.js`即可
 
-[查看 package.json](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/package.json)
+[查看 package.json](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/package.json) -->
 
 - 启动 webpack-dev-server
 
