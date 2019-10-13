@@ -1,7 +1,7 @@
 "use strict";
 const postcssNormalize = require("postcss-normalize");
 const defaultport = 10000;
-const port = defaultport + parseInt(10000 * Math.random());
+const port = defaultport + parseInt(String(10000 * Math.random()));
 
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
@@ -454,9 +454,9 @@ module.exports = {
       }),
       new TerserPlugin({
         terserOptions: {
+          ecma: 5,
           parse: { ecma: 8 },
           compress: {
-            ecma: 5,
             warnings: !1,
             comparisons: !1,
             inline: 2,
