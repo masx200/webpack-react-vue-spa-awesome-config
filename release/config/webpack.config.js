@@ -14,7 +14,7 @@ const CopyFilesPlugin = require("webpack-copyfiles-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -329,7 +329,7 @@ module.exports = {
     },
     minimize: isEnvProduction,
     minimizer: [
-      new UglifyJsPlugin({
+      /*   new UglifyJsPlugin({
         uglifyOptions: {
           output: { comments: !1 },
           mangle: !0,
@@ -343,7 +343,7 @@ module.exports = {
         cache: !0,
         parallel: !0,
         sourceMap: shouldUseSourceMap
-      }),
+      }), */
       new TerserPlugin({
         terserOptions: {
           ecma: 5,
