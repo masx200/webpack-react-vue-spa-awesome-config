@@ -10,7 +10,7 @@ process.argv.includes("--mode=production")
   : (process.env.NODE_ENV = "development");
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
-var CopyFilesPlugin = require("webpack-copyfiles-plugin");
+const CopyFilesPlugin = require("webpack-copyfiles-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -48,6 +48,7 @@ if ("production" === process.env.NODE_ENV) {
 module.exports = {
   resolve: { alias: { "@": path.join(__dirname, "src") } },
   devServer: {
+    historyApiFallback: true,
     contentBase: path.resolve(__dirname, "./dist"),
     hot: !0,
     port,
@@ -57,7 +58,12 @@ module.exports = {
   },
   devtool: "inline-source-map",
   mode: process.env.NODE_ENV,
-  entry: path.join(__dirname, "src", "index.js"),
+  entry: [
+    isEnvDevelopment && "react-hot-loader/patch",
+
+    path.join(__dirname, "src", "index.js")
+  ].filter(Boolean),
+
   output: {
     publicPath,
     globalObject: `( Function('return this')())`,
