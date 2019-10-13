@@ -22,9 +22,10 @@ console.log(JSON.stringify(argstoobject, null, 4));
 const 解析参数config = argstoobject.config;
 
 const 解析参数mode = argstoobject.mode;
+const defaultwebpackconfig = path.resolve(__dirname, "../");
 const webpackconfigfile = 解析参数config
-  ? 解析参数config
-  : path.resolve(__dirname, "../", "./release/config/webpack.config.js");
+  ? path.resolve(解析参数config)
+  : defaultwebpackconfig; // path.resolve(__dirname, "../", "./release/config/webpack.config.js");
 
 const 解析参数publicpath = argstoobject["output-public-path"];
 /**
@@ -52,7 +53,7 @@ function parseargs(args) {
       }, {});
   } catch (error) {
     console.error("\n输入的参数有误!\n");
-    console.error(error);
+    // console.error(error);
     console.log(process.argv);
     throw error;
   }
