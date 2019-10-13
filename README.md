@@ -354,11 +354,11 @@ JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去�
 
 # 开发环境支持模块热更新，和 sourcemap
 
-使用`react-hot-loader`实现`React`组件热更新
+## 使用`react-hot-loader`实现`React`组件热更新
 
 https://github.com/gaearon/react-hot-loader
 
-React Hot Loader v4:
+### `React Hot Loader` v4: 官方的例子
 
 // App.js
 
@@ -381,7 +381,18 @@ import App from "./containers/App";
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
-使用`vue-loader`实现`Vue`组件热更新
+仅在开发环境开启`React Hot Loader`的方法
+
+```js
+const Apphome = () => <div>Hello world!</div>;
+const hotApp =
+  "development" === process.env.NODE_ENV
+    ? hot(module)(Apphome)
+    : React.memo(Apphome);
+export default hotApp;
+```
+
+## 使用`vue-loader`实现`Vue`组件热更新
 
 ## 使用的 loader
 
