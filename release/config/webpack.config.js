@@ -1,13 +1,39 @@
 "use strict";
+console.log("输入的参数:");
+console.log(JSON.stringify(process.argv, null, 4));
+const 参数object = parseargs(process.argv);
+console.log("解析的参数:");
+console.log(JSON.stringify(参数object, null, 4));
+const 解析参数publicpath = 参数object["output-public-path"];
+const 参数reacthotreload = !!参数object["react-hot-loader"];
+process.env.NODE_ENV = process.argv.includes("--mode=production")
+  ? "production"
+  : "development";
+function parseargs(args) {
+  try {
+    return args
+      .filter(s => s.startsWith("--"))
+      .map(s => /--(?<key>.+)=(?<value>.+)/g.exec(s))
+      .filter(Boolean)
+      .map(a => a.groups)
+      .reduce((a, v) => {
+        return { ...a, ...{ [v["key"]]: v["value"] } };
+      }, {});
+  } catch (error) {
+    console.log(process.argv);
+    console.error("\n输入的参数有误!\n");
+    console.error(error);
+
+    throw Error("输入的参数有误!");
+  }
+}
 const postcssNormalize = require("postcss-normalize");
 const defaultport = 10000;
 const port = defaultport + parseInt(String(10000 * Math.random()));
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
-process.argv.includes("--mode=production")
-  ? (process.env.NODE_ENV = "production")
-  : (process.env.NODE_ENV = "development");
+
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
 const CopyFilesPlugin = require("webpack-copyfiles-plugin");
@@ -28,16 +54,17 @@ process.env.BABEL_ENV = process.env.NODE_ENV;
 let publicPath = isEnvProduction ? "./" : "/";
 if ("production" === process.env.NODE_ENV) {
   if (
-    process.argv.filter(t => String(t).startsWith("--output-public-path="))
-      .length
+    解析参数publicpath
+    // process.argv.filter(t => String(t).startsWith("--output-public-path="))
+    //   .length
   ) {
-    const publicpath参数 = process.argv.filter(t =>
+    /*   const publicpath参数 = process.argv.filter(t =>
       String(t).startsWith("--output-public-path=")
     )[0];
     const 解析参数publicpath = publicpath参数.slice(
       publicpath参数.indexOf("--output-public-path=") +
         "--output-public-path=".length
-    );
+    ); */
     if (解析参数publicpath.length) {
       console.log(`  output-public-path  :  ${解析参数publicpath}`);
       console.log("\n");
@@ -59,7 +86,7 @@ module.exports = {
   devtool: "inline-source-map",
   mode: process.env.NODE_ENV,
   entry: [
-    isEnvDevelopment && "react-hot-loader/patch",
+    isEnvDevelopment && 参数reacthotreload && "react-hot-loader/patch",
 
     path.join(__dirname, "src", "index.js")
   ].filter(Boolean),
@@ -84,7 +111,9 @@ module.exports = {
         options: {
           sourceMaps: shouldUseSourceMap,
           plugins: [
-            isEnvDevelopment && require.resolve("react-hot-loader/babel"),
+            isEnvDevelopment &&
+              参数reacthotreload &&
+              require.resolve("react-hot-loader/babel"),
             [
               require.resolve("@babel/plugin-proposal-decorators"),
               { legacy: true }

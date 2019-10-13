@@ -52,7 +52,11 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ## 输出文件公共的网址
 
-`--output-public-path=dist`
+`--output-public-path=https://masx200.github.io/`
+
+## 开启`react-hot-loader`
+
+`--react-hot-loader=true`
 
 # 更新 :新增 `babel-plugin-htm` ,支持`HTM (Hyperscript Tagged Markup)`
 
@@ -64,9 +68,9 @@ https://github.com/developit/htm
 
 The `publicPath` specifies the public URL address of the output files when referenced in a browser.
 
-```shell
+<!-- ```shell
 webpack-react-vue-spa-awesome-config build --output-public-path=https://masx200.github.io/
-```
+``` -->
 
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
@@ -384,20 +388,41 @@ JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去�
 
 https://github.com/gaearon/react-hot-loader
 
-### `React Hot Loader` v4: 官方的例子
+### 开启`React Hot Loader` `v4`: 例子
 
-// App.js
+传入参数`--react-hot-loader=true`
 
-```js
+```powershell
+
+webpack-react-vue-spa-awesome-config   --mode=development --react-hot-loader=true
+
+```
+
+<!-- ```js
 import React from "react";
 import { hot } from "react-hot-loader";
 
 const App = () => <div>Hello world!</div>;
 
 export default hot(module)(App);
+``` -->
+
+仅在开发环境开启`React Hot Loader`的方法
+
+`App.js`
+
+```js
+import React from "react";
+import { hot } from "react-hot-loader";
+const Apphome = () => <div>Hello world!</div>;
+const hotApp =
+  "development" === process.env.NODE_ENV
+    ? hot(module)(Apphome)
+    : React.memo(Apphome);
+export default hotApp;
 ```
 
-// main.js
+`main.js`
 
 ```js
 import React from "react";
@@ -405,17 +430,6 @@ import ReactDOM from "react-dom";
 import App from "./containers/App";
 
 ReactDOM.render(<App />, document.getElementById("root"));
-```
-
-仅在开发环境开启`React Hot Loader`的方法
-
-```js
-const Apphome = () => <div>Hello world!</div>;
-const hotApp =
-  "development" === process.env.NODE_ENV
-    ? hot(module)(Apphome)
-    : React.memo(Apphome);
-export default hotApp;
 ```
 
 ## 使用`vue-loader`实现`Vue`组件热更新
