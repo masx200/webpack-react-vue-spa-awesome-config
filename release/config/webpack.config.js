@@ -115,6 +115,7 @@ module.exports = {
         options: {
           sourceMaps: shouldUseSourceMap,
           plugins: [
+            isEnvProduction && require.resolve("react-hot-loader/babel"),
             /* https://babeljs.io/docs/en/next/babel-plugin-proposal-decorators.html */
             [
               require.resolve("@babel/plugin-proposal-decorators"),
@@ -133,7 +134,8 @@ module.exports = {
                 useNativeSpread: true
               }
             ]
-          ],
+          ].filter(Boolean),
+
           presets: [require.resolve("babel-preset-react-app")],
           //   plugins: [
           //     [
