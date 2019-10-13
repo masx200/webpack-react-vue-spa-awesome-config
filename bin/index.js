@@ -102,7 +102,7 @@ function 解析命令() {
     ];
     if (参数reacthotreload) {
       commandargs.push("--react-hot-loader=" + 参数reacthotreload);
-      console.log(`react-hot-loader :  ${参数reacthotreload}`);
+      //   console.log(`react-hot-loader :  ${参数reacthotreload}`);
       console.log("\n");
     }
     commandstring = command + " " + commandargs.join(" ");
@@ -127,7 +127,7 @@ function 解析命令() {
     ];
     if (解析参数publicpath && 解析参数publicpath.length) {
       commandargs.push("--output-public-path=" + 解析参数publicpath);
-      console.log(`  output-public-path  :  ${解析参数publicpath}`);
+      //   console.log(`  output-public-path  :  ${解析参数publicpath}`);
       console.log("\n");
     }
     commandstring = command + " " + commandargs.join(" ");
