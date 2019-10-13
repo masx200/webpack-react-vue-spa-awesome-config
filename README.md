@@ -354,6 +354,10 @@ JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去�
 
 # 开发环境支持模块热更新，和 sourcemap
 
+使用`react-hot-loader`实现`React`组件热更新
+
+使用`vue-loader`实现`Vue`组件热更新
+
 ## 使用的 loader
 
 css-loader / babel-loader /worker-loader/vue-loader/url-loader/style-loader/css-loader/sass-loader/file-loader
