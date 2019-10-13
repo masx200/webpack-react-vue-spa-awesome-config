@@ -12,12 +12,52 @@ const sourcefiles = inputfiles.map(p =>
 );
 // console.log(sourcefiles);
 const destfiles = inputfiles.map(p => path.resolve(pwddir, p));
-const webpackconfigfile = path.resolve(
-  __dirname,
-  "../",
-  "./release/config/webpack.config.js"
-);
 consolehello();
+console.log("输入的参数:");
+console.log(JSON.stringify(process.argv, null, 4));
+const argstoobject = parseargs(process.argv);
+
+console.log("解析的参数:");
+console.log(JSON.stringify(argstoobject, null, 4));
+const 解析参数config = argstoobject.config;
+
+const 解析参数mode = argstoobject.mode;
+const webpackconfigfile = 解析参数config
+  ? 解析参数config
+  : path.resolve(__dirname, "../", "./release/config/webpack.config.js");
+
+const 解析参数publicpath = argstoobject["output-public-path"];
+/**
+ *
+ *
+ *
+ * 把参数数组转换成对象
+ *
+ * ["C:\Program Files\nodejs\node.exe", "--aaaaaaaaaaaa=bbbbbbbbbbbbbb", "--mode=development"]
+ *
+ * ---->>>>
+ *
+ * {"aaaaaaaaaaaa":"bbbbbbbbbbbbbb","mode":"development"}
+ *
+ *
+ * @param {string[]} args
+ */
+function parseargs(args) {
+  try {
+    return args
+      .filter(s => s.startsWith("--"))
+      .map(s => /--(?<key>.+)=(?<value>.+)/g.exec(s).groups)
+      .reduce((a, v) => {
+        return { ...a, ...{ [v["key"]]: v["value"] } };
+      }, {});
+  } catch (error) {
+    console.error("\n输入的参数有误!\n");
+    console.error(error);
+    console.log(process.argv);
+    throw error;
+  }
+}
+
 function consolehello() {
   console.log("\n");
   console.log("webpack-react-vue-spa-awesome-config");
@@ -40,6 +80,9 @@ function consolehello() {
 "public/favicon.ico"
 */
 
+/**
+ * @param {import("fs").PathLike} p
+ */
 function 判断并创建目录(p) {
   if (!fs.existsSync(p)) {
     console.log("所需的目录不存在,创建目录", p);
@@ -47,7 +90,16 @@ function 判断并创建目录(p) {
     fs.mkdirSync(p);
   }
 }
+/**
+ * @param {string[]} sourcefiles
+ * @param {string[]} destfiles
+ */
 function 生成入口文件(sourcefiles, destfiles) {
+  /**
+   * @param {import("fs").PathLike} p
+   * @param {string | number} i
+   * @param {{ [x: string]: import("fs").PathLike; }} a
+   */
   destfiles.forEach((p, i, a) => {
     if (!fs.existsSync(p)) {
       console.log(`inputfile  not exsited! ${p}\n`);
@@ -71,6 +123,9 @@ function 生成入口文件(sourcefiles, destfiles) {
 // let spawnObj;
 // let commandstring, command, commandargs;
 
+/**
+ * @param {string} t
+ */
 function commandfind(t) {
   return path.join(
     __dirname,
@@ -85,12 +140,16 @@ function commandfind(t) {
 
 function 解析命令() {
   let commandstring, command, commandargs;
-  if (process.argv.includes("start")) {
+  if (process.argv.includes("start") || "development" === 解析参数mode) {
     process.env.NODE_ENV = "development";
 
     生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack-dev-server `);
-    commandargs = ["--config", webpackconfigfile, "--mode=development"];
+    commandargs = [
+      "--config",
+      webpackconfigfile,
+      "--mode=" + process.env.NODE_ENV
+    ];
     commandstring = command + " " + commandargs.join(" ");
 
     //   spawnObj = spawn(command, commandargs, { cwd: process.cwd() });
@@ -100,7 +159,7 @@ function 解析命令() {
 启动 webpack-dev-server`);
     console.log("\n");
     执行命令(commandstring, command, commandargs);
-  } else if (process.argv.includes("build")) {
+  } else if (process.argv.includes("build") || "production" === 解析参数mode) {
     console.log("\n");
     console.log(`生产模式
 启动 webpack`);
@@ -109,20 +168,25 @@ function 解析命令() {
 
     生成入口文件(sourcefiles, destfiles);
     command = commandfind(`webpack `);
-    commandargs = ["--config", webpackconfigfile, "--mode=production"];
+    commandargs = [
+      "--config",
+      webpackconfigfile,
+      "--mode=" + process.env.NODE_ENV
+    ];
 
     if (
-      process.argv.filter(t => String(t).startsWith("--output-public-path="))
-        .length
+      解析参数publicpath
+      //   process.argv.filter(t => String(t).startsWith("--output-public-path="))
+      //     .length
     ) {
-      const publicpath参数 = process.argv.filter(t =>
+      /*  const publicpath参数 = process.argv.filter(t =>
         String(t).startsWith("--output-public-path=")
       )[0];
 
       const 解析参数publicpath = publicpath参数.slice(
         publicpath参数.indexOf("--output-public-path=") +
           "--output-public-path=".length
-      );
+      ); */
       if (解析参数publicpath.length) {
         commandargs.push("--output-public-path=" + 解析参数publicpath);
         console.log(`  output-public-path  :  ${解析参数publicpath}`);
@@ -139,13 +203,15 @@ function 解析命令() {
     console.log("\n");
     console.log("usage:");
     console.log("\n");
-    console.log("webpack-react-vue-spa-awesome-config start");
+    console.log(
+      "webpack-react-vue-spa-awesome-config start --mode=development"
+    );
     console.log("\n");
 
     console.log(`开发模式
 启动 webpack-dev-server`);
     console.log("\n");
-    console.log("webpack-react-vue-spa-awesome-config build");
+    console.log("webpack-react-vue-spa-awesome-config build --mode=production");
     console.log("\n");
     console.log(`生产模式
 启动 webpack`);
@@ -153,6 +219,11 @@ function 解析命令() {
     //  return;
   }
 }
+/**
+ * @param {string} commandstring
+ * @param {string} command
+ * @param {string[] | readonly string[]} commandargs
+ */
 function 执行命令(commandstring, command, commandargs) {
   // console.log(spawnObj);
   // spawnObj.stdout.on("data", function(chunk) {
