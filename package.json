@@ -25,6 +25,8 @@
     ]
   },
   "dependencies": {
+    "terser": "^4.4.2",
+        "serialize-javascript":"^2.1.1",
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-decorators": "^7.6.0",
@@ -62,7 +64,7 @@
     "react-hot-loader": "^4.12.15",
     "regenerator-runtime": "^0.13.3",
     "style-loader": "^0.23.1",
-    "terser-webpack-plugin": "^1.3.0",
+    "terser-webpack-plugin": "^2.2.2",
     "to-string-loader": "^1.1.5",
     "typescript": "^3.6.4",
     "uglifyjs-webpack-plugin": "^2.1.3",
