@@ -86,11 +86,6 @@ webpack-react-vue-spa-awesome-config build --output-public-path=https://masx200.
 yarn init
 ```
 
-或者
-
-```
-npm init
-```
 
 ### 解决安装 node-sass 太慢的问题的方法
 
@@ -100,11 +95,9 @@ npm init
 
 ## 局部安装
 
-```shell
-cnpm install --save  https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
-```
 
-或者
+
+
 
 ```shell
 yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
@@ -128,11 +121,7 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 yarn install
 ```
 
-或者
 
-```
-npm install
-```
 
 ## 开发模式
 
@@ -162,14 +151,10 @@ yarn build
 npm run build
 ```
 
-<!--
+
 ## 全局安装
 
-```shell
-npm install -g https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
-```
 
-或者
 
 ```shell
 yarn global add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
@@ -191,7 +176,7 @@ webpack-react-vue-spa-awesome-config start
 ```
 webpack-react-vue-spa-awesome-config build
 ```
--->
+
 
 # 入口文件是"public/index.html"和'src/index.js'
 
