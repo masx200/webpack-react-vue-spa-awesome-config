@@ -221,11 +221,11 @@ webpack  --config ./release/config/webpack.config.js     --mode=production
 
 更新:添加`Array.prototype.flat`和`Object.fromEntries`,并修复`edge`浏览器上无法运行`new EventTarget`的问题
 
-https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/polyfill/dist/polyfill.min.js
+https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/polyfill/polyfill.min.js
 
 ```html
 <script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.5/polyfill/dist/polyfill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.5/polyfill/polyfill.min.js"></script>
 ```
 
 # 内部极简的配置文件

@@ -33,7 +33,7 @@ export default [
         input: "./polyfill/src/index.js",
         output: [
             {
-                file: "./polyfill/dist/polyfill.min.js",
+                file: "./polyfill/polyfill.min.js",
                 format: "iife",
                 sourcemap: true
             }

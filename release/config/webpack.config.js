@@ -1,4 +1,22 @@
 "use strict";
+function parseargs(args) {
+    const 参数obj = {};
+    args.filter(s => s.startsWith("--"))
+        .map(s => /--(?<key>.+)=(?<value>.+)/g.exec(s))
+        .forEach(execArray => {
+            var _a, _b, _c;
+            const groups =
+                (_a = execArray) === null || _a === void 0 ? void 0 : _a.groups;
+            const key =
+                (_b = groups) === null || _b === void 0 ? void 0 : _b.key;
+            const value =
+                (_c = groups) === null || _c === void 0 ? void 0 : _c.value;
+            if (key && value) {
+                参数obj[key] = value;
+            }
+        });
+    return 参数obj;
+}
 console.log("输入的参数:");
 console.log(JSON.stringify(process.argv, null, 4));
 const 参数object = parseargs(process.argv);
@@ -9,26 +27,7 @@ const 参数reacthotreload = !!参数object["react-hot-loader"];
 process.env.NODE_ENV = process.argv.includes("--mode=production")
     ? "production"
     : "development";
-function parseargs(args) {
-    try {
-        return args
-            .filter(s => s.startsWith("--"))
-            .map(s => /--(?<key>.+)=(?<value>.+)/g.exec(s))
-            .filter(Boolean)
-            .map(a => a.groups)
-            .reduce((a, v) => {
-                return {
-                    ...a,
-                    ...{ [v["key"]]: v["value"] }
-                };
-            }, {});
-    } catch (error) {
-        console.log(process.argv);
-        console.error("\n输入的参数有误!\n");
-        console.error(error);
-        throw Error("输入的参数有误!");
-    }
-}
+
 const postcssNormalize = require("postcss-normalize");
 const defaultport = 10000;
 const port = defaultport + parseInt(String(10000 * Math.random()));
