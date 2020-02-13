@@ -10,7 +10,11 @@ consolehello();
 // console.log("输入的参数:");
 // console.log(JSON.stringify(process.argv, null, 4));
 const inargs = process.argv.slice(1);
-const operation = inargs[0];
+const operation = inargs.includes("start")
+    ? "start"
+    : inargs.includes("build")
+    ? "build"
+    : undefined;
 const 参数object = parseargs(inargs);
 console.log("解析的参数:");
 console.log(JSON.stringify(参数object, null, 4));

@@ -298,7 +298,7 @@ consolehello();
 
 var inargs = process$1.argv.slice(1);
 
-var operation = inargs[0];
+var operation = inargs.includes("start") ? "start" : inargs.includes("build") ? "build" : undefined;
 
 var \u53c2\u6570object = parseargs(inargs);
 
