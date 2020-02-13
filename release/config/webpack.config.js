@@ -17,13 +17,15 @@ function parseargs(args) {
             .filter(Boolean)
             .map(a => a.groups)
             .reduce((a, v) => {
-                return { ...a, ...{ [v["key"]]: v["value"] } };
+                return {
+                    ...a,
+                    ...{ [v["key"]]: v["value"] }
+                };
             }, {});
     } catch (error) {
         console.log(process.argv);
         console.error("\n输入的参数有误!\n");
         console.error(error);
-
         throw Error("输入的参数有误!");
     }
 }
@@ -33,14 +35,12 @@ const port = defaultport + parseInt(String(10000 * Math.random()));
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
-
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
 const CopyFilesPlugin = require("webpack-copyfiles-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -53,18 +53,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 process.env.BABEL_ENV = process.env.NODE_ENV;
 let publicPath = isEnvProduction ? "./" : "/";
 if ("production" === process.env.NODE_ENV) {
-    if (
-        解析参数publicpath
-        // process.argv.filter(t => String(t).startsWith("--output-public-path="))
-        //   .length
-    ) {
-        /*   const publicpath参数 = process.argv.filter(t =>
-      String(t).startsWith("--output-public-path=")
-    )[0];
-    const 解析参数publicpath = publicpath参数.slice(
-      publicpath参数.indexOf("--output-public-path=") +
-        "--output-public-path=".length
-    ); */
+    if (解析参数publicpath) {
         if (解析参数publicpath.length) {
             console.log(`  output-public-path  :  ${解析参数publicpath}`);
             console.log("\n");
@@ -87,10 +76,8 @@ module.exports = {
     mode: process.env.NODE_ENV,
     entry: [
         isEnvDevelopment && 参数reacthotreload && "react-hot-loader/patch",
-
         path.join(__dirname, "src", "index.js")
     ].filter(Boolean),
-
     output: {
         publicPath,
         globalObject: `( Function('return this')())`,
@@ -373,21 +360,6 @@ module.exports = {
         },
         minimize: isEnvProduction,
         minimizer: [
-            /*   new UglifyJsPlugin({
-        uglifyOptions: {
-          output: { comments: !1 },
-          mangle: !0,
-          warnings: !1,
-          compress: {
-            drop_debugger: !0,
-            drop_console: !0,
-            pure_funcs: ["console.log"]
-          }
-        },
-        cache: !0,
-        parallel: !0,
-        sourceMap: shouldUseSourceMap
-      }), */
             new TerserPlugin({
                 terserOptions: {
                     ecma: 5,

@@ -68,10 +68,6 @@ https://github.com/developit/htm
 
 The `publicPath` specifies the public URL address of the output files when referenced in a browser.
 
-<!-- ```shell
-webpack-react-vue-spa-awesome-config build --output-public-path=https://masx200.github.io/
-``` -->
-
 # 新版本! 可以通过 npm 或者 yarn 安装 github 仓库的模块了!
 
 # 使用方法
@@ -86,7 +82,6 @@ webpack-react-vue-spa-awesome-config build --output-public-path=https://masx200.
 yarn init
 ```
 
-
 ### 解决安装 node-sass 太慢的问题的方法
 
 ```shell
@@ -94,10 +89,6 @@ yarn init
 ```
 
 ## 局部安装
-
-
-
-
 
 ```shell
 yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
@@ -108,10 +99,10 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 
 ```json
 {
-  "scripts": {
-    "start": "webpack-react-vue-spa-awesome-config start",
-    "build": "webpack-react-vue-spa-awesome-config build"
-  }
+    "scripts": {
+        "start": "webpack-react-vue-spa-awesome-config start",
+        "build": "webpack-react-vue-spa-awesome-config build"
+    }
 }
 ```
 
@@ -120,8 +111,6 @@ yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
 ```
 yarn install
 ```
-
-
 
 ## 开发模式
 
@@ -151,10 +140,7 @@ yarn build
 npm run build
 ```
 
-
 ## 全局安装
-
-
 
 ```shell
 yarn global add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
@@ -177,7 +163,6 @@ webpack-react-vue-spa-awesome-config start
 webpack-react-vue-spa-awesome-config build
 ```
 
-
 # 入口文件是"public/index.html"和'src/index.js'
 
 如果入口文件不存在,则会自动生成入口文件
@@ -197,26 +182,14 @@ module.exports = webpackconfig;
 
 ```json
 {
-  "scripts": {
-    "start-custom": "webpack-dev-server  --config ./webpack.config.js --mode=development ",
-    "build-custom": "webpack --config ./webpack.config.js --mode=production "
-  }
+    "scripts": {
+        "start-custom": "webpack-dev-server  --config ./webpack.config.js --mode=development ",
+        "build-custom": "webpack --config ./webpack.config.js --mode=production "
+    }
 }
 ```
 
-<!-- 下载软件包
-
-```
-
-git clone https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
-
-```
-
-修改文件`./release/config/webpack.config.js`即可
-
-[查看 package.json](https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/package.json) -->
-
-- 启动 webpack-dev-server
+-   启动 webpack-dev-server
 
 ```
 yarn start
@@ -228,7 +201,7 @@ yarn start
 webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development
 ```
 
-- 启动 webpack
+-   启动 webpack
 
 ```
 yarn build
@@ -247,14 +220,6 @@ webpack  --config ./release/config/webpack.config.js     --mode=production
 `CustomEvent-ployfill`
 
 更新:添加`Array.prototype.flat`和`Object.fromEntries`,并修复`edge`浏览器上无法运行`new EventTarget`的问题
-
-<!--
-```javascript
-import "webpack-react-vue-spa-awesome-config/ie11babelpolyfill.js";
-```
-
-或者
--->
 
 https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/polyfill/dist/polyfill.min.js
 
@@ -275,8 +240,8 @@ webpack 使用配置文件启动的时候,默认不支持通过`--mode=developme
 
 ```javascript
 process.argv.includes("--mode=production")
-  ? (process.env.NODE_ENV = "production")
-  : (process.env.NODE_ENV = "development");
+    ? (process.env.NODE_ENV = "production")
+    : (process.env.NODE_ENV = "development");
 ```
 
 # 默认关闭了 `eslint`！
@@ -287,21 +252,21 @@ process.argv.includes("--mode=production")
 
 ```json
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true,
-    "worker": true,
-    "commonjs": true
-  },
-  "extends": "eslint:recommended",
-  "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
-  "parserOptions": {
-    "ecmaVersion": 2019,
-    "sourceType": "module",
-    "ecmaFeatures": { "jsx": true }
-  },
-  "rules": {}
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "worker": true,
+        "commonjs": true
+    },
+    "extends": "eslint:recommended",
+    "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module",
+        "ecmaFeatures": { "jsx": true }
+    },
+    "rules": {}
 }
 ```
 
@@ -328,7 +293,7 @@ https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/maste
 可使用动态导入的语法
 
 ```javascript
-(import().then())
+import().then();
 ```
 
 ，处理代码时会单独分离此模块，执行页面对应操作时才加载此模块，使用才加载不使用则不加载(代码懒加载)，减少首屏加载代码大小和渲染时间
@@ -383,15 +348,6 @@ webpack-react-vue-spa-awesome-config   --mode=development --react-hot-loader=tru
 
 ```
 
-<!-- ```js
-import React from "react";
-import { hot } from "react-hot-loader";
-
-const App = () => <div>Hello world!</div>;
-
-export default hot(module)(App);
-``` -->
-
 仅在开发环境开启`React Hot Loader`的方法
 
 `App.js`
@@ -401,9 +357,9 @@ import React from "react";
 import { hot } from "react-hot-loader";
 const Apphome = () => <div>Hello world!</div>;
 const hotApp =
-  "development" === process.env.NODE_ENV
-    ? hot(module)(Apphome)
-    : React.memo(Apphome);
+    "development" === process.env.NODE_ENV
+        ? hot(module)(Apphome)
+        : React.memo(Apphome);
 export default hotApp;
 ```
 
@@ -441,11 +397,11 @@ webpack.config.js
 
 ```javascript
 module.exports = {
-  output: {
-    globalObject: `( (typeof window !== "undefined" ? window : false) ||
+    output: {
+        globalObject: `( (typeof window !== "undefined" ? window : false) ||
     (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||
     this)`
-  }
+    }
 };
 ```
 
@@ -477,12 +433,17 @@ Workbox is a set of libraries and Node modules that make it easy to cache assets
 
 ```javascript
 if ("production" === process.env.NODE_ENV) {
-  if (location.hostname !== "localhost" && "127.0.0.1" !== location.hostname) {
-    "serviceWorker" in navigator &&
-      window.addEventListener("load", function() {
-        navigator.serviceWorker.register("service-worker.js").catch(() => {});
-      });
-  }
+    if (
+        location.hostname !== "localhost" &&
+        "127.0.0.1" !== location.hostname
+    ) {
+        "serviceWorker" in navigator &&
+            window.addEventListener("load", function() {
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .catch(() => {});
+            });
+    }
 }
 ```
 
