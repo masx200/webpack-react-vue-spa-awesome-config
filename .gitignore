@@ -1,9 +1,10 @@
 node_modules
 *.bak
 .cache
-src/dist/
+.vscode
 *.log
 debug.log
 *.log
-/dist/
-/src/
+dist/
+
+dist

@@ -3,17 +3,18 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
-const beautifyplugin = terser({
+const manglecompressplugin = terser({
+    toplevel: true,
     sourcemap: true,
-    compress: false,
-    mangle: false,
+    compress: true,
+    mangle: { properties: false },
     output: {
         ascii_only: !0,
         comments: !1,
         beautify: true
     }
 });
-const terserplugin = terser({
+const dropcompressplugin = terser({
     sourcemap: true,
     toplevel: true,
     output: { ecma: 5, comments: !1, ascii_only: !0 },
@@ -44,11 +45,11 @@ export default [
             babel({
                 presets: ["@babel/preset-env"]
             }),
-            terserplugin
+            dropcompressplugin
         ]
     },
     {
-        external: ["path", "fs", "process"],
+        external: ["path", "fs", "process", "child_process"],
         input: "./cli/src/index.js",
         output: [
             {
@@ -65,7 +66,8 @@ export default [
             babel({
                 presets: ["@babel/preset-env"]
             }),
-            beautifyplugin
+
+            manglecompressplugin
         ]
     }
 ];

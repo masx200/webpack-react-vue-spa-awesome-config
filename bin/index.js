@@ -1,310 +1,194 @@
 #!/usr/bin/env node
 "use strict";
 
-function _interopDefault(ex) {
-    return ex && typeof ex === "object" && "default" in ex ? ex["default"] : ex;
+function e(e) {
+    return e && "object" == typeof e && "default" in e ? e.default : e;
 }
 
-var process$1 = _interopDefault(require("process"));
+var o = e(require("process")), n = e(require("fs")), t = e(require("path")), r = require("child_process");
 
-var fs = _interopDefault(require("fs"));
-
-var path$1 = _interopDefault(require("path"));
-
-function consolehello() {
-    console.log("\n");
-    console.log("webpack-react-vue-spa-awesome-config");
-    console.log("\n");
-    console.log("\u6781\u901f\u3001\u96f6\u914d\u7f6e\u7684 web \u5e94\u7528\u6253\u5305\u5de5\u5177, \u540c\u65f6\u652f\u6301 react \u548c vue \u7684\u5355\u9875\u9762\u5e94\u7528,\u63d0\u4f9b\u5f00\u7bb1\u5373\u7528\u652f\u6301,\u57fa\u4e8ewebpack 4.x");
-    console.log("\n");
-    console.log("Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support");
-    console.log("\n");
-    console.log("\nworking directory : ".concat(process.cwd(), "\n"));
-    console.log("\ncommand filename : ".concat(__filename, "\n"));
-}
-
-function _inherits(subClass, superClass) {
-    if (typeof superClass !== "function" && superClass !== null) {
-        throw new TypeError("Super expression must either be null or a function");
-    }
-    subClass.prototype = Object.create(superClass && superClass.prototype, {
+function c(e, o) {
+    if ("function" != typeof o && null !== o) throw new TypeError("Super expression must either be null or a function");
+    e.prototype = Object.create(o && o.prototype, {
         constructor: {
-            value: subClass,
-            writable: true,
-            configurable: true
+            value: e,
+            writable: !0,
+            configurable: !0
         }
-    });
-    if (superClass) _setPrototypeOf(subClass, superClass);
+    }), o && i(e, o);
 }
 
-function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-    };
-    return _getPrototypeOf(o);
+function l(e) {
+    return (l = Object.setPrototypeOf ? Object.getPrototypeOf : function(e) {
+        return e.__proto__ || Object.getPrototypeOf(e);
+    })(e);
 }
 
-function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-        o.__proto__ = p;
-        return o;
-    };
-    return _setPrototypeOf(o, p);
+function i(e, o) {
+    return (i = Object.setPrototypeOf || function(e, o) {
+        return e.__proto__ = o, e;
+    })(e, o);
 }
 
-function isNativeReflectConstruct() {
-    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-    if (Reflect.construct.sham) return false;
-    if (typeof Proxy === "function") return true;
+function u() {
+    if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
+    if (Reflect.construct.sham) return !1;
+    if ("function" == typeof Proxy) return !0;
     try {
-        Date.prototype.toString.call(Reflect.construct(Date, [], (function() {})));
-        return true;
+        return Date.prototype.toString.call(Reflect.construct(Date, [], (function() {}))), 
+        !0;
     } catch (e) {
-        return false;
+        return !1;
     }
 }
 
-function _construct(Parent, args, Class) {
-    if (isNativeReflectConstruct()) {
-        _construct = Reflect.construct;
-    } else {
-        _construct = function _construct(Parent, args, Class) {
-            var a = [ null ];
-            a.push.apply(a, args);
-            var Constructor = Function.bind.apply(Parent, a);
-            var instance = new Constructor;
-            if (Class) _setPrototypeOf(instance, Class.prototype);
-            return instance;
-        };
-    }
-    return _construct.apply(null, arguments);
+function s(e, o, n) {
+    return (s = u() ? Reflect.construct : function(e, o, n) {
+        var t = [ null ];
+        t.push.apply(t, o);
+        var r = new (Function.bind.apply(e, t));
+        return n && i(r, n.prototype), r;
+    }).apply(null, arguments);
 }
 
-function _isNativeFunction(fn) {
-    return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-
-function _wrapNativeSuper(Class) {
-    var _cache = typeof Map === "function" ? new Map : undefined;
-    _wrapNativeSuper = function _wrapNativeSuper(Class) {
-        if (Class === null || !_isNativeFunction(Class)) return Class;
-        if (typeof Class !== "function") {
-            throw new TypeError("Super expression must either be null or a function");
+function a(e) {
+    var o = "function" == typeof Map ? new Map : void 0;
+    return (a = function(e) {
+        if (null === e || (n = e, -1 === Function.toString.call(n).indexOf("[native code]"))) return e;
+        var n;
+        if ("function" != typeof e) throw new TypeError("Super expression must either be null or a function");
+        if (void 0 !== o) {
+            if (o.has(e)) return o.get(e);
+            o.set(e, t);
         }
-        if (typeof _cache !== "undefined") {
-            if (_cache.has(Class)) return _cache.get(Class);
-            _cache.set(Class, Wrapper);
+        function t() {
+            return s(e, arguments, l(this).constructor);
         }
-        function Wrapper() {
-            return _construct(Class, arguments, _getPrototypeOf(this).constructor);
-        }
-        Wrapper.prototype = Object.create(Class.prototype, {
+        return t.prototype = Object.create(e.prototype, {
             constructor: {
-                value: Wrapper,
-                enumerable: false,
-                writable: true,
-                configurable: true
+                value: t,
+                enumerable: !1,
+                writable: !0,
+                configurable: !0
             }
-        });
-        return _setPrototypeOf(Wrapper, Class);
-    };
-    return _wrapNativeSuper(Class);
+        }), i(t, e);
+    })(e);
 }
 
-function _wrapRegExp(re, groups) {
-    _wrapRegExp = function(re, groups) {
-        return new BabelRegExp(re, undefined, groups);
+function p(e, o) {
+    p = function(e, o) {
+        return new l(e, void 0, o);
     };
-    var _RegExp = _wrapNativeSuper(RegExp);
-    var _super = RegExp.prototype;
-    var _groups = new WeakMap;
-    function BabelRegExp(re, flags, groups) {
-        var _this = _RegExp.call(this, re, flags);
-        _groups.set(_this, groups || _groups.get(re));
-        return _this;
+    var n = a(RegExp), t = RegExp.prototype, r = new WeakMap;
+    function l(e, o, t) {
+        var c = n.call(this, e, o);
+        return r.set(c, t || r.get(e)), c;
     }
-    _inherits(BabelRegExp, _RegExp);
-    BabelRegExp.prototype.exec = function(str) {
-        var result = _super.exec.call(this, str);
-        if (result) result.groups = buildGroups(result, this);
-        return result;
-    };
-    BabelRegExp.prototype[Symbol.replace] = function(str, substitution) {
-        if (typeof substitution === "string") {
-            var groups = _groups.get(this);
-            return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, (function(_, name) {
-                return "$" + groups[name];
-            })));
-        } else if (typeof substitution === "function") {
-            var _this = this;
-            return _super[Symbol.replace].call(this, str, (function() {
-                var args = [];
-                args.push.apply(args, arguments);
-                if (typeof args[args.length - 1] !== "object") {
-                    args.push(buildGroups(args, _this));
-                }
-                return substitution.apply(this, args);
-            }));
-        } else {
-            return _super[Symbol.replace].call(this, str, substitution);
-        }
-    };
-    function buildGroups(result, re) {
-        var g = _groups.get(re);
-        return Object.keys(g).reduce((function(groups, name) {
-            groups[name] = result[g[name]];
-            return groups;
+    function i(e, o) {
+        var n = r.get(o);
+        return Object.keys(n).reduce((function(o, t) {
+            return o[t] = e[n[t]], o;
         }), Object.create(null));
     }
-    return _wrapRegExp.apply(this, arguments);
-}
-
-function parseargs(args) {
-    var \u53c2\u6570obj = {};
-    args.filter((function(s) {
-        return s.startsWith("--");
-    })).map((function(s) {
-        return _wrapRegExp(/\x2D\x2D(.+)=(.+)/g, {
-            key: 1,
-            value: 2
-        }).exec(s);
-    })).forEach((function(execArray) {
-        var _a, _b, _c;
-        var groups = (_a = execArray) === null || _a === void 0 ? void 0 : _a.groups;
-        var key = (_b = groups) === null || _b === void 0 ? void 0 : _b.key;
-        var value = (_c = groups) === null || _c === void 0 ? void 0 : _c.value;
-        if (key && value) {
-            \u53c2\u6570obj[key] = value;
+    return c(l, n), l.prototype.exec = function(e) {
+        var o = t.exec.call(this, e);
+        return o && (o.groups = i(o, this)), o;
+    }, l.prototype[Symbol.replace] = function(e, o) {
+        if ("string" == typeof o) {
+            var n = r.get(this);
+            return t[Symbol.replace].call(this, e, o.replace(/\$<([^>]+)>/g, (function(e, o) {
+                return "$" + n[o];
+            })));
         }
-    }));
-    return \u53c2\u6570obj;
-}
-
-function \u5224\u65ad\u5e76\u521b\u5efa\u76ee\u5f55(p) {
-    if (!fs.existsSync(p)) {
-        console.log("\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55", p);
-        console.log("\n");
-        fs.mkdirSync(p);
-    }
-}
-
-var pwddir = process$1.cwd();
-
-function \u751f\u6210\u5165\u53e3\u6587\u4ef6(sourcefiles, destfiles) {
-    destfiles.forEach((function(p, i) {
-        if (!fs.existsSync(p)) {
-            console.log("inputfile  not exsited! ".concat(p, "\n"));
-            console.log("initialize inputfile from ".concat(sourcefiles[i], "\n"));
-            [ "public", "src" ].map((function(t) {
-                return path$1.resolve(pwddir, t);
-            })).forEach((function(e) {
-                return \u5224\u65ad\u5e76\u521b\u5efa\u76ee\u5f55(e);
+        if ("function" == typeof o) {
+            var c = this;
+            return t[Symbol.replace].call(this, e, (function() {
+                var e = [];
+                return e.push.apply(e, arguments), "object" != typeof e[e.length - 1] && e.push(i(e, c)), 
+                o.apply(this, e);
             }));
-            fs.copyFileSync(sourcefiles[i], p);
         }
+        return t[Symbol.replace].call(this, e, o);
+    }, p.apply(this, arguments);
+}
+
+var f = o.cwd();
+
+function g(e, o) {
+    o.forEach((function(o, r) {
+        n.existsSync(o) || (console.log("inputfile  not exsited! ".concat(o, "\n")), console.log("initialize inputfile from ".concat(e[r], "\n")), 
+        [ "public", "src" ].map((function(e) {
+            return t.resolve(f, e);
+        })).forEach((function(e) {
+            return function(e) {
+                n.existsSync(e) || (console.log("\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55", e), 
+                console.log("\n"), n.mkdirSync(e));
+            }(e);
+        })), n.copyFileSync(e[r], o));
     }));
 }
 
-function commandfind(t) {
-    return path$1.join(__dirname, "../", "node_modules", ".bin", t.trim() + (process$1.platform === "win32" ? ".cmd" : ""));
+function d(e) {
+    return t.join(__dirname, "../", "node_modules", ".bin", e.trim() + ("win32" === o.platform ? ".cmd" : ""));
 }
 
-var _require = require("child_process"), spawn = _require.spawn;
-
-function \u6267\u884c\u547d\u4ee4(command, commandargs) {
+function v(e, o) {
     console.log("\n");
-    var runobj = spawn(command, commandargs, {
+    var n = r.spawn(e, o, {
         stdio: [ "pipe", "pipe", "pipe" ]
     });
-    runobj.stdout.on("data", (function(data) {
-        console.log(" ".concat(data).split("\n").filter((function(t) {
-            return t !== "";
-        })).join("\n\n"));
-        console.log("\n");
-    }));
-    runobj.stderr.on("data", (function(data) {
-        console.error(" ".concat(data).split("\n").filter((function(t) {
-            return t !== "";
-        })).join("\n\n"));
-        console.log("\n");
+    n.stdout.on("data", (function(e) {
+        console.log(" ".concat(e).split("\n").filter((function(e) {
+            return "" !== e;
+        })).join("\n\n")), console.log("\n");
+    })), n.stderr.on("data", (function(e) {
+        console.error(" ".concat(e).split("\n").filter((function(e) {
+            return "" !== e;
+        })).join("\n\n")), console.log("\n");
     }));
 }
 
-var path = require("path");
-
-var pwddir$1 = process.cwd();
-
-var inputfiles = [ "public/index.html", "src/index.js", "public/favicon.ico" ];
-
-var sourcefiles = inputfiles.map((function(p) {
-    return path.resolve(__dirname, "../", "release", p);
+var b = require("path"), y = process.cwd(), h = [ "public/index.html", "src/index.js", "public/favicon.ico" ], m = h.map((function(e) {
+    return b.resolve(__dirname, "../", "release", e);
+})), w = h.map((function(e) {
+    return b.resolve(y, e);
 }));
 
-var destfiles = inputfiles.map((function(p) {
-    return path.resolve(pwddir$1, p);
-}));
+console.log("\n"), console.log("webpack-react-vue-spa-awesome-config"), console.log("\n"), 
+console.log("\u6781\u901f\u3001\u96f6\u914d\u7f6e\u7684 web \u5e94\u7528\u6253\u5305\u5de5\u5177, \u540c\u65f6\u652f\u6301 react \u548c vue \u7684\u5355\u9875\u9762\u5e94\u7528,\u63d0\u4f9b\u5f00\u7bb1\u5373\u7528\u652f\u6301,\u57fa\u4e8ewebpack 4.x"), 
+console.log("\n"), console.log("Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support"), 
+console.log("\n"), console.log("\nworking directory : ".concat(process.cwd(), "\n")), 
+console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-function start(operation, \u53c2\u6570object) {
-    var \u89e3\u6790\u53c2\u6570config = \u53c2\u6570object["config"];
-    var \u53c2\u6570reacthotreload = \u53c2\u6570object["react-hot-loader"];
-    var defaultwebpackconfig = require.resolve(path$1.resolve(__dirname, "../"));
-    var \u53c2\u6570webpackconfigfile = \u89e3\u6790\u53c2\u6570config ? path$1.resolve(\u89e3\u6790\u53c2\u6570config) : defaultwebpackconfig;
-    var \u89e3\u6790\u53c2\u6570publicpath = \u53c2\u6570object["output-public-path"];
-    var mode = \u53c2\u6570object["mode"];
-    if ("start" === operation || "development" === mode) {
-        var command, commandargs;
-        process$1.env.NODE_ENV = "development";
-        \u751f\u6210\u5165\u53e3\u6587\u4ef6(sourcefiles, destfiles);
-        command = commandfind("webpack-dev-server ");
-        commandargs = [ "--config", \u53c2\u6570webpackconfigfile, "--mode=" + process$1.env.NODE_ENV ];
-        if (\u53c2\u6570reacthotreload) {
-            commandargs.push("--react-hot-loader=" + \u53c2\u6570reacthotreload);
-            console.log("\n");
-        }
-        console.log("\n");
-        console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server");
-        console.log("\n");
-        \u6267\u884c\u547d\u4ee4(command, commandargs);
-    } else if ("build" === operation || "production" === mode) {
-        var _command, _commandargs;
-        console.log("\n");
-        console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack");
-        console.log("\n");
-        process$1.env.NODE_ENV = "production";
-        \u751f\u6210\u5165\u53e3\u6587\u4ef6(sourcefiles, destfiles);
-        _command = commandfind("webpack ");
-        _commandargs = [ "--config", \u53c2\u6570webpackconfigfile, "--mode=" + process$1.env.NODE_ENV ];
-        if (\u89e3\u6790\u53c2\u6570publicpath && \u89e3\u6790\u53c2\u6570publicpath.length) {
-            _commandargs.push("--output-public-path=" + \u89e3\u6790\u53c2\u6570publicpath);
-            console.log("\n");
-        }
-        \u6267\u884c\u547d\u4ee4(_command, _commandargs);
-    } else {
-        console.log("\n");
-        console.log("usage:");
-        console.log("\n");
-        console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server");
-        console.log("\n");
-        console.log("webpack-react-vue-spa-awesome-config start --mode=development");
-        console.log("\n");
-        console.log("\u751f\u4ea7\u6a21\u5f0f\n    \u542f\u52a8 webpack");
-        console.log("\n");
-        console.log("webpack-react-vue-spa-awesome-config build --mode=production");
-        console.log("\n");
-    }
-}
+var _, x = o.argv.slice(1), O = x.includes("start") ? "start" : x.includes("build") ? "build" : void 0, k = (_ = {}, 
+x.filter((function(e) {
+    return e.startsWith("--");
+})).map((function(e) {
+    return p(/\x2D\x2D(.+)=(.+)/g, {
+        key: 1,
+        value: 2
+    }).exec(e);
+})).forEach((function(e) {
+    var o, n, t, r = null === (o = e) || void 0 === o ? void 0 : o.groups, c = null === (n = r) || void 0 === n ? void 0 : n.key, l = null === (t = r) || void 0 === t ? void 0 : t.value;
+    c && l && (_[c] = l);
+})), _);
 
-consolehello();
-
-var inargs = process$1.argv.slice(1);
-
-var operation = inargs.includes("start") ? "start" : inargs.includes("build") ? "build" : undefined;
-
-var \u53c2\u6570object = parseargs(inargs);
-
-console.log("\u89e3\u6790\u7684\u53c2\u6570:");
-
-console.log(JSON.stringify(\u53c2\u6570object, null, 4));
-
-start(operation, \u53c2\u6570object);
+console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(k, null, 4)), 
+function(e, n) {
+    var r, c, l = n.config, i = n["react-hot-loader"], u = require.resolve(t.resolve(__dirname, "../")), s = l ? t.resolve(l) : u, a = n["output-public-path"], p = n.mode;
+    if ("start" === e || "development" === p) o.env.NODE_ENV = "development", g(m, w), 
+    r = d("webpack-dev-server "), c = [ "--config", s, "--mode=" + o.env.NODE_ENV ], 
+    i && (c.push("--react-hot-loader=" + i), console.log("\n")), console.log("\n"), 
+    console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), console.log("\n"), 
+    v(r, c); else if ("build" === e || "production" === p) {
+        var f, b;
+        console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 
+        console.log("\n"), o.env.NODE_ENV = "production", g(m, w), f = d("webpack "), b = [ "--config", s, "--mode=" + o.env.NODE_ENV ], 
+        a && a.length && (b.push("--output-public-path=" + a), console.log("\n")), v(f, b);
+    } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
+    console.log("\n"), console.log("webpack-react-vue-spa-awesome-config start --mode=development"), 
+    console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n    \u542f\u52a8 webpack"), 
+    console.log("\n"), console.log("webpack-react-vue-spa-awesome-config build --mode=production"), 
+    console.log("\n"), o.exit(1);
+}(O, k);
 //# sourceMappingURL=index.js.map
