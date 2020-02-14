@@ -6,8 +6,8 @@ import 执行命令 from "./call-command";
 import { sourcefiles, destfiles } from "./source-dest-files";
 
 /**
- * @param {string} operation
- * @param {{}} 参数object
+ * @param {string|undefined} operation
+ * @param {Record<string,string>} 参数object
  */
 export function start(operation, 参数object) {
     const 解析参数config = 参数object["config"];

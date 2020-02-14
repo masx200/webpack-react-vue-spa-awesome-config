@@ -1,5 +1,10 @@
 "use strict";
+/**
+ * @param {string[]} args
+ * @returns{Record<string,string>}
+ */
 function parseargs(args) {
+    /**@type{Record<string,string>} */
     const 参数obj = {};
     args.filter(s => s.startsWith("--"))
         .map(s => /--(?<key>.+)=(?<value>.+)/g.exec(s))
@@ -41,7 +46,7 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpackEnv = process.env.NODE_ENV;
 const isEnvDevelopment = "development" === webpackEnv;
@@ -60,6 +65,9 @@ if ("production" === process.env.NODE_ENV) {
         }
     }
 }
+/**
+ * @type{import('webpack').Configuration}
+ */
 module.exports = {
     resolve: { alias: { "@": path.join(__dirname, "src") } },
     devServer: {
