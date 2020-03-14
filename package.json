@@ -100,7 +100,10 @@
         "@rollup/plugin-json": "^4.0.2",
         "@rollup/plugin-node-resolve": "^7.1.1",
         "core-js-pure": "^3.2.1",
-        "eslint": "^6.1.0",
+        
+"eslint": "^6.8.0",
+"minimist":"1.2.5",
+"acorn":"7.1.1",
         "event-target-shim": "^5.0.1",
         "prettier": "^1.19.1",
         "rollup": "^1.31.0",
