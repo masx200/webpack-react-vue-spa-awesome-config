@@ -96,6 +96,8 @@
         "worker-loader": "^2.0.0"
     },
     "devDependencies": {
+        "react": "16",
+        "vue": "2",
         "@rollup/plugin-commonjs": "^11.0.2",
         "@rollup/plugin-json": "^4.0.2",
         "@rollup/plugin-node-resolve": "^7.1.1",
