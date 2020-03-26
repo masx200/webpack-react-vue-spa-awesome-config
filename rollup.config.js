@@ -27,7 +27,7 @@ const dropcompressplugin = terser({
     },
     mangle: { properties: false }
 });
-const banner = `#!/usr/bin/env node`;
+const banner = `#!/usr/bin/env node\n`;
 export default [
     {
         input: "./polyfill/src/index.js",
