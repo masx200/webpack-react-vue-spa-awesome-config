@@ -143,7 +143,7 @@ module.exports = {
                     isEnvDevelopment
                         ? {
                               loader: require.resolve("style-loader"),
-                              options: { sourceMap: shouldUseSourceMap }
+                              options: { /* sourceMap: shouldUseSourceMap */ }
                           }
                         : { loader: MiniCssExtractPlugin.loader },
                     {
@@ -190,7 +190,10 @@ module.exports = {
                     isEnvDevelopment
                         ? {
                               loader: require.resolve("style-loader"),
-                              options: { sourceMap: shouldUseSourceMap }
+                              /* ValidationError: Invalid options object. Style Loader has been initialized using an options object that does not match the API schema.
+ - options has an unknown property 'sourceMap'. These properties are valid:
+   object { injectType?, attributes?, insert?, base?, esModule? } */
+                              options: { /* sourceMap: shouldUseSourceMap */ }
                           }
                         : { loader: MiniCssExtractPlugin.loader },
                     {
