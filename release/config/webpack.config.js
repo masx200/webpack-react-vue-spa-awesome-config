@@ -310,7 +310,9 @@ module.exports = {
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
         new WorkboxWebpackPlugin.GenerateSW({
             clientsClaim: !0,
-            importWorkboxFrom: "cdn",
+            /* Please check your GenerateSW plugin configuration:
+"importWorkboxFrom" is not a supported parameter. */
+            // importWorkboxFrom: "cdn",
             runtimeCaching: [
                 {
                     urlPattern: /.*\.(?:js|html|\/)$/,
