@@ -59,7 +59,7 @@
         "json-loader": "^0.5.7",
         "less": "^3.11.1",
         "less-loader": "^5.0.0",
-        "lodash": "^4.17.19",
+        
         "mini-css-extract-plugin": "^0.9.0",
         "node-sass": "^4.13.1",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -108,7 +108,8 @@
         "rollup": "^2.2.0",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-terser": "^5.3.0",
-        "vue": "^2.6.11"
+        "vue": "^2.6.11",
+        "lodash": "^4.17.19",
     },
     "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
