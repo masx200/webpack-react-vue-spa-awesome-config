@@ -1,7 +1,7 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "2.7.1",
+    "version": "2.7.2",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -109,7 +109,8 @@
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-terser": "^7.0.0",
         "vue": "^2.6.11",
-        "lodash": "^4.17.19"
+        "lodash": "^4.17.19",
+"yargs-parser":"20.0.0"
     },
     "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
