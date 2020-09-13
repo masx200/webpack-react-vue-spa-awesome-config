@@ -11,8 +11,8 @@ const manglecompressplugin = terser({
     output: {
         ascii_only: !0,
         comments: !1,
-        beautify: true
-    }
+        beautify: true,
+    },
 });
 const dropcompressplugin = terser({
     sourcemap: true,
@@ -23,9 +23,9 @@ const dropcompressplugin = terser({
         unused: true,
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ["console.log"]
+        pure_funcs: ["console.log"],
     },
-    mangle: { properties: false }
+    mangle: { properties: false },
 });
 const banner = `#!/usr/bin/env node\n`;
 export default [
@@ -35,18 +35,18 @@ export default [
             {
                 file: "./polyfill/polyfill.min.js",
                 format: "iife",
-                sourcemap: true
-            }
+                sourcemap: true,
+            },
         ],
         plugins: [
             resolve(),
             commonjs(),
             json(),
             babel({
-                presets: ["@babel/preset-env"]
+                presets: ["@babel/preset-env"],
             }),
-            dropcompressplugin
-        ]
+            dropcompressplugin,
+        ],
     },
     {
         external: ["path", "fs", "process", "child_process"],
@@ -56,18 +56,18 @@ export default [
                 banner,
                 file: "./bin/index.js",
                 format: "commonjs",
-                sourcemap: true
-            }
+                sourcemap: true,
+            },
         ],
         plugins: [
             resolve(),
             commonjs(),
             json(),
             babel({
-                presets: ["@babel/preset-env"]
+                presets: ["@babel/preset-env"],
             }),
 
-            manglecompressplugin
-        ]
-    }
+            manglecompressplugin,
+        ],
+    },
 ];

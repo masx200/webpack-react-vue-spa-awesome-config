@@ -8,7 +8,7 @@
             "serviceWorker" in navigator &&
                 window.addEventListener(
                     "load",
-                    function() {
+                    function () {
                         navigator.serviceWorker
                             .register("service-worker.js")
                             .catch(() => {});
