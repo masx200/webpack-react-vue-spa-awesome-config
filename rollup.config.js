@@ -5,7 +5,7 @@ import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
 const manglecompressplugin = terser({
     toplevel: true,
-    sourcemap: true,
+    //   sourcemap: true,
     compress: true,
     mangle: { properties: false },
     output: {
@@ -15,7 +15,7 @@ const manglecompressplugin = terser({
     },
 });
 const dropcompressplugin = terser({
-    sourcemap: true,
+    //    sourcemap: true,
     toplevel: true,
     output: { ecma: 5, comments: !1, ascii_only: !0 },
     compress: {
