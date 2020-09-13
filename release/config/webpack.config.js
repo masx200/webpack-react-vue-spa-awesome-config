@@ -189,9 +189,40 @@ module.exports = {
             {
                 test: /\.worker\.js$/,
                 loader: require.resolve("worker-loader"),
+
+                /*
+
+ValidationError: Invalid options object. Worker Loader has been initialized using an options object that does not match the API schema.
+11:12:59.041  	 - options has an unknown property 'name'. These properties are valid:
+11:12:59.041  	   object { worker?, publicPath?, filename?, chunkFilename?, inline?, esModule? }
+11:12:59.041  	 - options.inline should be one of these:
+11:12:59.041  	   "no-fallback" | "fallback"
+
+
+*/
+                /*
+filename
+
+Type: String|Function Default: based on output.filename, adding worker suffix, for example - output.filename: '[name].js' value of this option will be [name].worker.js
+
+The filename of entry chunks for web workers.
+
+
+*/
+                /*
+inline
+
+Type: 'fallback' | 'no-fallback' Default: undefined
+
+Allow to inline the worker as a BLOB.
+
+Inline mode with the fallback value will create file for browsers without support web workers, to disable this behavior just use no-fallback value
+
+
+*/
                 options: {
-                    name: "[name].[hash].worker.js",
-                    inline: !0,
+                    filename: "[name].[hash].worker.js",
+                    inline: "no-fallback",
                 },
             },
             {
