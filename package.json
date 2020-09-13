@@ -85,17 +85,17 @@
         
         "uglifyjs-webpack-plugin": "^2.2.0",
         "unicode-loader": "^1.0.7",
-        "url-loader": "^4.0.0",
-        "vue-loader": "^15.9.1",
+        "url-loader": "^4.1.0",
+        "vue-loader": "^15.9.3",
         "vue-style-loader": "^4.1.2",
-        "vue-template-compiler": "^2.6.11",
+        "vue-template-compiler": "^2.6.12",
         "webpack": "^4.44.1",
-        "webpack-cli": "^3.3.11",
+        "webpack-cli": "^3.3.12",
         "webpack-copyfiles-plugin": "^1.0.9",
         "webpack-deep-scope-plugin": "^1.6.2",
-        "webpack-dev-server": "^3.10.3",
-        "workbox-webpack-plugin": "^5.1.2",
-        "worker-loader": "^2.0.0"
+        "webpack-dev-server": "^3.11.0",
+        "workbox-webpack-plugin": "^5.1.4",
+        "worker-loader": "3.0.2"
     },
     "devDependencies": {
 "tslib": "2.0.1",
