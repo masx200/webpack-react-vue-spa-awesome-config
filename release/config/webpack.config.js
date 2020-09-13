@@ -6,9 +6,9 @@
 function parseargs(args) {
     /**@type{Record<string,string>} */
     const 参数obj = {};
-    args.filter(s => s.startsWith("--"))
-        .map(s => /--(?<key>.+)=(?<value>.+)/g.exec(s))
-        .forEach(execArray => {
+    args.filter((s) => s.startsWith("--"))
+        .map((s) => /--(?<key>.+)=(?<value>.+)/g.exec(s))
+        .forEach((execArray) => {
             var _a, _b, _c;
             const groups =
                 (_a = execArray) === null || _a === void 0 ? void 0 : _a.groups;
@@ -77,13 +77,13 @@ module.exports = {
         port,
         inline: !0,
         open: !0,
-        watchContentBase: !0
+        watchContentBase: !0,
     },
     devtool: "inline-source-map",
     mode: process.env.NODE_ENV,
     entry: [
         isEnvDevelopment && 参数reacthotreload && "react-hot-loader/patch",
-        path.join(__dirname, "src", "index.js")
+        path.join(__dirname, "src", "index.js"),
     ].filter(Boolean),
     output: {
         publicPath,
@@ -94,7 +94,7 @@ module.exports = {
         path: path.join(__dirname, "dist"),
         chunkFilename: isEnvDevelopment
             ? "chunk.[name].[hash].js"
-            : "chunk.[name].[chunkhash].js"
+            : "chunk.[name].[chunkhash].js",
     },
     module: {
         strictExportPresence: !0,
@@ -112,11 +112,11 @@ module.exports = {
                             require.resolve(
                                 "@babel/plugin-proposal-decorators"
                             ),
-                            { legacy: true }
+                            { legacy: true },
                         ],
                         [
                             "@babel/plugin-proposal-class-properties",
-                            { loose: true }
+                            { loose: true },
                         ],
                         [
                             require.resolve("babel-plugin-htm"),
@@ -124,18 +124,18 @@ module.exports = {
                                 pragma: "h",
                                 tag: "html",
                                 useBuiltIns: true,
-                                useNativeSpread: true
-                            }
-                        ]
+                                useNativeSpread: true,
+                            },
+                        ],
                     ].filter(Boolean),
                     presets: [require.resolve("babel-preset-react-app")],
                     babelrc: false,
                     configFile: false,
                     cacheDirectory: !0,
                     cacheCompression: isEnvProduction,
-                    compact: isEnvProduction
+                    compact: isEnvProduction,
                 },
-                include: [path.resolve(__dirname, "src")]
+                include: [path.resolve(__dirname, "src")],
             },
             {
                 test: /\.(less)$/,
@@ -143,17 +143,31 @@ module.exports = {
                     isEnvDevelopment
                         ? {
                               loader: require.resolve("style-loader"),
-                              options: { /* sourceMap: shouldUseSourceMap */ }
+                              options: {
+                                  /* sourceMap: shouldUseSourceMap */
+                              },
                           }
                         : { loader: MiniCssExtractPlugin.loader },
                     {
                         loader: require.resolve("css-loader"),
-                        options: { sourceMap: shouldUseSourceMap }
+                        options: { sourceMap: shouldUseSourceMap },
                     },
                     {
                         loader: require.resolve("postcss-loader"),
                         options: {
-                            ident: "postcss",
+                            postcssOptions: {
+                                plugins: [
+                                    require("postcss-flexbugs-fixes"),
+                                    require("postcss-preset-env")({
+                                        autoprefixer: { flexbox: "no-2009" },
+                                        stage: 3,
+                                    }),
+                                    postcssNormalize(),
+                                ],
+                            },
+
+                            //   ident: "postcss",
+                            /*
                             plugins: () => [
                                 require("postcss-flexbugs-fixes"),
                                 require("postcss-preset-env")({
@@ -161,15 +175,15 @@ module.exports = {
                                     stage: 3
                                 }),
                                 postcssNormalize()
-                            ],
-                            sourceMap: isEnvProduction && shouldUseSourceMap
-                        }
+                            ],*/
+                            sourceMap: isEnvProduction && shouldUseSourceMap,
+                        },
                     },
                     {
                         loader: require.resolve("less-loader"),
-                        options: { sourceMap: shouldUseSourceMap }
-                    }
-                ]
+                        options: { sourceMap: shouldUseSourceMap },
+                    },
+                ],
             },
             { parser: { requireEnsure: !1 } },
             {
@@ -177,12 +191,12 @@ module.exports = {
                 loader: require.resolve("worker-loader"),
                 options: {
                     name: "[name].[hash].worker.js",
-                    inline: !0
-                }
+                    inline: !0,
+                },
             },
             {
                 test: /\.vue$/,
-                loader: require.resolve("vue-loader")
+                loader: require.resolve("vue-loader"),
             },
             {
                 test: /\.(css|sass|scss)$/,
@@ -193,33 +207,45 @@ module.exports = {
                               /* ValidationError: Invalid options object. Style Loader has been initialized using an options object that does not match the API schema.
  - options has an unknown property 'sourceMap'. These properties are valid:
    object { injectType?, attributes?, insert?, base?, esModule? } */
-                              options: { /* sourceMap: shouldUseSourceMap */ }
+                              options: {
+                                  /* sourceMap: shouldUseSourceMap */
+                              },
                           }
                         : { loader: MiniCssExtractPlugin.loader },
                     {
                         loader: require.resolve("css-loader"),
-                        options: { sourceMap: shouldUseSourceMap }
+                        options: { sourceMap: shouldUseSourceMap },
                     },
                     {
                         loader: require.resolve("postcss-loader"),
+
+                        /*  
+      ValidationError: Invalid options object. PostCSS Loader has been initialized using an options object that does not match the API schema.
+11:12:59.047  	     - options has an unknown property 'plugins'. These properties are valid:
+11:12:59.047  	       object { postcssOptions?, execute?, sourceMap? }
+
+*/
                         options: {
-                            ident: "postcss",
-                            plugins: () => [
-                                require("postcss-flexbugs-fixes"),
-                                require("postcss-preset-env")({
-                                    autoprefixer: { flexbox: "no-2009" },
-                                    stage: 3
-                                }),
-                                postcssNormalize()
-                            ],
-                            sourceMap: isEnvProduction && shouldUseSourceMap
-                        }
+                            //   ident: "postcss",
+                            //          plugins: () => [
+                            postcssOptions: {
+                                plugins: [
+                                    require("postcss-flexbugs-fixes"),
+                                    require("postcss-preset-env")({
+                                        autoprefixer: { flexbox: "no-2009" },
+                                        stage: 3,
+                                    }),
+                                    postcssNormalize(),
+                                ],
+                            },
+                            sourceMap: isEnvProduction && shouldUseSourceMap,
+                        },
                     },
                     {
                         loader: require.resolve("fast-sass-loader"),
-                        options: {}
-                    }
-                ]
+                        options: {},
+                    },
+                ],
             },
             {
                 oneOf: [
@@ -229,15 +255,15 @@ module.exports = {
                             /\.gif$/,
                             /\.jpe?g$/,
                             /\.png$/,
-                            /\.svg$/
+                            /\.svg$/,
                         ],
                         loader: require.resolve("url-loader"),
                         options: {
                             limit: 10000,
                             name: isEnvDevelopment
                                 ? "[name].[hash].[ext]"
-                                : "[name].[contenthash].[ext]"
-                        }
+                                : "[name].[contenthash].[ext]",
+                        },
                     },
                     {
                         test: /\.(js|mjs|jsx|ts|tsx)$/,
@@ -245,7 +271,7 @@ module.exports = {
                         options: {
                             sourceMaps: shouldUseSourceMap,
                             presets: [
-                                require.resolve("babel-preset-react-app")
+                                require.resolve("babel-preset-react-app"),
                             ],
                             babelrc: false,
                             configFile: false,
@@ -254,9 +280,9 @@ module.exports = {
                             ),
                             cacheDirectory: !0,
                             cacheCompression: isEnvProduction,
-                            compact: isEnvProduction
+                            compact: isEnvProduction,
                         },
-                        include: [path.resolve(__dirname, "src")]
+                        include: [path.resolve(__dirname, "src")],
                     },
                     {
                         test: /\.(js|mjs)$/,
@@ -271,13 +297,13 @@ module.exports = {
                                     require.resolve(
                                         "babel-preset-react-app/dependencies"
                                     ),
-                                    { helpers: !0 }
-                                ]
+                                    { helpers: !0 },
+                                ],
                             ],
                             cacheDirectory: !0,
                             cacheCompression: isEnvProduction,
-                            sourceMaps: shouldUseSourceMap
-                        }
+                            sourceMaps: shouldUseSourceMap,
+                        },
                     },
                     {
                         loader: require.resolve("file-loader"),
@@ -286,17 +312,17 @@ module.exports = {
                             /\.(js|mjs|jsx|ts|tsx)$/,
                             /\.html$/,
                             /\.json$/,
-                            /\.(css|scss|sass|less)$/
+                            /\.(css|scss|sass|less)$/,
                         ],
                         options: {
                             name: isEnvDevelopment
                                 ? "[name].[hash].[ext]"
-                                : "[name].[contenthash].[ext]"
-                        }
-                    }
-                ]
-            }
-        ]
+                                : "[name].[contenthash].[ext]",
+                        },
+                    },
+                ],
+            },
+        ],
     },
     plugins: [
         isEnvProduction &&
@@ -304,7 +330,7 @@ module.exports = {
                 sourceRoot: path.join(__dirname, "public"),
                 targetRoot: path.join(__dirname, "dist"),
                 files: ["favicon.ico"],
-                cleanDirs: [path.join(__dirname, "dist")]
+                cleanDirs: [path.join(__dirname, "dist")],
             }),
         isEnvDevelopment && new webpack.NamedModulesPlugin(),
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
@@ -317,26 +343,26 @@ module.exports = {
                 {
                     urlPattern: /.*\.(?:js|html|\/)$/,
                     handler: "NetworkFirst",
-                    options: {}
+                    options: {},
                 },
                 {
                     urlPattern: /.*\.(?:xml|json|md|css)$/,
                     handler: "StaleWhileRevalidate",
-                    options: {}
+                    options: {},
                 },
                 {
                     urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
                     handler: "CacheFirst",
                     options: {
                         cacheName: "image-cache",
-                        expiration: { maxEntries: 10 }
-                    }
-                }
-            ]
+                        expiration: { maxEntries: 10 },
+                    },
+                },
+            ],
         }),
         new MiniCssExtractPlugin({
             filename: "[name].[chunkhash].css",
-            chunkFilename: "[name].[chunkhash].css"
+            chunkFilename: "[name].[chunkhash].css",
         }),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
@@ -353,14 +379,14 @@ module.exports = {
                 minifyJS: !0,
                 minifyCSS: !0,
                 minifyURLs: !0,
-                removeAttributeQuotes: !1
+                removeAttributeQuotes: !1,
             },
-            template: path.join(__dirname, "public", "index.html")
-        })
+            template: path.join(__dirname, "public", "index.html"),
+        }),
     ].filter(Boolean),
     optimization: {
         usedExports: true,
-        runtimeChunk: { name: e => `runtime~${e.name}` },
+        runtimeChunk: { name: (e) => `runtime~${e.name}` },
         splitChunks: {
             chunks: "all",
             minSize: 30000,
@@ -368,7 +394,7 @@ module.exports = {
             minChunks: 1,
             maxAsyncRequests: 5,
             maxInitialRequests: 5,
-            name: !0
+            name: !0,
         },
         minimize: isEnvProduction,
         minimizer: [
@@ -382,28 +408,28 @@ module.exports = {
                         inline: 2,
                         drop_console: true,
                         drop_debugger: true,
-                        pure_funcs: ["console.log"]
+                        pure_funcs: ["console.log"],
                     },
                     mangle: { safari10: !0 },
                     output: {
                         ecma: 5,
                         comments: !1,
-                        ascii_only: !0
-                    }
+                        ascii_only: !0,
+                    },
                 },
                 parallel: !0,
                 cache: !0,
-                sourceMap: shouldUseSourceMap
+                sourceMap: shouldUseSourceMap,
             }),
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
                     parser: safePostCssParser,
                     map: !!shouldUseSourceMap && {
                         inline: !1,
-                        annotation: !0
-                    }
-                }
-            })
-        ]
-    }
+                        annotation: !0,
+                    },
+                },
+            }),
+        ],
+    },
 };
