@@ -13,10 +13,8 @@
         "rollup": "rollup -c rollup.config.js",
         "prettier": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts",
         "test1": "node ./bin/index.js start",
-        "test2": "node ./bin/index.js --mode=development" ,
-"test3": "node ./bin/index.js build"
-
-
+        "test2": "node ./bin/index.js --mode=development",
+        "test3": "node ./bin/index.js build"
     },
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "license": "MIT",
