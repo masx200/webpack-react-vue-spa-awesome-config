@@ -29,7 +29,7 @@ export function start(operation, 参数object) {
         commandargs = [
             "--config",
             参数webpackconfigfile,
-            "--mode=" + process.env.NODE_ENV
+            "--mode=" + process.env.NODE_ENV,
         ];
         if (参数reacthotreload) {
             commandargs.push("--react-hot-loader=" + 参数reacthotreload);
@@ -53,7 +53,7 @@ export function start(operation, 参数object) {
         commandargs = [
             "--config",
             参数webpackconfigfile,
-            "--mode=" + process.env.NODE_ENV
+            "--mode=" + process.env.NODE_ENV,
         ];
         if (解析参数publicpath && 解析参数publicpath.length) {
             commandargs.push("--output-public-path=" + 解析参数publicpath);

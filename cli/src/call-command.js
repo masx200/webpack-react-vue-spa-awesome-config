@@ -9,29 +9,29 @@ function 执行命令(/* commandstring,  */ command, commandargs) {
     // console.log(commandstring);
     console.log("\n");
     const runobj = spawn(command, commandargs, {
-        stdio: ["pipe", "pipe", "pipe"]
+        stdio: ["pipe", "pipe", "pipe"],
     });
-    runobj.stdout.on("data", data => {
+    runobj.stdout.on("data", (data) => {
         console.log(
             ` ${data}`
                 .split("\n")
-                .filter(t => t !== "")
+                .filter((t) => t !== "")
                 .join("\n\n")
         );
         console.log("\n");
     });
-    runobj.stderr.on("data", data => {
+    runobj.stderr.on("data", (data) => {
         console.error(
             ` ${data}`
                 .split("\n")
-                .filter(t => t !== "")
+                .filter((t) => t !== "")
                 .join("\n\n")
         );
         console.log("\n");
     });
-runobj.on('close', (code) => {
-  console.log(`child process exited with code ${code}`);
-process.exit(code)
-});
+    runobj.on("close", (code) => {
+        console.log(`child process exited with code ${code}`);
+        process.exit(code);
+    });
 }
 export default 执行命令;
