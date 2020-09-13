@@ -29,5 +29,9 @@ function 执行命令(/* commandstring,  */ command, commandargs) {
         );
         console.log("\n");
     });
+runobj.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+process.exit(code)
+});
 }
 export default 执行命令;
