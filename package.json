@@ -1,7 +1,7 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "2.7.2",
+    "version": "2.7.3",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -96,7 +96,7 @@
     },
     "devDependencies": {
         "tslib": "2.0.1",
-        "typescript": "^4.2.0",
+        "typescript": "^4.0.2",
         "serialize-javascript": "^5.0.1",
         "@rollup/plugin-commonjs": "^15.0.0",
         "@rollup/plugin-json": "^4.1.0",
