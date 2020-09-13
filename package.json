@@ -11,7 +11,7 @@
         "start": "webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development",
         "build": "webpack  --config ./release/config/webpack.config.js     --mode=production",
         "rollup": "rollup -c rollup.config.js",
-        "prettier": "prettier --write *.js *.md *.json ./**/*.js",
+        "prettier": "prettier --write **/*.ts *.md *.json **/*.js",
         "test1": "node ./bin/index.js start",
         "test2": "node ./bin/index.js --mode=development"
     },
@@ -59,30 +59,26 @@
         "json-loader": "^0.5.7",
         "less": "^3.12.2",
         "less-loader": "^7.0.1",
-        
         "mini-css-extract-plugin": "^0.11.1",
         "node-sass": "^4.14.1",
         "optimize-css-assets-webpack-plugin": "^5.0.4",
         "postcss-flexbugs-fixes": "^4.2.1",
         "postcss-loader": "^4.0.1",
-"postcss":"7.0.32",
+        "postcss": "7.0.32",
         "postcss-normalize": "^9.0.0",
         "postcss-preset-env": "^6.7.0",
         "postcss-safe-parser": "^4.0.2",
-"purgecss-webpack-plugin":"2.3.0",
+        "purgecss-webpack-plugin": "2.3.0",
         "purify-css": "^1.2.5",
         "purifycss-webpack": "^0.7.0",
-
         "react-app-polyfill": "^1.0.6",
         "react-dev-utils": "^10.2.1",
         "react-hot-loader": "^4.12.21",
         "regenerator-runtime": "^0.13.7",
-        
         "style-loader": "^1.2.1",
         "terser": "^5.3.1",
         "terser-webpack-plugin": "^4.2.0",
         "to-string-loader": "^1.1.6",
-        
         "uglifyjs-webpack-plugin": "^2.2.0",
         "unicode-loader": "^1.0.7",
         "url-loader": "^4.1.0",
@@ -98,9 +94,9 @@
         "worker-loader": "3.0.2"
     },
     "devDependencies": {
-"tslib": "2.0.1",
+        "tslib": "2.0.1",
         "typescript": "^4.2.0",
-"serialize-javascript": "^5.0.1",
+        "serialize-javascript": "^5.0.1",
         "@rollup/plugin-commonjs": "^15.0.0",
         "@rollup/plugin-json": "^4.1.0",
         "@rollup/plugin-node-resolve": "^9.0.0",
@@ -112,13 +108,11 @@
         "react": "^16.13.1",
         "rollup": "^2.26.11",
         "rollup-plugin-babel": "^4.4.0",
-
-"@rollup/plugin-babel":"5.2.1",
+        "@rollup/plugin-babel": "5.2.1",
         "rollup-plugin-terser": "^7.0.2",
         "vue": "^2.6.11",
         "lodash": "^4.17.20",
-
-"yargs-parser":"20.0.0"
+        "yargs-parser": "20.0.0"
     },
     "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
@@ -127,10 +121,8 @@
         "react": "16.13.1",
         "vue": "2.6.12"
     },
-  "optionalDependencies": { 
-
-"react": "16.13.1",
+    "optionalDependencies": {
+        "react": "16.13.1",
         "vue": "2.6.12"
-}
-
+    }
 }

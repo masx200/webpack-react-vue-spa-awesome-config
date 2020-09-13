@@ -1,5 +1,10 @@
 {
-    "include": ["*.js", "*.ts","cli/src/*.js","./release/config/webpack.config.js"],
+    "include": [
+        "*.js",
+        "*.ts",
+        "cli/src/*.js",
+        "./release/config/webpack.config.js"
+    ],
     "compilerOptions": {
         "pretty": true,
         "removeComments": true,

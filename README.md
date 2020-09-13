@@ -400,8 +400,8 @@ module.exports = {
     output: {
         globalObject: `( (typeof window !== "undefined" ? window : false) ||
     (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||
-    this)`
-    }
+    this)`,
+    },
 };
 ```
 
@@ -438,7 +438,7 @@ if ("production" === process.env.NODE_ENV) {
         "127.0.0.1" !== location.hostname
     ) {
         "serviceWorker" in navigator &&
-            window.addEventListener("load", function() {
+            window.addEventListener("load", function () {
                 navigator.serviceWorker
                     .register("service-worker.js")
                     .catch(() => {});
