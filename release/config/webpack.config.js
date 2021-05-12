@@ -1,6 +1,6 @@
 "use strict";
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 /**
  * @param {string[]} args
  * @returns{Record<string,string>}
@@ -360,11 +360,10 @@ Inline mode with the fallback value will create file for browsers without supp
         ],
     },
     plugins: [
-    new webpack.ProgressPlugin(),
-    
-   isEnvProduction && new CleanWebpackPlugin({verbose: true,}),
-   
-   
+        new webpack.ProgressPlugin(),
+
+        isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
+
         isEnvProduction &&
             new CopyPlugin({
                 patterns: [
@@ -451,13 +450,15 @@ Inline mode with the fallback value will create file for browsers without supp
             maxInitialRequests: 5,
             //
             name(module, chunks, cacheGroupKey) {
-            const moduleFileName = module
-              .identifier()
-              .split('/')
-              .reduceRight((item) => item);
-            const allChunksNames = chunks.map((item) => item.name).join('~');
-            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-          },
+                const moduleFileName = module
+                    .identifier()
+                    .split("/")
+                    .reduceRight((item) => item);
+                const allChunksNames = chunks
+                    .map((item) => item.name)
+                    .join("~");
+                return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+            },
             /*configuration.optimization.splitChunks.name should be one of these:
       false | string | function
       -> Give chunks created a name (chunks with equal name are merged).
@@ -465,7 +466,7 @@ Inline mode with the fallback value will create file for browsers without supp
        * configuration.optimization.splitChunks.name should be false.
        * configuration.optimization.splitChunks.name should be a string.
        * configuration.optimization.splitChunks.name should be an instance of function.*/
-         //   name: !0,
+            //   name: !0,
         },
         minimize: isEnvProduction,
         minimizer: [
@@ -489,8 +490,8 @@ Inline mode with the fallback value will create file for browsers without supp
                     },
                 },
                 parallel: !0,
-             //   cache: !0,
-            //    sourceMap: shouldUseSourceMap,
+                //   cache: !0,
+                //    sourceMap: shouldUseSourceMap,
             }),
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {

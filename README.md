@@ -484,18 +484,15 @@ https://github.com/webpack/webpack/issues/11637
 
 将`NamedModulesPlugin` 替换为 `optimization.moduleIds: 'named'`
 
-
 4.
 
 https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksname
 
-
-修改了configuration.optimization.splitChunks.name
+修改了 configuration.optimization.splitChunks.name
 
 configuration.optimization.splitChunks.name should be one of these:
-      false | string | function
-      -> Give chunks created a name (chunks with equal name are merged).
-      Details:
-       * configuration.optimization.splitChunks.name should be false.
-       * configuration.optimization.splitChunks.name should be a string.
-       * configuration.optimization.splitChunks.name should be an instance of function.
+false | string | function
+-> Give chunks created a name (chunks with equal name are merged).
+Details:
+_ configuration.optimization.splitChunks.name should be false.
+_ configuration.optimization.splitChunks.name should be a string. \* configuration.optimization.splitChunks.name should be an instance of function.
