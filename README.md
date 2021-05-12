@@ -465,6 +465,21 @@ https://npm.taobao.org/package/react-scripts
 
 # 支持 webpack5
 
+1.
+
 https://github.com/webpack/webpack/issues/13367
 
 将命令`webpack-dev-server`替换成`webpack serve`
+
+2.
+
+`webpack-copyfiles-plugin`已经不兼容了，直接替换成
+`copy-webpack-plugin`
+
+3.
+
+https://github.com/webpack/webpack/issues/11637
+
+将`NamedModulesPlugin` 替换为 `optimization.moduleIds: 'named'`
+
+
