@@ -6,7 +6,7 @@ var e = require("process"),
     n = require("path"),
     t = require("child_process");
 
-function r(e) {
+function l(e) {
     return e && "object" == typeof e && "default" in e
         ? e
         : {
@@ -14,11 +14,61 @@ function r(e) {
           };
 }
 
-var c = r(e),
-    l = r(o),
-    i = r(n);
+var c = l(e),
+    r = l(o),
+    i = l(n);
 
-function u(e, o) {
+function u() {
+    u = function (e, o) {
+        return new n(e, void 0, o);
+    };
+    var e = RegExp.prototype,
+        o = new WeakMap();
+    function n(e, t, l) {
+        var c = new RegExp(e, t);
+        return o.set(c, l || o.get(e)), s(c, n.prototype);
+    }
+    function t(e, n) {
+        var t = o.get(n);
+        return Object.keys(t).reduce(function (o, n) {
+            return (o[n] = e[t[n]]), o;
+        }, Object.create(null));
+    }
+    return (
+        a(n, RegExp),
+        (n.prototype.exec = function (o) {
+            var n = e.exec.call(this, o);
+            return n && (n.groups = t(n, this)), n;
+        }),
+        (n.prototype[Symbol.replace] = function (n, l) {
+            if ("string" == typeof l) {
+                var c = o.get(this);
+                return e[Symbol.replace].call(
+                    this,
+                    n,
+                    l.replace(/\$<([^>]+)>/g, function (e, o) {
+                        return "$" + c[o];
+                    })
+                );
+            }
+            if ("function" == typeof l) {
+                var r = this;
+                return e[Symbol.replace].call(this, n, function () {
+                    var e = arguments;
+                    return (
+                        "object" != typeof e[e.length - 1] &&
+                            (e = [].slice.call(e)).push(t(e, r)),
+                        l.apply(this, e)
+                    );
+                });
+            }
+            return e[Symbol.replace].call(this, n, l);
+        }),
+        u.apply(this, arguments)
+    );
+}
+
+function a(e, o) {
     if ("function" != typeof o && null !== o)
         throw new TypeError(
             "Super expression must either be null or a function"
@@ -33,14 +83,6 @@ function u(e, o) {
         o && s(e, o);
 }
 
-function a(e) {
-    return (a = Object.setPrototypeOf
-        ? Object.getPrototypeOf
-        : function (e) {
-              return e.__proto__ || Object.getPrototypeOf(e);
-          })(e);
-}
-
 function s(e, o) {
     return (s =
         Object.setPrototypeOf ||
@@ -49,145 +91,33 @@ function s(e, o) {
         })(e, o);
 }
 
-function p() {
-    if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
-    if (Reflect.construct.sham) return !1;
-    if ("function" == typeof Proxy) return !0;
-    try {
-        return (
-            Date.prototype.toString.call(
-                Reflect.construct(Date, [], function () {})
-            ),
-            !0
-        );
-    } catch (e) {
-        return !1;
-    }
-}
+var p = c.default.cwd();
 
-function f(e, o, n) {
-    return (f = p()
-        ? Reflect.construct
-        : function (e, o, n) {
-              var t = [null];
-              t.push.apply(t, o);
-              var r = new (Function.bind.apply(e, t))();
-              return n && s(r, n.prototype), r;
-          }).apply(null, arguments);
-}
-
-function d(e) {
-    var o = "function" == typeof Map ? new Map() : void 0;
-    return (d = function (e) {
-        if (
-            null === e ||
-            ((n = e), -1 === Function.toString.call(n).indexOf("[native code]"))
-        )
-            return e;
-        var n;
-        if ("function" != typeof e)
-            throw new TypeError(
-                "Super expression must either be null or a function"
-            );
-        if (void 0 !== o) {
-            if (o.has(e)) return o.get(e);
-            o.set(e, t);
-        }
-        function t() {
-            return f(e, arguments, a(this).constructor);
-        }
-        return (
-            (t.prototype = Object.create(e.prototype, {
-                constructor: {
-                    value: t,
-                    enumerable: !1,
-                    writable: !0,
-                    configurable: !0,
-                },
-            })),
-            s(t, e)
-        );
-    })(e);
-}
-
-function g(e, o) {
-    g = function (e, o) {
-        return new c(e, void 0, o);
-    };
-    var n = d(RegExp),
-        t = RegExp.prototype,
-        r = new WeakMap();
-    function c(e, o, t) {
-        var c = n.call(this, e, o);
-        return r.set(c, t || r.get(e)), c;
-    }
-    function l(e, o) {
-        var n = r.get(o);
-        return Object.keys(n).reduce(function (o, t) {
-            return (o[t] = e[n[t]]), o;
-        }, Object.create(null));
-    }
-    return (
-        u(c, n),
-        (c.prototype.exec = function (e) {
-            var o = t.exec.call(this, e);
-            return o && (o.groups = l(o, this)), o;
-        }),
-        (c.prototype[Symbol.replace] = function (e, o) {
-            if ("string" == typeof o) {
-                var n = r.get(this);
-                return t[Symbol.replace].call(
-                    this,
-                    e,
-                    o.replace(/\$<([^>]+)>/g, function (e, o) {
-                        return "$" + n[o];
-                    })
-                );
-            }
-            if ("function" == typeof o) {
-                var c = this;
-                return t[Symbol.replace].call(this, e, function () {
-                    var e = [];
-                    return (
-                        e.push.apply(e, arguments),
-                        "object" != typeof e[e.length - 1] && e.push(l(e, c)),
-                        o.apply(this, e)
-                    );
-                });
-            }
-            return t[Symbol.replace].call(this, e, o);
-        }),
-        g.apply(this, arguments)
-    );
-}
-
-var v = c.default.cwd();
-
-function b(e, o) {
+function f(e, o) {
     o.forEach(function (o, n) {
-        l.default.existsSync(o) ||
+        r.default.existsSync(o) ||
             (console.log("inputfile  not exsited! ".concat(o, "\n")),
             console.log("initialize inputfile from ".concat(e[n], "\n")),
             ["public", "src"]
                 .map(function (e) {
-                    return i.default.resolve(v, e);
+                    return i.default.resolve(p, e);
                 })
                 .forEach(function (e) {
                     return (function (e) {
-                        l.default.existsSync(e) ||
+                        r.default.existsSync(e) ||
                             (console.log(
                                 "\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55",
                                 e
                             ),
                             console.log("\n"),
-                            l.default.mkdirSync(e));
+                            r.default.mkdirSync(e));
                     })(e);
                 }),
-            l.default.copyFileSync(e[n], o));
+            r.default.copyFileSync(e[n], o));
     });
 }
 
-function y(e) {
+function d(e) {
     return i.default.join(
         __dirname,
         "../",
@@ -197,7 +127,7 @@ function y(e) {
     );
 }
 
-function h(e, o) {
+function g(e, o) {
     console.log("\n");
     var n = t.spawn(e, o, {
         stdio: ["pipe", "pipe", "pipe"],
@@ -232,14 +162,14 @@ function h(e, o) {
         });
 }
 
-var m = require("path"),
-    w = process.cwd(),
-    _ = ["public/index.html", "src/index.js", "public/favicon.ico"],
-    x = _.map(function (e) {
-        return m.resolve(__dirname, "../", "release", e);
+var v = require("path"),
+    b = process.cwd(),
+    m = ["public/index.html", "src/index.js", "public/favicon.ico"],
+    h = m.map(function (e) {
+        return v.resolve(__dirname, "../", "release", e);
     }),
-    O = _.map(function (e) {
-        return m.resolve(w, e);
+    y = m.map(function (e) {
+        return v.resolve(b, e);
     });
 
 console.log("\n"),
@@ -256,16 +186,17 @@ console.log("\n"),
     console.log("\nworking directory : ".concat(process.cwd(), "\n")),
     console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-var k,
-    E = c.default.argv.slice(1),
-    j = E.includes("start") ? "start" : E.includes("build") ? "build" : void 0,
-    S =
-        ((k = {}),
-        E.filter(function (e) {
-            return e.startsWith("--");
-        })
+var w,
+    x = c.default.argv.slice(1),
+    _ = x.includes("start") ? "start" : x.includes("build") ? "build" : void 0,
+    k =
+        ((w = {}),
+        x
+            .filter(function (e) {
+                return e.startsWith("--");
+            })
             .map(function (e) {
-                return g(/\x2D\x2D(.+)=(.+)/g, {
+                return u(/\x2D\x2D(.+?)=(.+)/g, {
                     key: 1,
                     value: 2,
                 }).exec(e);
@@ -274,49 +205,54 @@ var k,
                 var o,
                     n,
                     t,
-                    r = null === (o = e) || void 0 === o ? void 0 : o.groups,
-                    c = null === (n = r) || void 0 === n ? void 0 : n.key,
-                    l = null === (t = r) || void 0 === t ? void 0 : t.value;
-                c && l && (k[c] = l);
+                    l = null === (o = e) || void 0 === o ? void 0 : o.groups,
+                    c = null === (n = l) || void 0 === n ? void 0 : n.key,
+                    r = null === (t = l) || void 0 === t ? void 0 : t.value;
+                c && r && (w[c] = r);
             }),
-        k);
+        w);
 
 console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
-    console.log(JSON.stringify(S, null, 4)),
+    console.log(JSON.stringify(k, null, 4)),
     (function (e, o) {
         var n,
             t,
-            r = o.config,
-            l = o["react-hot-loader"],
+            l = o.config,
+            r = o["react-hot-loader"],
             u = require.resolve(i.default.resolve(__dirname, "../")),
-            a = r ? i.default.resolve(r) : u,
+            a = l ? i.default.resolve(l) : u,
             s = o["output-public-path"],
             p = o.mode;
         if ("start" === e || "development" === p)
             (c.default.env.NODE_ENV = "development"),
-                b(x, O),
-                (n = y("webpack-dev-server ")),
-                (t = ["--config", a, "--mode=" + c.default.env.NODE_ENV]),
-                l && (t.push("--react-hot-loader=" + l), console.log("\n")),
+                f(h, y),
+                (n = d("webpack")),
+                (t = [
+                    "serve",
+                    "--config",
+                    a,
+                    "--mode=" + c.default.env.NODE_ENV,
+                ]),
+                r && (t.push("--react-hot-loader=" + r), console.log("\n")),
                 console.log("\n"),
                 console.log(
                     "\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"
                 ),
                 console.log("\n"),
-                h(n, t);
+                g(n, t);
         else if ("build" === e || "production" === p) {
-            var f, d;
+            var v, b;
             console.log("\n"),
                 console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"),
                 console.log("\n"),
                 (c.default.env.NODE_ENV = "production"),
-                b(x, O),
-                (f = y("webpack ")),
-                (d = ["--config", a, "--mode=" + c.default.env.NODE_ENV]),
+                f(h, y),
+                (v = d("webpack ")),
+                (b = ["--config", a, "--mode=" + c.default.env.NODE_ENV]),
                 s &&
                     s.length &&
-                    (d.push("--output-public-path=" + s), console.log("\n")),
-                h(f, d);
+                    (b.push("--output-public-path=" + s), console.log("\n")),
+                g(v, b);
         } else
             console.log("\n"),
                 console.log("usage:"),
@@ -338,5 +274,5 @@ console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
                 ),
                 console.log("\n"),
                 c.default.exit(1);
-    })(j, S);
+    })(_, k);
 //# sourceMappingURL=index.js.map

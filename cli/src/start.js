@@ -28,7 +28,7 @@ export function start(operation, 参数object) {
         command = commandfind(`webpack`);
         //升级webpack5的修改命令 webpack serve
         commandargs = [
-        "serve",
+            "serve",
             "--config",
             参数webpackconfigfile,
             "--mode=" + process.env.NODE_ENV,

@@ -119,7 +119,7 @@
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
     "description": "极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持  Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support， 基于 webpack4.x,同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持 ，您无需学习和配置许多构建工具。即时重新加载可帮助您专注于开发。在部署时，您的捆绑包会自动优化",
     "peerDependencies": {
-        "react": "16.13.1",
+        "react": "17.0.2",
         "vue": "2.6.12"
     },
     "optionalDependencies": {
