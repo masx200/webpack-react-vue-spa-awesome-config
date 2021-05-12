@@ -183,7 +183,7 @@ module.exports = webpackconfig;
 ```json
 {
     "scripts": {
-        "start-custom": "webpack-dev-server  --config ./webpack.config.js --mode=development ",
+        "start-custom": "webpack serve  --config ./webpack.config.js --mode=development ",
         "build-custom": "webpack --config ./webpack.config.js --mode=production "
     }
 }
@@ -198,7 +198,7 @@ yarn start
 相当于执行
 
 ```
-webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development
+webpack serve  --config ./release/config/webpack.config.js  --mode=development
 ```
 
 -   启动 webpack
@@ -466,5 +466,5 @@ https://npm.taobao.org/package/react-scripts
 
 # 支持webpack5
 
-将`webpack-dev-server`替换成`webpack serve`
+将命令`webpack-dev-server`替换成`webpack serve`
 
