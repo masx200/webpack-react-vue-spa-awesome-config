@@ -1,7 +1,7 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "2.8.1",
+    "version": "2.8.2",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -65,7 +65,7 @@
         "optimize-css-assets-webpack-plugin": "^5.0.4",
         "postcss-flexbugs-fixes": "^4.2.1",
         "postcss-loader": "^4.0.1",
-        "postcss": "7.0.32",
+        "postcss": "8.2.15",
         "postcss-normalize": "^9.0.0",
         "postcss-preset-env": "^6.7.0",
         "postcss-safe-parser": "^4.0.2",
