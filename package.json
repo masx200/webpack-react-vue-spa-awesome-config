@@ -1,14 +1,14 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "2.8.2",
+    "version": "2.8.3",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
     "bin": "./bin/index.js",
     "main": "./release/config/webpack.config.js",
     "scripts": {
-        "start": "webpack-dev-server  --config ./release/config/webpack.config.js  --mode=development",
+        "start": "webpack serve  --config ./release/config/webpack.config.js  --mode=development",
         "build": "webpack  --config ./release/config/webpack.config.js     --mode=production",
         "rollup": "rollup -c rollup.config.js",
         "prettier": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./cli/src/*.js ./release/config/*.js **/*.css **/*.html",
