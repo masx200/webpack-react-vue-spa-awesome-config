@@ -466,5 +466,7 @@ https://npm.taobao.org/package/react-scripts
 
 # 支持webpack5
 
+https://github.com/webpack/webpack/issues/13367
+
 将命令`webpack-dev-server`替换成`webpack serve`
 
