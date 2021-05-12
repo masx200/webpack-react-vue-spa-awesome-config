@@ -493,6 +493,3 @@ https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksname
 configuration.optimization.splitChunks.name should be one of these:
 false | string | function
 -> Give chunks created a name (chunks with equal name are merged).
-Details:
-_ configuration.optimization.splitChunks.name should be false.
-_ configuration.optimization.splitChunks.name should be a string. \* configuration.optimization.splitChunks.name should be an instance of function.
