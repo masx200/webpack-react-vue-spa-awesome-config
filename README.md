@@ -1,4 +1,4 @@
-# 极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持 ,基于 webpack4.x
+# 极速、零配置的 web 应用打包工具, 同时支持 react 和 vue 的单页面应用,提供开箱即用支持 ,基于 webpack
 
 # webpack-react-vue-spa-awesome-config
 
@@ -10,7 +10,7 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ### Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support
 
-# 基于 webpack4.x, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
+# 基于 webpack, 同时支持 react 和 vue 的单页面应用 通用的 webpack 配置文件,提供开箱即用支持
 
 ## 无需配置：您无需配置任何内容。为您处理开发和生产构建的相当好的配置，以便您可以专注于编写代码。
 
@@ -462,3 +462,9 @@ https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/
 https://github.com/facebook/create-react-app
 
 https://npm.taobao.org/package/react-scripts
+
+
+# 支持webpack5
+
+将`webpack-dev-server`替换成`webpack serve`
+
