@@ -475,7 +475,6 @@ https://github.com/webpack/webpack/issues/13367
 
 https://github.com/webpack-contrib/copy-webpack-plugin
 
-
 由于插件`webpack-copyfiles-plugin`已经不兼容了，直接替换成
 `copy-webpack-plugin`
 
@@ -484,5 +483,3 @@ https://github.com/webpack-contrib/copy-webpack-plugin
 https://github.com/webpack/webpack/issues/11637
 
 将`NamedModulesPlugin` 替换为 `optimization.moduleIds: 'named'`
-
-

@@ -42,6 +42,8 @@ var __dirname = process.cwd();
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
 //const CopyFilesPlugin = require("webpack-copyfiles-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -356,8 +358,18 @@ Inline mode with the fallback value will create file for browsers without supp
         ],
     },
     plugins: [
-      //  isEnvProduction &&
-         /*
+        isEnvProduction &&
+            new CopyPlugin({
+                patterns: [
+                    {
+                        from: path.join(__dirname, "public"),
+
+                        to: path.join(__dirname, "dist"),
+                    },
+                    //  { from: "other", to: "public" },
+                ],
+            }),
+        /*
    new CopyFilesPlugin({
                 sourceRoot: path.join(__dirname, "public"),
                 targetRoot: path.join(__dirname, "dist"),
@@ -365,7 +377,7 @@ Inline mode with the fallback value will create file for browsers without supp
                 cleanDirs: [path.join(__dirname, "dist")],
             }),
 */
-        isEnvDevelopment && new webpack.NamedModulesPlugin(),
+        //      isEnvDevelopment && new webpack.NamedModulesPlugin(),
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
         new WorkboxWebpackPlugin.GenerateSW({
             clientsClaim: !0,
@@ -418,6 +430,9 @@ Inline mode with the fallback value will create file for browsers without supp
         }),
     ].filter(Boolean),
     optimization: {
+        //将NamedModulesPlugin 替换为 optimization.moduleIds: 'named'
+        moduleIds: isEnvDevelopment ? "named" : "deterministic",
+
         usedExports: true,
         runtimeChunk: { name: (e) => `runtime~${e.name}` },
         splitChunks: {

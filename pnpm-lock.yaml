@@ -21,6 +21,7 @@ dependencies:
   babel-preset-react-app: 10.0.0
   banner-content-loader: 0.1.1
   clean-webpack-plugin: 4.0.0-alpha.0_webpack@5.37.0
+  copy-webpack-plugin: 8.1.1_webpack@5.37.0
   css-loader: 5.2.4_webpack@5.37.0
   fast-sass-loader: 2.0.0_sass@1.32.12+webpack@5.37.0
   file-loader: 6.2.0_webpack@5.37.0
@@ -2087,12 +2088,36 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==
+  /@nodelib/fs.scandir/2.1.4:
+    dependencies:
+      '@nodelib/fs.stat': 2.0.4
+      run-parallel: 1.2.0
+    dev: false
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-33g3pMJk3bg5nXbL/+CY6I2eJDzZAni49PfJnL5fghPTggPvBd/pFNSgJsdAgWptuFu7qq/ERvOYFlhvsLTCKA==
   /@nodelib/fs.stat/1.1.3:
     dev: false
     engines:
       node: '>= 6'
     resolution:
       integrity: sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
+  /@nodelib/fs.stat/2.0.4:
+    dev: false
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-IYlHJA0clt2+Vg7bccq+TzRdJvv19c2INqBSsoOLp1je7xjtr7J26+WXR72MCdvU9q1qTzIWDfhMf+DRvQJK4Q==
+  /@nodelib/fs.walk/1.2.6:
+    dependencies:
+      '@nodelib/fs.scandir': 2.1.4
+      fastq: 1.11.0
+    dev: false
+    engines:
+      node: '>= 8'
+    resolution:
+      integrity: sha512-8Broas6vTtW4GIXTAHDoE32hnN2M5ykgCpWGbuXHQ15vEMqr23pB76e/GZcYsZCHALv50ktd24qhEyKr6wBtow==
   /@rollup/plugin-babel/5.3.0_@babel+core@7.14.0+rollup@2.47.0:
     dependencies:
       '@babel/core': 7.14.0
@@ -2724,6 +2749,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=
+  /array-union/2.1.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==
   /array-uniq/1.0.3:
     dev: false
     engines:
@@ -3591,6 +3622,23 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+  /copy-webpack-plugin/8.1.1_webpack@5.37.0:
+    dependencies:
+      fast-glob: 3.2.5
+      glob-parent: 5.1.2
+      globby: 11.0.3
+      normalize-path: 3.0.0
+      p-limit: 3.1.0
+      schema-utils: 3.0.0
+      serialize-javascript: 5.0.1
+      webpack: 5.37.0_webpack-cli@4.7.0
+    dev: false
+    engines:
+      node: '>= 10.13.0'
+    peerDependencies:
+      webpack: ^5.1.0
+    resolution:
+      integrity: sha512-rYM2uzRxrLRpcyPqGceRBDpxxUV8vcDqIKxAUKfcnFpcrPxT5+XvhTxv7XLjo5AvEJFPdAE3zCogG2JVahqgSQ==
   /core-js-compat/3.12.1:
     dependencies:
       browserslist: 4.16.6
@@ -4087,6 +4135,14 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-f9LBi5QWzIW3I6e//uxZoLBlUt9kcp66qo0sSCxL6YZKc75R1c4MFCoe/LaZiBGmgujvQdxc5Bn3QhfyvK5Hsw==
+  /dir-glob/3.0.1:
+    dependencies:
+      path-type: 4.0.0
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==
   /dns-equal/1.0.0:
     dev: false
     resolution:
@@ -4552,6 +4608,19 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-g1KuQwHOZAmOZMuBtHdxDtju+T2RT8jgCC9aANsbpdiDDTSnjgfuVsIBNKbUeJI3oKMRExcfNDtJl4OhbffMsw==
+  /fast-glob/3.2.5:
+    dependencies:
+      '@nodelib/fs.stat': 2.0.4
+      '@nodelib/fs.walk': 1.2.6
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.4
+      picomatch: 2.2.3
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-2DtFcgT68wiTTiwZ2hNdJfcHNke9XOfnwmBRWXhmeKM8rF0TGwmC/Qto3S7RoZKp5cilZbxzO5iTNTQsJ+EeDg==
   /fast-json-stable-stringify/2.1.0:
     dev: false
     resolution:
@@ -4579,6 +4648,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-On2N+BpYJ15xIC974QNVuYGMOlEVt4s0EOI3wwMqOmK1fdDY+FN/zltPV8vosq4ad4c/gJ1KHScUn/6AWIgiow==
+  /fastq/1.11.0:
+    dependencies:
+      reusify: 1.0.4
+    dev: false
+    resolution:
+      integrity: sha512-7Eczs8gIPDrVzT+EksYBcupqMyxSHXXrHOLRRxU2/DicV8789MRBRR8+Hc2uWzUupOs4YS4JzBmBxjjCVBxD/g==
   /faye-websocket/0.11.3:
     dependencies:
       websocket-driver: 0.7.4
@@ -4978,6 +5053,19 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==
+  /globby/11.0.3:
+    dependencies:
+      array-union: 2.1.0
+      dir-glob: 3.0.1
+      fast-glob: 3.2.5
+      ignore: 5.1.8
+      merge2: 1.4.1
+      slash: 3.0.0
+    dev: false
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-ffdmosjA807y7+lA1NM0jELARVmYul/715xiILEjo3hBLPTcirgQNnXECn5g3mtR8TOLCVbkfua1Hpen25/Xcg==
   /globby/6.1.0:
     dependencies:
       array-union: 1.0.2
@@ -5325,6 +5413,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Pgs951kaMm5GXP7MOvxERINe3gsaVjUWFm+UZPSq9xYriQAksyhg0csnS0KXSNRD5NmNdapXEpjxG49+AKh/ug==
+  /ignore/5.1.8:
+    dev: false
+    engines:
+      node: '>= 4'
+    resolution:
+      integrity: sha512-BMpfD7PpiETpBl/A6S498BaIJ6Y/ABT93ETbby2fP00v4EbvPBXWEoaR1UBPKs3iR53pJY7EtZk5KACI57i1Uw==
   /image-size/0.5.5:
     dev: false
     engines:
@@ -6335,6 +6429,15 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-MWikgl9n9M3w+bpsY3He8L+w9eF9338xRl8IAO5viDizwSzziFEyUzo2xrrloB64ADbTf8uA8vRqqttDTOmccg==
+  /micromatch/4.0.4:
+    dependencies:
+      braces: 3.0.2
+      picomatch: 2.2.3
+    dev: false
+    engines:
+      node: '>=8.6'
+    resolution:
+      integrity: sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==
   /mime-db/1.47.0:
     dev: false
     engines:
@@ -8088,6 +8191,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==
+  /queue-microtask/1.2.3:
+    dev: false
+    resolution:
+      integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
   /raf/3.4.1:
     dependencies:
       performance-now: 2.1.0
@@ -8165,6 +8272,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
+    dev: false
     engines:
       node: '>=0.10.0'
     optional: true
@@ -8482,6 +8590,13 @@ packages:
       node: '>= 4'
     resolution:
       integrity: sha1-G0KmJmoh8HQh0bC1S33BZ7AcATs=
+  /reusify/1.0.4:
+    dev: false
+    engines:
+      iojs: '>=1.0.0'
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
   /rework/1.0.1:
     dependencies:
       convert-source-map: 0.3.5
@@ -8549,6 +8664,12 @@ packages:
       fsevents: 2.3.2
     resolution:
       integrity: sha512-rqBjgq9hQfW0vRmz+0S062ORRNJXvwRpzxhFXORvar/maZqY6za3rgQ/p1Glg+j1hnc1GtYyQCPiAei95uTElg==
+  /run-parallel/1.2.0:
+    dependencies:
+      queue-microtask: 1.2.3
+    dev: false
+    resolution:
+      integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   /run-queue/1.0.3:
     dependencies:
       aproba: 1.2.0
@@ -8808,6 +8929,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
+  /slash/3.0.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
   /snapdragon-node/2.1.1:
     dependencies:
       define-property: 1.0.0
@@ -9781,6 +9908,7 @@ packages:
     resolution:
       integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
   /vue/2.6.12:
+    dev: false
     optional: true
     resolution:
       integrity: sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
@@ -10452,6 +10580,7 @@ specifiers:
   babel-preset-react-app: ^10.0.0
   banner-content-loader: ^0.1.1
   clean-webpack-plugin: ^4.0.0-alpha.0
+  copy-webpack-plugin: ^8.1.1
   core-js-pure: ^3.12.1
   css-loader: ^5.2.4
   event-target-shim: ^6.0.2

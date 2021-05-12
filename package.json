@@ -53,6 +53,7 @@
         "babel-preset-react-app": "^10.0.0",
         "banner-content-loader": "^0.1.1",
         "clean-webpack-plugin": "^4.0.0-alpha.0",
+        "copy-webpack-plugin": "^8.1.1",
         "css-loader": "^5.2.4",
         "fast-sass-loader": "^2.0.0",
         "file-loader": "^6.2.0",
