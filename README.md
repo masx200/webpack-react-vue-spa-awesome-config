@@ -476,7 +476,7 @@ https://github.com/webpack/webpack/issues/13367
 https://github.com/webpack-contrib/copy-webpack-plugin
 
 
-`webpack-copyfiles-plugin`已经不兼容了，直接替换成
+由于插件`webpack-copyfiles-plugin`已经不兼容了，直接替换成
 `copy-webpack-plugin`
 
 3.
