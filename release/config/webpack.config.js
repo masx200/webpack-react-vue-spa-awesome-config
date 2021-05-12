@@ -41,7 +41,7 @@ console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
-const CopyFilesPlugin = require("webpack-copyfiles-plugin");
+//const CopyFilesPlugin = require("webpack-copyfiles-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -356,13 +356,15 @@ Inline mode with the fallback value will create file for browsers without supp
         ],
     },
     plugins: [
-        isEnvProduction &&
-            new CopyFilesPlugin({
+      //  isEnvProduction &&
+         /*
+   new CopyFilesPlugin({
                 sourceRoot: path.join(__dirname, "public"),
                 targetRoot: path.join(__dirname, "dist"),
                 files: ["favicon.ico"],
                 cleanDirs: [path.join(__dirname, "dist")],
             }),
+*/
         isEnvDevelopment && new webpack.NamedModulesPlugin(),
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
         new WorkboxWebpackPlugin.GenerateSW({
