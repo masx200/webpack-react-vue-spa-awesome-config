@@ -6,7 +6,7 @@ function parseargs(args) {
     /**@type{Record<string,string>} */
     const 参数obj = {};
     args.filter((s) => s.startsWith("--"))
-        .map((s) => /--(?<key>.+)=(?<value>.+)/g.exec(s))
+        .map((s) => /--(?<key>.+?)=(?<value>.+)/g.exec(s))
         .forEach((execArray) => {
             var _a, _b, _c;
             const groups =
