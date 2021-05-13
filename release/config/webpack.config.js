@@ -442,6 +442,8 @@ Inline mode with the fallback value will create file for browsers without supp
         //将NamedModulesPlugin 替换为 optimization.moduleIds: 'named'
         moduleIds: isEnvDevelopment ? "named" : "deterministic",
 
+        chunkIds:isEnvDevelopment ? "named" :'total-size',
+        //namedchunksplugin
         usedExports: true,
         runtimeChunk: { name: (e) => `runtime~${e.name}` },
         splitChunks: {
