@@ -1,4 +1,4 @@
-import "./index.css"
+import "./index.css";
 alert("hello world");
 // import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
 

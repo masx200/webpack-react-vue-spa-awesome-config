@@ -61,7 +61,7 @@ eventInit可选
 "cancelable"，可选，Boolean类型，默认值为 false， 表示该事件能否被取消。
 "composed"，可选，Boolean类型，默认值为 false，指示事件是否会在影子DOM根节点之外触发侦听器。
 */
-    (function() {
+    (function () {
         var oldevent = window.Event || {};
         /* es5不支持默认参数! */
         function Event(typeArg, initopt /* eventInit = {} */) {
@@ -79,7 +79,7 @@ eventInit可选
         if ("function" != typeof window.Event) {
             //
 
-            Object.keys(oldevent).forEach(function(k) {
+            Object.keys(oldevent).forEach(function (k) {
                 Event[k] = oldevent[k];
             });
             Event.prototype = oldevent.prototype || {};
@@ -101,7 +101,7 @@ if (isSupportEventConstrucor()) {
     e.initCustomEvent("hello", false, false, "detail")
     foo.dispatchEvent(e)
 }*/
-    (function() {
+    (function () {
         var oldevent = window.CustomEvent || {};
         /*  */
         function CustomEvent(typeArg, initopt /* eventInit = {} */) {
@@ -122,7 +122,7 @@ if (isSupportEventConstrucor()) {
         if ("function" != typeof window.CustomEvent) {
             //
 
-            Object.keys(oldevent).forEach(function(k) {
+            Object.keys(oldevent).forEach(function (k) {
                 CustomEvent[k] = oldevent[k];
             });
             CustomEvent.prototype = oldevent.prototype || {};

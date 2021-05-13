@@ -4,19 +4,19 @@ module.exports = {
         es6: true,
         node: true,
         worker: true,
-        commonjs: true
+        commonjs: true,
     },
     extends: "eslint:recommended",
     globals: {
         Atomics: "readonly",
-        SharedArrayBuffer: "readonly"
+        SharedArrayBuffer: "readonly",
     },
     parserOptions: {
         ecmaVersion: 2019,
         sourceType: "module",
         ecmaFeatures: {
-            jsx: true
-        }
+            jsx: true,
+        },
     },
-    rules: {}
+    rules: {},
 };

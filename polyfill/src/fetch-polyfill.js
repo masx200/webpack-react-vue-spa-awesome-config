@@ -5,7 +5,7 @@ export default () => {
         blob:
             "FileReader" in self &&
             "Blob" in self &&
-            (function() {
+            (function () {
                 try {
                     return new Blob(), !0;
                 } catch (e) {
@@ -13,7 +13,7 @@ export default () => {
                 }
             })(),
         formData: "FormData" in self,
-        arrayBuffer: "ArrayBuffer" in self
+        arrayBuffer: "ArrayBuffer" in self,
     };
     function isDataView(e) {
         return e && DataView.prototype.isPrototypeOf(e);
@@ -28,11 +28,11 @@ export default () => {
                 "[object Int32Array]",
                 "[object Uint32Array]",
                 "[object Float32Array]",
-                "[object Float64Array]"
+                "[object Float64Array]",
             ],
             isArrayBufferView =
                 ArrayBuffer.isView ||
-                function(e) {
+                function (e) {
                     return (
                         e &&
                         viewClasses.indexOf(Object.prototype.toString.call(e)) >
@@ -52,14 +52,14 @@ export default () => {
     }
     function iteratorFor(e) {
         var t = {
-            next: function() {
+            next: function () {
                 var t = e.shift();
                 return { done: void 0 === t, value: t };
-            }
+            },
         };
         return (
             support.iterable &&
-                (t[Symbol.iterator] = function() {
+                (t[Symbol.iterator] = function () {
                     return t;
                 }),
             t
@@ -68,15 +68,15 @@ export default () => {
     /* export  */ function Headers(e) {
         (this.map = {}),
             e instanceof Headers
-                ? e.forEach(function(e, t) {
+                ? e.forEach(function (e, t) {
                       this.append(t, e);
                   }, this)
                 : Array.isArray(e)
-                ? e.forEach(function(e) {
+                ? e.forEach(function (e) {
                       this.append(e[0], e[1]);
                   }, this)
                 : e &&
-                  Object.getOwnPropertyNames(e).forEach(function(t) {
+                  Object.getOwnPropertyNames(e).forEach(function (t) {
                       this.append(t, e[t]);
                   }, this);
     }
@@ -85,11 +85,11 @@ export default () => {
         e.bodyUsed = !0;
     }
     function fileReaderReady(e) {
-        return new Promise(function(t, r) {
-            (e.onload = function() {
+        return new Promise(function (t, r) {
+            (e.onload = function () {
                 t(e.result);
             }),
-                (e.onerror = function() {
+                (e.onerror = function () {
                     r(e.error);
                 });
         });
@@ -121,7 +121,7 @@ export default () => {
     function Body() {
         return (
             (this.bodyUsed = !1),
-            (this._initBody = function(e) {
+            (this._initBody = function (e) {
                 (this._bodyInit = e),
                     e
                         ? "string" == typeof e
@@ -139,15 +139,14 @@ export default () => {
                               isDataView(e)
                             ? ((this._bodyArrayBuffer = bufferClone(e.buffer)),
                               (this._bodyInit = new Blob([
-                                  this._bodyArrayBuffer
+                                  this._bodyArrayBuffer,
                               ])))
                             : support.arrayBuffer &&
                               (ArrayBuffer.prototype.isPrototypeOf(e) ||
                                   isArrayBufferView(e))
                             ? (this._bodyArrayBuffer = bufferClone(e))
-                            : (this._bodyText = e = Object.prototype.toString.call(
-                                  e
-                              ))
+                            : (this._bodyText = e =
+                                  Object.prototype.toString.call(e))
                         : (this._bodyText = ""),
                     this.headers.get("content-type") ||
                         ("string" == typeof e
@@ -168,7 +167,7 @@ export default () => {
                               ));
             }),
             support.blob &&
-                ((this.blob = function() {
+                ((this.blob = function () {
                     var e = consumed(this);
                     if (e) return e;
                     if (this._bodyBlob) return Promise.resolve(this._bodyBlob);
@@ -180,13 +179,13 @@ export default () => {
                         throw new Error("could not read FormData body as blob");
                     return Promise.resolve(new Blob([this._bodyText]));
                 }),
-                (this.arrayBuffer = function() {
+                (this.arrayBuffer = function () {
                     return this._bodyArrayBuffer
                         ? consumed(this) ||
                               Promise.resolve(this._bodyArrayBuffer)
                         : this.blob().then(readBlobAsArrayBuffer);
                 })),
-            (this.text = function() {
+            (this.text = function () {
                 var e = consumed(this);
                 if (e) return e;
                 if (this._bodyBlob) return readBlobAsText(this._bodyBlob);
@@ -199,58 +198,58 @@ export default () => {
                 return Promise.resolve(this._bodyText);
             }),
             support.formData &&
-                (this.formData = function() {
+                (this.formData = function () {
                     return this.text().then(decode);
                 }),
-            (this.json = function() {
+            (this.json = function () {
                 return this.text().then(JSON.parse);
             }),
             this
         );
     }
-    (Headers.prototype.append = function(e, t) {
+    (Headers.prototype.append = function (e, t) {
         (e = normalizeName(e)), (t = normalizeValue(t));
         var r = this.map[e];
         this.map[e] = r ? r + ", " + t : t;
     }),
-        (Headers.prototype.delete = function(e) {
+        (Headers.prototype.delete = function (e) {
             delete this.map[normalizeName(e)];
         }),
-        (Headers.prototype.get = function(e) {
+        (Headers.prototype.get = function (e) {
             return (e = normalizeName(e)), this.has(e) ? this.map[e] : null;
         }),
-        (Headers.prototype.has = function(e) {
+        (Headers.prototype.has = function (e) {
             return this.map.hasOwnProperty(normalizeName(e));
         }),
-        (Headers.prototype.set = function(e, t) {
+        (Headers.prototype.set = function (e, t) {
             this.map[normalizeName(e)] = normalizeValue(t);
         }),
-        (Headers.prototype.forEach = function(e, t) {
+        (Headers.prototype.forEach = function (e, t) {
             for (var r in this.map)
                 this.map.hasOwnProperty(r) && e.call(t, this.map[r], r, this);
         }),
-        (Headers.prototype.keys = function() {
+        (Headers.prototype.keys = function () {
             var e = [];
             return (
-                this.forEach(function(t, r) {
+                this.forEach(function (t, r) {
                     e.push(r);
                 }),
                 iteratorFor(e)
             );
         }),
-        (Headers.prototype.values = function() {
+        (Headers.prototype.values = function () {
             var e = [];
             return (
-                this.forEach(function(t) {
+                this.forEach(function (t) {
                     e.push(t);
                 }),
                 iteratorFor(e)
             );
         }),
-        (Headers.prototype.entries = function() {
+        (Headers.prototype.entries = function () {
             var e = [];
             return (
-                this.forEach(function(t, r) {
+                this.forEach(function (t, r) {
                     e.push([r, t]);
                 }),
                 iteratorFor(e)
@@ -297,7 +296,7 @@ export default () => {
             e
                 .trim()
                 .split("&")
-                .forEach(function(e) {
+                .forEach(function (e) {
                     if (e) {
                         var r = e.split("="),
                             o = r.shift().replace(/\+/g, " "),
@@ -314,7 +313,7 @@ export default () => {
             e
                 .replace(/\r?\n[\t ]+/g, " ")
                 .split(/\r?\n/)
-                .forEach(function(e) {
+                .forEach(function (e) {
                     var r = e.split(":"),
                         o = r.shift().trim();
                     if (o) {
@@ -325,7 +324,7 @@ export default () => {
             t
         );
     }
-    (Request.prototype.clone = function() {
+    (Request.prototype.clone = function () {
         return new Request(this, { body: this._bodyInit });
     }),
         Body.call(Request.prototype);
@@ -340,20 +339,20 @@ export default () => {
             this._initBody(e);
     }
     Body.call(Response.prototype),
-        (Response.prototype.clone = function() {
+        (Response.prototype.clone = function () {
             return new Response(this._bodyInit, {
                 status: this.status,
                 statusText: this.statusText,
                 headers: new Headers(this.headers),
-                url: this.url
+                url: this.url,
             });
         }),
-        (Response.error = function() {
+        (Response.error = function () {
             var e = new Response(null, { status: 0, statusText: "" });
             return (e.type = "error"), e;
         });
     var redirectStatuses = [301, 302, 303, 307, 308];
-    Response.redirect = function(e, t) {
+    Response.redirect = function (e, t) {
         if (-1 === redirectStatuses.indexOf(t))
             throw new RangeError("Invalid status code");
         return new Response(null, { status: t, headers: { location: e } });
@@ -362,7 +361,7 @@ export default () => {
     try {
         new DOMException();
     } catch (e) {
-        ((DOMException = function(e, t) {
+        ((DOMException = function (e, t) {
             (this.message = e), (this.name = t);
             var r = Error(e);
             this.stack = r.stack;
@@ -370,7 +369,7 @@ export default () => {
             (DOMException.prototype.constructor = DOMException);
     }
     /*  export  */ function fetch(e, t) {
-        return new Promise(function(r, o) {
+        return new Promise(function (r, o) {
             var s = new Request(e, t);
             if (s.signal && s.signal.aborted)
                 return o(new DOMException("Aborted", "AbortError"));
@@ -378,11 +377,11 @@ export default () => {
             function i() {
                 n.abort();
             }
-            (n.onload = function() {
+            (n.onload = function () {
                 var e = {
                     status: n.status,
                     statusText: n.statusText,
-                    headers: parseHeaders(n.getAllResponseHeaders() || "")
+                    headers: parseHeaders(n.getAllResponseHeaders() || ""),
                 };
                 e.url =
                     "responseURL" in n
@@ -391,13 +390,13 @@ export default () => {
                 var t = "response" in n ? n.response : n.responseText;
                 r(new Response(t, e));
             }),
-                (n.onerror = function() {
+                (n.onerror = function () {
                     o(new TypeError("Network request failed"));
                 }),
-                (n.ontimeout = function() {
+                (n.ontimeout = function () {
                     o(new TypeError("Network request failed"));
                 }),
-                (n.onabort = function() {
+                (n.onabort = function () {
                     o(new DOMException("Aborted", "AbortError"));
                 }),
                 n.open(s.method, s.url, !0),
@@ -407,12 +406,12 @@ export default () => {
                 "responseType" in n &&
                     support.blob &&
                     (n.responseType = "blob"),
-                s.headers.forEach(function(e, t) {
+                s.headers.forEach(function (e, t) {
                     n.setRequestHeader(t, e);
                 }),
                 s.signal &&
                     (s.signal.addEventListener("abort", i),
-                    (n.onreadystatechange = function() {
+                    (n.onreadystatechange = function () {
                         4 === n.readyState &&
                             s.signal.removeEventListener("abort", i);
                     })),

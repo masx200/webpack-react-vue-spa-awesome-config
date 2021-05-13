@@ -75,8 +75,7 @@ if ("production" === process.env.NODE_ENV) {
 module.exports = {
     resolve: { alias: { "@": path.join(__dirname, "src") } },
     devServer: {
-
-compress: true,
+        compress: true,
 
         historyApiFallback: true,
         contentBase: path.resolve(__dirname, "./dist"),
@@ -442,7 +441,7 @@ Inline mode with the fallback value will create file for browsers without supp
         //将NamedModulesPlugin 替换为 optimization.moduleIds: 'named'
         moduleIds: isEnvDevelopment ? "named" : "deterministic",
 
-        chunkIds:isEnvDevelopment ? "named" :'total-size',
+        chunkIds: isEnvDevelopment ? "named" : "total-size",
         //namedchunksplugin
         usedExports: true,
         runtimeChunk: { name: (e) => `runtime~${e.name}` },

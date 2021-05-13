@@ -9,12 +9,13 @@
     "main": "./release/config/webpack.config.js",
     "scripts": {
         "start": "webpack serve  --config ./release/config/webpack.config.js  --mode=development",
-        "build": "webpack  --config ./release/config/webpack.config.js     --mode=production",
+        "build": "webpack  --config ./release/config/webpack.config.js   --mode=production",
         "rollup": "rollup -c rollup.config.js",
         "prettier": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./cli/src/*.js ./release/config/*.js **/*.css **/*.html",
         "test1": "node ./bin/index.js start",
         "test2": "node ./bin/index.js --mode=development",
-        "test3": "node ./bin/index.js build"
+        "test3": "node ./bin/index.js build",
+        "test4": "node ./bin/index.js  --mode=production"
     },
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "license": "MIT",
