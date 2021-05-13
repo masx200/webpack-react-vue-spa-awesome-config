@@ -75,6 +75,9 @@ if ("production" === process.env.NODE_ENV) {
 module.exports = {
     resolve: { alias: { "@": path.join(__dirname, "src") } },
     devServer: {
+
+compress: true,
+
         historyApiFallback: true,
         contentBase: path.resolve(__dirname, "./dist"),
         hot: !0,
