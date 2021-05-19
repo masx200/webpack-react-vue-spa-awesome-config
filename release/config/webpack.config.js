@@ -95,11 +95,11 @@ module.exports = {
         publicPath,
         globalObject: `( Function('return this')())`,
         filename: isEnvDevelopment
-            ? "bundle.[name].[hash].js"
+            ? "bundle.[name].[fullhash].js"
             : "bundle.[name].[chunkhash].js",
         path: path.join(__dirname, "dist"),
         chunkFilename: isEnvDevelopment
-            ? "chunk.[name].[hash].js"
+            ? "chunk.[name].[fullhash].js"
             : "chunk.[name].[chunkhash].js",
     },
     module: {
@@ -191,7 +191,7 @@ module.exports = {
                     },
                 ],
             },
-           // { parser: { requireEnsure: !1 } },
+            // { parser: { requireEnsure: !1 } },
             {
                 test: /\.worker\.js$/,
                 loader: require.resolve("worker-loader"),
@@ -227,7 +227,7 @@ Inline mode with the fallback value will create file for browsers without supp
 
 */
                 options: {
-                    filename: "[name].[hash].worker.js",
+                    filename: "[name].[fullhash].worker.js",
                     inline: "no-fallback",
                 },
             },
@@ -298,7 +298,7 @@ Inline mode with the fallback value will create file for browsers without supp
                         options: {
                             limit: 10000,
                             name: isEnvDevelopment
-                                ? "[name].[hash].[ext]"
+                                ? "[name].[fullhash].[ext]"
                                 : "[name].[contenthash].[ext]",
                         },
                     },
@@ -353,7 +353,7 @@ Inline mode with the fallback value will create file for browsers without supp
                         ],
                         options: {
                             name: isEnvDevelopment
-                                ? "[name].[hash].[ext]"
+                                ? "[name].[fullhash].[ext]"
                                 : "[name].[contenthash].[ext]",
                         },
                     },

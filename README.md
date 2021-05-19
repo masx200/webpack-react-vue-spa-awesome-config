@@ -493,3 +493,10 @@ https://webpack.js.org/plugins/split-chunks-plugin/#splitchunksname
 configuration.optimization.splitChunks.name should be one of these:
 false | string | function
 -> Give chunks created a name (chunks with equal name are merged).
+
+5.
+
+https://webpack.docschina.org/blog/2020-10-10-webpack-5-release/#changes-to-the-structure
+
+[hash] 作为完整的编译 hash 值，现已被弃用
+迁移：使用 [fullhash] 代替，或最好选用其他 hash 选项
