@@ -191,7 +191,7 @@ module.exports = {
                     },
                 ],
             },
-            { parser: { requireEnsure: !1 } },
+           // { parser: { requireEnsure: !1 } },
             {
                 test: /\.worker\.js$/,
                 loader: require.resolve("worker-loader"),
