@@ -191,7 +191,7 @@ module.exports = {
                     },
                 ],
             },
-            // { parser: { requireEnsure: !1 } },
+           // { parser: { requireEnsure: !1 } },
             {
                 test: /\.worker\.js$/,
                 loader: require.resolve("worker-loader"),
@@ -448,7 +448,7 @@ Inline mode with the fallback value will create file for browsers without supp
         splitChunks: {
             chunks: "all",
             minSize: 30000,
-            maxSize: 0,
+            maxSize: 100*1000,
             minChunks: 1,
             maxAsyncRequests: 5,
             maxInitialRequests: 5,
