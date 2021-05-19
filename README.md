@@ -498,5 +498,15 @@ false | string | function
 
 https://webpack.docschina.org/blog/2020-10-10-webpack-5-release/#changes-to-the-structure
 
-[hash] 作为完整的编译 hash 值，现已被弃用
-迁移：使用 [fullhash] 代替，或最好选用其他 hash 选项
+`[hash]` 作为完整的编译 hash 值，现已被弃用
+迁移：使用 `[fullhash]` 代替，或最好选用其他 hash 选项
+
+6.
+
+https://github.com/GoogleChrome/workbox/issues/1790
+
+WARNING in GenerateSW has been called multiple times, perhaps due to running webpack in --watch mode. The precache manifest generated after the first call may be inaccurate! Please see for more information.
+
+只在生产环境运行插件 ，开发环境不运行此插件。
+
+new WorkboxWebpackPlugin.GenerateSW

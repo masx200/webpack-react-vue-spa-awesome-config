@@ -388,32 +388,33 @@ Inline mode with the fallback value will create file for browsers without supp
 */
         //      isEnvDevelopment && new webpack.NamedModulesPlugin(),
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
-        new WorkboxWebpackPlugin.GenerateSW({
-            clientsClaim: !0,
-            /* Please check your GenerateSW plugin configuration:
+        isEnvProduction &&
+            new WorkboxWebpackPlugin.GenerateSW({
+                clientsClaim: !0,
+                /* Please check your GenerateSW plugin configuration:
 "importWorkboxFrom" is not a supported parameter. */
-            // importWorkboxFrom: "cdn",
-            runtimeCaching: [
-                {
-                    urlPattern: /.*\.(?:js|html|\/)$/,
-                    handler: "NetworkFirst",
-                    options: {},
-                },
-                {
-                    urlPattern: /.*\.(?:xml|json|md|css)$/,
-                    handler: "StaleWhileRevalidate",
-                    options: {},
-                },
-                {
-                    urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
-                    handler: "CacheFirst",
-                    options: {
-                        cacheName: "image-cache",
-                        expiration: { maxEntries: 10 },
+                // importWorkboxFrom: "cdn",
+                runtimeCaching: [
+                    {
+                        urlPattern: /.*\.(?:js|html|\/)$/,
+                        handler: "NetworkFirst",
+                        options: {},
                     },
-                },
-            ],
-        }),
+                    {
+                        urlPattern: /.*\.(?:xml|json|md|css)$/,
+                        handler: "StaleWhileRevalidate",
+                        options: {},
+                    },
+                    {
+                        urlPattern: /\.(?:png|jpg|jpeg|svg|gif)$/,
+                        handler: "CacheFirst",
+                        options: {
+                            cacheName: "image-cache",
+                            expiration: { maxEntries: 10 },
+                        },
+                    },
+                ],
+            }),
         new MiniCssExtractPlugin({
             filename: "[name].[chunkhash].css",
             chunkFilename: "[name].[chunkhash].css",
