@@ -372,10 +372,10 @@ Inline mode with the fallback value will create file for browsers without supp
             patterns: [
                 {
                     globOptions: {
-                        ignore: isEnvProduction ? ["index.html"] : [],
+                        ignore:  ["index.html"] ,
                     },
                     from: path.join(__dirname, "public"),
-
+toType: "dir",
                     to: path.join(__dirname, "dist"),
                 },
                 //  { from: "other", to: "public" },
@@ -424,6 +424,7 @@ Inline mode with the fallback value will create file for browsers without supp
         }),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
+        	filename:"index.html",
             title: " Progressive Web Application",
             inject: !0,
             minify: {
