@@ -367,17 +367,20 @@ Inline mode with the fallback value will create file for browsers without supp
 
         isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
 
-        isEnvProduction &&
-            new CopyPlugin({
-                patterns: [
-                    {
-                        from: path.join(__dirname, "public"),
-
-                        to: path.join(__dirname, "dist"),
+        //    isEnvProduction &&
+        new CopyPlugin({
+            patterns: [
+                {
+                    globOptions: {
+                        ignore: isEnvProduction ? ["index.html"] : [],
                     },
-                    //  { from: "other", to: "public" },
-                ],
-            }),
+                    from: path.join(__dirname, "public"),
+
+                    to: path.join(__dirname, "dist"),
+                },
+                //  { from: "other", to: "public" },
+            ],
+        }),
         /*
    new CopyFilesPlugin({
                 sourceRoot: path.join(__dirname, "public"),
