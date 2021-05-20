@@ -322,13 +322,13 @@ import().then();
 
 CSS 压缩：内置 MiniCssExtractPlugin 和 OptimizeCSSAssetsPlugin，对抽离出来的 CSS 进行压缩去重
 
-JS 压缩：内置 uglifyjs 和 terser，对抽离出来的 JS 进行压缩去重，uglifyjs 用于压缩 ES5，terser 用于压缩 ES6
+JS 压缩：内置 terser，对抽离出来的 JS 进行压缩去重，terser 用于压缩 ES6
 
 # 摇树优化：
 
 启用 Webpack 内置的 Tree Shaking，禁止 babel 把代码转换成 Commonjs 规范，使用 ESM 规范的静态声明特点来去除不被引用或不被执行的代码块，起到减包作用
 
-# 使用 uglifyjs-webpack-plugin 删除注释和 console.log
+# 使用 terser-webpack-plugin 删除注释和 console.log
 
 # 生产环境自动关闭 sourcemap，压缩混淆 js 和 css 和 html 代码
 
@@ -407,7 +407,7 @@ module.exports = {
 
 ## 使用的 plugin
 
-WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin/UglifyJsPlugin
+WorkboxWebpackPlugin.GenerateSW/MiniCssExtractPlugin/VueLoaderPlugin/HtmlWebpackPlugin/TerserPlugin/OptimizeCSSAssetsPlugin/webpack.HotModuleReplacementPlugin/WebpackDeepScopeAnalysisPlugin
 
 # 提供 workbox 支持单页面应用缓存
 

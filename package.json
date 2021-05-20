@@ -82,7 +82,6 @@
         "terser": "^5.7.0",
         "terser-webpack-plugin": "^5.1.1",
         "to-string-loader": "^1.1.6",
-        "uglifyjs-webpack-plugin": "^2.2.0",
         "unicode-loader": "^1.0.7",
         "url-loader": "^4.1.1",
         "vue-loader": "^15.9.7",
