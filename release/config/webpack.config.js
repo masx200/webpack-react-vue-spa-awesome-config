@@ -455,7 +455,7 @@ Inline mode with the fallback value will create file for browsers without supp
     ].filter(Boolean),
     optimization: {
         //将NamedModulesPlugin 替换为 optimization.moduleIds: 'named'
-        moduleIds: isEnvDevelopment ? "named" : "deterministic",
+        moduleIds: isEnvDevelopment ? "named" : "natural",
 
         chunkIds: isEnvDevelopment ? "named" : "natural",
         //namedchunksplugin
