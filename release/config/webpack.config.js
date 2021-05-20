@@ -402,6 +402,7 @@ Inline mode with the fallback value will create file for browsers without supp
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
         isEnvProduction &&
             new WorkboxWebpackPlugin.GenerateSW({
+                skipWaiting: true,
                 clientsClaim: !0,
                 /* Please check your GenerateSW plugin configuration:
 "importWorkboxFrom" is not a supported parameter. */
