@@ -378,9 +378,11 @@ Inline mode with the fallback value will create file for browsers without supp
                     toType: "dir",
                     to: path.join(__dirname, "dist"),
                     filter: (resourcePath) => {
-                        console.log("copy-webpack-plugin"
+                        console.log(
+                            "copy-webpack-plugin",
 
-,resourcePath);
+                            resourcePath
+                        );
                         return true;
                     },
                 },
