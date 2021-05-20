@@ -519,9 +519,19 @@ ERROR in ./src/index.js 1:0
 Module parse failed: 'import' and 'export' may appear only with 'sourceType: module' (1:0)
 
 ```js
-{
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
-                type: "javascript/auto",
-                loader: require.resolve("babel-loader"),
-         }
+[{
+    test: /\.(js|mjs|jsx|ts|tsx)$/,
+    type: "javascript/auto",
+    loader: require.resolve("babel-loader"),
+}]
+
+```
+
+8.
+
+https://webpack.docschina.org/configuration/devtool/#root
+
+```js
+
+module.exports = {devtool: isEnvDevelopment ? "inline-source-map" : false,}
 ```
