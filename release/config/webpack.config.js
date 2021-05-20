@@ -307,6 +307,7 @@ Inline mode with the fallback value will create file for browsers without supp
                     },
                     {
                         test: /\.(js|mjs|jsx|ts|tsx)$/,
+                        type: "javascript/auto",
                         loader: require.resolve("babel-loader"),
                         options: {
                             sourceMaps: shouldUseSourceMap,
@@ -327,6 +328,7 @@ Inline mode with the fallback value will create file for browsers without supp
                     {
                         test: /\.(js|mjs)$/,
                         exclude: /@babel(?:\/|\\{1,2})runtime/,
+                        type: "javascript/auto",
                         loader: require.resolve("babel-loader"),
                         options: {
                             babelrc: !1,
