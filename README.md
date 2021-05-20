@@ -510,3 +510,18 @@ WARNING in GenerateSW has been called multiple times, perhaps due to running web
 只在生产环境运行插件 ，开发环境不运行此插件。
 
 new WorkboxWebpackPlugin.GenerateSW
+
+7.
+
+https://webpack.docschina.org/configuration/module/#ruletype
+
+ERROR in ./src/index.js 1:0  
+Module parse failed: 'import' and 'export' may appear only with 'sourceType: module' (1:0)
+
+```js
+{
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+         }
+```
