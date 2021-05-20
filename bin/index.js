@@ -218,41 +218,39 @@ console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
         var n,
             t,
             l = o.config,
-            r = o["react-hot-loader"],
-            u = require.resolve(i.default.resolve(__dirname, "../")),
-            a = l ? i.default.resolve(l) : u,
-            s = o["output-public-path"],
-            p = o.mode;
-        if ("start" === e || "development" === p)
+            r = require.resolve(i.default.resolve(__dirname, "../")),
+            u = l ? i.default.resolve(l) : r,
+            a = o["output-public-path"],
+            s = o.mode;
+        if ("start" === e || "development" === s)
             (c.default.env.NODE_ENV = "development"),
                 f(h, y),
                 (n = d("webpack")),
                 (t = [
                     "serve",
                     "--config",
-                    a,
+                    u,
                     "--mode=" + c.default.env.NODE_ENV,
                 ]),
-                r && (t.push("--react-hot-loader=" + r), console.log("\n")),
                 console.log("\n"),
                 console.log(
                     "\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"
                 ),
                 console.log("\n"),
                 g(n, t);
-        else if ("build" === e || "production" === p) {
-            var v, b;
+        else if ("build" === e || "production" === s) {
+            var p, v;
             console.log("\n"),
                 console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"),
                 console.log("\n"),
                 (c.default.env.NODE_ENV = "production"),
                 f(h, y),
-                (v = d("webpack ")),
-                (b = ["--config", a, "--mode=" + c.default.env.NODE_ENV]),
-                s &&
-                    s.length &&
-                    (b.push("--output-public-path=" + s), console.log("\n")),
-                g(v, b);
+                (p = d("webpack ")),
+                (v = ["--config", u, "--mode=" + c.default.env.NODE_ENV]),
+                a &&
+                    a.length &&
+                    (v.push("--output-public-path=" + a), console.log("\n")),
+                g(p, v);
         } else
             console.log("\n"),
                 console.log("usage:"),
