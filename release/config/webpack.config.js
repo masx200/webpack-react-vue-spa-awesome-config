@@ -69,9 +69,14 @@ if ("production" === process.env.NODE_ENV) {
         }
     }
 }
+
+if (isEnvDevelopment) {
+    console.log("open in browser:http://localhost:" + port);
+}
 /**
  * @type{import('webpack').Configuration}
  */
+
 module.exports = {
     target: "browserslist",
     resolve: { alias: { "@": path.join(__dirname, "src") } },
@@ -85,7 +90,7 @@ module.exports = {
         hot: !0,
         port,
         inline: !0,
-        open: !0,
+        // open: !0,
         watchContentBase: !0,
     },
     devtool: isEnvDevelopment ? "inline-source-map" : false,
