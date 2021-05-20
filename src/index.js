@@ -1,57 +1,54 @@
 import "./index.css";
 alert("hello world");
-// import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
+import "../registerserviceworker.js";
 
-/* import React from "react";
+import React from "react";
 import { render } from "react-dom";
 
-function App() {
-  return <div>hello world</div>;
+function App1() {
+    return <div>hello world</div>;
 }
 
-render(<App />, document.getElementById("root"));
- */
-/* 
+render(<App1 />, document.getElementById("root"));
+
 import Vue from "vue/dist/vue.esm.browser";
-const App = Vue.extend({
-  template: `
+const App2 = Vue.extend({
+    template: `
     <div>
     {{msg}}
     </div>
     
     `,
 
-  name: "App",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    };
-  },
-  methods: {},
-  mounted() {}
+    name: "App2",
+    data() {
+        return {
+            msg: "Welcome to Your Vue.js App",
+        };
+    },
+    methods: {},
+    mounted() {},
 });
 
 new Vue({
-  el: "#root",
-  // router,
-  components: {
-    App
-  },
-  template: "<App/>",
-  data() {
-    return {};
-  }
+    el: "#root",
+    // router,
+    components: {
+        App2,
+    },
+    template: "<App2/>",
+    data() {
+        return {};
+    },
 });
- */
-/* function h(type, props, ...children) {
-  return { type, props, children };
+
+var msg = "htmlWelcome to Your Vue.js App";
+function h(type, props, ...children) {
+    return { type, props, children };
 }
 console.log(html`
-  <a href="/">Hello!</a>
-  <App />
-  <div>hello world</div>
-  <div>
-    {{msg}}
-  </div>
+    <a href="/">Hello!</a>
+    <App />
+    <div>hello world</div>
+    <div>{{msg}}</div>
 `);
- */

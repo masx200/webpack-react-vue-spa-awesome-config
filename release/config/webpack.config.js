@@ -76,6 +76,8 @@ module.exports = {
     target: "browserslist",
     resolve: { alias: { "@": path.join(__dirname, "src") } },
     devServer: {
+        host: "0.0.0.0",
+
         compress: true,
 
         historyApiFallback: true,
@@ -364,7 +366,7 @@ Inline mode with the fallback value will create file for browsers without supp
         ],
     },
     plugins: [
-        new webpack.ProgressPlugin(),
+        // new webpack.ProgressPlugin(),
 
         isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
 

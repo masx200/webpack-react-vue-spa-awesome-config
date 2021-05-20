@@ -1,8 +1,8 @@
 import "./index.css";
 alert("hello world");
-// import "webpack-react-vue-spa-awesome-config/registerserviceworker.js";
+/*import "../registerserviceworker.js";
 
-/* import React from "react";
+ import React from "react";
 import { render } from "react-dom";
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
 }
 
 render(<App />, document.getElementById("root"));
- */
-/* 
+ 
+
 import Vue from "vue/dist/vue.esm.browser";
 const App = Vue.extend({
   template: `
@@ -42,4 +42,17 @@ new Vue({
     return {};
   }
 });
+ 
+var msg="htmlWelcome to Your Vue.js App"
+ function h(type, props, ...children) {
+  return { type, props, children };
+}
+console.log(html`
+  <a href="/">Hello!</a>
+  <App />
+  <div>hello world</div>
+  <div>
+    {{msg}}
+  </div>
+`);
  */
