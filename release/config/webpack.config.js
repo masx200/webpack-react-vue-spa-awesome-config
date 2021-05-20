@@ -71,7 +71,7 @@ if ("production" === process.env.NODE_ENV) {
 }
 
 if (isEnvDevelopment) {
-    console.log("open in browser:http://localhost:" + port);
+    console.log("open in browser: http://localhost:" + port);
 }
 /**
  * @type{import('webpack').Configuration}
