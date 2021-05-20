@@ -30,7 +30,7 @@ const 参数object = parseargs(process.argv);
 console.log("解析的参数:");
 console.log(JSON.stringify(参数object, null, 4));
 const 解析参数publicpath = 参数object["output-public-path"];
-const 参数reacthotreload = !!参数object["react-hot-loader"];
+
 process.env.NODE_ENV = process.argv.includes("--mode=production")
     ? "production"
     : "development";
@@ -95,10 +95,7 @@ module.exports = {
     },
     devtool: isEnvDevelopment ? "inline-source-map" : false,
     mode: process.env.NODE_ENV,
-    entry: [
-        isEnvDevelopment && 参数reacthotreload && "react-hot-loader/patch",
-        path.join(__dirname, "src", "index.js"),
-    ].filter(Boolean),
+    entry: [path.join(__dirname, "src", "index.js")].filter(Boolean),
     output: {
         publicPath,
         globalObject: `( Function('return this')())`,
@@ -120,9 +117,6 @@ module.exports = {
                 options: {
                     sourceMaps: shouldUseSourceMap,
                     plugins: [
-                        isEnvDevelopment &&
-                            参数reacthotreload &&
-                            require.resolve("react-hot-loader/babel"),
                         [
                             require.resolve(
                                 "@babel/plugin-proposal-decorators"

@@ -12,7 +12,7 @@ import { sourcefiles, destfiles } from "./source-dest-files";
 export function start(operation, 参数object) {
     const 解析参数config = 参数object["config"];
     // const 解析参数mode = 参数object.mode;
-    const 参数reacthotreload = 参数object["react-hot-loader"];
+
     const defaultwebpackconfig = require.resolve(
         path.resolve(__dirname, "../")
     );
@@ -33,11 +33,7 @@ export function start(operation, 参数object) {
             参数webpackconfigfile,
             "--mode=" + process.env.NODE_ENV,
         ];
-        if (参数reacthotreload) {
-            commandargs.push("--react-hot-loader=" + 参数reacthotreload);
-            //   console.log(`react-hot-loader :  ${参数reacthotreload}`);
-            console.log("\n");
-        }
+
         console.log("\n");
         console.log(`开发模式
 启动 webpack-dev-server`);

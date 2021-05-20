@@ -1,7 +1,7 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -75,7 +75,6 @@
         "purify-css": "^1.2.5",
         "purifycss-webpack": "^0.7.0",
         "react-app-polyfill": "^2.0.0",
-        "react-hot-loader": "^4.13.0",
         "regenerator-runtime": "^0.13.7",
         "sass": "1.32.12",
         "style-loader": "^2.0.0",

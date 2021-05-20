@@ -54,10 +54,6 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 `--output-public-path=https://masx200.github.io/`
 
-## 开启`react-hot-loader`
-
-`--react-hot-loader=true`
-
 # 更新 :新增 `babel-plugin-htm` ,支持`HTM (Hyperscript Tagged Markup)`
 
 https://github.com/developit/htm
@@ -286,7 +282,7 @@ https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/maste
 
 # 局部刷新：
 
-启用 Webpack 内置的 HMR，配合 react-hot-loader，增量更新 css 文件和 js 文件，修哪更哪，无需刷新页面即可实时看见修改结果
+启用 Webpack 内置的 HMR，增量更新 css 文件和 js 文件，修哪更哪，无需刷新页面即可实时看见修改结果
 
 # 动态导入：
 
@@ -333,45 +329,6 @@ JS 压缩：内置 terser，对抽离出来的 JS 进行压缩去重，terser �
 # 生产环境自动关闭 sourcemap，压缩混淆 js 和 css 和 html 代码
 
 # 开发环境支持模块热更新，和 sourcemap
-
-## 使用`react-hot-loader`实现`React`组件热更新
-
-https://github.com/gaearon/react-hot-loader
-
-### 开启`React Hot Loader` `v4`: 例子
-
-传入参数`--react-hot-loader=true`
-
-```powershell
-
-webpack-react-vue-spa-awesome-config   --mode=development --react-hot-loader=true
-
-```
-
-仅在开发环境开启`React Hot Loader`的方法
-
-`App.js`
-
-```js
-import React from "react";
-import { hot } from "react-hot-loader";
-const Apphome = () => <div>Hello world!</div>;
-const hotApp =
-    "development" === process.env.NODE_ENV
-        ? hot(module)(Apphome)
-        : React.memo(Apphome);
-export default hotApp;
-```
-
-`main.js`
-
-```js
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./containers/App";
-
-ReactDOM.render(<App />, document.getElementById("root"));
-```
 
 ## 使用`vue-loader`实现`Vue`组件热更新
 
