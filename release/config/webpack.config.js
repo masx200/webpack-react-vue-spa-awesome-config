@@ -322,7 +322,7 @@ Inline mode with the fallback value will create file for browsers without supp
                             cacheCompression: isEnvProduction,
                             compact: isEnvProduction,
                         },
-                        include: [path.resolve(__dirname)],
+                        include: [path.resolve(__dirname, "src")],
                     },
                     {
                         test: /\.(js|mjs)$/,
