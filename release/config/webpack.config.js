@@ -86,7 +86,7 @@ module.exports = {
         open: !0,
         watchContentBase: !0,
     },
-    devtool: isEnvDevelopment ? "inline-source-map" : "source-map",
+    devtool: isEnvDevelopment ? "inline-source-map" : false,
     mode: process.env.NODE_ENV,
     entry: [
         isEnvDevelopment && 参数reacthotreload && "react-hot-loader/patch",
