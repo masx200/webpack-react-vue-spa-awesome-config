@@ -460,7 +460,7 @@ Inline mode with the fallback value will create file for browsers without supp
         chunkIds: isEnvDevelopment ? "named" : "natural",
         //namedchunksplugin
         usedExports: true,
-        runtimeChunk: { name: (e) => `runtime~${e.name}` },
+        runtimeChunk: "single",
         splitChunks: {
             chunks: "all",
             minSize: 30000,
@@ -468,17 +468,19 @@ Inline mode with the fallback value will create file for browsers without supp
             minChunks: 1,
             maxAsyncRequests: 5,
             maxInitialRequests: 5,
+            name: false,
+            usedExports: true,
             //
-            name(module, chunks, cacheGroupKey) {
-                const moduleFileName = module
-                    .identifier()
-                    .split("/")
-                    .reduceRight((item) => item);
-                const allChunksNames = chunks
-                    .map((item) => item.name)
-                    .join("~");
-                return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-            },
+            // name(module, chunks, cacheGroupKey) {
+            //     const moduleFileName = module
+            //         .identifier()
+            //         .split("/")
+            //         .reduceRight((item) => item);
+            //     const allChunksNames = chunks
+            //         .map((item) => item.name)
+            //         .join("~");
+            //     return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+            // },
             /*configuration.optimization.splitChunks.name should be one of these:
       false | string | function
       -> Give chunks created a name (chunks with equal name are merged).

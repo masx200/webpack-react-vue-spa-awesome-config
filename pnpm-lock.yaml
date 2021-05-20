@@ -55,6 +55,7 @@ specifiers:
   purifycss-webpack: ^0.7.0
   react: 17.0.2
   react-app-polyfill: ^2.0.0
+  react-dom: ^17.0.2
   react-hot-loader: ^4.13.0
   regenerator-runtime: ^0.13.7
   rollup: ^2.47.0
@@ -127,7 +128,7 @@ dependencies:
   purify-css: 1.2.5
   purifycss-webpack: 0.7.0_purify-css@1.2.5
   react-app-polyfill: 2.0.0
-  react-hot-loader: 4.13.0_@types+react@17.0.5+react@17.0.2
+  react-hot-loader: 4.13.0_c9b97d0291e0c7f7ae91672f3bb47b49
   regenerator-runtime: 0.13.7
   sass: 1.32.12
   style-loader: 2.0.0_webpack@5.37.0
@@ -162,6 +163,7 @@ devDependencies:
   lodash: 4.17.21
   minimist: 1.2.5
   prettier: 2.3.0
+  react-dom: 17.0.2_react@17.0.2
   rollup: 2.47.0
   rollup-plugin-babel: 4.4.0_@babel+core@7.14.0+rollup@2.47.0
   rollup-plugin-terser: 7.0.2_rollup@2.47.0
@@ -6021,7 +6023,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /loud-rejection/1.6.0:
     resolution: {integrity: sha1-W0b4AUft7leIcPCG0Eghz5mOVR8=}
@@ -6502,7 +6503,6 @@ packages:
   /object-assign/4.1.1:
     resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
     engines: {node: '>=0.10.0'}
-    dev: false
 
   /object-copy/0.1.0:
     resolution: {integrity: sha1-fn2Fi3gb18mRpBupde04EnVOmYw=}
@@ -7768,7 +7768,18 @@ packages:
       whatwg-fetch: 3.6.2
     dev: false
 
-  /react-hot-loader/4.13.0_@types+react@17.0.5+react@17.0.2:
+  /react-dom/17.0.2_react@17.0.2:
+    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
+    peerDependencies:
+      react: 17.0.2
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react: 17.0.2
+      scheduler: 0.20.2
+    dev: true
+
+  /react-hot-loader/4.13.0_c9b97d0291e0c7f7ae91672f3bb47b49:
     resolution: {integrity: sha512-JrLlvUPqh6wIkrK2hZDfOyq/Uh/WeVEr8nc7hkn2/3Ul0sx1Kr5y4kOGNacNRoj7RhwLNcQ3Udf1KJXrqc0ZtA==}
     engines: {node: '>= 6'}
     peerDependencies:
@@ -7786,6 +7797,7 @@ packages:
       loader-utils: 1.4.0
       prop-types: 15.7.2
       react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
       react-lifecycles-compat: 3.0.4
       shallowequal: 1.1.0
       source-map: 0.7.3
@@ -8212,6 +8224,13 @@ packages:
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
     dev: false
+
+  /scheduler/0.20.2:
+    resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+    dev: true
 
   /schema-utils/1.0.0:
     resolution: {integrity: sha512-i27Mic4KovM/lnGsy8whRCHhc7VicJajAjTrYg11K9zfZXnYIt4k5F+kZkwjnrhKzLic/HLU4j11mjsz2G/75g==}
