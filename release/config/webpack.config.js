@@ -108,6 +108,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
                 options: {
                     sourceMaps: shouldUseSourceMap,
