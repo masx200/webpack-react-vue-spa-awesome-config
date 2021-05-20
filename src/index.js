@@ -30,8 +30,8 @@ const App2 = Vue.extend({
     mounted() {},
 });
 
-new Vue({
-    el: "#root",
+const vm = new Vue({
+    // el: "#root",
     // router,
     components: {
         App2,
@@ -41,8 +41,8 @@ new Vue({
         return {};
     },
 });
-
-var msg = "htmlWelcome to Your Vue.js App";
+vm.$mount(document.body.appendChild(document.createElement("div")));
+// var msg = "htmlWelcome to Your Vue.js App";
 function h(type, props, ...children) {
     return { type, props, children };
 }
