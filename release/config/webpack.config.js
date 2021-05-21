@@ -43,7 +43,7 @@ console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
-//const CopyFilesPlugin = require("webpack-copyfiles-plugin");
+
 const CopyPlugin = require("copy-webpack-plugin");
 
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
@@ -69,8 +69,9 @@ if ("production" === process.env.NODE_ENV) {
         }
     }
 }
+const isservemode = process.argv.includes("serve");
 
-if (isEnvDevelopment) {
+if (isEnvDevelopment & isservemode) {
     console.log("open in browser: http://localhost:" + port);
 }
 /**
