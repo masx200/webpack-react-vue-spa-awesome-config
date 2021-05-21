@@ -100,12 +100,12 @@ module.exports = {
         publicPath,
         globalObject: `( Function('return this')())`,
         filename: isEnvDevelopment
-            ? "bundle.[name].[fullhash].js"
-            : "bundle.[name].[chunkhash].js",
+            ? "[name].[fullhash].js"
+            : "[name].[chunkhash].js",
         path: path.join(__dirname, "dist"),
         chunkFilename: isEnvDevelopment
-            ? "chunk.[name].[fullhash].js"
-            : "chunk.[name].[chunkhash].js",
+            ? "[name].[fullhash].js"
+            : "[name].[chunkhash].js",
     },
     module: {
         strictExportPresence: !0,
@@ -230,7 +230,7 @@ Inline mode with the fallback value will create file for browsers without supp
 
 */
                 options: {
-                    filename: "[name].[fullhash].worker.js",
+                    //filename: "[name].[fullhash].worker.js",
                     inline: "no-fallback",
                 },
             },
