@@ -27,6 +27,7 @@ specifiers:
   babel-plugin-transform-runtime: ^6.23.0
   babel-preset-react-app: ^10.0.0
   banner-content-loader: ^0.1.1
+  browserslist: 4.16.6
   clean-webpack-plugin: ^4.0.0-alpha.0
   copy-webpack-plugin: ^8.1.1
   core-js-pure: ^3.12.1
@@ -103,6 +104,7 @@ dependencies:
   babel-plugin-transform-runtime: 6.23.0
   babel-preset-react-app: 10.0.0
   banner-content-loader: 0.1.1
+  browserslist: 4.16.6
   clean-webpack-plugin: 4.0.0-alpha.0_webpack@5.37.0
   copy-webpack-plugin: 8.1.1_webpack@5.37.0
   css-loader: 5.2.4_webpack@5.37.0
@@ -118,7 +120,7 @@ dependencies:
   postcss: 8.2.15
   postcss-flexbugs-fixes: 5.0.2_postcss@8.2.15
   postcss-loader: 5.2.0_postcss@8.2.15+webpack@5.37.0
-  postcss-normalize: 10.0.0_postcss@8.2.15
+  postcss-normalize: 10.0.0_1985f1e2d0e113a828ded1b7ae7bc393
   postcss-preset-env: 6.7.0
   postcss-safe-parser: 5.0.2
   purgecss-webpack-plugin: 4.0.3_webpack-cli@4.7.0
@@ -6717,13 +6719,14 @@ packages:
       postcss-selector-parser: 6.0.6
     dev: false
 
-  /postcss-browser-comments/4.0.0_postcss@8.2.15:
+  /postcss-browser-comments/4.0.0_1985f1e2d0e113a828ded1b7ae7bc393:
     resolution: {integrity: sha512-X9X9/WN3KIvY9+hNERUqX9gncsgBA25XaeR+jshHz2j8+sYyHktHw1JdKuMjeLpGktXidqDhA7b/qm1mrBDmgg==}
     engines: {node: '>=8'}
     peerDependencies:
       browserslist: '>=4'
       postcss: '>=8'
     dependencies:
+      browserslist: 4.16.6
       postcss: 8.2.15
     dev: false
 
@@ -7148,7 +7151,7 @@ packages:
       postcss-value-parser: 3.3.1
     dev: false
 
-  /postcss-normalize/10.0.0_postcss@8.2.15:
+  /postcss-normalize/10.0.0_1985f1e2d0e113a828ded1b7ae7bc393:
     resolution: {integrity: sha512-krYZhIfZ6TIbMSXI4JpIWU64CPHCzXNbyCgHAJdZXirBpgTLRoB4+bSA17zvMLlst6SrdL9yfyTdGQlxS5poeg==}
     engines: {node: '>= 12'}
     peerDependencies:
@@ -7156,8 +7159,9 @@ packages:
       postcss: '>= 8'
     dependencies:
       '@csstools/normalize.css': 11.0.1
+      browserslist: 4.16.6
       postcss: 8.2.15
-      postcss-browser-comments: 4.0.0_postcss@8.2.15
+      postcss-browser-comments: 4.0.0_1985f1e2d0e113a828ded1b7ae7bc393
       sanitize.css: 12.0.1
     dev: false
 
