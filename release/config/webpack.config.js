@@ -79,7 +79,7 @@ if (isEnvDevelopment & isservemode) {
  */
 
 module.exports = {
-    target:isEnvDevelopment
+    target: isEnvDevelopment
         ? "browserslist:" +
           [
               "last 1 chrome version",
