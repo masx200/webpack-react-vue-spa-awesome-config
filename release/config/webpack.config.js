@@ -79,7 +79,14 @@ if (isEnvDevelopment & isservemode) {
  */
 
 module.exports = {
-    target: "web",
+    target:isEnvDevelopment
+        ? "browserslist:" +
+          [
+              "last 1 chrome version",
+              "last 1 firefox version",
+              "last 1 safari version",
+          ].join(",")
+        : "browserslist:" + [">0.2%", "not dead", "not op_mini all"].join(","),
     resolve: { alias: { "@": path.join(__dirname, "src") } },
     devServer: {
         host: "0.0.0.0",

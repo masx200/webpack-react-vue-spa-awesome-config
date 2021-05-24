@@ -1,7 +1,7 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.0.6",
+    "version": "3.0.7",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
