@@ -220,8 +220,8 @@ webpack  --config ./release/config/webpack.config.js     --mode=production
 https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/polyfill/polyfill.min.js
 
 ```html
-<script src="https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.4.5/polyfill/polyfill.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-polyfill/7.8.7/polyfill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config@2.7.1/polyfill/polyfill.min.js"></script>
 ```
 
 # 内部极简的配置文件
