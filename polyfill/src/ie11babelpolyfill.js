@@ -1,32 +1,29 @@
 var importScripts = require("./importscripts.js");
 (() => {
     /* 判断ie11 */
-    // if (navigator.userAgent.indexOf("Trident") > -1) {
-    // var s = document.createElement("script");
-    // s.src = "https://cdn.bootcss.com/babel-polyfill/7.4.4/polyfill.min.js";
-    // document.head.appendChild(s);
+    
     if (
         typeof Promise != "function" ||
         typeof Symbol != "function" ||
         typeof Reflect != "object"
     ) {
         importScripts(
-            "https://cdn.bootcss.com/babel-polyfill/7.6.0/polyfill.min.js"
+            "https://cdn.bootcdn.net/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"
         );
     }
 
-    // importScripts("https://cdn.staticfile.org/fetch/3.0.0/fetch.min.js");
+    
 
     if (typeof fetch != "function" || typeof Response != "function") {
-        require("./fetch-polyfill.js")();
+        require("./fetch-polyfill.js").default();
     }
 
     if ("function" != typeof URL || "function" != typeof URLSearchParams) {
-        require("./url-polyfill.min.js")();
+        require("./url-polyfill.min.js").default();
     }
 
     if ("function" != typeof Event || "function" != typeof CustomEvent) {
-        require("./event-polyfill.js")();
+        require("./event-polyfill.js").default();
     }
 
     //发现Edge浏览器不支持 new EventTarget！
