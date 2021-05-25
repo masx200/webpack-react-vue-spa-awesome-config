@@ -1,4 +1,3 @@
-
 function importScripts(url) {
     var xhr = new XMLHttpRequest();
     // var args = Array.prototype.slice.call(arguments),

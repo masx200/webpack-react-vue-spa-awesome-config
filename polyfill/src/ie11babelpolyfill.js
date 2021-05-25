@@ -1,7 +1,7 @@
 var importScripts = require("./importscripts.js");
 (() => {
     /* 判断ie11 */
-    
+
     if (
         typeof Promise != "function" ||
         typeof Symbol != "function" ||
@@ -11,8 +11,6 @@ var importScripts = require("./importscripts.js");
             "https://cdn.bootcdn.net/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"
         );
     }
-
-    
 
     if (typeof fetch != "function" || typeof Response != "function") {
         require("./fetch-polyfill.js").default();
