@@ -11,3 +11,4 @@ dist
 yarn.lock
 polyfill/src/.vs/slnx.sqlite
 polyfill/src/.vs/slnx.sqlite-journal
+package-lock.json
