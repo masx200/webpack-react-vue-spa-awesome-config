@@ -1,5 +1,5 @@
 "use strict";
-
+const fs = require("fs");
 const CopyPlugin = require("copy-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
@@ -85,7 +85,15 @@ module.exports = {
     },
     devtool: isEnvDevelopment ? "inline-source-map" : false,
     mode: process.env.NODE_ENV,
-    entry: [path.join(__dirname, "src", "index.js")].filter(Boolean),
+    entry: [
+        fs.existsSync(path.join(__dirname, "src", "index.tsx"))
+            ? path.join(__dirname, "src", "index.tsx")
+            : fs.existsSync(path.join(__dirname, "src", "index.ts"))
+            ? path.join(__dirname, "src", "index.ts")
+            : fs.existsSync(path.join(__dirname, "src", "index.jsx"))
+            ? path.join(__dirname, "src", "index.jsx")
+            : path.join(__dirname, "src", "index.js"),
+    ].filter(Boolean),
     output: {
         publicPath,
         globalObject: `( Function('return this')())`,
@@ -100,7 +108,6 @@ module.exports = {
     module: {
         strictExportPresence: !0,
         rules: [
-        
             {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
                 type: "javascript/auto",
@@ -118,36 +125,8 @@ module.exports = {
                             "@babel/plugin-proposal-class-properties",
                             { loose: true },
                         ],
-                        
- 
                     ].filter(Boolean),
                     presets: [require.resolve("babel-preset-react-app")],
-                    babelrc: false,
-                    configFile: false,
-                    cacheDirectory: !0,
-                    cacheCompression: isEnvProduction,
-                    compact: isEnvProduction,
-                },
-                include: [path.resolve(__dirname)],
-            },
-    {
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
-                type: "javascript/auto",
-                loader: require.resolve("babel-loader"),
-                options: {
-                    sourceMaps: shouldUseSourceMap,
-                    plugins: [
-                        [
-                            require.resolve("babel-plugin-htm"),
-                            {
-                                pragma: "h",
-                                tag: "html",
-                                useBuiltIns: true,
-                                useNativeSpread: true,
-                            },
-                        ],
-                    ].filter(Boolean),
-                    presets: [],
                     babelrc: false,
                     configFile: false,
                     cacheDirectory: !0,
@@ -276,9 +255,10 @@ module.exports = {
                     },
                     {
                         test: /\.(js|mjs)$/,
-                        exclude: [/@babel(?:\/|\\{1,2})runtime/,
-path.resolve(__dirname, "src")
-],
+                        exclude: [
+                            /@babel(?:\/|\\{1,2})runtime/,
+                            path.resolve(__dirname, "src"),
+                        ],
                         type: "javascript/auto",
                         loader: require.resolve("babel-loader"),
                         options: {
@@ -314,6 +294,36 @@ path.resolve(__dirname, "src")
                         },
                     },
                 ],
+            },
+            {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+                options: {
+                    sourceMaps: shouldUseSourceMap,
+                    plugins: [
+                        [
+                            require.resolve("babel-plugin-htm"),
+                            {
+                                pragma: "h",
+                                tag: "html",
+                                useBuiltIns: true,
+                                useNativeSpread: true,
+                            },
+                        ],
+                    ].filter(Boolean),
+                    presets: [
+                        require.resolve("@babel/preset-react"),
+
+                        require.resolve("@babel/preset-typescript"),
+                    ],
+                    babelrc: false,
+                    configFile: false,
+                    cacheDirectory: !0,
+                    cacheCompression: isEnvProduction,
+                    compact: isEnvProduction,
+                },
+                include: [path.resolve(__dirname, "src")],
             },
         ],
     },

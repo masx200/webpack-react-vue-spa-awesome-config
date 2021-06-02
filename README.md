@@ -159,7 +159,9 @@ webpack-react-vue-spa-awesome-config start
 webpack-react-vue-spa-awesome-config build
 ```
 
-# 入口文件是"public/index.html"和'src/index.js'
+# 入口文件
+
+是"public/index.html"和"src/index.tsx"或者 "src/index.ts"或者 "src/index.jsx"或者 "src/index.js"
 
 如果入口文件不存在,则会自动生成入口文件
 
