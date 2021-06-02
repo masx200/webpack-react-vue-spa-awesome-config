@@ -143,15 +143,15 @@ module.exports = {
                             "@babel/plugin-proposal-class-properties",
                             { loose: true },
                         ],
-                        [
-                            require.resolve("babel-plugin-htm"),
-                            {
-                                pragma: "h",
-                                tag: "html",
-                                useBuiltIns: true,
-                                useNativeSpread: true,
-                            },
-                        ],
+                        // [
+                        //     require.resolve("babel-plugin-htm"),
+                        //     {
+                        //         pragma: "h",
+                        //         tag: "html",
+                        //         useBuiltIns: true,
+                        //         useNativeSpread: true,
+                        //     },
+                        // ],
                     ].filter(Boolean),
                     presets: [require.resolve("babel-preset-react-app")],
                     babelrc: false,

@@ -1,5 +1,11 @@
+import htm from "htm";
+import React from "react";
+import { render } from "react-dom";
+import "../registerserviceworker.js";
 import "./error-alert.js";
 import "./index.css";
+const html = htm.bind(React.createElement);
+console.log(html);
 window.addEventListener(
     "load",
     () => {
@@ -7,15 +13,36 @@ window.addEventListener(
     },
     { once: true }
 );
-import "../registerserviceworker.js";
-
-import React from "react";
-import { render } from "react-dom";
 
 function App1() {
     return <div>hello world react</div>;
 }
 
+const msg = "Welcome to Your html App";
+function h(type, props, ...children) {
+    console.log({ type, props, children });
+    return React.createElement(type, props, ...children);
+}
+console.log(h);
+const vdom = html`<div>
+    <a href="/">Hello!html</a>
+
+    <div>hello world html</div>
+    <div>${msg}</div>
+</div> `;
+console.log(vdom);
+
+render(
+    <App1 />,
+
+    document.getElementById("root")
+);
+
+render(
+    vdom,
+
+    document.body.appendChild(document.createElement("div"))
+);
 (async () => {
     const Vue = (await import("vue/dist/vue.esm.js")).default;
     console.log(Vue);
@@ -25,11 +52,16 @@ function App1() {
     };
 
     const App2 = Vue.extend({
-        template: `
+        template: `<div>
     <div>
+    
     {{msg}}
     </div>
+    <div>
     
+    hello world vue
+    </div>
+    </div>
     `,
 
         name: "App2",
@@ -54,27 +86,3 @@ function App1() {
     vm.$mount(document.body.appendChild(document.createElement("div")));
     console.log(vm);
 })();
-const msg = "Welcome to Your html App";
-function h(type, props, ...children) {
-    console.log({ type, props, children });
-    return React.createElement(type, props, ...children);
-}
-const vdom = html`<div>
-    <a href="/">Hello!html</a>
-
-    <div>hello world html</div>
-    <div>${msg}</div>
-</div> `;
-console.log(vdom);
-
-render(
-    <App1 />,
-
-    document.getElementById("root")
-);
-
-render(
-    vdom,
-
-    document.body.appendChild(document.createElement("div"))
-);
