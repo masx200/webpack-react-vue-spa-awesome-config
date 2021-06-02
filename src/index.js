@@ -1,54 +1,80 @@
+import "./error-alert.js";
 import "./index.css";
-alert("hello world");
+window.addEventListener(
+    "load",
+    () => {
+        alert("hello world");
+    },
+    { once: true }
+);
 import "../registerserviceworker.js";
 
 import React from "react";
 import { render } from "react-dom";
 
 function App1() {
-    return <div>hello world</div>;
+    return <div>hello world react</div>;
 }
 
-render(<App1 />, document.getElementById("root"));
+(async () => {
+    const Vue = (await import("vue/dist/vue.esm.js")).default;
+    console.log(Vue);
+    Vue.config.errorHandler = function (err, vm, info) {
+        console.error(err, vm, info);
+        throw err;
+    };
 
-import Vue from "vue/dist/vue.esm.browser";
-const App2 = Vue.extend({
-    template: `
+    const App2 = Vue.extend({
+        template: `
     <div>
     {{msg}}
     </div>
     
     `,
 
-    name: "App2",
-    data() {
-        return {
-            msg: "Welcome to Your Vue.js App",
-        };
-    },
-    methods: {},
-    mounted() {},
-});
+        name: "App2",
+        data() {
+            return {
+                msg: "Welcome to Your Vue.js App",
+            };
+        },
+        methods: {},
+        mounted() {},
+    });
 
-const vm = new Vue({
-    // el: "#root",
-    // router,
-    components: {
-        App2,
-    },
-    template: "<App2/>",
-    data() {
-        return {};
-    },
-});
-vm.$mount(document.body.appendChild(document.createElement("div")));
-// var msg = "htmlWelcome to Your Vue.js App";
+    const vm = new Vue({
+        components: {
+            App2,
+        },
+        template: "<App2/>",
+        data() {
+            return {};
+        },
+    });
+    vm.$mount(document.body.appendChild(document.createElement("div")));
+    console.log(vm);
+})();
+const msg = "Welcome to Your html App";
 function h(type, props, ...children) {
-    return { type, props, children };
+    console.log({ type, props, children });
+    return React.createElement(type, props, ...children);
 }
-console.log(html`
-    <a href="/">Hello!</a>
-    <App />
-    <div>hello world</div>
-    <div>{{msg}}</div>
-`);
+const vdom = html`<div>
+    <a href="/">Hello!html</a>
+
+    <div>hello world html</div>
+    <div>${msg}</div>
+</div> `;
+console.log(vdom);
+
+render(
+    <App1 />,
+
+    document.getElementById("root")
+);
+
+render(
+    vdom,
+
+    document.body.appendChild(document.createElement("div"))
+);

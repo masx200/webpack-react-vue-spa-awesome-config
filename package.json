@@ -1,7 +1,7 @@
 {
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.0.8",
+    "version": "3.1.0",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -33,7 +33,6 @@
         ]
     },
     "dependencies": {
-        "browserslist": "4.16.6",
         "@babel/core": "^7.14.0",
         "@babel/plugin-proposal-class-properties": "^7.13.0",
         "@babel/plugin-proposal-decorators": "^7.13.15",
@@ -49,12 +48,14 @@
         "@types/terser-webpack-plugin": "^5.0.3",
         "@types/webpack": "^5.28.0",
         "@types/workbox-webpack-plugin": "^5.1.6",
+        "@vue/preload-webpack-plugin": "^2.0.0",
         "babel-loader": "^8.2.2",
         "babel-plugin-htm": "^3.0.0",
         "babel-plugin-named-asset-import": "^0.3.7",
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-preset-react-app": "^10.0.0",
         "banner-content-loader": "^0.1.1",
+        "browserslist": "4.16.6",
         "clean-webpack-plugin": "^4.0.0-alpha.0",
         "copy-webpack-plugin": "^8.1.1",
         "css-loader": "^5.2.4",

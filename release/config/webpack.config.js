@@ -1,4 +1,19 @@
 "use strict";
+
+const CopyPlugin = require("copy-webpack-plugin");
+const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
+const safePostCssParser = require("postcss-safe-parser");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const postcssNormalize = require("postcss-normalize");
+
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
+
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 function parseargs(args) {
     const 参数obj = {};
@@ -27,27 +42,16 @@ const 解析参数publicpath = 参数object["output-public-path"];
 process.env.NODE_ENV = process.argv.includes("--mode=production")
     ? "production"
     : "development";
-const postcssNormalize = require("postcss-normalize");
 const defaultport = 10000;
 const port = defaultport + parseInt(String(10000 * Math.random()));
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
-const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
-const CopyPlugin = require("copy-webpack-plugin");
-const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
-const safePostCssParser = require("postcss-safe-parser");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpackEnv = process.env.NODE_ENV;
 const isEnvDevelopment = "development" === webpackEnv;
 const shouldUseSourceMap = isEnvDevelopment;
 const isEnvProduction = "production" === webpackEnv;
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 process.env.BABEL_ENV = process.env.NODE_ENV;
 let publicPath = isEnvProduction ? "./" : "/";
 if ("production" === process.env.NODE_ENV) {
@@ -342,6 +346,7 @@ module.exports = {
         }),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
+            hash: false,
             filename: "index.html",
             title: " Progressive Web Application",
             inject: !0,
@@ -359,6 +364,10 @@ module.exports = {
                 removeAttributeQuotes: !1,
             },
             template: path.join(__dirname, "public", "index.html"),
+        }),
+        new PreloadWebpackPlugin({
+            rel: "preload",
+            include: "asyncChunks",
         }),
     ].filter(Boolean),
     optimization: {

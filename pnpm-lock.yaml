@@ -20,6 +20,7 @@ specifiers:
   '@types/terser-webpack-plugin': ^5.0.3
   '@types/webpack': ^5.28.0
   '@types/workbox-webpack-plugin': ^5.1.6
+  '@vue/preload-webpack-plugin': ^2.0.0
   acorn: ^8.2.4
   babel-loader: ^8.2.2
   babel-plugin-htm: ^3.0.0
@@ -98,6 +99,7 @@ dependencies:
   '@types/terser-webpack-plugin': 5.0.3_webpack-cli@4.7.0
   '@types/webpack': 5.28.0_webpack-cli@4.7.0
   '@types/workbox-webpack-plugin': 5.1.6
+  '@vue/preload-webpack-plugin': 2.0.0_13affe1e7aa1819f10941fef395d707f
   babel-loader: 8.2.2_ac1559bd3335093f934c40d13d97f280
   babel-plugin-htm: 3.0.0
   babel-plugin-named-asset-import: 0.3.7_@babel+core@7.14.0
@@ -2544,6 +2546,17 @@ packages:
       vue-template-es2015-compiler: 1.9.1
     optionalDependencies:
       prettier: 1.19.1
+    dev: false
+
+  /@vue/preload-webpack-plugin/2.0.0_13affe1e7aa1819f10941fef395d707f:
+    resolution: {integrity: sha512-RoorRB50WehYbsiWu497q8egZBYlrvOo9KBUG41uth4O023Cbs+7POLm9uw2CAiViBAIhvpw1Y4w4i+MZxOfXw==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      html-webpack-plugin: ^5.0.0 || ^4.5.1
+      webpack: ^5.20.0 || ^4.1.0
+    dependencies:
+      html-webpack-plugin: 5.3.1_webpack@5.37.0
+      webpack: 5.37.0_webpack-cli@4.7.0
     dev: false
 
   /@webassemblyjs/ast/1.11.0:
