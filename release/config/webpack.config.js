@@ -43,7 +43,8 @@ process.env.NODE_ENV = process.argv.includes("--mode=production")
     ? "production"
     : "development";
 const defaultport = 10000;
-const port = defaultport + parseInt(String(10000 * Math.random()));
+const port =
+    参数object["port"] || defaultport + parseInt(String(10000 * Math.random()));
 console.log(`\nwebpack config filename : ${__filename}\n`);
 console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
@@ -99,6 +100,32 @@ module.exports = {
     module: {
         strictExportPresence: !0,
         rules: [
+            {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+                options: {
+                    sourceMaps: shouldUseSourceMap,
+                    plugins: [
+                        [
+                            require.resolve("babel-plugin-htm"),
+                            {
+                                pragma: "h",
+                                tag: "html",
+                                useBuiltIns: true,
+                                useNativeSpread: true,
+                            },
+                        ],
+                    ].filter(Boolean),
+                    presets: [],
+                    babelrc: false,
+                    configFile: false,
+                    cacheDirectory: !0,
+                    cacheCompression: isEnvProduction,
+                    compact: isEnvProduction,
+                },
+                include: [path.resolve(__dirname)],
+            },
             {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
                 type: "javascript/auto",
