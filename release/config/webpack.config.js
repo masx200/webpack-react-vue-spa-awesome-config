@@ -1,12 +1,6 @@
 "use strict";
-
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-/**
- * @param {string[]} args
- * @returns{Record<string,string>}
- */
 function parseargs(args) {
-    /**@type{Record<string,string>} */
     const 参数obj = {};
     args.filter((s) => s.startsWith("--"))
         .map((s) => /--(?<key>.+?)=(?<value>.+)/g.exec(s))
@@ -30,11 +24,9 @@ const 参数object = parseargs(process.argv);
 console.log("解析的参数:");
 console.log(JSON.stringify(参数object, null, 4));
 const 解析参数publicpath = 参数object["output-public-path"];
-
 process.env.NODE_ENV = process.argv.includes("--mode=production")
     ? "production"
     : "development";
-
 const postcssNormalize = require("postcss-normalize");
 const defaultport = 10000;
 const port = defaultport + parseInt(String(10000 * Math.random()));
@@ -43,9 +35,7 @@ console.log(`\nworking directory : ${process.cwd()}\n`);
 var __dirname = process.cwd();
 const webpack = require("webpack");
 console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
-
 const CopyPlugin = require("copy-webpack-plugin");
-
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -70,14 +60,9 @@ if ("production" === process.env.NODE_ENV) {
     }
 }
 const isservemode = process.argv.includes("serve");
-
 if (isEnvDevelopment & isservemode) {
     console.log("open in browser: http://localhost:" + port);
 }
-/**
- * @type{import('webpack').Configuration}
- */
-
 module.exports = {
     target: isEnvDevelopment
         ? "browserslist:" +
@@ -90,15 +75,12 @@ module.exports = {
     resolve: { alias: { "@": path.join(__dirname, "src") } },
     devServer: {
         host: "0.0.0.0",
-
         compress: true,
-
         historyApiFallback: true,
         contentBase: path.resolve(__dirname, "./dist"),
         hot: !0,
         port,
         inline: !0,
-        // open: !0,
         watchContentBase: !0,
     },
     devtool: isEnvDevelopment ? "inline-source-map" : false,
@@ -160,9 +142,7 @@ module.exports = {
                     isEnvDevelopment
                         ? {
                               loader: require.resolve("style-loader"),
-                              options: {
-                                  /* sourceMap: shouldUseSourceMap */
-                              },
+                              options: {},
                           }
                         : { loader: MiniCssExtractPlugin.loader },
                     {
@@ -182,17 +162,6 @@ module.exports = {
                                     postcssNormalize(),
                                 ],
                             },
-
-                            //   ident: "postcss",
-                            /*
-                            plugins: () => [
-                                require("postcss-flexbugs-fixes"),
-                                require("postcss-preset-env")({
-                                    autoprefixer: { flexbox: "no-2009" },
-                                    stage: 3
-                                }),
-                                postcssNormalize()
-                            ],*/
                             sourceMap: isEnvProduction && shouldUseSourceMap,
                         },
                     },
@@ -202,45 +171,10 @@ module.exports = {
                     },
                 ],
             },
-            // { parser: { requireEnsure: !1 } },
             {
                 test: /\.worker\.js$/,
                 loader: require.resolve("worker-loader"),
-
-                /*
-
-ValidationError: Invalid options object. Worker Loader has been initialized using an options object that does not match the API schema.
-11:12:59.041  	 - options has an unknown property 'name'. These properties are valid:
-11:12:59.041  	   object { worker?, publicPath?, filename?, chunkFilename?, inline?, esModule? }
-11:12:59.041  	 - options.inline should be one of these:
-11:12:59.041  	   "no-fallback" | "fallback"
-
-
-*/
-                /*
-filename
-
-Type: String|Function Default: based on output.filename, adding worker suffix, for example - output.filename: '[name].js' value of this option will be [name].worker.js
-
-The filename of entry chunks for web workers.
-
-
-*/
-                /*
-inline
-
-Type: 'fallback' | 'no-fallback' Default: undefined
-
-Allow to inline the worker as a BLOB.
-
-Inline mode with the fallback value will create file for browsers without support web workers, to disable this behavior just use no-fallback value
-
-
-*/
-                options: {
-                    //filename: "[name].[fullhash].worker.js",
-                    inline: "no-fallback",
-                },
+                options: { inline: "no-fallback" },
             },
             {
                 test: /\.vue$/,
@@ -252,12 +186,7 @@ Inline mode with the fallback value will create file for browsers without supp
                     isEnvDevelopment
                         ? {
                               loader: require.resolve("style-loader"),
-                              /* ValidationError: Invalid options object. Style Loader has been initialized using an options object that does not match the API schema.
- - options has an unknown property 'sourceMap'. These properties are valid:
-   object { injectType?, attributes?, insert?, base?, esModule? } */
-                              options: {
-                                  /* sourceMap: shouldUseSourceMap */
-                              },
+                              options: {},
                           }
                         : { loader: MiniCssExtractPlugin.loader },
                     {
@@ -266,16 +195,7 @@ Inline mode with the fallback value will create file for browsers without supp
                     },
                     {
                         loader: require.resolve("postcss-loader"),
-
-                        /*  
-      ValidationError: Invalid options object. PostCSS Loader has been initialized using an options object that does not match the API schema.
-11:12:59.047  	     - options has an unknown property 'plugins'. These properties are valid:
-11:12:59.047  	       object { postcssOptions?, execute?, sourceMap? }
-
-*/
                         options: {
-                            //   ident: "postcss",
-                            //          plugins: () => [
                             postcssOptions: {
                                 plugins: [
                                     require("postcss-flexbugs-fixes"),
@@ -375,49 +295,26 @@ Inline mode with the fallback value will create file for browsers without supp
         ],
     },
     plugins: [
-        // new webpack.ProgressPlugin(),
-
         isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
-
-        //    isEnvProduction &&
         new CopyPlugin({
             patterns: [
                 {
-                    globOptions: {
-                        ignore: ["**/index.html"],
-                    },
+                    globOptions: { ignore: ["**/index.html"] },
                     from: path.join(__dirname, "public"),
                     toType: "dir",
                     to: path.join(__dirname, "dist"),
                     filter: (resourcePath) => {
-                        console.log(
-                            "copy-webpack-plugin",
-
-                            resourcePath
-                        );
+                        console.log("copy-webpack-plugin", resourcePath);
                         return true;
                     },
                 },
-                //  { from: "other", to: "public" },
             ],
         }),
-        /*
-   new CopyFilesPlugin({
-                sourceRoot: path.join(__dirname, "public"),
-                targetRoot: path.join(__dirname, "dist"),
-                files: ["favicon.ico"],
-                cleanDirs: [path.join(__dirname, "dist")],
-            }),
-*/
-        //      isEnvDevelopment && new webpack.NamedModulesPlugin(),
         isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
         isEnvProduction &&
             new WorkboxWebpackPlugin.GenerateSW({
                 skipWaiting: true,
                 clientsClaim: !0,
-                /* Please check your GenerateSW plugin configuration:
-"importWorkboxFrom" is not a supported parameter. */
-                // importWorkboxFrom: "cdn",
                 runtimeCaching: [
                     {
                         urlPattern: /.*\.(?:js|html|\/)$/,
@@ -465,11 +362,8 @@ Inline mode with the fallback value will create file for browsers without supp
         }),
     ].filter(Boolean),
     optimization: {
-        //将NamedModulesPlugin 替换为 optimization.moduleIds: 'named'
         moduleIds: isEnvDevelopment ? "named" : "natural",
-
         chunkIds: isEnvDevelopment ? "named" : "natural",
-        //namedchunksplugin
         usedExports: true,
         runtimeChunk: "single",
         splitChunks: {
@@ -481,25 +375,6 @@ Inline mode with the fallback value will create file for browsers without supp
             maxInitialRequests: 5,
             name: false,
             usedExports: true,
-            //
-            // name(module, chunks, cacheGroupKey) {
-            //     const moduleFileName = module
-            //         .identifier()
-            //         .split("/")
-            //         .reduceRight((item) => item);
-            //     const allChunksNames = chunks
-            //         .map((item) => item.name)
-            //         .join("~");
-            //     return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-            // },
-            /*configuration.optimization.splitChunks.name should be one of these:
-      false | string | function
-      -> Give chunks created a name (chunks with equal name are merged).
-      Details:
-       * configuration.optimization.splitChunks.name should be false.
-       * configuration.optimization.splitChunks.name should be a string.
-       * configuration.optimization.splitChunks.name should be an instance of function.*/
-            //   name: !0,
         },
         minimize: isEnvProduction,
         minimizer: [
@@ -523,8 +398,6 @@ Inline mode with the fallback value will create file for browsers without supp
                     },
                 },
                 parallel: !0,
-                //   cache: !0,
-                //    sourceMap: shouldUseSourceMap,
             }),
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
