@@ -134,6 +134,7 @@ module.exports = {
                     compact: isEnvProduction,
                 },
                 include: [path.resolve(__dirname)],
+                exclude: [],
             },
 
             {
@@ -252,6 +253,7 @@ module.exports = {
                             compact: isEnvProduction,
                         },
                         include: [path.resolve(__dirname, "src")],
+                        exclude: [/node_modules/],
                     },
                     {
                         test: /\.(js|mjs)$/,
@@ -324,6 +326,7 @@ module.exports = {
                     compact: isEnvProduction,
                 },
                 include: [path.resolve(__dirname, "src")],
+                exclude: [/node_modules/],
             },
         ],
     },
