@@ -8,6 +8,7 @@ import { spawn } from "child_process";
 function 执行命令(/* commandstring,  */ command, commandargs) {
     // console.log(commandstring);
     console.log("\n");
+    console.log([command, commandargs]);
     const runobj = spawn(command, commandargs, {
         stdio: ["pipe", "pipe", "pipe"],
     });

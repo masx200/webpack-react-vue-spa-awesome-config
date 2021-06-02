@@ -33,7 +33,9 @@ export function start(operation, 参数object) {
             参数webpackconfigfile,
             "--mode=" + process.env.NODE_ENV,
         ];
-
+        Object.entries(参数object).forEach(([key, value]) => {
+            commandargs.push(`--${key}=${value}`);
+        });
         console.log("\n");
         console.log(`开发模式
 启动 webpack-dev-server`);
@@ -53,6 +55,9 @@ export function start(operation, 参数object) {
             参数webpackconfigfile,
             "--mode=" + process.env.NODE_ENV,
         ];
+        Object.entries(参数object).forEach(([key, value]) => {
+            commandargs.push(`--${key}=${value}`);
+        });
         if (解析参数publicpath && 解析参数publicpath.length) {
             commandargs.push("--output-public-path=" + 解析参数publicpath);
             //   console.log(`  output-public-path  :  ${解析参数publicpath}`);
