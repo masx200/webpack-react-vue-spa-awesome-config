@@ -100,7 +100,37 @@ module.exports = {
     module: {
         strictExportPresence: !0,
         rules: [
+        
             {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+                options: {
+                    sourceMaps: shouldUseSourceMap,
+                    plugins: [
+                        [
+                            require.resolve(
+                                "@babel/plugin-proposal-decorators"
+                            ),
+                            { legacy: true },
+                        ],
+                        [
+                            "@babel/plugin-proposal-class-properties",
+                            { loose: true },
+                        ],
+                        
+ 
+                    ].filter(Boolean),
+                    presets: [require.resolve("babel-preset-react-app")],
+                    babelrc: false,
+                    configFile: false,
+                    cacheDirectory: !0,
+                    cacheCompression: isEnvProduction,
+                    compact: isEnvProduction,
+                },
+                include: [path.resolve(__dirname)],
+            },
+    {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
@@ -126,42 +156,7 @@ module.exports = {
                 },
                 include: [path.resolve(__dirname)],
             },
-            {
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
-                type: "javascript/auto",
-                loader: require.resolve("babel-loader"),
-                options: {
-                    sourceMaps: shouldUseSourceMap,
-                    plugins: [
-                        [
-                            require.resolve(
-                                "@babel/plugin-proposal-decorators"
-                            ),
-                            { legacy: true },
-                        ],
-                        [
-                            "@babel/plugin-proposal-class-properties",
-                            { loose: true },
-                        ],
-                        // [
-                        //     require.resolve("babel-plugin-htm"),
-                        //     {
-                        //         pragma: "h",
-                        //         tag: "html",
-                        //         useBuiltIns: true,
-                        //         useNativeSpread: true,
-                        //     },
-                        // ],
-                    ].filter(Boolean),
-                    presets: [require.resolve("babel-preset-react-app")],
-                    babelrc: false,
-                    configFile: false,
-                    cacheDirectory: !0,
-                    cacheCompression: isEnvProduction,
-                    compact: isEnvProduction,
-                },
-                include: [path.resolve(__dirname)],
-            },
+
             {
                 test: /\.(less)$/,
                 use: [
