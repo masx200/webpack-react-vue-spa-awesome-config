@@ -276,7 +276,9 @@ module.exports = {
                     },
                     {
                         test: /\.(js|mjs)$/,
-                        exclude: /@babel(?:\/|\\{1,2})runtime/,
+                        exclude: [/@babel(?:\/|\\{1,2})runtime/,
+path.resolve(__dirname, "src")
+],
                         type: "javascript/auto",
                         loader: require.resolve("babel-loader"),
                         options: {
