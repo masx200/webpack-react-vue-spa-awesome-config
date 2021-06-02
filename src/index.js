@@ -4,7 +4,10 @@ import { render } from "react-dom";
 import "../registerserviceworker.js";
 import "./error-alert.js";
 import "./index.css";
-const html = htm.bind(React.createElement);
+function html(...args){
+return Reflect.apply(htm,React.createElement,args)
+}
+
 console.log(html);
 window.addEventListener(
     "load",
