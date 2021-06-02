@@ -487,10 +487,30 @@ Module parse failed: 'import' and 'export' may appear only with 'sourceType: mod
 ];
 ```
 
-8.
+8.soucemap
 
 https://webpack.docschina.org/configuration/devtool/#root
 
 ```js
 module.exports = { devtool: isEnvDevelopment ? "inline-source-map" : false };
+```
+
+9.Hot Module Replacement 失效解决办法
+
+https://www.cnblogs.com/guangzan/p/14744226.html
+
+https://webpack.docschina.org/guides/hot-module-replacement/
+
+原因分析
+
+项目根目录存在 .browserslistrc 文件，或者 package.json 存在 “browserslist”。
+
+```js
+module.exports = {
+    target: "web",
+    devServer: {
+        hot: true,
+    },
+    plugins: [new webpack.HotModuleReplacementPlugin()],
+};
 ```
