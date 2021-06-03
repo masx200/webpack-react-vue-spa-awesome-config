@@ -407,16 +407,21 @@ module.exports = {
         chunkIds: isEnvDevelopment ? "named" : "natural",
         usedExports: true,
         runtimeChunk: "single",
-        splitChunks: {
-            chunks: "all",
-            minSize: 30000,
-            maxSize: 100 * 1000,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 5,
-            name: false,
-            usedExports: true,
-        },
+        splitChunks: isEnvProduction
+            ? {
+                  chunks: "all",
+                  minSize: 30000,
+                  maxSize: 70 * 1000,
+                  minChunks: 1,
+                  maxAsyncRequests: 5,
+                  maxInitialRequests: 5,
+                  name: false,
+                  usedExports: true,
+              }
+            : {
+                  chunks: "all",
+                  maxSize: 10 * 1000,
+              },
         minimize: isEnvProduction,
         minimizer: [
             new TerserPlugin({
