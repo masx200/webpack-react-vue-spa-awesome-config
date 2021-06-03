@@ -234,52 +234,7 @@ module.exports = {
                                 : "[name].[contenthash].[ext]",
                         },
                     },
-                    {
-                        test: /\.(js|mjs|jsx|ts|tsx)$/,
-                        type: "javascript/auto",
-                        loader: require.resolve("babel-loader"),
-                        options: {
-                            sourceMaps: shouldUseSourceMap,
-                            presets: [
-                                require.resolve("babel-preset-react-app"),
-                            ],
-                            babelrc: false,
-                            configFile: false,
-                            customize: require.resolve(
-                                "babel-preset-react-app/webpack-overrides"
-                            ),
-                            cacheDirectory: !0,
-                            cacheCompression: isEnvProduction,
-                            compact: isEnvProduction,
-                        },
-                        include: [path.resolve(__dirname, "src")],
-                        exclude: [/node_modules/],
-                    },
-                    {
-                        test: /\.(js|mjs)$/,
-                        exclude: [
-                            /@babel(?:\/|\\{1,2})runtime/,
-                            path.resolve(__dirname, "src"),
-                        ],
-                        type: "javascript/auto",
-                        loader: require.resolve("babel-loader"),
-                        options: {
-                            babelrc: !1,
-                            configFile: !1,
-                            compact: !1,
-                            presets: [
-                                [
-                                    require.resolve(
-                                        "babel-preset-react-app/dependencies"
-                                    ),
-                                    { helpers: !0 },
-                                ],
-                            ],
-                            cacheDirectory: !0,
-                            cacheCompression: isEnvProduction,
-                            sourceMaps: shouldUseSourceMap,
-                        },
-                    },
+
                     {
                         loader: require.resolve("file-loader"),
                         exclude: [
@@ -296,6 +251,51 @@ module.exports = {
                         },
                     },
                 ],
+            },
+            {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+                options: {
+                    sourceMaps: shouldUseSourceMap,
+                    presets: [require.resolve("babel-preset-react-app")],
+                    babelrc: false,
+                    configFile: false,
+                    customize: require.resolve(
+                        "babel-preset-react-app/webpack-overrides"
+                    ),
+                    cacheDirectory: !0,
+                    cacheCompression: isEnvProduction,
+                    compact: isEnvProduction,
+                },
+                include: [path.resolve(__dirname, "src")],
+                exclude: [/node_modules/],
+            },
+            {
+                test: /\.(js|mjs)$/,
+                exclude: [
+                    /@babel(?:\/|\\{1,2})runtime/,
+                    path.resolve(__dirname, "src"),
+                ],
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+                options: {
+                    babelrc: !1,
+                    configFile: !1,
+                    compact: !1,
+                    presets: [
+                        [
+                            require.resolve(
+                                "babel-preset-react-app/dependencies"
+                            ),
+                            { helpers: !0 },
+                        ],
+                    ],
+                    cacheDirectory: !0,
+                    cacheCompression: isEnvProduction,
+                    sourceMaps: shouldUseSourceMap,
+                },
+                include: [/node_modules/],
             },
             {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
