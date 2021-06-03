@@ -361,8 +361,8 @@ module.exports = {
     output: {
         globalObject: `( (typeof window !== "undefined" ? window : false) ||
     (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||
-    this)`
-    }
+    this)`,
+    },
 };
 ```
 
@@ -399,7 +399,7 @@ if ("production" === process.env.NODE_ENV) {
         "127.0.0.1" !== location.hostname
     ) {
         "serviceWorker" in navigator &&
-            window.addEventListener("load", function() {
+            window.addEventListener("load", function () {
                 navigator.serviceWorker
                     .register("service-worker.js")
                     .catch(() => {});
@@ -484,8 +484,8 @@ Module parse failed: 'import' and 'export' may appear only with 'sourceType: mod
     {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         type: "javascript/auto",
-        loader: require.resolve("babel-loader")
-    }
+        loader: require.resolve("babel-loader"),
+    },
 ];
 ```
 
@@ -511,8 +511,8 @@ https://webpack.docschina.org/guides/hot-module-replacement/
 module.exports = {
     target: "web",
     devServer: {
-        hot: true
+        hot: true,
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 };
 ```

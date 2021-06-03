@@ -10,7 +10,7 @@ function r(e) {
     return e && "object" == typeof e && "default" in e
         ? e
         : {
-              default: e
+              default: e,
           };
 }
 
@@ -19,7 +19,7 @@ var c = r(e),
     i = r(n);
 
 function a() {
-    a = function(e, o) {
+    a = function (e, o) {
         return new n(e, void 0, o);
     };
     var e = RegExp.prototype,
@@ -30,30 +30,30 @@ function a() {
     }
     function t(e, n) {
         var t = o.get(n);
-        return Object.keys(t).reduce(function(o, n) {
+        return Object.keys(t).reduce(function (o, n) {
             return (o[n] = e[t[n]]), o;
         }, Object.create(null));
     }
     return (
         u(n, RegExp),
-        (n.prototype.exec = function(o) {
+        (n.prototype.exec = function (o) {
             var n = e.exec.call(this, o);
             return n && (n.groups = t(n, this)), n;
         }),
-        (n.prototype[Symbol.replace] = function(n, r) {
+        (n.prototype[Symbol.replace] = function (n, r) {
             if ("string" == typeof r) {
                 var c = o.get(this);
                 return e[Symbol.replace].call(
                     this,
                     n,
-                    r.replace(/\$<([^>]+)>/g, function(e, o) {
+                    r.replace(/\$<([^>]+)>/g, function (e, o) {
                         return "$" + c[o];
                     })
                 );
             }
             if ("function" == typeof r) {
                 var l = this;
-                return e[Symbol.replace].call(this, n, function() {
+                return e[Symbol.replace].call(this, n, function () {
                     var e = arguments;
                     return (
                         "object" != typeof e[e.length - 1] &&
@@ -77,8 +77,8 @@ function u(e, o) {
         constructor: {
             value: e,
             writable: !0,
-            configurable: !0
-        }
+            configurable: !0,
+        },
     })),
         o && s(e, o);
 }
@@ -86,17 +86,17 @@ function u(e, o) {
 function s(e, o) {
     return (s =
         Object.setPrototypeOf ||
-        function(e, o) {
+        function (e, o) {
             return (e.__proto__ = o), e;
         })(e, o);
 }
 
 function f(e, o) {
     return (
-        (function(e) {
+        (function (e) {
             if (Array.isArray(e)) return e;
         })(e) ||
-        (function(e, o) {
+        (function (e, o) {
             var n =
                 e &&
                 (("undefined" != typeof Symbol && e[Symbol.iterator]) ||
@@ -125,7 +125,7 @@ function f(e, o) {
             }
             return c;
         })(e, o) ||
-        (function(e, o) {
+        (function (e, o) {
             if (!e) return;
             if ("string" == typeof e) return p(e, o);
             var n = Object.prototype.toString.call(e).slice(8, -1);
@@ -137,7 +137,7 @@ function f(e, o) {
             )
                 return p(e, o);
         })(e, o) ||
-        (function() {
+        (function () {
             throw new TypeError(
                 "Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
             );
@@ -154,16 +154,16 @@ function p(e, o) {
 var d = c.default.cwd();
 
 function g(e, o) {
-    o.forEach(function(o, n) {
+    o.forEach(function (o, n) {
         l.default.existsSync(o) ||
             (console.log("inputfile  not exsited! ".concat(o, "\n")),
             console.log("initialize inputfile from ".concat(e[n], "\n")),
             ["public", "src"]
-                .map(function(e) {
+                .map(function (e) {
                     return i.default.resolve(d, e);
                 })
-                .forEach(function(e) {
-                    return (function(e) {
+                .forEach(function (e) {
+                    return (function (e) {
                         l.default.existsSync(e) ||
                             (console.log(
                                 "\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55",
@@ -190,33 +190,33 @@ function v(e) {
 function b(e, o) {
     console.log("\n"), console.log([e, o]);
     var n = t.spawn(e, o, {
-        stdio: ["pipe", "pipe", "pipe"]
+        stdio: ["pipe", "pipe", "pipe"],
     });
-    n.stdout.on("data", function(e) {
+    n.stdout.on("data", function (e) {
         console.log(
             " "
                 .concat(e)
                 .split("\n")
-                .filter(function(e) {
+                .filter(function (e) {
                     return "" !== e;
                 })
                 .join("\n\n")
         ),
             console.log("\n");
     }),
-        n.stderr.on("data", function(e) {
+        n.stderr.on("data", function (e) {
             console.error(
                 " "
                     .concat(e)
                     .split("\n")
-                    .filter(function(e) {
+                    .filter(function (e) {
                         return "" !== e;
                     })
                     .join("\n\n")
             ),
                 console.log("\n");
         }),
-        n.on("close", function(e) {
+        n.on("close", function (e) {
             console.log("child process exited with code ".concat(e)),
                 process.exit(e);
         });
@@ -225,10 +225,10 @@ function b(e, o) {
 var y = require("path"),
     m = process.cwd(),
     h = ["public/index.html", "src/index.js", "public/favicon.ico"],
-    w = h.map(function(e) {
+    w = h.map(function (e) {
         return y.resolve(__dirname, "../", "release", e);
     }),
-    x = h.map(function(e) {
+    x = h.map(function (e) {
         return y.resolve(m, e);
     });
 
@@ -251,16 +251,16 @@ var E,
     k = _.includes("start") ? "start" : _.includes("build") ? "build" : void 0,
     j =
         ((E = {}),
-        _.filter(function(e) {
+        _.filter(function (e) {
             return e.startsWith("--");
         })
-            .map(function(e) {
+            .map(function (e) {
                 return a(/\x2D\x2D(.+?)=(.+)/g, {
                     key: 1,
-                    value: 2
+                    value: 2,
                 }).exec(e);
             })
-            .forEach(function(e) {
+            .forEach(function (e) {
                 var o,
                     n,
                     t,
@@ -273,7 +273,7 @@ var E,
 
 console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
     console.log(JSON.stringify(j, null, 4)),
-    (function(e, o) {
+    (function (e, o) {
         var n,
             t,
             r = o.config,
@@ -289,9 +289,9 @@ console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
                     "serve",
                     "--config",
                     a,
-                    "--mode=" + c.default.env.NODE_ENV
+                    "--mode=" + c.default.env.NODE_ENV,
                 ]),
-                Object.entries(o).forEach(function(e) {
+                Object.entries(o).forEach(function (e) {
                     var o = f(e, 2),
                         n = o[0],
                         r = o[1];
@@ -312,7 +312,7 @@ console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
                 g(w, x),
                 (p = v("webpack ")),
                 (d = ["--config", a, "--mode=" + c.default.env.NODE_ENV]),
-                Object.entries(o).forEach(function(e) {
+                Object.entries(o).forEach(function (e) {
                     var o = f(e, 2),
                         n = o[0],
                         t = o[1];

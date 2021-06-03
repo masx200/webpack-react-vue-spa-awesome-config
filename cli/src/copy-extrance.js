@@ -18,8 +18,8 @@ export default function 生成入口文件(sourcefiles, destfiles) {
             console.log(`inputfile  not exsited! ${p}\n`);
             console.log(`initialize inputfile from ${sourcefiles[i]}\n`);
             ["public", "src"]
-                .map(t => path.resolve(pwddir, t))
-                .forEach(e => 判断并创建目录(e));
+                .map((t) => path.resolve(pwddir, t))
+                .forEach((e) => 判断并创建目录(e));
             fs.copyFileSync(sourcefiles[i], p);
         }
     });
