@@ -1,7 +1,8 @@
 {
+    "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.1.3",
+    "version": "3.2.0",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -18,7 +19,6 @@
         "test4": "node ./bin/index.js  --mode=production",
         "test5": "webpack   --config ./release/config/webpack.config.js  --mode=development"
     },
-    "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "license": "MIT",
     "browserslist": {
         "production": [
@@ -90,7 +90,7 @@
         "vue-loader": "^15.9.7",
         "vue-style-loader": "^4.1.3",
         "vue-template-compiler": "^2.6.12",
-        "webpack": "^5.37.0",
+        "webpack": "^5.38.1",
         "webpack-cli": "^4.7.0",
         "webpack-dev-server": "^3.11.2",
         "workbox-webpack-plugin": "^6.1.5",
