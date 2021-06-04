@@ -1,4 +1,5 @@
 import { spawn } from "child_process";
+import process from "process";
 /**
  *
  * @param {string} command

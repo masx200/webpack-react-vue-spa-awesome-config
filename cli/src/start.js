@@ -1,10 +1,12 @@
-import process from "process";
-import 生成入口文件 from "./copy-extrance";
+import fs from "fs";
 import path from "path";
-import { commandfind } from "./find-command";
+import process from "process";
 import 执行命令 from "./call-command";
-import { sourcefiles, destfiles } from "./source-dest-files";
-
+import 生成入口文件 from "./copy-extrance";
+import { commandfind } from "./find-command";
+import { showhelp } from "./showhelp";
+import { destfiles, sourcefiles } from "./source-dest-files";
+const webpackcmd = "webpack";
 /**
  * @param {string|undefined} operation
  * @param {Record<string,string>} 参数object
@@ -25,14 +27,19 @@ export function start(operation, 参数object) {
         let command, commandargs;
         process.env.NODE_ENV = "development";
         生成入口文件(sourcefiles, destfiles);
-        command = commandfind(`webpack`);
-        //升级webpack5的修改命令 webpack serve
+        command = commandfind(webpackcmd);
         commandargs = [
             "serve",
             "--config",
             参数webpackconfigfile,
             "--mode=" + process.env.NODE_ENV,
         ];
+        if (!fs.existsSync(command)) {
+            commandargs.unshift(webpackcmd);
+            command = "npx" + (process.platform === "win32" ? ".cmd" : "");
+        }
+        //升级webpack5的修改命令 webpack serve
+
         Object.entries(参数object).forEach(([key, value]) => {
             commandargs.push(`--${key}=${value}`);
         });
@@ -49,12 +56,16 @@ export function start(operation, 参数object) {
         console.log("\n");
         process.env.NODE_ENV = "production";
         生成入口文件(sourcefiles, destfiles);
-        command = commandfind(`webpack `);
+        command = commandfind(webpackcmd);
         commandargs = [
             "--config",
             参数webpackconfigfile,
             "--mode=" + process.env.NODE_ENV,
         ];
+        if (!fs.existsSync(command)) {
+            commandargs.unshift(webpackcmd);
+            command = "npx" + (process.platform === "win32" ? ".cmd" : "");
+        }
         Object.entries(参数object).forEach(([key, value]) => {
             commandargs.push(`--${key}=${value}`);
         });
@@ -65,23 +76,6 @@ export function start(operation, 参数object) {
         }
         执行命令(/* commandstring, */ command, commandargs);
     } else {
-        console.log("\n");
-        console.log("usage:");
-        console.log("\n");
-        console.log(`开发模式
-启动 webpack-dev-server`);
-        console.log("\n");
-        console.log(
-            "webpack-react-vue-spa-awesome-config start --mode=development"
-        );
-        console.log("\n");
-        console.log(`生产模式
-    启动 webpack`);
-        console.log("\n");
-        console.log(
-            "webpack-react-vue-spa-awesome-config build --mode=production"
-        );
-        console.log("\n");
-        process.exit(1);
+        showhelp();
     }
 }

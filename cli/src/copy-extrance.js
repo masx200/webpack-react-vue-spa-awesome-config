@@ -1,8 +1,8 @@
-import process from "process";
-const pwddir = process.cwd();
 import fs from "fs";
 import path from "path";
+import process from "process";
 import 判断并创建目录 from "./ensure-dir";
+const pwddir = process.cwd();
 /**
  * @param {(import("fs").PathLike)[]} sourcefiles
  * @param {string[]} destfiles

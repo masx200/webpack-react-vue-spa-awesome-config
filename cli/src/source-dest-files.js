@@ -9,3 +9,5 @@ const sourcefiles = inputfiles.map((p) =>
 const destfiles = inputfiles.map((p) => path.resolve(pwddir, p));
 
 export { sourcefiles, destfiles };
+
+import process from "process";

@@ -13,3 +13,4 @@ export function consolehello() {
     console.log(`\nworking directory : ${process.cwd()}\n`);
     console.log(`\ncommand filename : ${__filename}\n`);
 }
+import process from "process";
