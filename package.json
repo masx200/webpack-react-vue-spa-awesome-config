@@ -17,7 +17,8 @@
         "test2": "node ./bin/index.js --mode=development --port=11111",
         "test3": "node ./bin/index.js build",
         "test4": "node ./bin/index.js  --mode=production",
-        "test5": "webpack   --config ./release/config/webpack.config.js  --mode=development"
+        "test5": "webpack   --config ./release/config/webpack.config.js  --mode=development",
+        "test6": "node ./bin/index.js "
     },
     "license": "MIT",
     "browserslist": {
