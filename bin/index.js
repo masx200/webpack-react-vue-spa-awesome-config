@@ -14,8 +14,8 @@ function r(e) {
           };
 }
 
-var c = r(e),
-    l = r(o),
+var l = r(e),
+    c = r(o),
     i = r(n);
 
 function a() {
@@ -25,8 +25,8 @@ function a() {
     var e = RegExp.prototype,
         o = new WeakMap();
     function n(e, t, r) {
-        var c = new RegExp(e, t);
-        return o.set(c, r || o.get(e)), s(c, n.prototype);
+        var l = new RegExp(e, t);
+        return o.set(l, r || o.get(e)), s(l, n.prototype);
     }
     function t(e, n) {
         var t = o.get(n);
@@ -42,22 +42,22 @@ function a() {
         }),
         (n.prototype[Symbol.replace] = function (n, r) {
             if ("string" == typeof r) {
-                var c = o.get(this);
+                var l = o.get(this);
                 return e[Symbol.replace].call(
                     this,
                     n,
                     r.replace(/\$<([^>]+)>/g, function (e, o) {
-                        return "$" + c[o];
+                        return "$" + l[o];
                     })
                 );
             }
             if ("function" == typeof r) {
-                var l = this;
+                var c = this;
                 return e[Symbol.replace].call(this, n, function () {
                     var e = arguments;
                     return (
                         "object" != typeof e[e.length - 1] &&
-                            (e = [].slice.call(e)).push(t(e, l)),
+                            (e = [].slice.call(e)).push(t(e, c)),
                         r.apply(this, e)
                     );
                 });
@@ -104,26 +104,26 @@ function f(e, o) {
             if (null == n) return;
             var t,
                 r,
-                c = [],
-                l = !0,
+                l = [],
+                c = !0,
                 i = !1;
             try {
                 for (
                     n = n.call(e);
-                    !(l = (t = n.next()).done) &&
-                    (c.push(t.value), !o || c.length !== o);
-                    l = !0
+                    !(c = (t = n.next()).done) &&
+                    (l.push(t.value), !o || l.length !== o);
+                    c = !0
                 );
             } catch (e) {
                 (i = !0), (r = e);
             } finally {
                 try {
-                    l || null == n.return || n.return();
+                    c || null == n.return || n.return();
                 } finally {
                     if (i) throw r;
                 }
             }
-            return c;
+            return l;
         })(e, o) ||
         (function (e, o) {
             if (!e) return;
@@ -151,43 +151,7 @@ function p(e, o) {
     return t;
 }
 
-var d = c.default.cwd();
-
-function g(e, o) {
-    o.forEach(function (o, n) {
-        l.default.existsSync(o) ||
-            (console.log("inputfile  not exsited! ".concat(o, "\n")),
-            console.log("initialize inputfile from ".concat(e[n], "\n")),
-            ["public", "src"]
-                .map(function (e) {
-                    return i.default.resolve(d, e);
-                })
-                .forEach(function (e) {
-                    return (function (e) {
-                        l.default.existsSync(e) ||
-                            (console.log(
-                                "\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55",
-                                e
-                            ),
-                            console.log("\n"),
-                            l.default.mkdirSync(e));
-                    })(e);
-                }),
-            l.default.copyFileSync(e[n], o));
-    });
-}
-
-function v(e) {
-    return i.default.join(
-        __dirname,
-        "../",
-        "node_modules",
-        ".bin",
-        e.trim() + ("win32" === c.default.platform ? ".cmd" : "")
-    );
-}
-
-function b(e, o) {
+function d(e, o) {
     console.log("\n"), console.log([e, o]);
     var n = t.spawn(e, o, {
         stdio: ["pipe", "pipe", "pipe"],
@@ -218,18 +182,54 @@ function b(e, o) {
         }),
         n.on("close", function (e) {
             console.log("child process exited with code ".concat(e)),
-                process.exit(e);
+                l.default.exit(e);
         });
 }
 
-var y = require("path"),
-    m = process.cwd(),
+var g = l.default.cwd();
+
+function v(e, o) {
+    o.forEach(function (o, n) {
+        c.default.existsSync(o) ||
+            (console.log("inputfile  not exsited! ".concat(o, "\n")),
+            console.log("initialize inputfile from ".concat(e[n], "\n")),
+            ["public", "src"]
+                .map(function (e) {
+                    return i.default.resolve(g, e);
+                })
+                .forEach(function (e) {
+                    return (function (e) {
+                        c.default.existsSync(e) ||
+                            (console.log(
+                                "\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55",
+                                e
+                            ),
+                            console.log("\n"),
+                            c.default.mkdirSync(e));
+                    })(e);
+                }),
+            c.default.copyFileSync(e[n], o));
+    });
+}
+
+function b(e) {
+    return i.default.join(
+        __dirname,
+        "../",
+        "node_modules",
+        ".bin",
+        e.trim() + ("win32" === l.default.platform ? ".cmd" : "")
+    );
+}
+
+var m = require("path"),
+    y = l.default.cwd(),
     h = ["public/index.html", "src/index.js", "public/favicon.ico"],
     w = h.map(function (e) {
-        return y.resolve(__dirname, "../", "release", e);
+        return m.resolve(__dirname, "../", "release", e);
     }),
     x = h.map(function (e) {
-        return y.resolve(m, e);
+        return m.resolve(y, e);
     });
 
 console.log("\n"),
@@ -243,15 +243,15 @@ console.log("\n"),
         "Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support"
     ),
     console.log("\n"),
-    console.log("\nworking directory : ".concat(process.cwd(), "\n")),
+    console.log("\nworking directory : ".concat(l.default.cwd(), "\n")),
     console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-var E,
-    _ = c.default.argv.slice(1),
-    k = _.includes("start") ? "start" : _.includes("build") ? "build" : void 0,
-    j =
-        ((E = {}),
-        _.filter(function (e) {
+var k,
+    E = l.default.argv.slice(1),
+    _ = E.includes("start") ? "start" : E.includes("build") ? "build" : void 0,
+    S =
+        ((k = {}),
+        E.filter(function (e) {
             return e.startsWith("--");
         })
             .map(function (e) {
@@ -265,32 +265,37 @@ var E,
                     n,
                     t,
                     r = null === (o = e) || void 0 === o ? void 0 : o.groups,
-                    c = null === (n = r) || void 0 === n ? void 0 : n.key,
-                    l = null === (t = r) || void 0 === t ? void 0 : t.value;
-                c && l && (E[c] = l);
+                    l = null === (n = r) || void 0 === n ? void 0 : n.key,
+                    c = null === (t = r) || void 0 === t ? void 0 : t.value;
+                l && c && (k[l] = c);
             }),
-        E);
+        k);
 
 console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
-    console.log(JSON.stringify(j, null, 4)),
+    console.log(JSON.stringify(S, null, 4)),
     (function (e, o) {
         var n,
             t,
             r = o.config,
-            l = require.resolve(i.default.resolve(__dirname, "../")),
-            a = r ? i.default.resolve(r) : l,
-            u = o["output-public-path"],
-            s = o.mode;
-        if ("start" === e || "development" === s)
-            (c.default.env.NODE_ENV = "development"),
-                g(w, x),
-                (n = v("webpack")),
+            a = require.resolve(i.default.resolve(__dirname, "../")),
+            u = r ? i.default.resolve(r) : a,
+            s = o["output-public-path"],
+            p = o.mode;
+        if ("start" === e || "development" === p)
+            (l.default.env.NODE_ENV = "development"),
+                v(w, x),
+                (n = b("webpack")),
                 (t = [
                     "serve",
                     "--config",
-                    a,
-                    "--mode=" + c.default.env.NODE_ENV,
+                    u,
+                    "--mode=" + l.default.env.NODE_ENV,
                 ]),
+                c.default.existsSync(n) ||
+                    (t.unshift("webpack"),
+                    (n =
+                        "npx" +
+                        ("win32" === l.default.platform ? ".cmd" : ""))),
                 Object.entries(o).forEach(function (e) {
                     var o = f(e, 2),
                         n = o[0],
@@ -302,26 +307,31 @@ console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
                     "\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"
                 ),
                 console.log("\n"),
-                b(n, t);
-        else if ("build" === e || "production" === s) {
-            var p, d;
+                d(n, t);
+        else if ("build" === e || "production" === p) {
+            var g, m;
             console.log("\n"),
                 console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"),
                 console.log("\n"),
-                (c.default.env.NODE_ENV = "production"),
-                g(w, x),
-                (p = v("webpack ")),
-                (d = ["--config", a, "--mode=" + c.default.env.NODE_ENV]),
+                (l.default.env.NODE_ENV = "production"),
+                v(w, x),
+                (g = b("webpack")),
+                (m = ["--config", u, "--mode=" + l.default.env.NODE_ENV]),
+                c.default.existsSync(g) ||
+                    (m.unshift("webpack"),
+                    (g =
+                        "npx" +
+                        ("win32" === l.default.platform ? ".cmd" : ""))),
                 Object.entries(o).forEach(function (e) {
                     var o = f(e, 2),
                         n = o[0],
                         t = o[1];
-                    d.push("--".concat(n, "=").concat(t));
+                    m.push("--".concat(n, "=").concat(t));
                 }),
-                u &&
-                    u.length &&
-                    (d.push("--output-public-path=" + u), console.log("\n")),
-                b(p, d);
+                s &&
+                    s.length &&
+                    (m.push("--output-public-path=" + s), console.log("\n")),
+                d(g, m);
         } else
             console.log("\n"),
                 console.log("usage:"),
@@ -342,6 +352,6 @@ console.log("\u89e3\u6790\u7684\u53c2\u6570:"),
                     "webpack-react-vue-spa-awesome-config build --mode=production"
                 ),
                 console.log("\n"),
-                c.default.exit(1);
-    })(k, j);
+                l.default.exit(1);
+    })(_, S);
 //# sourceMappingURL=index.js.map
