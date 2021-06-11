@@ -69,6 +69,9 @@ if (isEnvDevelopment & isservemode) {
     console.log("open in browser: http://localhost:" + port);
 }
 module.exports = {
+    stats: {
+        children: true,
+    },
     target: isEnvDevelopment
         ? "web"
         : "browserslist:" + [">0.2%", "not dead", "not op_mini all"].join(","),
