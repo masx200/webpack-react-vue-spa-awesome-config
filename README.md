@@ -28,6 +28,8 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ![](https://camo.githubusercontent.com/53b510c8236e20ad20417ceebf1b4246c2475473/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737643562346234333930653f773d38373026683d32353226663d706e6726733d3330393638)
 
+# 更新：添加了 fork-ts-checker-webpack-plugin
+
 # 更新 :命令行程序支持的参数
 
 ## 开发模式
@@ -361,8 +363,8 @@ module.exports = {
     output: {
         globalObject: `( (typeof window !== "undefined" ? window : false) ||
     (typeof WorkerGlobalScope !== "undefined" ? WorkerGlobalScope : false) ||
-    this)`
-    }
+    this)`,
+    },
 };
 ```
 
@@ -399,7 +401,7 @@ if ("production" === process.env.NODE_ENV) {
         "127.0.0.1" !== location.hostname
     ) {
         "serviceWorker" in navigator &&
-            window.addEventListener("load", function() {
+            window.addEventListener("load", function () {
                 navigator.serviceWorker
                     .register("service-worker.js")
                     .catch(() => {});
@@ -484,8 +486,8 @@ Module parse failed: 'import' and 'export' may appear only with 'sourceType: mod
     {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         type: "javascript/auto",
-        loader: require.resolve("babel-loader")
-    }
+        loader: require.resolve("babel-loader"),
+    },
 ];
 ```
 
@@ -511,8 +513,8 @@ https://webpack.docschina.org/guides/hot-module-replacement/
 module.exports = {
     target: "web",
     devServer: {
-        hot: true
+        hot: true,
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 };
 ```

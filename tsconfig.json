@@ -1,5 +1,6 @@
 {
     "include": [
+        "*/*.ts",
         "*.js",
         "*.ts",
         "cli/src/*.js",

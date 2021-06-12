@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.2.2",
+    "version": "3.3.0",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
@@ -62,6 +62,7 @@
         "css-loader": "^5.2.4",
         "fast-sass-loader": "^2.0.0",
         "file-loader": "^6.2.0",
+        "fork-ts-checker-webpack-plugin": "^6.2.10",
         "htm": "^3.0.4",
         "html-webpack-plugin": "^5.3.1",
         "json-loader": "^0.5.7",

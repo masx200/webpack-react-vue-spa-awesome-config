@@ -27,9 +27,13 @@ function h(type, props, ...children) {
     return React.createElement(type, props, ...children);
 }
 console.log(h);
+import {add }from "./add.ts"
 const vdom = html`<div>
     <a href="/">Hello!html</a>
 
+    <div>typescript test 
+<br/>
+add 1+2=${add(1,2)}</div>
     <div>hello world html</div>
     <div>${msg}</div>
 </div> `;

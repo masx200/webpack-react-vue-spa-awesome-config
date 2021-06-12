@@ -1,4 +1,6 @@
-"use strict";
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+
+("use strict");
 const fs = require("fs");
 const CopyPlugin = require("copy-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
@@ -334,6 +336,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new ForkTsCheckerWebpackPlugin(),
         isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
         new CopyPlugin({
             patterns: [
