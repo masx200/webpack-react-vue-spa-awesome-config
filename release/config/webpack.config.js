@@ -235,7 +235,7 @@ module.exports = {
                         options: {
                             limit: 10000,
                             name: isEnvDevelopment
-                                ? "[name].[fullhash].[ext]"
+                                ? "[path][name].[ext]"
                                 : "[name].[contenthash].[ext]",
                         },
                     },
@@ -251,7 +251,7 @@ module.exports = {
                         ],
                         options: {
                             name: isEnvDevelopment
-                                ? "[name].[fullhash].[ext]"
+                                ? "[path][name].[ext]"
                                 : "[name].[contenthash].[ext]",
                         },
                     },
