@@ -1,4 +1,4 @@
-import babel from "rollup-plugin-babel";
+import babel from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
@@ -42,9 +42,7 @@ export default [
             resolve(),
             commonjs(),
             json(),
-            babel({
-                presets: ["@babel/preset-env"],
-            }),
+            babel({ babelHelpers: "bundled", presets: ["@babel/preset-env"] }),
             dropcompressplugin,
         ],
     },
@@ -63,9 +61,7 @@ export default [
             resolve(),
             commonjs(),
             json(),
-            babel({
-                presets: ["@babel/preset-env"],
-            }),
+            babel({ babelHelpers: "bundled", presets: ["@babel/preset-env"] }),
 
             manglecompressplugin,
         ],

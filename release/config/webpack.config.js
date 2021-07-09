@@ -1,6 +1,6 @@
+("use strict");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
-("use strict");
 const fs = require("fs");
 const CopyPlugin = require("copy-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
@@ -460,7 +460,6 @@ module.exports = {
                 parallel: !0,
             }),
             new OptimizeCSSAssetsPlugin({
-                cssProcessor: require("cssnano"),
                 cssProcessorPluginOptions: {
                     preset: [
                         "default",

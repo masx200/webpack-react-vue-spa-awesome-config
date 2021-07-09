@@ -28,7 +28,7 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 ![](https://camo.githubusercontent.com/53b510c8236e20ad20417ceebf1b4246c2475473/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f362f33302f313662613737643562346234333930653f773d38373026683d32353226663d706e6726733d3330393638)
 
-# 更新：添加了 fork-ts-checker-webpack-plugin
+# 更新：添加了 `fork-ts-checker-webpack-plugin`
 
 # 更新 :命令行程序支持的参数
 
@@ -183,13 +183,13 @@ module.exports = webpackconfig;
 ```json
 {
     "scripts": {
-        "start-custom": "webpack serve  --config ./webpack.config.js --mode=development ",
-        "build-custom": "webpack --config ./webpack.config.js --mode=production "
+        "start-custom": "webpack-react-vue-spa-awesome-config --config=./webpack.config.js --mode=development ",
+        "build-custom": "webpack-react-vue-spa-awesome-config --config=./webpack.config.js --mode=production "
     }
 }
 ```
 
--   启动 webpack-dev-server
+## 启动 webpack-dev-server
 
 ```
 yarn start
@@ -201,7 +201,7 @@ yarn start
 webpack serve  --config ./release/config/webpack.config.js  --mode=development
 ```
 
--   启动 webpack
+## 启动 webpack
 
 ```
 yarn build
