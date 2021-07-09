@@ -168,7 +168,7 @@ module.exports = {
                                     postcssNormalize(),
                                 ],
                             },
-                            sourceMap: isEnvProduction && shouldUseSourceMap,
+                            sourceMap: shouldUseSourceMap,
                         },
                     },
                     {
@@ -212,7 +212,7 @@ module.exports = {
                                     postcssNormalize(),
                                 ],
                             },
-                            sourceMap: isEnvProduction && shouldUseSourceMap,
+                            sourceMap: shouldUseSourceMap,
                         },
                     },
                     {
@@ -423,10 +423,18 @@ module.exports = {
                   maxInitialRequests: 5,
                   name: false,
                   usedExports: true,
+                  cacheGroups: {
+                      styles: {
+                          name: "style",
+                          test: /\.css$/,
+                          chunks: "all",
+                          enforce: true,
+                      },
+                  },
               }
             : {
                   chunks: "all",
-                  maxSize: 10 * 1000,
+                  maxSize: 20 * 1000,
               },
         minimize: isEnvProduction,
         minimizer: [
@@ -452,6 +460,19 @@ module.exports = {
                 parallel: !0,
             }),
             new OptimizeCSSAssetsPlugin({
+                cssProcessor: require("cssnano"),
+                cssProcessorPluginOptions: {
+                    preset: [
+                        "default",
+                        {
+                            discardComments: {
+                                removeAll: true,
+                            },
+                            normalizeUnicode: false,
+                        },
+                    ],
+                },
+                canPrint: true,
                 cssProcessorOptions: {
                     parser: safePostCssParser,
                     map: !!shouldUseSourceMap && {
