@@ -42,9 +42,12 @@ console.log("解析的参数:");
 console.log(JSON.stringify(参数object, null, 4));
 const 解析参数publicpath = 参数object["output-public-path"];
 process.env.NODE_ENV =
-    process.env.NODE_ENV || process.argv.includes("--mode=production")
+    参数object["mode"] === "production"
         ? "production"
-        : "development";
+        : 参数object["mode"] === "development"
+        ? "development"
+        : process.env.NODE_ENV;
+
 const defaultport = 10000;
 const port =
     参数object["port"] || defaultport + parseInt(String(10000 * Math.random()));
