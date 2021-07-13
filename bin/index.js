@@ -131,13 +131,13 @@ function v(e, o) {
     }));
 }
 
-var b = l.default.cwd();
+var y = l.default.cwd();
 
-function y(e, o) {
+function b(e, o) {
     o.forEach((function(o, n) {
         c.default.existsSync(o) || (console.log("inputfile  not exsited! ".concat(o, "\n")), 
         console.log("initialize inputfile from ".concat(e[n], "\n")), [ "public", "src" ].map((function(e) {
-            return i.default.resolve(b, e);
+            return i.default.resolve(y, e);
         })).forEach((function(e) {
             return function(e) {
                 c.default.existsSync(e) || (console.log("\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55", e), 
@@ -157,14 +157,25 @@ var h = require("path"), w = l.default.cwd(), x = [ "public/index.html", "src/in
     return h.resolve(w, e);
 }));
 
+function E(e, o) {
+    Object.entries(e).forEach((function(e) {
+        var n = f(e, 2), t = n[0], r = n[1];
+        o.push("--".concat(t, "=").concat(r));
+    }));
+}
+
+function _(e, o) {
+    c.default.existsSync(e) || (o.unshift("webpack"), e = "npx" + ("win32" === l.default.platform ? ".cmd" : ""));
+}
+
 console.log("\n"), console.log("webpack-react-vue-spa-awesome-config"), console.log("\n"), 
 console.log("\u6781\u901f\u3001\u96f6\u914d\u7f6e\u7684 web \u5e94\u7528\u6253\u5305\u5de5\u5177, \u540c\u65f6\u652f\u6301 react \u548c vue \u7684\u5355\u9875\u9762\u5e94\u7528,\u63d0\u4f9b\u5f00\u7bb1\u5373\u7528\u652f\u6301,\u57fa\u4e8ewebpack "), 
 console.log("\n"), console.log("Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support"), 
 console.log("\n"), console.log("\nworking directory : ".concat(l.default.cwd(), "\n")), 
 console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-var E, _ = l.default.argv.slice(1), j = _.includes("start") ? "start" : _.includes("build") ? "build" : void 0, O = (E = {}, 
-_.filter((function(e) {
+var j, O = l.default.argv.slice(1), A = O.includes("start") ? "start" : O.includes("build") ? "build" : void 0, N = (j = {}, 
+O.filter((function(e) {
     return e.startsWith("--");
 })).map((function(e) {
     return a(/\x2D\x2D(.+?)=(.+)/g, {
@@ -173,33 +184,26 @@ _.filter((function(e) {
     }).exec(e);
 })).forEach((function(e) {
     var o, n, t, r = null === (o = e) || void 0 === o ? void 0 : o.groups, l = null === (n = r) || void 0 === n ? void 0 : n.key, c = null === (t = r) || void 0 === t ? void 0 : t.value;
-    l && c && (E[l] = c);
-})), E);
+    l && c && (j[l] = c);
+})), j);
 
-console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(O, null, 4)), 
+console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(N, null, 4)), 
 function(e, o) {
-    var n, t, r = o.config, a = require.resolve(i.default.resolve(__dirname, "../")), u = r ? i.default.resolve(r) : a, s = o["output-public-path"], p = o.mode;
-    if ("start" === e || "development" === p) l.default.env.NODE_ENV = "development", 
-    y(S, k), n = m("webpack"), t = [ "serve", "--config", u, "--mode=" + l.default.env.NODE_ENV ], 
-    c.default.existsSync(n) || (t.unshift("webpack"), n = "npx" + ("win32" === l.default.platform ? ".cmd" : "")), 
-    Object.entries(o).forEach((function(e) {
-        var o = f(e, 2), n = o[0], r = o[1];
-        t.push("--".concat(n, "=").concat(r));
-    })), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
-    console.log("\n"), v(n, t); else if ("build" === e || "production" === p) {
-        var d, g;
-        console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 
-        console.log("\n"), l.default.env.NODE_ENV = "production", y(S, k), d = m("webpack"), 
-        g = [ "--config", u, "--mode=" + l.default.env.NODE_ENV ], c.default.existsSync(d) || (g.unshift("webpack"), 
-        d = "npx" + ("win32" === l.default.platform ? ".cmd" : "")), Object.entries(o).forEach((function(e) {
-            var o = f(e, 2), n = o[0], t = o[1];
-            g.push("--".concat(n, "=").concat(t));
-        })), s && s.length && (g.push("--output-public-path=" + s), console.log("\n")), 
-        v(d, g);
+    var n = o.config, t = require.resolve(i.default.resolve(__dirname, "../")), r = n ? i.default.resolve(n) : t;
+    Reflect.set(o, "config", r);
+    var c, a, u = o.mode;
+    if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
+    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(S, k), _(c = m("webpack"), a = [ "serve" ]), 
+    E(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
+    console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
+        var s, f;
+        console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
+        console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
+        b(S, k), _(s = m("webpack"), f = []), E(o, f), v(s, f);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config start --mode=development"), 
     console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config build --mode=production"), 
     console.log("\n"), l.default.exit(1);
-}(j, O);
+}(A, N);
 //# sourceMappingURL=index.js.map

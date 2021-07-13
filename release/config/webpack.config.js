@@ -41,9 +41,10 @@ const 参数object = parseargs(process.argv);
 console.log("解析的参数:");
 console.log(JSON.stringify(参数object, null, 4));
 const 解析参数publicpath = 参数object["output-public-path"];
-process.env.NODE_ENV = process.argv.includes("--mode=production")
-    ? "production"
-    : "development";
+process.env.NODE_ENV =
+    process.env.NODE_ENV || process.argv.includes("--mode=production")
+        ? "production"
+        : "development";
 const defaultport = 10000;
 const port =
     参数object["port"] || defaultport + parseInt(String(10000 * Math.random()));
@@ -88,7 +89,7 @@ module.exports = {
         inline: !0,
         watchContentBase: !0,
     },
-    devtool: isEnvDevelopment ? "inline-source-map" : false,
+    devtool: isEnvDevelopment ? "eval-cheap-module-source-map" : false,
     mode: process.env.NODE_ENV,
     entry: [
         fs.existsSync(path.join(__dirname, "src", "index.tsx"))
