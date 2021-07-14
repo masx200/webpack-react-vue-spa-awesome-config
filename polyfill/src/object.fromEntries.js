@@ -1,4 +1,7 @@
 function fromPairs(pairs) {
+    if (pairs) {
+        pairs = Array.from(pairs);
+    }
     var index = -1,
         length = pairs == null ? 0 : pairs.length,
         result = {};
