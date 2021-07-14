@@ -2,9 +2,9 @@
  * @param {string[]} args
  * @returns{Record<string,string>}
  */
-function parseargs(args) {
+function parseargs(args: string[]): Record<string, string> {
     /**@type{Record<string,string>} */
-    const 参数obj = {};
+    const 参数obj: Record<string, string> = {};
     args.filter((s) => s.startsWith("--"))
         .map((s) => /--(?<key>.+?)=(?<value>.+)/g.exec(s))
         .forEach((execArray) => {

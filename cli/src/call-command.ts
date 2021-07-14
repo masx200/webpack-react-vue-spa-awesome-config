@@ -6,7 +6,10 @@ import process from "process";
  * @param { string[]} commandargs
  */
 
-function 执行命令(/* commandstring,  */ command, commandargs) {
+function 执行命令(
+    /* commandstring,  */ command: string,
+    commandargs: string[]
+) {
     // console.log(commandstring);
     console.log("\n");
     console.log([command, ...commandargs]);
@@ -33,7 +36,7 @@ function 执行命令(/* commandstring,  */ command, commandargs) {
     });
     runobj.on("close", (code) => {
         console.log(`child process exited with code ${code}`);
-        process.exit(code);
+        process.exit(code || 0);
     });
 }
 export default 执行命令;

@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
+import typescript from "rollup-plugin-ts";
 const manglecompressplugin = terser({
     toplevel: true,
     //   sourcemap: true,
@@ -48,7 +49,7 @@ export default [
     },
     {
         external: ["path", "fs", "process", "child_process"],
-        input: "./cli/src/index.js",
+        input: "./cli/src/index.ts",
         output: [
             {
                 banner,
@@ -58,10 +59,15 @@ export default [
             },
         ],
         plugins: [
+            typescript(),
             resolve(),
             commonjs(),
             json(),
-            babel({ babelHelpers: "bundled", presets: ["@babel/preset-env"] }),
+            babel({
+                babelHelpers: "bundled",
+                presets: ["@babel/preset-env"],
+                extensions: [".js", ".ts"],
+            }),
 
             manglecompressplugin,
         ],

@@ -1,4 +1,5 @@
-const path = require("path");
+import path from "path";
+import process from "process";
 // const fs = require("fs");
 const pwddir = process.cwd();
 
@@ -9,5 +10,3 @@ const sourcefiles = inputfiles.map((p) =>
 const destfiles = inputfiles.map((p) => path.resolve(pwddir, p));
 
 export { sourcefiles, destfiles };
-
-import process from "process";

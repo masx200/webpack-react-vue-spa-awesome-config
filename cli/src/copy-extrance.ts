@@ -7,7 +7,10 @@ const pwddir = process.cwd();
  * @param {(import("fs").PathLike)[]} sourcefiles
  * @param {string[]} destfiles
  */
-export default function 生成入口文件(sourcefiles, destfiles) {
+export default function 生成入口文件(
+    sourcefiles: string[],
+    destfiles: string[]
+) {
     /**
      * @param {import("fs").PathLike} p
      * @param {number} i

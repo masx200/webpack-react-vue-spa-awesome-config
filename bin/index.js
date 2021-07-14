@@ -127,7 +127,7 @@ function v(e, o) {
             return "" !== e;
         })).join("\n\n")), console.log("\n");
     })), n.on("close", (function(e) {
-        console.log("child process exited with code ".concat(e)), l.default.exit(e);
+        console.log("child process exited with code ".concat(e)), l.default.exit(e || 0);
     }));
 }
 
@@ -151,21 +151,21 @@ function m(e) {
     return i.default.join(__dirname, "../", "node_modules", ".bin", e.trim() + ("win32" === l.default.platform ? ".cmd" : ""));
 }
 
-var h = require("path"), w = l.default.cwd(), x = [ "public/index.html", "src/index.js", "public/favicon.ico" ], S = x.map((function(e) {
-    return h.resolve(__dirname, "../", "release", e);
-})), k = x.map((function(e) {
-    return h.resolve(w, e);
+var h = l.default.cwd(), w = [ "public/index.html", "src/index.js", "public/favicon.ico" ], x = w.map((function(e) {
+    return i.default.resolve(__dirname, "../", "release", e);
+})), S = w.map((function(e) {
+    return i.default.resolve(h, e);
 }));
 
-function E(e, o) {
+function k(e, o) {
     Object.entries(e).forEach((function(e) {
         var n = f(e, 2), t = n[0], r = n[1];
         o.push("--".concat(t, "=").concat(r));
     }));
 }
 
-function _(e, o) {
-    c.default.existsSync(e) || (o.unshift("webpack"), e = "npx" + ("win32" === l.default.platform ? ".cmd" : ""));
+function E(e, o, n) {
+    c.default.existsSync(e) || (o.unshift("webpack"), n("npx" + ("win32" === l.default.platform ? ".cmd" : "")));
 }
 
 console.log("\n"), console.log("webpack-react-vue-spa-awesome-config"), console.log("\n"), 
@@ -174,8 +174,8 @@ console.log("\n"), console.log("Fast, zero-configuration web application packagi
 console.log("\n"), console.log("\nworking directory : ".concat(l.default.cwd(), "\n")), 
 console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-var j, O = l.default.argv.slice(1), A = O.includes("start") ? "start" : O.includes("build") ? "build" : void 0, N = (j = {}, 
-O.filter((function(e) {
+var _, j = l.default.argv.slice(1), O = j.includes("start") ? "start" : j.includes("build") ? "build" : void 0, A = (_ = {}, 
+j.filter((function(e) {
     return e.startsWith("--");
 })).map((function(e) {
     return a(/\x2D\x2D(.+?)=(.+)/g, {
@@ -184,26 +184,29 @@ O.filter((function(e) {
     }).exec(e);
 })).forEach((function(e) {
     var o, n, t, r = null === (o = e) || void 0 === o ? void 0 : o.groups, l = null === (n = r) || void 0 === n ? void 0 : n.key, c = null === (t = r) || void 0 === t ? void 0 : t.value;
-    l && c && (j[l] = c);
-})), j);
+    l && c && (_[l] = c);
+})), _);
 
-console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(N, null, 4)), 
+console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(A, null, 4)), 
 function(e, o) {
     var n = o.config, t = require.resolve(i.default.resolve(__dirname, "../")), r = n ? i.default.resolve(n) : t;
     Reflect.set(o, "config", r);
     var c, a, u = o.mode;
     if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
-    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(S, k), _(c = m("webpack"), a = [ "serve" ]), 
-    E(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
+    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, S), E(c = m("webpack"), a = [ "serve" ], (function(e) {
+        c = e;
+    })), k(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
         var s, f;
         console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
         console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
-        b(S, k), _(s = m("webpack"), f = []), E(o, f), v(s, f);
+        b(x, S), E(s = m("webpack"), f = [], (function(e) {
+            s = e;
+        })), k(o, f), v(s, f);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config start --mode=development"), 
     console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config build --mode=production"), 
     console.log("\n"), l.default.exit(1);
-}(A, N);
+}(O, A);
 //# sourceMappingURL=index.js.map

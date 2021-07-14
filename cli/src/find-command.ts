@@ -1,7 +1,7 @@
 /**
  * @param {string} t
  */
-export function commandfind(t) {
+export function commandfind(t: string) {
     return path.join(
         __dirname,
         "../",
