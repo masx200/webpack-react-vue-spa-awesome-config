@@ -2,6 +2,7 @@ import htm from "htm";
 import React from "react";
 import { render } from "react-dom";
 import "../registerserviceworker.js";
+import { add } from "./add.ts";
 import "./error-alert.js";
 import "./index.css";
 function html(...args) {
@@ -27,7 +28,6 @@ function h(type, props, ...children) {
     return React.createElement(type, props, ...children);
 }
 console.log(h);
-import {add }from "./add.ts"
 const vdom = html`<div>
     <a href="/">Hello!html</a>
 
