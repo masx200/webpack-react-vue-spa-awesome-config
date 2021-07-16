@@ -8,7 +8,6 @@ specifiers:
   '@babel/preset-env': ^7.14.1
   '@babel/preset-react': ^7.13.13
   '@babel/runtime': ^7.14.0
-  '@pmmmwh/react-refresh-webpack-plugin': 0.5.0-rc.2
   '@rollup/plugin-babel': 5.3.0
   '@rollup/plugin-commonjs': ^19.0.0
   '@rollup/plugin-json': ^4.1.0
@@ -63,8 +62,6 @@ specifiers:
   react: 17.0.2
   react-app-polyfill: ^2.0.0
   react-dom: ^17.0.2
-  react-refresh: ^0.10.0
-  react-refresh-typescript: ^2.0.2
   regenerator-runtime: ^0.13.7
   rollup: ^2.53.1
   rollup-plugin-terser: ^7.0.2
@@ -99,7 +96,6 @@ dependencies:
   '@babel/preset-env': 7.14.1_@babel+core@7.14.6
   '@babel/preset-react': 7.13.13_@babel+core@7.14.6
   '@babel/runtime': 7.14.0
-  '@pmmmwh/react-refresh-webpack-plugin': 0.5.0-rc.2_90444ac847f36353930b8f2320929e70
   '@types/html-webpack-plugin': 3.2.5
   '@types/mini-css-extract-plugin': 1.4.3_webpack-cli@4.7.2
   '@types/node': 15.0.2
@@ -142,8 +138,6 @@ dependencies:
   purify-css: 1.2.5
   purifycss-webpack: 0.7.0_purify-css@1.2.5
   react-app-polyfill: 2.0.0
-  react-refresh: 0.10.0
-  react-refresh-typescript: 2.0.2_07d643ea690a1c588819a69f1ef8f0ab
   regenerator-runtime: 0.13.7
   sass: 1.32.12
   style-loader: 2.0.0_webpack@5.44.0
@@ -4020,45 +4014,6 @@ packages:
       fastq: 1.11.0
     dev: false
 
-  /@pmmmwh/react-refresh-webpack-plugin/0.5.0-rc.2_90444ac847f36353930b8f2320929e70:
-    resolution: {integrity: sha512-LTZK5rAAiog7FvsDKX7mJBifV9yyzhIXHqlHA8E978Z0iFLsW40j6OVJFZ/AzV3wBIvN3+iPVYvhVGckkoy8OQ==}
-    engines: {node: '>= 10.13'}
-    peerDependencies:
-      '@types/webpack': 4.x || 5.x
-      react-refresh: ^0.10.0
-      sockjs-client: ^1.4.0
-      type-fest: 1.x
-      webpack: '>=4.43.0 <6.0.0'
-      webpack-dev-server: 3.x || >=4.0.0-beta.0
-      webpack-hot-middleware: 2.x
-      webpack-plugin-serve: 0.x || 1.x
-    peerDependenciesMeta:
-      '@types/webpack':
-        optional: true
-      sockjs-client:
-        optional: true
-      type-fest:
-        optional: true
-      webpack-dev-server:
-        optional: true
-      webpack-hot-middleware:
-        optional: true
-      webpack-plugin-serve:
-        optional: true
-    dependencies:
-      '@types/webpack': 5.28.0_webpack-cli@4.7.2
-      ansi-html: 0.0.7
-      core-js-pure: 3.15.2
-      error-stack-parser: 2.0.6
-      html-entities: 2.3.2
-      loader-utils: 2.0.0
-      react-refresh: 0.10.0
-      schema-utils: 3.1.0
-      source-map: 0.7.3
-      webpack: 5.44.0_webpack-cli@4.7.2
-      webpack-dev-server: 3.11.2_webpack-cli@4.7.2+webpack@5.44.0
-    dev: false
-
   /@rollup/plugin-babel/5.3.0_@babel+core@7.14.0+rollup@2.47.0:
     resolution: {integrity: sha512-9uIC8HZOnVLrLHxayq/PTzw+uS25E14KPUBh5ktF+18Mjo5yK0ToMMx6epY0uEgkjwJw0aBW4x2horYXh8juWw==}
     engines: {node: '>= 10.0.0'}
@@ -5889,11 +5844,6 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js-pure/3.15.2:
-    resolution: {integrity: sha512-D42L7RYh1J2grW8ttxoY1+17Y4wXZeKe7uyplAI3FkNQyI5OgBIAjUfFiTPfL1rs0qLpxaabITNbjKl1Sp82tA==}
-    requiresBuild: true
-    dev: false
-
   /core-js/2.6.12:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
     deprecated: core-js@<3.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
@@ -6604,12 +6554,6 @@ packages:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
     dependencies:
       is-arrayish: 0.2.1
-    dev: false
-
-  /error-stack-parser/2.0.6:
-    resolution: {integrity: sha512-d51brTeqC+BHlwF0BhPtcYgF5nlzf9ZZ0ZIUQNZpc9ZB9qw5IJ2diTrBY9jlCJkTLITYPjmiX6OWCwH+fuyNgQ==}
-    dependencies:
-      stackframe: 1.2.0
     dev: false
 
   /es-abstract/1.18.0:
@@ -7405,10 +7349,6 @@ packages:
 
   /html-entities/1.4.0:
     resolution: {integrity: sha512-8nxjcBcd8wovbeKx7h3wTji4e6+rhaVuPNpMqwWgnHh+N9ToqsCs6XztWRBPQ+UtzsoMAdKZtUENoVzU/EMtZA==}
-    dev: false
-
-  /html-entities/2.3.2:
-    resolution: {integrity: sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==}
     dev: false
 
   /html-minifier-terser/5.1.1:
@@ -10368,21 +10308,6 @@ packages:
       scheduler: 0.20.2
     dev: true
 
-  /react-refresh-typescript/2.0.2_07d643ea690a1c588819a69f1ef8f0ab:
-    resolution: {integrity: sha512-Gevwf67IgOFZW2ub/tZ8gmcXawWnhMuoFjCW85v4LcOzMgD2PMrH2zkr3sie2Y2bvLp/7tpRdhbG0yshxlJYHw==}
-    peerDependencies:
-      react-refresh: 0.10.x
-      typescript: ^4
-    dependencies:
-      react-refresh: 0.10.0
-      typescript: 4.3.5
-    dev: false
-
-  /react-refresh/0.10.0:
-    resolution: {integrity: sha512-PgidR3wST3dDYKr6b4pJoqQFpPGNKDSCDx4cZoshjXipw3LzO7mG1My2pwEzz2JVkF+inx3xRpDeQLFQGH/hsQ==}
-    engines: {node: '>=0.10.0'}
-    dev: false
-
   /react/17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
@@ -11220,10 +11145,6 @@ packages:
 
   /stable/0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
-    dev: false
-
-  /stackframe/1.2.0:
-    resolution: {integrity: sha512-GrdeshiRmS1YLMYgzF16olf2jJ/IzxXY9lhKOskuVziubpTYcYqyOwYeJKzQkwy7uN0fYSsbsC4RQaXf9LCrYA==}
     dev: false
 
   /static-extend/0.1.2:
