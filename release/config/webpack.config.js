@@ -81,7 +81,11 @@ module.exports = {
     target: isEnvDevelopment
         ? "web"
         : "browserslist:" + [">0.2%", "not dead", "not op_mini all"].join(","),
-    resolve: { alias: { "@": path.join(__dirname, "src") } },
+    resolve: {
+        extensions: [".ts", ".js", ".tsx", ".jsx"],
+
+        alias: { "@": path.join(__dirname, "src") },
+    },
     devServer: {
         host: "0.0.0.0",
         compress: true,
@@ -336,6 +340,18 @@ module.exports = {
                 },
                 include: [path.resolve(__dirname, "src")],
                 exclude: [/node_modules/],
+            },
+            {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: require.resolve("ts-loader"),
+                        options: {
+                            transpileOnly: true,
+                            appendTsSuffixTo: [/\.vue$/],
+                        },
+                    },
+                ],
             },
         ],
     },
