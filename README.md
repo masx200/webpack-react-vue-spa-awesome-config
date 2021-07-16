@@ -30,6 +30,8 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 # 更新：添加了 `fork-ts-checker-webpack-plugin`
 
+# 更新：添加了 `ts-loader`
+
 # 更新 :命令行程序支持的参数
 
 ## 开发模式
