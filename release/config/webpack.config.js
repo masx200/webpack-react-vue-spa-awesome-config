@@ -48,7 +48,7 @@ process.env.NODE_ENV =
         : 参数object["mode"] === "development"
         ? "development"
         : process.env.NODE_ENV;
-const isDevelopment = process.env.NODE_ENV !== "production";
+// const isDevelopment = process.env.NODE_ENV !== "production";
 const defaultport = 10000;
 const port =
     参数object["port"] || defaultport + parseInt(String(10000 * Math.random()));
@@ -253,7 +253,7 @@ module.exports = {
                         loader: require.resolve("file-loader"),
                         exclude: [
                             /\.vue$/,
-                            /\.(js|mjs|jsx|ts|tsx)$/,
+                            /\.(js|mjs|jsx|ts|tsx|cjs)$/,
                             /\.html$/,
                             /\.json$/,
                             /\.(css|scss|sass|less)$/,
