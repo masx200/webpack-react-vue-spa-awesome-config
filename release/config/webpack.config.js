@@ -1,6 +1,7 @@
 ("use strict");
+// const ReactRefreshTypeScript = require("react-refresh-typescript");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
-
+// const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const fs = require("fs");
 const CopyPlugin = require("copy-webpack-plugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
@@ -47,7 +48,7 @@ process.env.NODE_ENV =
         : 参数object["mode"] === "development"
         ? "development"
         : process.env.NODE_ENV;
-
+const isDevelopment = process.env.NODE_ENV !== "production";
 const defaultport = 10000;
 const port =
     参数object["port"] || defaultport + parseInt(String(10000 * Math.random()));
@@ -82,7 +83,7 @@ module.exports = {
         ? "web"
         : "browserslist:" + [">0.2%", "not dead", "not op_mini all"].join(","),
     resolve: {
-        extensions: [".ts", ".js", ".tsx", ".jsx"],
+        extensions: [".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs"],
 
         alias: { "@": path.join(__dirname, "src") },
     },
@@ -328,10 +329,11 @@ module.exports = {
                         ],
                     ].filter(Boolean),
                     presets: [
+                        // isDevelopment && require.resolve("react-refresh/babel"),
                         require.resolve("@babel/preset-react"),
 
                         require.resolve("@babel/preset-typescript"),
-                    ],
+                    ].filter(Boolean),
                     babelrc: false,
                     configFile: false,
                     cacheDirectory: !0,
@@ -343,10 +345,16 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: require.resolve("ts-loader"),
                         options: {
+                            // getCustomTransformers: () => ({
+                            //     before: isDevelopment
+                            //         ? [ReactRefreshTypeScript()]
+                            //         : [],
+                            // }),
                             transpileOnly: true,
                             appendTsSuffixTo: [/\.vue$/],
                         },
@@ -356,6 +364,7 @@ module.exports = {
         ],
     },
     plugins: [
+        // isDevelopment && new ReactRefreshWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin(),
         isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
         new CopyPlugin({
