@@ -4,7 +4,9 @@ import { render } from "react-dom";
 import "../registerserviceworker.js";
 import { add } from "./add.ts";
 import "./error-alert.js";
+import helloworld from "./helloworld.vue";
 import "./index.css";
+console.log(helloworld);
 function html(...args) {
     return Reflect.apply(htm, React.createElement, args);
 }
@@ -31,9 +33,11 @@ console.log(h);
 const vdom = html`<div>
     <a href="/">Hello!html</a>
 
-    <div>typescript test 
-<br/>
-add 1+2=${add(1,2)}</div>
+    <div>
+        typescript test
+        <br />
+        add 1+2=${add(1, 2)}
+    </div>
     <div>hello world html</div>
     <div>${msg}</div>
 </div> `;
@@ -50,9 +54,10 @@ render(
 
     document.body.appendChild(document.createElement("div"))
 );
-(async () => {
+!(async () => {
     const Vue = (await import("vue/dist/vue.esm.js")).default;
     console.log(Vue);
+    Vue.component("helloworld", helloworld);
     Vue.config.errorHandler = function (err, vm, info) {
         console.error(err, vm, info);
         throw err;
@@ -64,10 +69,7 @@ render(
     
     {{msg}}
     </div>
-    <div>
-    
-    hello world vue
-    </div>
+    <helloworld/>
     </div>
     `,
 
