@@ -15,7 +15,7 @@ console.log(html);
 window.addEventListener(
     "load",
     () => {
-        alert("hello world");
+        console.log("hello world");
     },
     { once: true }
 );
