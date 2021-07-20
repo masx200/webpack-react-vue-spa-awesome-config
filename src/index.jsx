@@ -54,8 +54,9 @@ render(
 
     document.body.appendChild(document.createElement("div"))
 );
+
+import Vue from "vue";
 !(async () => {
-    const Vue = (await import("vue/dist/vue.esm.js")).default;
     console.log(Vue);
     Vue.component("helloworld", helloworld);
     Vue.config.errorHandler = function (err, vm, info) {

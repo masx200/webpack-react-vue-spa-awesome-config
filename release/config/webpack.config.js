@@ -1,4 +1,25 @@
 ("use strict");
+
+function resolvevueloadermodulepath() {
+    var vueversion;
+
+    try {
+        vueversion = require("vue").version;
+    } catch (e) {
+        if (e?.code === "MODULE_NOT_FOUND") {
+            return require.resolve("vue-loader");
+        } else {
+            throw e;
+        }
+    }
+
+    if ("3" === vueversion.split(".")[0]) {
+        return require.resolve("vue-loader-16");
+    } else {
+        return require.resolve("vue-loader");
+    }
+}
+
 // const ReactRefreshTypeScript = require("react-refresh-typescript");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 // const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
@@ -8,7 +29,7 @@ const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
+const { VueLoaderPlugin } = require(resolvevueloadermodulepath());
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -193,7 +214,7 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                loader: require.resolve("vue-loader"),
+                loader: require.resolve(resolvevueloadermodulepath()),
             },
             {
                 test: /\.(css|sass|scss)$/,
