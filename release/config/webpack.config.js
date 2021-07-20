@@ -151,6 +151,10 @@ module.exports = {
                     sourceMaps: shouldUseSourceMap,
                     plugins: [
                         [
+                            "@babel/plugin-proposal-private-methods",
+                            { loose: true },
+                        ],
+                        [
                             require.resolve(
                                 "@babel/plugin-proposal-decorators"
                             ),
@@ -161,7 +165,9 @@ module.exports = {
                             { loose: true },
                         ],
                     ].filter(Boolean),
-                    presets: [require.resolve("babel-preset-react-app")],
+                    presets: [
+                        isEnvProduction && require.resolve("@babel/preset-env"),
+                    ].filter(Boolean),
                     babelrc: false,
                     configFile: false,
                     cacheDirectory: !0,
