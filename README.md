@@ -32,6 +32,8 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 # 更新：添加了 `ts-loader`
 
+# 更新 ：支持 vue3 和 vue-loader16 了
+
 # 更新 :命令行程序支持的参数
 
 ## 开发模式
