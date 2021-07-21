@@ -260,7 +260,7 @@ module.exports = {
             {
                 oneOf: [
                     {
-                        test: [
+                        test: [/\.(png|jpg|jpeg|gif|webp|ico|bmp|svg)$/i,
                             /\.bmp$/,
                             /\.gif$/,
                             /\.jpe?g$/,
