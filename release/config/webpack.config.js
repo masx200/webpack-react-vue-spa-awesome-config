@@ -260,7 +260,8 @@ const config = {
             {
                 oneOf: [
                     {
-                        test: [/\.(png|jpg|jpeg|gif|webp|ico|bmp|svg)$/i,
+                        test: [
+                            /\.(png|jpg|jpeg|gif|webp|ico|bmp|svg)$/i,
                             /\.bmp$/,
                             /\.gif$/,
                             /\.jpe?g$/,
@@ -324,7 +325,8 @@ const config = {
                     babelrc: !1,
                     configFile: !1,
                     compact: !1,
-                    presets: [isEnvProduction && require.resolve("@babel/preset-env"),
+                    presets: [
+                        isEnvProduction && require.resolve("@babel/preset-env"),
                         [
                             require.resolve(
                                 "babel-preset-react-app/dependencies"
@@ -539,4 +541,4 @@ const config = {
         ],
     },
 };
-module.exports=config
+module.exports = config;
