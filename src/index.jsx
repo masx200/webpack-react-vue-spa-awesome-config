@@ -1,14 +1,15 @@
 import htm from "htm";
-import React from "react";
+import React, { createElement } from "react";
 import { render } from "react-dom";
 import Vue from "vue";
 import "../registerserviceworker.js";
-import { add } from "./add.ts";
+import { App1 } from "./App1";
+import { App2 } from "./App2";
 import "./error-alert.js";
 import helloworld from "./helloworld.vue";
 import "./index.css";
 console.log(helloworld);
-function html(...args) {
+export function html(...args) {
     return Reflect.apply(htm, React.createElement, args);
 }
 
@@ -21,29 +22,6 @@ window.addEventListener(
     { once: true }
 );
 
-function App1() {
-    return <div>hello world react</div>;
-}
-
-const msg = "Welcome to Your html App";
-function h(type, props, ...children) {
-    console.log({ type, props, children });
-    return React.createElement(type, props, ...children);
-}
-console.log(h);
-const vdom = html`<div>
-    <a href="/">Hello!html</a>
-
-    <div>
-        typescript test
-        <br />
-        add 1+2=${add(1, 2)}
-    </div>
-    <div>hello world html</div>
-    <div>${msg}</div>
-</div> `;
-console.log(vdom);
-
 render(
     <App1 />,
 
@@ -51,7 +29,7 @@ render(
 );
 
 render(
-    vdom,
+    createElement(App2),
 
     document.body.appendChild(document.createElement("div"))
 );

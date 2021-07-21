@@ -4,6 +4,7 @@ function resolvevueloadermodulepath() {
     var vueversion;
 
     try {
+        //@ts-ignore
         vueversion = require("vue").version;
     } catch (e) {
         if (e?.code === "MODULE_NOT_FOUND") {
@@ -39,6 +40,7 @@ const postcssNormalize = require("postcss-normalize");
 const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
 function parseargs(args) {
     const 参数obj = {};
     args.filter((s) => s.startsWith("--"))
@@ -96,6 +98,7 @@ const isservemode = process.argv.includes("serve");
 if (isEnvDevelopment & isservemode) {
     console.log("open in browser: http://localhost:" + port);
 }
+const srcfoldepath = path.join(__dirname, "src");
 const config = {
     stats: {
         children: true,
@@ -106,7 +109,9 @@ const config = {
     resolve: {
         extensions: [".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs"],
 
-        alias: { "@": path.join(__dirname, "src") },
+        alias: {
+            "@": path.join(__dirname, "src"),
+        },
     },
     devServer: {
         host: "0.0.0.0",
@@ -152,17 +157,23 @@ const config = {
                     plugins: [
                         [
                             "@babel/plugin-proposal-private-methods",
-                            { loose: true },
+                            {
+                                loose: true,
+                            },
                         ],
                         [
                             require.resolve(
                                 "@babel/plugin-proposal-decorators"
                             ),
-                            { legacy: true },
+                            {
+                                legacy: true,
+                            },
                         ],
                         [
                             "@babel/plugin-proposal-class-properties",
-                            { loose: true },
+                            {
+                                loose: true,
+                            },
                         ],
                     ].filter(Boolean),
                     presets: [
@@ -186,10 +197,14 @@ const config = {
                               loader: require.resolve("style-loader"),
                               options: {},
                           }
-                        : { loader: MiniCssExtractPlugin.loader },
+                        : {
+                              loader: MiniCssExtractPlugin.loader,
+                          },
                     {
                         loader: require.resolve("css-loader"),
-                        options: { sourceMap: shouldUseSourceMap },
+                        options: {
+                            sourceMap: shouldUseSourceMap,
+                        },
                     },
                     {
                         loader: require.resolve("postcss-loader"),
@@ -198,7 +213,9 @@ const config = {
                                 plugins: [
                                     require("postcss-flexbugs-fixes"),
                                     require("postcss-preset-env")({
-                                        autoprefixer: { flexbox: "no-2009" },
+                                        autoprefixer: {
+                                            flexbox: "no-2009",
+                                        },
                                         stage: 3,
                                     }),
                                     postcssNormalize(),
@@ -209,14 +226,18 @@ const config = {
                     },
                     {
                         loader: require.resolve("less-loader"),
-                        options: { sourceMap: shouldUseSourceMap },
+                        options: {
+                            sourceMap: shouldUseSourceMap,
+                        },
                     },
                 ],
             },
             {
                 test: /\.worker\.js$/,
                 loader: require.resolve("worker-loader"),
-                options: { inline: "no-fallback" },
+                options: {
+                    inline: "no-fallback",
+                },
             },
             {
                 test: /\.vue$/,
@@ -230,10 +251,14 @@ const config = {
                               loader: require.resolve("style-loader"),
                               options: {},
                           }
-                        : { loader: MiniCssExtractPlugin.loader },
+                        : {
+                              loader: MiniCssExtractPlugin.loader,
+                          },
                     {
                         loader: require.resolve("css-loader"),
-                        options: { sourceMap: shouldUseSourceMap },
+                        options: {
+                            sourceMap: shouldUseSourceMap,
+                        },
                     },
                     {
                         loader: require.resolve("postcss-loader"),
@@ -242,7 +267,9 @@ const config = {
                                 plugins: [
                                     require("postcss-flexbugs-fixes"),
                                     require("postcss-preset-env")({
-                                        autoprefixer: { flexbox: "no-2009" },
+                                        autoprefixer: {
+                                            flexbox: "no-2009",
+                                        },
                                         stage: 3,
                                     }),
                                     postcssNormalize(),
@@ -331,7 +358,9 @@ const config = {
                             require.resolve(
                                 "babel-preset-react-app/dependencies"
                             ),
-                            { helpers: !0 },
+                            {
+                                helpers: !0,
+                            },
                         ],
                     ].filter(Boolean),
                     cacheDirectory: !0,
@@ -374,6 +403,7 @@ const config = {
             },
             {
                 test: /\.tsx?$/,
+                //  type: "javascript/auto",
                 exclude: /node_modules/,
                 use: [
                     {
@@ -395,11 +425,16 @@ const config = {
     plugins: [
         // isDevelopment && new ReactRefreshWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin(),
-        isEnvProduction && new CleanWebpackPlugin({ verbose: true }),
+        isEnvProduction &&
+            new CleanWebpackPlugin({
+                verbose: true,
+            }),
         new CopyPlugin({
             patterns: [
                 {
-                    globOptions: { ignore: ["**/index.html"] },
+                    globOptions: {
+                        ignore: ["**/index.html"],
+                    },
                     from: path.join(__dirname, "public"),
                     toType: "dir",
                     to: path.join(__dirname, "dist"),
@@ -431,7 +466,9 @@ const config = {
                         handler: "CacheFirst",
                         options: {
                             cacheName: "image-cache",
-                            expiration: { maxEntries: 10 },
+                            expiration: {
+                                maxEntries: 10,
+                            },
                         },
                     },
                 ],
@@ -499,7 +536,9 @@ const config = {
             new TerserPlugin({
                 terserOptions: {
                     ecma: 5,
-                    parse: { ecma: 8 },
+                    parse: {
+                        ecma: 8,
+                    },
                     compress: {
                         warnings: !1,
                         comparisons: !1,
@@ -508,7 +547,9 @@ const config = {
                         drop_debugger: true,
                         pure_funcs: ["console.log"],
                     },
-                    mangle: { safari10: !0 },
+                    mangle: {
+                        safari10: !0,
+                    },
                     output: {
                         ecma: 5,
                         comments: !1,
@@ -541,4 +582,37 @@ const config = {
         ],
     },
 };
+!(() => {
+    if (isEnvDevelopment) {
+        try {
+            require("react");
+        } catch (error) {
+            if (error?.code === "MODULE_NOT_FOUND") {
+                return;
+            } else {
+                throw error;
+            }
+        }
+        addreactfresh(config);
+    }
+})();
+
+function addreactfresh(config) {
+    const ReactRefreshWebpackPlugin =
+        require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
+    config.entry = [
+        require.resolve("@next/react-refresh-utils/runtime"),
+        ...config.entry,
+    ];
+    config.plugins = [new ReactRefreshWebpackPlugin(), ...config.plugins];
+    config.module.rules = [
+        {
+            test: /\.(tsx|ts|js|mjs|jsx)$/,
+            include: [srcfoldepath],
+            exclude: [/node_modules/],
+            use: [require.resolve("@next/react-refresh-utils/loader")],
+        },
+        ...config.module.rules,
+    ];
+}
 module.exports = config;

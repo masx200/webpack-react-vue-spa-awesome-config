@@ -1,5 +1,5 @@
-import "./index.css";
-alert("hello world");
+// import "./index.css";
+// alert("hello world");
 /*import "../registerserviceworker.js";
 
  import React from "react";
