@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.4.4",
+    "version": "3.4.5",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
@@ -40,7 +40,7 @@
         "@babel/plugin-proposal-decorators": "^7.14.5",
         "@babel/plugin-proposal-private-methods": "^7.14.5",
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-        "@babel/preset-env": "^7.14.7",
+        "@babel/preset-env": "npm:@babel/preset-env@7.12.1",
         "@babel/preset-react": "^7.13.13",
         "@babel/preset-typescript": "^7.14.5",
         "@babel/runtime": "npm:@babel/runtime@7.12.1",

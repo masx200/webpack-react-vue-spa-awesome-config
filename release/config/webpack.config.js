@@ -177,7 +177,10 @@ const config = {
                         ],
                     ].filter(Boolean),
                     presets: [
-                        isEnvProduction && require.resolve("@babel/preset-env"),
+                        isEnvProduction && [
+                            require.resolve("@babel/preset-env"),
+                            { corejs: 3, useBuiltIns: "entry" },
+                        ],
                     ].filter(Boolean),
                     babelrc: false,
                     configFile: false,
@@ -353,7 +356,10 @@ const config = {
                     configFile: !1,
                     compact: !1,
                     presets: [
-                        isEnvProduction && require.resolve("@babel/preset-env"),
+                        isEnvProduction && [
+                            require.resolve("@babel/preset-env"),
+                            { corejs: 3, useBuiltIns: "entry" },
+                        ],
                         [
                             require.resolve(
                                 "babel-preset-react-app/dependencies"
