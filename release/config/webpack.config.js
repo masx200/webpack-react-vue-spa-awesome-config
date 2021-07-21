@@ -96,7 +96,7 @@ const isservemode = process.argv.includes("serve");
 if (isEnvDevelopment & isservemode) {
     console.log("open in browser: http://localhost:" + port);
 }
-module.exports = {
+const config = {
     stats: {
         children: true,
     },
@@ -539,3 +539,4 @@ module.exports = {
         ],
     },
 };
+module.exports=config
