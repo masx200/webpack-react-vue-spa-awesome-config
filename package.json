@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "3.4.1",
+    "version": "3.4.2",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
@@ -13,7 +13,7 @@
         "start": "webpack serve  --config=./webpack.config.js  --mode=development --port=11111",
         "build": "webpack   --config=./webpack.config.js  --mode=production",
         "rollup": "rollup -c rollup.config.js",
-        "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./cli/src/*.js ./release/config/*.js **/*.css **/*.html */*/*.js */*.jsx",
+        "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./cli/src/*.ts ./release/config/*.js **/*.css **/*.html */*/*.js */*.jsx",
         "test1": "node ./bin/index.js start --port=11111  --config=./webpack.config.js",
         "test2": "node ./bin/index.js --mode=development --port=11111  --config=./webpack.config.js",
         "test3": "node ./bin/index.js build  --config=./webpack.config.js",
@@ -42,7 +42,9 @@
         "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@babel/preset-env": "^7.14.7",
         "@babel/preset-react": "^7.13.13",
+        "@babel/preset-typescript": "^7.14.5",
         "@babel/runtime": "^7.14.0",
+        "@next/react-refresh-utils": "^11.0.1",
         "@types/html-webpack-plugin": "^3.2.5",
         "@types/mini-css-extract-plugin": "^1.4.3",
         "@types/node": "^15.0.2",
@@ -82,8 +84,8 @@
         "postcss-preset-env": "^6.7.0",
         "postcss-safe-parser": "^5.0.2",
         "purgecss-webpack-plugin": "4.0.3",
-        "purify-css": "^1.2.5",
         "react-app-polyfill": "^2.0.0",
+        "react-refresh": "^0.10.0",
         "regenerator-runtime": "^0.13.7",
         "sass": "1.32.12",
         "style-loader": "^2.0.0",
@@ -123,7 +125,7 @@
         "typescript": "^4.3.5",
         "vue": "^2.6.14",
         "webpack-merge": "^5.8.0",
-        "yargs-parser": "20.2.7"
+        "yargs-parser": "^20.2.9"
     },
     "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
