@@ -175,7 +175,7 @@ module.exports = {
                     compact: isEnvProduction,
                 },
                 include: [path.resolve(__dirname)],
-                exclude: [],
+                exclude: [/node_modules/],
             },
 
             {
