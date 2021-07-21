@@ -1,6 +1,7 @@
 import htm from "htm";
 import React from "react";
 import { render } from "react-dom";
+import Vue from "vue";
 import "../registerserviceworker.js";
 import { add } from "./add.ts";
 import "./error-alert.js";
@@ -55,7 +56,6 @@ render(
     document.body.appendChild(document.createElement("div"))
 );
 
-import Vue from "vue";
 !(async () => {
     console.log(Vue);
     Vue.component("helloworld", helloworld);
