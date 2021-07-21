@@ -324,14 +324,14 @@ module.exports = {
                     babelrc: !1,
                     configFile: !1,
                     compact: !1,
-                    presets: [
+                    presets: [isEnvProduction && require.resolve("@babel/preset-env"),
                         [
                             require.resolve(
                                 "babel-preset-react-app/dependencies"
                             ),
                             { helpers: !0 },
                         ],
-                    ],
+                    ].filter(Boolean),
                     cacheDirectory: !0,
                     cacheCompression: isEnvProduction,
                     sourceMaps: shouldUseSourceMap,
