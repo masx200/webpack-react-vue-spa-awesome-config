@@ -415,6 +415,7 @@ const config = {
                     {
                         loader: require.resolve("ts-loader"),
                         options: {
+                            compilerOptions: { sourceMap: true, strict: true },
                             // getCustomTransformers: () => ({
                             //     before: isDevelopment
                             //         ? [ReactRefreshTypeScript()]
