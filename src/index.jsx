@@ -8,6 +8,7 @@ import { App2 } from "./App2";
 import "./error-alert.js";
 import helloworld from "./helloworld.vue";
 import "./index.css";
+import "./index.less";
 console.log(helloworld);
 export function html(...args) {
     return Reflect.apply(htm, React.createElement, args);
