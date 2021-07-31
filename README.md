@@ -219,19 +219,10 @@ yarn build
 webpack  --config ./release/config/webpack.config.js     --mode=production
 ```
 
-# 自动判断浏览器 API，给 `IE`和`Edge` 浏览器自动添加 `polyfill`
-
-`babel-polyfill` 和 `fetch-polyfill` 和 `URL-ployfill` 和 `Event-ployfill` 和 `EventTarget-ployfill`
-
-`CustomEvent-ployfill`
-
-更新:添加`Array.prototype.flat`和`Object.fromEntries`,并修复`edge`浏览器上无法运行`new EventTarget`的问题
-
-https://github.com/masx200/webpack-react-vue-spa-awesome-config/blob/master/polyfill/polyfill.min.js
+# 给 浏览器自动添加 `polyfill`
 
 ```html
 <script src="https://cdn.bootcss.com/babel-polyfill/7.12.1/polyfill.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/masx200/webpack-react-vue-spa-awesome-config/polyfill/polyfill.min.js"></script>
 ```
 
 # 内部极简的配置文件
@@ -253,36 +244,6 @@ process.argv.includes("--mode=production")
 # 默认关闭了 `eslint`！
 
 可以在`vscode`中安装`eslint`插件来检查代码
-
-创建`.eslintrc.json`配置文件
-
-```json
-{
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true,
-        "worker": true,
-        "commonjs": true
-    },
-    "extends": "eslint:recommended",
-    "globals": { "Atomics": "readonly", "SharedArrayBuffer": "readonly" },
-    "parserOptions": {
-        "ecmaVersion": 2019,
-        "sourceType": "module",
-        "ecmaFeatures": { "jsx": true }
-    },
-    "rules": {}
-}
-```
-
-## 适用于 `vue.js`的`ESlint`配置文件
-
-https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/master/vue.eslintrc.json
-
-## 适用于 `react.js`的`ESlint`配置文件
-
-https://github.com/masx200/excellent-vscode-extensions-for-javascript/blob/master/react.eslintrc.json
 
 # 集成 postcss,自动增加前缀
 
