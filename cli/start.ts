@@ -7,7 +7,10 @@ import { commandfind } from "./find-command";
 import { showhelp } from "./showhelp";
 import { destfiles, sourcefiles } from "./source-dest-files";
 const webpackcmd = "webpack";
-export function start(operation: string, 参数object: Record<string, string>) {
+export function start(
+    operation: string | undefined,
+    参数object: Record<string, string>
+) {
     const 解析参数config = 参数object["config"];
     const defaultwebpackconfig = require.resolve(
         path.resolve(__dirname, "../", "./release/config/webpack.config.js")
