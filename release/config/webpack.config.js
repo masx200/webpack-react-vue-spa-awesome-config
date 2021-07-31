@@ -310,10 +310,12 @@ const config = {
                     {
                         loader: require.resolve("ts-loader"),
                         options: {
-                            configFile: path.resolve(
-                                __dirname,
-                                "tsconfig.json"
-                            ),
+                            configFile: fs.existsSync(
+                                path.resolve(__dirname, "tsconfig.json")
+                            )
+                                ? path.resolve(__dirname, "tsconfig.json")
+                                : false,
+
                             compilerOptions: { sourceMap: true, strict: true },
                             // getCustomTransformers: () => ({
                             //     before: isDevelopment
@@ -332,7 +334,15 @@ const config = {
         // isDevelopment && new ReactRefreshWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin({
             typescript: {
-                configFile: path.resolve(__dirname, "tsconfig.json"),
+                configOverwrite: {
+                    compilerOptions: { skipLibCheck: true, strict: true },
+                    include: ["src"],
+                },
+                configFile: fs.existsSync(
+                    path.resolve(__dirname, "tsconfig.json")
+                )
+                    ? path.resolve(__dirname, "tsconfig.json")
+                    : false,
             },
         }),
         isEnvProduction &&
