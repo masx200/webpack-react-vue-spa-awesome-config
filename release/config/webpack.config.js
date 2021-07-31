@@ -152,43 +152,8 @@ const config = {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
-                options: {
-                    sourceMaps: shouldUseSourceMap,
-                    plugins: [
-                        [
-                            "@babel/plugin-proposal-private-methods",
-                            {
-                                loose: true,
-                            },
-                        ],
-                        [
-                            require.resolve(
-                                "@babel/plugin-proposal-decorators"
-                            ),
-                            {
-                                legacy: true,
-                            },
-                        ],
-                        [
-                            "@babel/plugin-proposal-class-properties",
-                            {
-                                loose: true,
-                            },
-                        ],
-                    ].filter(Boolean),
-                    presets: [
-                        isEnvProduction && [
-                            require.resolve("babel-preset-react-app"),
-                            {},
-                        ],
-                    ].filter(Boolean),
-                    babelrc: false,
-                    configFile: false,
-                    cacheDirectory: !0,
-                    cacheCompression: isEnvProduction,
-                    compact: isEnvProduction,
-                },
-                include: [path.resolve(__dirname)],
+                options: getbabelconfig(),
+                include: [srcfoldepath],
                 exclude: [/node_modules/],
             },
 
@@ -212,18 +177,7 @@ const config = {
                     {
                         loader: require.resolve("postcss-loader"),
                         options: {
-                            postcssOptions: {
-                                plugins: [
-                                    require("postcss-flexbugs-fixes"),
-                                    require("postcss-preset-env")({
-                                        autoprefixer: {
-                                            flexbox: "no-2009",
-                                        },
-                                        stage: 3,
-                                    }),
-                                    postcssNormalize(),
-                                ],
-                            },
+                            postcssOptions: getpostcssoptions(),
                             sourceMap: shouldUseSourceMap,
                         },
                     },
@@ -236,7 +190,7 @@ const config = {
                 ],
             },
             {
-                test: /\.worker\.js$/,
+                test: /\.worker\.(js|ts)$/,
                 loader: require.resolve("worker-loader"),
                 options: {
                     inline: "no-fallback",
@@ -266,18 +220,7 @@ const config = {
                     {
                         loader: require.resolve("postcss-loader"),
                         options: {
-                            postcssOptions: {
-                                plugins: [
-                                    require("postcss-flexbugs-fixes"),
-                                    require("postcss-preset-env")({
-                                        autoprefixer: {
-                                            flexbox: "no-2009",
-                                        },
-                                        stage: 3,
-                                    }),
-                                    postcssNormalize(),
-                                ],
-                            },
+                            postcssOptions: getpostcssoptions(),
                             sourceMap: shouldUseSourceMap,
                         },
                     },
@@ -324,25 +267,7 @@ const config = {
                     },
                 ],
             },
-            {
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
-                type: "javascript/auto",
-                loader: require.resolve("babel-loader"),
-                options: {
-                    sourceMaps: shouldUseSourceMap,
-                    presets: [require.resolve("babel-preset-react-app")],
-                    babelrc: false,
-                    configFile: false,
-                    customize: require.resolve(
-                        "babel-preset-react-app/webpack-overrides"
-                    ),
-                    cacheDirectory: !0,
-                    cacheCompression: isEnvProduction,
-                    compact: isEnvProduction,
-                },
-                include: [path.resolve(__dirname, "src")],
-                exclude: [/node_modules/],
-            },
+
             {
                 test: /\.(js|mjs)$/,
                 exclude: [
@@ -375,39 +300,9 @@ const config = {
                 },
                 include: [/node_modules/],
             },
-            {
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
-                type: "javascript/auto",
-                loader: require.resolve("babel-loader"),
-                options: {
-                    sourceMaps: shouldUseSourceMap,
-                    plugins: [
-                        [
-                            require.resolve("babel-plugin-htm"),
-                            {
-                                pragma: "h",
-                                tag: "html",
-                                useBuiltIns: true,
-                                useNativeSpread: true,
-                            },
-                        ],
-                    ].filter(Boolean),
-                    presets: [
-                        // isDevelopment && require.resolve("react-refresh/babel"),
-                        require.resolve("@babel/preset-react"),
 
-                        require.resolve("@babel/preset-typescript"),
-                    ].filter(Boolean),
-                    babelrc: false,
-                    configFile: false,
-                    cacheDirectory: !0,
-                    cacheCompression: isEnvProduction,
-                    compact: isEnvProduction,
-                },
-                include: [path.resolve(__dirname, "src")],
-                exclude: [/node_modules/],
-            },
             {
+                include: [srcfoldepath],
                 test: /\.tsx?$/,
                 //  type: "javascript/auto",
                 exclude: /node_modules/,
@@ -593,7 +488,8 @@ const config = {
         ],
     },
 };
-!(() => {
+
+function afterconfig(config) {
     if (isEnvDevelopment) {
         try {
             require("react");
@@ -606,7 +502,69 @@ const config = {
         }
         addreactfresh(config);
     }
-})();
+}
+
+function getpostcssoptions() {
+    return {
+        plugins: [
+            require("postcss-flexbugs-fixes"),
+            require("postcss-preset-env")({
+                autoprefixer: {
+                    flexbox: "no-2009",
+                },
+                stage: 3,
+            }),
+            postcssNormalize(),
+        ],
+    };
+}
+
+function getbabelconfig() {
+    return {
+        sourceMaps: shouldUseSourceMap,
+        plugins: [
+            [
+                require.resolve("babel-plugin-htm"),
+                {
+                    pragma: "h",
+                    tag: "html",
+                    useBuiltIns: true,
+                    useNativeSpread: true,
+                },
+            ],
+            [
+                "@babel/plugin-proposal-private-methods",
+                {
+                    loose: true,
+                },
+            ],
+            [
+                require.resolve("@babel/plugin-proposal-decorators"),
+                {
+                    legacy: true,
+                },
+            ],
+            [
+                "@babel/plugin-proposal-class-properties",
+                {
+                    loose: true,
+                },
+            ],
+        ].filter(Boolean),
+        presets: [
+            require.resolve("@babel/preset-react"),
+
+            require.resolve("@babel/preset-typescript"),
+            isEnvProduction && [require.resolve("babel-preset-react-app"), {}],
+        ].filter(Boolean),
+        customize: require.resolve("babel-preset-react-app/webpack-overrides"),
+        babelrc: false,
+        configFile: false,
+        cacheDirectory: !0,
+        cacheCompression: isEnvProduction,
+        compact: isEnvProduction,
+    };
+}
 
 function addreactfresh(config) {
     const ReactRefreshWebpackPlugin =
@@ -626,4 +584,5 @@ function addreactfresh(config) {
         ...config.module.rules,
     ];
 }
+afterconfig(config);
 module.exports = config;
