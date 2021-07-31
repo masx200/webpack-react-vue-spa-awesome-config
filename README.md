@@ -180,10 +180,16 @@ webpack-react-vue-spa-awesome-config build
 `webpack.config.js`
 
 ```js
-const webpackconfig = require("@masx200/webpack-react-vue-spa-awesome-config");
-console.log(webpackconfig);
-//do something with webpackconfig
-module.exports = webpackconfig;
+const {
+    createconfig,
+} = require("@masx200/webpack-react-vue-spa-awesome-config");
+
+module.exports = (env, argv) => {
+    const config = createconfig(env, argv);
+
+    //do something with webpackconfig
+    return config;
+};
 ```
 
 `package.json`
