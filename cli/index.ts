@@ -9,7 +9,8 @@ import { start } from "./start";
 consolehello();
 // console.log("输入的参数:");
 // console.log(JSON.stringify(process.argv, null, 4));
-const inargs = process.argv.slice(1);
+const inargs = process.argv.slice(2);
+console.log("接收的参数", inargs);
 const operation = inargs.includes("start")
     ? "start"
     : inargs.includes("build")

@@ -1,6 +1,7 @@
 {
     "include": ["./src/*.ts"],
     "compilerOptions": {
+        "skipLibCheck": true,
         "pretty": true,
         "removeComments": true,
         "moduleResolution": "node",
