@@ -10,7 +10,7 @@ const webpackcmd = "webpack";
 export function start(operation: string, 参数object: Record<string, string>) {
     const 解析参数config = 参数object["config"];
     const defaultwebpackconfig = require.resolve(
-        path.resolve(__dirname, "../")
+        path.resolve(__dirname, "../", "./release/config/webpack.config.js")
     );
     const 参数webpackconfigfile = 解析参数config
         ? path.resolve(解析参数config)

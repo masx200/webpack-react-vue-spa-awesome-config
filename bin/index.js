@@ -69,7 +69,7 @@ function f(e, o) {
     return function(e) {
         if (Array.isArray(e)) return e;
     }(e) || function(e, o) {
-        var n = e && ("undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]);
+        var n = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
         if (null == n) return;
         var t, r, l = [], c = !0, i = !1;
         try {
@@ -153,11 +153,11 @@ function m(e) {
 
 var h = l.default.cwd(), w = [ "public/index.html", "src/index.js", "public/favicon.ico" ], x = w.map((function(e) {
     return i.default.resolve(__dirname, "../", "release", e);
-})), S = w.map((function(e) {
+})), k = w.map((function(e) {
     return i.default.resolve(h, e);
 }));
 
-function k(e, o) {
+function S(e, o) {
     Object.entries(e).forEach((function(e) {
         var n = f(e, 2), t = n[0], r = n[1];
         o.push("--".concat(t, "=").concat(r));
@@ -189,20 +189,20 @@ j.filter((function(e) {
 
 console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(A, null, 4)), 
 function(e, o) {
-    var n = o.config, t = require.resolve(i.default.resolve(__dirname, "../")), r = n ? i.default.resolve(n) : t;
+    var n = o.config, t = require.resolve(i.default.resolve(__dirname, "../", "./release/config/webpack.config.js")), r = n ? i.default.resolve(n) : t;
     Reflect.set(o, "config", r);
     var c, a, u = o.mode;
     if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
-    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, S), E(c = m("webpack"), a = [ "serve" ], (function(e) {
+    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, k), E(c = m("webpack"), a = [ "serve" ], (function(e) {
         c = e;
-    })), k(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
+    })), S(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
         var s, f;
         console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
         console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
-        b(x, S), E(s = m("webpack"), f = [], (function(e) {
+        b(x, k), E(s = m("webpack"), f = [], (function(e) {
             s = e;
-        })), k(o, f), v(s, f);
+        })), S(o, f), v(s, f);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config start --mode=development"), 
     console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 

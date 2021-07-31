@@ -86,16 +86,10 @@ The `publicPath` specifies the public URL address of the output files when refer
 yarn init
 ```
 
-### 解决安装 node-sass 太慢的问题的方法
-
-```shell
- cnpm install --save  node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
-```
-
 ## 局部安装
 
 ```shell
-yarn add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
+yarn add @masx200/webpack-react-vue-spa-awesome-config
 
 ```
 
@@ -147,7 +141,7 @@ npm run build
 ## 全局安装
 
 ```shell
-yarn global add https://github.com/masx200/webpack-react-vue-spa-awesome-config.git
+yarn global add @masx200/webpack-react-vue-spa-awesome-config
 
 ```
 
@@ -189,8 +183,8 @@ module.exports = webpackconfig;
 ```json
 {
     "scripts": {
-        "start-custom": "webpack-react-vue-spa-awesome-config --config=./webpack.config.js --mode=development ",
-        "build-custom": "webpack-react-vue-spa-awesome-config --config=./webpack.config.js --mode=production "
+        "start": "webpack-react-vue-spa-awesome-config --config=./webpack.config.js --mode=development ",
+        "build": "webpack-react-vue-spa-awesome-config --config=./webpack.config.js --mode=production "
     }
 }
 ```
