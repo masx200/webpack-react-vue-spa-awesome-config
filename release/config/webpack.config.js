@@ -527,8 +527,12 @@ const config = {
                   usedExports: true,
                   cacheGroups: {
                       styles: {
-                          name: "style",
-                          test: /\.css$/,
+                          name: "styles",
+                          type: "css/mini-extract",
+
+                          // For webpack@4
+                          // test: /\.css$/,
+
                           chunks: "all",
                           enforce: true,
                       },
