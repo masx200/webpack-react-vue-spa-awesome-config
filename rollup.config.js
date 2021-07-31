@@ -47,7 +47,6 @@ export default [
         input: "./lib/index.ts",
         output: [
             {
-                banner,
                 file: "./bin/config.js",
                 format: "commonjs",
                 sourcemap: true,
