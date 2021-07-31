@@ -1,5 +1,5 @@
 {
-    "include": ["./src/*.ts"],
+    "include": ["./cli/*.ts"],
     "compilerOptions": {
         "pretty": true,
         "removeComments": true,

@@ -12,7 +12,7 @@
     "scripts": {
         "start": "node ./bin/index.js  --config=./webpack.config.js  --mode=development --port=11111",
         "build": "node ./bin/index.js --config=./webpack.config.js  --mode=production",
-        "rollup": "tsc --noEmit&&rollup -c rollup.config.js",
+        "rollup": "tsc --noEmit -p  tsconfig-node.json&&rollup -c rollup.config.js",
         "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./cli/src/*.ts ./release/config/*.js **/*.css **/*.html */*/*.js */*.jsx */*.less",
         "test1": "node ./bin/index.js start --port=11111  --config=./webpack.config.js",
         "test2": "node ./bin/index.js --mode=development --port=11111  --config=./webpack.config.js",
