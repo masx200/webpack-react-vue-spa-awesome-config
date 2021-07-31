@@ -23,7 +23,32 @@ export default [
         output: [
             {
                 banner,
-                file: "./bin/index.js",
+                file: "./bin/cli.js",
+                format: "commonjs",
+                sourcemap: true,
+            },
+        ],
+        plugins: [
+            typescript(),
+            resolve(),
+            commonjs(),
+            json(),
+            babel({
+                babelHelpers: "bundled",
+                presets: ["@babel/preset-env"],
+                extensions: [".js", ".ts"],
+            }),
+
+            manglecompressplugin,
+        ],
+    },
+    {
+        external: ["path", "fs", "process", "child_process"],
+        input: "./lib/index.ts",
+        output: [
+            {
+                banner,
+                file: "./bin/config.js",
                 format: "commonjs",
                 sourcemap: true,
             },

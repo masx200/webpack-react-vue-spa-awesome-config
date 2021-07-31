@@ -310,6 +310,10 @@ const config = {
                     {
                         loader: require.resolve("ts-loader"),
                         options: {
+                            configFile: path.resolve(
+                                __dirname,
+                                "tsconfig.json"
+                            ),
                             compilerOptions: { sourceMap: true, strict: true },
                             // getCustomTransformers: () => ({
                             //     before: isDevelopment
@@ -326,7 +330,11 @@ const config = {
     },
     plugins: [
         // isDevelopment && new ReactRefreshWebpackPlugin(),
-        new ForkTsCheckerWebpackPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                configFile: path.resolve(__dirname, "tsconfig.json"),
+            },
+        }),
         isEnvProduction &&
             new CleanWebpackPlugin({
                 verbose: true,
@@ -506,6 +514,10 @@ function afterconfig(config) {
 
 function getpostcssoptions() {
     return {
+        config: fs.existsSync(path.resolve(__dirname, "postcss.config.js"))
+            ? path.resolve(__dirname, "postcss.config.js")
+            : false,
+
         plugins: [
             require("postcss-flexbugs-fixes"),
             require("postcss-preset-env")({
@@ -559,7 +571,10 @@ function getbabelconfig() {
         ].filter(Boolean),
         customize: require.resolve("babel-preset-react-app/webpack-overrides"),
         babelrc: false,
-        configFile: false,
+        configFile: fs.existsSync(path.resolve(__dirname, "babel.config.js"))
+            ? path.resolve(__dirname, "babel.config.js")
+            : false,
+
         cacheDirectory: !0,
         cacheCompression: isEnvProduction,
         compact: isEnvProduction,

@@ -1,0 +1,1 @@
+export { createconfig } from "./config";
