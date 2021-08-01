@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./release/config/webpack.config.d.ts",
     "type": "commonjs",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
@@ -52,6 +52,7 @@
         "@types/react": "^17.0.5",
         "@types/terser-webpack-plugin": "^5.0.3",
         "@types/webpack": "^5.28.0",
+        "@types/webpack-dev-server": "^3.11.5",
         "@types/workbox-webpack-plugin": "^5.1.6",
         "@vue/compiler-sfc": "^3.1.5",
         "@vue/preload-webpack-plugin": "^2.0.0",

@@ -1,11 +1,19 @@
 ("use strict");
-
-export type Configuration = import("webpack").Configuration;
+import type {
+    WebpackPluginInstance,
+    ModuleOptions,
+    RuleSetRule,
+} from "webpack";
+export type Configuration = import("webpack").Configuration & {
+    entry: string[];
+    plugins: WebpackPluginInstance[];
+    module: ModuleOptions & { rules: RuleSetRule[] };
+} & { devServer: import("webpack-dev-server").Configuration };
 export function createconfig(
     env: Record<string, any>,
     argv: Record<string, any>
 ): Configuration {
-    console.log("env:", env, "argv:", argv);
+    console.log("env:", env, "\n", "argv:", argv);
 
     function resolvevueloadermodulepath() {
         var vueversion;
@@ -103,6 +111,8 @@ export function createconfig(
             },
         },
         devServer: {
+            overlay: true,
+
             host: "0.0.0.0",
             compress: true,
             historyApiFallback: true,
