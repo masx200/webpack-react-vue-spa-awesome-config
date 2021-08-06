@@ -210,6 +210,7 @@ Object.defineProperty(exports, "__esModule", {
                     options: {
                         configFile: !!n.existsSync(m.resolve(w, "tsconfig.json")) && m.resolve(w, "tsconfig.json"),
                         compilerOptions: {
+                            jsx: E ? "react-jsx" : "react-jsxdev",
                             sourceMap: !0,
                             strict: !0
                         },

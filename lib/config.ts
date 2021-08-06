@@ -316,6 +316,9 @@ export function createconfig(
                                     : false,
 
                                 compilerOptions: {
+                                    jsx: isEnvProduction
+                                        ? "react-jsx"
+                                        : "react-jsxdev",
                                     sourceMap: true,
                                     strict: true,
                                 },
