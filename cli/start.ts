@@ -27,7 +27,7 @@ export function start(
 
         生成入口文件(sourcefiles, destfiles);
         command = commandfind(webpackcmd);
-        commandargs = ["serve", "--progress"];
+        commandargs = ["serve"];
         changecmdnpx(command, commandargs, (cmd: string) => {
             command = cmd;
         });
@@ -45,7 +45,7 @@ export function start(
         Reflect.set(参数object, "mode", process.env.NODE_ENV);
         生成入口文件(sourcefiles, destfiles);
         command = commandfind(webpackcmd);
-        commandargs = ["build", "--progress"];
+        commandargs = ["build"];
         changecmdnpx(command, commandargs, (cmd: string) => {
             command = cmd;
         });

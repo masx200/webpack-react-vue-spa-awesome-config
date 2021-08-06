@@ -197,14 +197,14 @@ function(e, o) {
     Reflect.set(o, "config", r);
     var c, a, u = o.mode;
     if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
-    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, k), E(c = m("webpack"), a = [ "serve", "--progress" ], (function(e) {
+    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, k), E(c = m("webpack"), a = [ "serve" ], (function(e) {
         c = e;
     })), S(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
         var s, f;
         console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
         console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
-        b(x, k), E(s = m("webpack"), f = [ "build", "--progress" ], (function(e) {
+        b(x, k), E(s = m("webpack"), f = [ "build" ], (function(e) {
             s = e;
         })), S(o, f), v(s, f);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 

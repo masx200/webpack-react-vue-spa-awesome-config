@@ -1,3 +1,4 @@
+/// <reference types="webpack-dev-server" />
 import { WebpackPluginInstance, ModuleOptions, RuleSetRule } from "webpack";
 type Configuration = import("webpack").Configuration & {
     entry: string[];

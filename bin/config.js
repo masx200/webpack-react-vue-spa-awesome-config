@@ -37,7 +37,7 @@ Object.defineProperty(exports, "__esModule", {
         return "3" === e.split(".")[0] ? require.resolve("vue-loader-16") : require.resolve("vue-loader");
     }
     console.log("env:", r, "\n", "argv:", s);
-    var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), p = require("terser-webpack-plugin"), u = require(o()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), v = require("html-webpack-plugin"), g = require("webpack"), b = require("postcss-normalize"), h = require("@vue/preload-webpack-plugin"), f = require("clean-webpack-plugin").CleanWebpackPlugin, x = s, j = x["output-public-path"], y = x.mode;
+    var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), u = require("terser-webpack-plugin"), p = require(o()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), v = require("html-webpack-plugin"), g = require("webpack"), b = require("postcss-normalize"), h = require("@vue/preload-webpack-plugin"), f = require("clean-webpack-plugin").CleanWebpackPlugin, x = s, j = x["output-public-path"], y = x.mode;
     process.env.NODE_ENV = "production" === x.mode ? "production" : "development" === x.mode ? "development" : process.env.NODE_ENV;
     var q = Number(x.port) || 1e4 + parseInt(String(1e4 * Math.random()));
     console.log("\nwebpack config filename : ".concat(__filename, "\n")), console.log("\nworking directory : ".concat(process.cwd(), "\n"));
@@ -102,7 +102,9 @@ Object.defineProperty(exports, "__esModule", {
                     } ], [ "@babel/plugin-proposal-class-properties", {
                         loose: !0
                     } ] ].filter(Boolean),
-                    presets: [ require.resolve("@babel/preset-react"), require.resolve("@babel/preset-typescript"), E && [ require.resolve("babel-preset-react-app"), {} ] ].filter(Boolean),
+                    presets: [ [ "@babel/preset-react", {
+                        runtime: "automatic"
+                    } ], require.resolve("@babel/preset-typescript"), E && [ require.resolve("babel-preset-react-app"), {} ] ].filter(Boolean),
                     customize: require.resolve("babel-preset-react-app/webpack-overrides"),
                     babelrc: !1,
                     configFile: !!n.existsSync(m.resolve(w, "babel.config.js")) && m.resolve(w, "babel.config.js"),
@@ -266,7 +268,7 @@ Object.defineProperty(exports, "__esModule", {
         }), new d({
             filename: "[name].[contenthash].css",
             chunkFilename: "[name].[contenthash].css"
-        }), new u, new v({
+        }), new p, new v({
             hash: !1,
             filename: "index.html",
             title: " Progressive Web Application",
@@ -316,7 +318,7 @@ Object.defineProperty(exports, "__esModule", {
                 maxSize: 2e4
             },
             minimize: E,
-            minimizer: [ new p({
+            minimizer: [ new u({
                 terserOptions: {
                     ecma: 5,
                     parse: {

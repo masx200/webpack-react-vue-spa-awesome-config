@@ -576,7 +576,7 @@ export function createconfig(
                 ],
             ].filter(Boolean),
             presets: [
-                require.resolve("@babel/preset-react"),
+                ["@babel/preset-react", { runtime: "automatic" }],
 
                 require.resolve("@babel/preset-typescript"),
                 isEnvProduction && [

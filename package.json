@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./bin/config.d.ts",
     "type": "commonjs",
-    "version": "4.0.2",
+    "version": "4.1.0",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
@@ -12,7 +12,7 @@
     "scripts": {
         "start": "node ./bin/cli.js  --config=./webpack.config.js  --mode=development --port=11111",
         "build": "node ./bin/cli.js --config=./webpack.config.js  --mode=production",
-        "rollup": "tsc --noEmit -p  tsconfig-node.json&&rollup -c rollup.config.js",
+        "rollup": "rollup -c rollup.config.js",
         "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./cli/src/*.ts ./release/config/*.js **/*.css **/*.html */*/*.js */*.jsx */*.less",
         "test1": "node ./bin/cli.js start --port=11111  --config=./webpack.config.js",
         "test2": "node ./bin/cli.js --mode=development --port=11111  --config=./webpack.config.js",
