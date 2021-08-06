@@ -37,17 +37,17 @@ Object.defineProperty(exports, "__esModule", {
         return "3" === e.split(".")[0] ? require.resolve("vue-loader-16") : require.resolve("vue-loader");
     }
     console.log("env:", r, "\n", "argv:", s);
-    var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), u = require("terser-webpack-plugin"), p = require(o()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), v = require("html-webpack-plugin"), g = require("webpack"), b = require("postcss-normalize"), h = require("@vue/preload-webpack-plugin"), f = require("clean-webpack-plugin").CleanWebpackPlugin, x = s, j = x["output-public-path"], y = x.mode;
-    process.env.NODE_ENV = "production" === x.mode ? "production" : "development" === x.mode ? "development" : process.env.NODE_ENV;
-    var q = Number(x.port) || 1e4 + parseInt(String(1e4 * Math.random()));
+    var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), u = require("terser-webpack-plugin"), p = require(o()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), v = require("html-webpack-plugin"), b = require("webpack"), g = require("postcss-normalize"), f = require("@vue/preload-webpack-plugin"), h = require("clean-webpack-plugin").CleanWebpackPlugin, j = s, x = j["output-public-path"], y = j.mode;
+    process.env.NODE_ENV = "production" === j.mode ? "production" : "development" === j.mode ? "development" : process.env.NODE_ENV;
+    var q = Number(j.port) || 1e4 + parseInt(String(1e4 * Math.random()));
     console.log("\nwebpack config filename : ".concat(__filename, "\n")), console.log("\nworking directory : ".concat(process.cwd(), "\n"));
     var w = process.cwd();
     console.log("\nwebpack mode : ".concat(process.env.NODE_ENV, " \n"));
-    var k = process.env.NODE_ENV, S = "development" === k, O = S, E = "production" === k;
+    var k = process.env.NODE_ENV, S = "development" === k, O = S, _ = "production" === k;
     process.env.BABEL_ENV = process.env.NODE_ENV;
-    var _ = E ? "./" : "/";
-    "production" === process.env.NODE_ENV && j && j.length && (console.log("  output-public-path  :  ".concat(j)), 
-    console.log("\n"), _ = j);
+    var E = _ ? "./" : "/";
+    "production" === process.env.NODE_ENV && x && x.length && (console.log("  output-public-path  :  ".concat(x)), 
+    console.log("\n"), E = x);
     var $ = !!r.WEBPACK_SERVE;
     S && $ && console.log("open in browser: http://localhost:" + q);
     var N = m.join(w, "src"), C = {
@@ -76,7 +76,7 @@ Object.defineProperty(exports, "__esModule", {
         mode: y,
         entry: [ n.existsSync(m.join(w, "src", "index.tsx")) ? m.join(w, "src", "index.tsx") : n.existsSync(m.join(w, "src", "index.ts")) ? m.join(w, "src", "index.ts") : n.existsSync(m.join(w, "src", "index.jsx")) ? m.join(w, "src", "index.jsx") : m.join(w, "src", "index.js") ].filter(Boolean),
         output: {
-            publicPath: _,
+            publicPath: E,
             globalObject: "( Function('return this')())",
             filename: S ? "[name].[fullhash].js" : "[name].[contenthash].js",
             path: m.join(w, "dist"),
@@ -104,13 +104,13 @@ Object.defineProperty(exports, "__esModule", {
                     } ] ].filter(Boolean),
                     presets: [ [ "@babel/preset-react", {
                         runtime: "automatic"
-                    } ], require.resolve("@babel/preset-typescript"), E && [ require.resolve("babel-preset-react-app"), {} ] ].filter(Boolean),
+                    } ], require.resolve("@babel/preset-typescript"), _ && [ require.resolve("babel-preset-react-app"), {} ] ].filter(Boolean),
                     customize: require.resolve("babel-preset-react-app/webpack-overrides"),
                     babelrc: !1,
                     configFile: !!n.existsSync(m.resolve(w, "babel.config.js")) && m.resolve(w, "babel.config.js"),
                     cacheDirectory: !0,
-                    cacheCompression: E,
-                    compact: E
+                    cacheCompression: _,
+                    compact: _
                 },
                 include: [ N ],
                 exclude: [ /node_modules/ ]
@@ -193,14 +193,32 @@ Object.defineProperty(exports, "__esModule", {
                     babelrc: !1,
                     configFile: !1,
                     compact: !1,
-                    presets: [ E && [ require.resolve("babel-preset-react-app"), {} ], [ require.resolve("babel-preset-react-app/dependencies"), {
+                    presets: [ _ && [ require.resolve("babel-preset-react-app"), {} ], [ require.resolve("babel-preset-react-app/dependencies"), {
                         helpers: !0
                     } ] ].filter(Boolean),
                     cacheDirectory: !0,
-                    cacheCompression: E,
+                    cacheCompression: _,
                     sourceMaps: O
                 },
                 include: [ /node_modules/ ]
+            }, {
+                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                type: "javascript/auto",
+                loader: require.resolve("babel-loader"),
+                options: {
+                    sourceMaps: O,
+                    plugins: [].filter(Boolean),
+                    presets: [ [ "@babel/preset-react", {
+                        runtime: "automatic"
+                    } ] ].filter(Boolean),
+                    babelrc: !1,
+                    configFile: !!n.existsSync(m.resolve(w, "babel.config.js")) && m.resolve(w, "babel.config.js"),
+                    cacheDirectory: !0,
+                    cacheCompression: _,
+                    compact: _
+                },
+                include: [ N ],
+                exclude: [ /node_modules/ ]
             }, {
                 include: [ N ],
                 test: /\.tsx?$/,
@@ -210,7 +228,6 @@ Object.defineProperty(exports, "__esModule", {
                     options: {
                         configFile: !!n.existsSync(m.resolve(w, "tsconfig.json")) && m.resolve(w, "tsconfig.json"),
                         compilerOptions: {
-                            jsx: E ? "react-jsx" : "react-jsxdev",
                             sourceMap: !0,
                             strict: !0
                         },
@@ -231,7 +248,7 @@ Object.defineProperty(exports, "__esModule", {
                 },
                 configFile: !!n.existsSync(m.resolve(w, "tsconfig.json")) && m.resolve(w, "tsconfig.json")
             }
-        }), E && new f({
+        }), _ && new h({
             verbose: !0
         }), new i({
             patterns: [ {
@@ -245,7 +262,7 @@ Object.defineProperty(exports, "__esModule", {
                     return console.log("copy-webpack-plugin", e), !0;
                 }
             } ]
-        }), S && new g.HotModuleReplacementPlugin, E && new l.GenerateSW({
+        }), S && new b.HotModuleReplacementPlugin, _ && new l.GenerateSW({
             skipWaiting: !0,
             clientsClaim: !0,
             runtimeCaching: [ {
@@ -288,7 +305,7 @@ Object.defineProperty(exports, "__esModule", {
                 removeAttributeQuotes: !1
             },
             template: m.join(w, "public", "index.html")
-        }), new h({
+        }), new f({
             rel: "preload",
             include: "asyncChunks"
         }) ].filter(Boolean),
@@ -297,7 +314,7 @@ Object.defineProperty(exports, "__esModule", {
             chunkIds: S ? "named" : "natural",
             usedExports: !0,
             runtimeChunk: "single",
-            splitChunks: E ? {
+            splitChunks: _ ? {
                 chunks: "all",
                 minSize: 3e4,
                 maxSize: 7e4,
@@ -318,7 +335,7 @@ Object.defineProperty(exports, "__esModule", {
                 chunks: "all",
                 maxSize: 2e4
             },
-            minimize: E,
+            minimize: _,
             minimizer: [ new u({
                 terserOptions: {
                     ecma: 5,
@@ -371,7 +388,7 @@ Object.defineProperty(exports, "__esModule", {
                     flexbox: "no-2009"
                 },
                 stage: 3
-            }), b() ]
+            }), g() ]
         };
     }
     return function(r) {

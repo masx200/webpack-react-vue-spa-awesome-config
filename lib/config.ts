@@ -301,6 +301,32 @@ export function createconfig(
                 },
 
                 {
+                    test: /\.(js|mjs|jsx|ts|tsx)$/,
+                    type: "javascript/auto",
+                    loader: require.resolve("babel-loader"),
+                    options: {
+                        sourceMaps: shouldUseSourceMap,
+                        plugins: [].filter(Boolean),
+                        presets: [
+                            ["@babel/preset-react", { runtime: "automatic" }],
+                        ].filter(Boolean),
+
+                        babelrc: false,
+                        configFile: fs.existsSync(
+                            path.resolve(__dirname, "babel.config.js")
+                        )
+                            ? path.resolve(__dirname, "babel.config.js")
+                            : false,
+
+                        cacheDirectory: !0,
+                        cacheCompression: isEnvProduction,
+                        compact: isEnvProduction,
+                    },
+                    include: [srcfoldepath],
+                    exclude: [/node_modules/],
+                },
+
+                {
                     include: [srcfoldepath],
                     test: /\.tsx?$/,
                     //  type: "javascript/auto",
@@ -316,9 +342,9 @@ export function createconfig(
                                     : false,
 
                                 compilerOptions: {
-                                    jsx: isEnvProduction
+                                    /*   jsx: isEnvProduction
                                         ? "react-jsx"
-                                        : "react-jsxdev",
+                                        : "react-jsxdev",*/
                                     sourceMap: true,
                                     strict: true,
                                 },
