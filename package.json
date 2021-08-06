@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./bin/config.d.ts",
     "type": "commonjs",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
