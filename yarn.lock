@@ -1925,37 +1925,37 @@
   resolved "https://registry.nlark.com/@types/workbox-webpack-plugin/download/@types/workbox-webpack-plugin-5.1.8.tgz#8c014df34877b6fab0c7d4aa85698445e1e0f64b"
   integrity sha1-jAFN80h3tvqwx9SqhWmEReHg9ks=
 
-"@vue/compiler-core@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.nlark.com/@vue/compiler-core/download/@vue/compiler-core-3.1.5.tgz?cache=0&sync_timestamp=1626817690219&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-core%2Fdownload%2F%40vue%2Fcompiler-core-3.1.5.tgz#298f905b6065d6d81ff63756f98c60876b393c87"
-  integrity sha1-KY+QW2Bl1tgf9jdW+Yxgh2s5PIc=
+"@vue/compiler-core@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.nlark.com/@vue/compiler-core/download/@vue/compiler-core-3.2.1.tgz?cache=0&sync_timestamp=1628541105184&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-core%2Fdownload%2F%40vue%2Fcompiler-core-3.2.1.tgz#8e13232f7aef8e308fb2d4a10571a5640257064b"
+  integrity sha1-jhMjL3rvjjCPstShBXGlZAJXBks=
   dependencies:
     "@babel/parser" "^7.12.0"
     "@babel/types" "^7.12.0"
-    "@vue/shared" "3.1.5"
+    "@vue/shared" "3.2.1"
     estree-walker "^2.0.1"
     source-map "^0.6.1"
 
-"@vue/compiler-dom@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.nlark.com/@vue/compiler-dom/download/@vue/compiler-dom-3.1.5.tgz?cache=0&sync_timestamp=1626817690324&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-dom%2Fdownload%2F%40vue%2Fcompiler-dom-3.1.5.tgz#cbb97020c62a5faa3fbc2a97916bd98041ac9856"
-  integrity sha1-y7lwIMYqX6o/vCqXkWvZgEGsmFY=
+"@vue/compiler-dom@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.nlark.com/@vue/compiler-dom/download/@vue/compiler-dom-3.2.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-dom%2Fdownload%2F%40vue%2Fcompiler-dom-3.2.1.tgz#5cc68873f1928c7b9aee8c8a2846f7f362cb1ab9"
+  integrity sha1-XMaIc/GSjHua7oyKKEb382LLGrk=
   dependencies:
-    "@vue/compiler-core" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-core" "3.2.1"
+    "@vue/shared" "3.2.1"
 
-"@vue/compiler-sfc@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.nlark.com/@vue/compiler-sfc/download/@vue/compiler-sfc-3.1.5.tgz?cache=0&sync_timestamp=1626817690709&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-sfc%2Fdownload%2F%40vue%2Fcompiler-sfc-3.1.5.tgz#e61e54f3a963b0f4a8e523fbb8632390dc52b0d6"
-  integrity sha1-5h5U86ljsPSo5SP7uGMjkNxSsNY=
+"@vue/compiler-sfc@3":
+  version "3.2.1"
+  resolved "https://registry.nlark.com/@vue/compiler-sfc/download/@vue/compiler-sfc-3.2.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-sfc%2Fdownload%2F%40vue%2Fcompiler-sfc-3.2.1.tgz#7809b298cf0fbce62a2c628b7dfc1e82dd9a3a9b"
+  integrity sha1-eAmymM8PvOYqLGKLffwegt2aOps=
   dependencies:
     "@babel/parser" "^7.13.9"
     "@babel/types" "^7.13.0"
     "@types/estree" "^0.0.48"
-    "@vue/compiler-core" "3.1.5"
-    "@vue/compiler-dom" "3.1.5"
-    "@vue/compiler-ssr" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-core" "3.2.1"
+    "@vue/compiler-dom" "3.2.1"
+    "@vue/compiler-ssr" "3.2.1"
+    "@vue/shared" "3.2.1"
     consolidate "^0.16.0"
     estree-walker "^2.0.1"
     hash-sum "^2.0.0"
@@ -1967,13 +1967,13 @@
     postcss-selector-parser "^6.0.4"
     source-map "^0.6.1"
 
-"@vue/compiler-ssr@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.nlark.com/@vue/compiler-ssr/download/@vue/compiler-ssr-3.1.5.tgz?cache=0&sync_timestamp=1626817690821&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-ssr%2Fdownload%2F%40vue%2Fcompiler-ssr-3.1.5.tgz#f068652774293256a1e53084bed48a67682df9d2"
-  integrity sha1-8GhlJ3QpMlah5TCEvtSKZ2gt+dI=
+"@vue/compiler-ssr@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.nlark.com/@vue/compiler-ssr/download/@vue/compiler-ssr-3.2.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fcompiler-ssr%2Fdownload%2F%40vue%2Fcompiler-ssr-3.2.1.tgz#f900762f83482e44e9260c2322e3d332c711826c"
+  integrity sha1-+QB2L4NILkTpJgwjIuPTMscRgmw=
   dependencies:
-    "@vue/compiler-dom" "3.1.5"
-    "@vue/shared" "3.1.5"
+    "@vue/compiler-dom" "3.2.1"
+    "@vue/shared" "3.2.1"
 
 "@vue/component-compiler-utils@^3.1.0":
   version "3.2.2"
@@ -1996,10 +1996,10 @@
   resolved "https://registry.npm.taobao.org/@vue/preload-webpack-plugin/download/@vue/preload-webpack-plugin-2.0.0.tgz#a43bfc087e91f7d0efb0086100148f4b16437b68"
   integrity sha1-pDv8CH6R99DvsAhhABSPSxZDe2g=
 
-"@vue/shared@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.1.5.tgz?cache=0&sync_timestamp=1626817691322&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.1.5.tgz#74ee3aad995d0a3996a6bb9533d4d280514ede03"
-  integrity sha1-dO46rZldCjmWpruVM9TSgFFO3gM=
+"@vue/shared@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.2.1.tgz?cache=0&sync_timestamp=1628541113217&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vue%2Fshared%2Fdownload%2F%40vue%2Fshared-3.2.1.tgz#1f1fe26fe0334404cce10740b5ffb2654f1281aa"
+  integrity sha1-Hx/ib+AzRATM4QdAtf+yZU8Sgao=
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
