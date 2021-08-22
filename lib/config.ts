@@ -135,7 +135,11 @@ export function createconfig(
         ].filter(Boolean),
         output: {
             publicPath,
-            globalObject: `( Function('return this')())`,
+            globalObject: `(typeof WorkerGlobalScope !== "undefined"?
+
+WorkerGlobalScope:
+
+typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : ( Function('return this')()))`,
             filename: isEnvDevelopment
                 ? "[name].[fullhash].js"
                 : "[name].[contenthash].js",

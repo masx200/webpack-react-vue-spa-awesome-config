@@ -37,7 +37,7 @@ Object.defineProperty(exports, "__esModule", {
         return "3" === e.split(".")[0] ? require.resolve("vue-loader-16") : require.resolve("vue-loader");
     }
     console.log("env:", r, "\n", "argv:", s);
-    var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), u = require("terser-webpack-plugin"), p = require(o()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), v = require("html-webpack-plugin"), b = require("webpack"), g = require("postcss-normalize"), f = require("@vue/preload-webpack-plugin"), h = require("clean-webpack-plugin").CleanWebpackPlugin, j = s, x = j["output-public-path"], y = j.mode;
+    var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), p = require("terser-webpack-plugin"), u = require(o()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), b = require("html-webpack-plugin"), f = require("webpack"), v = require("postcss-normalize"), g = require("@vue/preload-webpack-plugin"), h = require("clean-webpack-plugin").CleanWebpackPlugin, j = s, x = j["output-public-path"], y = j.mode;
     process.env.NODE_ENV = "production" === j.mode ? "production" : "development" === j.mode ? "development" : process.env.NODE_ENV;
     var q = Number(j.port) || 1e4 + parseInt(String(1e4 * Math.random()));
     console.log("\nwebpack config filename : ".concat(__filename, "\n")), console.log("\nworking directory : ".concat(process.cwd(), "\n"));
@@ -77,7 +77,7 @@ Object.defineProperty(exports, "__esModule", {
         entry: [ n.existsSync(m.join(w, "src", "index.tsx")) ? m.join(w, "src", "index.tsx") : n.existsSync(m.join(w, "src", "index.ts")) ? m.join(w, "src", "index.ts") : n.existsSync(m.join(w, "src", "index.jsx")) ? m.join(w, "src", "index.jsx") : m.join(w, "src", "index.js") ].filter(Boolean),
         output: {
             publicPath: E,
-            globalObject: "( Function('return this')())",
+            globalObject: '(typeof WorkerGlobalScope !== "undefined"?\n\nWorkerGlobalScope:\n\ntypeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : ( Function(\'return this\')()))',
             filename: S ? "[name].[fullhash].js" : "[name].[contenthash].js",
             path: m.join(w, "dist"),
             chunkFilename: S ? "[name].[fullhash].js" : "[name].[contenthash].js"
@@ -262,7 +262,7 @@ Object.defineProperty(exports, "__esModule", {
                     return console.log("copy-webpack-plugin", e), !0;
                 }
             } ]
-        }), S && new b.HotModuleReplacementPlugin, _ && new l.GenerateSW({
+        }), S && new f.HotModuleReplacementPlugin, _ && new l.GenerateSW({
             skipWaiting: !0,
             clientsClaim: !0,
             runtimeCaching: [ {
@@ -286,7 +286,7 @@ Object.defineProperty(exports, "__esModule", {
         }), new d({
             filename: "[name].[contenthash].css",
             chunkFilename: "[name].[contenthash].css"
-        }), new p, new v({
+        }), new u, new b({
             hash: !1,
             filename: "index.html",
             title: " Progressive Web Application",
@@ -305,7 +305,7 @@ Object.defineProperty(exports, "__esModule", {
                 removeAttributeQuotes: !1
             },
             template: m.join(w, "public", "index.html")
-        }), new f({
+        }), new g({
             rel: "preload",
             include: "asyncChunks"
         }) ].filter(Boolean),
@@ -336,7 +336,7 @@ Object.defineProperty(exports, "__esModule", {
                 maxSize: 2e4
             },
             minimize: _,
-            minimizer: [ new u({
+            minimizer: [ new p({
                 terserOptions: {
                     ecma: 5,
                     parse: {
@@ -388,7 +388,7 @@ Object.defineProperty(exports, "__esModule", {
                     flexbox: "no-2009"
                 },
                 stage: 3
-            }), g() ]
+            }), v() ]
         };
     }
     return function(r) {
