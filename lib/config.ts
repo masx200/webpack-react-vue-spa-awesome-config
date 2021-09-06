@@ -173,7 +173,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                               },
                         {
                             loader: require.resolve("css-loader"),
-                            options: {
+                            options: {importLoaders:2,
                                 sourceMap: shouldUseSourceMap,
                             },
                         },
@@ -217,6 +217,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                         {
                             loader: require.resolve("css-loader"),
                             options: {
+                                importLoaders:2,
                                 sourceMap: shouldUseSourceMap,
                             },
                         },
@@ -233,43 +234,43 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                         },
                     ],
                 },
-                {
-                    oneOf: [
-                        {
-                            test: [
-                                /\.(png|jpg|jpeg|gif|webp|ico|bmp|svg)$/i,
-                                /\.bmp$/,
-                                /\.gif$/,
-                                /\.jpe?g$/,
-                                /\.png$/,
-                                /\.svg$/,
-                            ],
-                            loader: require.resolve("url-loader"),
-                            options: {
-                                limit: 10000,
-                                name: isEnvDevelopment
-                                    ? "[path][name].[ext]"
-                                    : "[name].[contenthash].[ext]",
-                            },
-                        },
+                // {
+                //     oneOf: [
+                //         {
+                //             test: [
+                //                 /\.(png|jpg|jpeg|gif|webp|ico|bmp|svg)$/i,
+                //                 /\.bmp$/,
+                //                 /\.gif$/,
+                //                 /\.jpe?g$/,
+                //                 /\.png$/,
+                //                 /\.svg$/,
+                //             ],
+                //             loader: require.resolve("url-loader"),
+                //             options: {
+                //                 limit: 10000,
+                //                 name: isEnvDevelopment
+                //                     ? "[path][name].[ext]"
+                //                     : "[name].[contenthash].[ext]",
+                //             },
+                //         },
 
-                        {
-                            loader: require.resolve("file-loader"),
-                            exclude: [
-                                /\.vue$/,
-                                /\.(js|mjs|jsx|ts|tsx|cjs)$/,
-                                /\.html$/,
-                                /\.json$/,
-                                /\.(css|scss|sass|less)$/,
-                            ],
-                            options: {
-                                name: isEnvDevelopment
-                                    ? "[path][name].[ext]"
-                                    : "[name].[contenthash].[ext]",
-                            },
-                        },
-                    ],
-                },
+                //         {
+                //             loader: require.resolve("file-loader"),
+                //             exclude: [
+                //                 /\.vue$/,
+                //                 /\.(js|mjs|jsx|ts|tsx|cjs)$/,
+                //                 /\.html$/,
+                //                 /\.json$/,
+                //                 /\.(css|scss|sass|less)$/,
+                //             ],
+                //             options: {
+                //                 name: isEnvDevelopment
+                //                     ? "[path][name].[ext]"
+                //                     : "[name].[contenthash].[ext]",
+                //             },
+                //         },
+                //     ],
+                // },
 
                 {
                     test: /\.(js|mjs)$/,
@@ -362,6 +363,11 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                             },
                         },
                     ],
+                },
+                {
+                    test: /\.(png|jpe?g|webp|ico|bmp|gif|svg|eot|ttf|woff|woff2)$/i,
+                    // More information here https://webpack.js.org/guides/asset-modules/
+                    type: "asset",
                 },
             ],
         },
@@ -634,8 +640,8 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
     }
 
     function addreactfresh(config: Configuration) {
-        const ReactRefreshWebpackPlugin =
-            require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
+        const ReactRefreshWebpackPlugin = require("@next/react-refresh-utils/ReactRefreshWebpackPlugin")
+            .default;
         config.entry = [
             require.resolve("@next/react-refresh-utils/runtime"),
             ...config.entry,

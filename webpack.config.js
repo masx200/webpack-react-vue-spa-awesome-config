@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
     const myconf = { resolve: { alias: { vue: "vue/dist/vue.js" } } };
 
     const newconf = merge(config, myconf);
-    console.log(newconf);
+    // console.log(newconf);
 
     return newconf;
 };
