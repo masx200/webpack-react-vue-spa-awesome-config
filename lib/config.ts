@@ -114,7 +114,8 @@ export function createconfig(
         devServer: {
             //@ts-ignore
             static: {
-                directory: path.join(__dirname, "public"),watch: true,
+                directory: path.join(__dirname, "public"),
+                watch: true,
             },
             client: {
                 overlay: true,
@@ -649,8 +650,8 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
     }
 
     function addreactfresh(config: Configuration) {
-        const ReactRefreshWebpackPlugin = require("@next/react-refresh-utils/ReactRefreshWebpackPlugin")
-            .default;
+        const ReactRefreshWebpackPlugin =
+            require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
         config.entry = [
             require.resolve("@next/react-refresh-utils/runtime"),
             ...config.entry,
