@@ -173,7 +173,8 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                               },
                         {
                             loader: require.resolve("css-loader"),
-                            options: {importLoaders:2,
+                            options: {
+                                importLoaders: 2,
                                 sourceMap: shouldUseSourceMap,
                             },
                         },
@@ -217,7 +218,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                         {
                             loader: require.resolve("css-loader"),
                             options: {
-                                importLoaders:2,
+                                importLoaders: 2,
                                 sourceMap: shouldUseSourceMap,
                             },
                         },
@@ -640,8 +641,8 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
     }
 
     function addreactfresh(config: Configuration) {
-        const ReactRefreshWebpackPlugin = require("@next/react-refresh-utils/ReactRefreshWebpackPlugin")
-            .default;
+        const ReactRefreshWebpackPlugin =
+            require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
         config.entry = [
             require.resolve("@next/react-refresh-utils/runtime"),
             ...config.entry,
