@@ -50,7 +50,7 @@ Object.defineProperty(exports, "__esModule", {
     console.log("\n"), E = j);
     var N = !!r.WEBPACK_SERVE;
     S && N && console.log("open in browser: http://localhost:" + w);
-    var C = m.join(q, "src"), A = {
+    var C = m.join(q), A = {
         stats: {
             children: !0
         },
@@ -58,19 +58,24 @@ Object.defineProperty(exports, "__esModule", {
         resolve: {
             extensions: [ ".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs" ],
             alias: {
-                "@": m.join(q, "src")
+                "@": m.join(q, "src"),
+                "~": m.join(q)
             }
         },
         devServer: {
-            overlay: !0,
+            static: {
+                directory: m.join(q, "public"),
+                watch: !0
+            },
+            client: {
+                overlay: !0
+            },
             host: "0.0.0.0",
             compress: !0,
             historyApiFallback: !0,
-            contentBase: m.resolve(q, "./public"),
+            // contentBase: m.resolve(q, "./public"),
             hot: !0,
-            port: w,
-            inline: !0,
-            watchContentBase: !0
+            port: w
         },
         devtool: !!S && "eval-cheap-module-source-map",
         mode: x,

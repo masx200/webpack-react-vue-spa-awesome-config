@@ -94,7 +94,7 @@ export function createconfig(
     if (isEnvDevelopment && isservemode) {
         console.log("open in browser: http://localhost:" + port);
     }
-    const srcfoldepath = path.join(__dirname, "src");
+    const srcfoldepath = path.join(__dirname);
     const config: Configuration = {
         stats: {
             children: true,
@@ -108,19 +108,27 @@ export function createconfig(
 
             alias: {
                 "@": path.join(__dirname, "src"),
+                "~": path.join(__dirname),
             },
         },
         devServer: {
-            overlay: true,
+            //@ts-ignore
+            static: {
+                directory: path.join(__dirname, "public"),watch: true,
+            },
+            client: {
+                overlay: true,
+            },
 
             host: "0.0.0.0",
             compress: true,
             historyApiFallback: true,
-            contentBase: path.resolve(__dirname, "./public"),
+            //@ts-ignore
+            // contentBase: path.resolve(__dirname, "./public"),
             hot: !0,
             port,
-            inline: !0,
-            watchContentBase: !0,
+            // inline: !0,
+            // watchContentBase: !0,
         },
         devtool: isEnvDevelopment ? "eval-cheap-module-source-map" : false,
         mode: mode,
@@ -641,8 +649,8 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
     }
 
     function addreactfresh(config: Configuration) {
-        const ReactRefreshWebpackPlugin =
-            require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
+        const ReactRefreshWebpackPlugin = require("@next/react-refresh-utils/ReactRefreshWebpackPlugin")
+            .default;
         config.entry = [
             require.resolve("@next/react-refresh-utils/runtime"),
             ...config.entry,

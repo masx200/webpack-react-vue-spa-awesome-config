@@ -8,6 +8,12 @@ module.exports = (env, argv) => {
 
     const newconf = merge(config, myconf);
     // console.log(newconf);
-
+    if (process.env.NODE_ENV == "development") {
+        config.experiments = {
+            ...config.experiments,
+            lazyCompilation: true,
+        };
+    }
+    // console.log(config)
     return newconf;
 };
