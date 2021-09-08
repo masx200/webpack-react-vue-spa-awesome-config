@@ -214,7 +214,38 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                     loader: require.resolve(resolvevueloadermodulepath()),
                 },
                 {
-                    test: /\.(css|sass|scss)$/,
+                    test: /\.(css)$/,
+                    use: [
+                        isEnvDevelopment
+                            ? {
+                                  loader: require.resolve("style-loader"),
+                                  options: {},
+                              }
+                            : {
+                                  loader: MiniCssExtractPlugin.loader,
+                              },
+                        {
+                            loader: require.resolve("css-loader"),
+                            options: {
+                                importLoaders: 1,
+                                sourceMap: shouldUseSourceMap,
+                            },
+                        },
+                        {
+                            loader: require.resolve("postcss-loader"),
+                            options: {
+                                postcssOptions: getpostcssoptions(),
+                                sourceMap: shouldUseSourceMap,
+                            },
+                        },
+                        // {
+                        //     loader: require.resolve("fast-sass-loader"),
+                        //     options: {},
+                        // },
+                    ],
+                },
+                {
+                    test: /\.(sass|scss)$/,
                     use: [
                         isEnvDevelopment
                             ? {

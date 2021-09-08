@@ -39,9 +39,9 @@ Object.defineProperty(exports, "__esModule", {
     console.log("env:", r, "\n", "argv:", o);
     var t = require("fork-ts-checker-webpack-plugin"), n = require("fs"), i = require("copy-webpack-plugin"), l = require("workbox-webpack-plugin"), a = require("postcss-safe-parser"), c = require("optimize-css-assets-webpack-plugin"), p = require("terser-webpack-plugin"), u = require(s()).VueLoaderPlugin, d = require("mini-css-extract-plugin"), m = require("path"), f = require("html-webpack-plugin"), b = require("webpack"), v = require("postcss-normalize"), g = require("@vue/preload-webpack-plugin"), h = require("clean-webpack-plugin").CleanWebpackPlugin, y = o, j = y["output-public-path"], x = y.mode;
     process.env.NODE_ENV = "production" === y.mode ? "production" : "development" === y.mode ? "development" : process.env.NODE_ENV;
-    var w = Number(y.port) || 1e4 + parseInt(String(1e4 * Math.random()));
+    var q = Number(y.port) || 1e4 + parseInt(String(1e4 * Math.random()));
     console.log("\nwebpack config filename : ".concat(__filename, "\n")), console.log("\nworking directory : ".concat(process.cwd(), "\n"));
-    var q = process.cwd();
+    var w = process.cwd();
     console.log("\nwebpack mode : ".concat(process.env.NODE_ENV, " \n"));
     var k = process.env.NODE_ENV, S = "development" === k, O = S, _ = "production" === k;
     process.env.BABEL_ENV = process.env.NODE_ENV;
@@ -49,8 +49,8 @@ Object.defineProperty(exports, "__esModule", {
     "production" === process.env.NODE_ENV && j && j.length && (console.log("  output-public-path  :  ".concat(j)), 
     console.log("\n"), E = j);
     var N = !!r.WEBPACK_SERVE;
-    S && N && console.log("open in browser: http://localhost:" + w);
-    var C = m.join(q), A = {
+    S && N && console.log("open in browser: http://localhost:" + q);
+    var C = m.join(w), A = {
         stats: {
             children: !0
         },
@@ -58,13 +58,13 @@ Object.defineProperty(exports, "__esModule", {
         resolve: {
             extensions: [ ".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs" ],
             alias: {
-                "@": m.join(q, "src"),
-                "~": m.join(q)
+                "@": m.join(w, "src"),
+                "~": m.join(w)
             }
         },
         devServer: {
             static: {
-                directory: m.join(q, "public"),
+                directory: m.join(w, "public"),
                 watch: !0
             },
             client: {
@@ -73,18 +73,17 @@ Object.defineProperty(exports, "__esModule", {
             host: "0.0.0.0",
             compress: !0,
             historyApiFallback: !0,
-            // contentBase: m.resolve(q, "./public"),
             hot: !0,
-            port: w
+            port: q
         },
         devtool: !!S && "eval-cheap-module-source-map",
         mode: x,
-        entry: [ n.existsSync(m.join(q, "src", "index.tsx")) ? m.join(q, "src", "index.tsx") : n.existsSync(m.join(q, "src", "index.ts")) ? m.join(q, "src", "index.ts") : n.existsSync(m.join(q, "src", "index.jsx")) ? m.join(q, "src", "index.jsx") : m.join(q, "src", "index.js") ].filter(Boolean),
+        entry: [ n.existsSync(m.join(w, "src", "index.tsx")) ? m.join(w, "src", "index.tsx") : n.existsSync(m.join(w, "src", "index.ts")) ? m.join(w, "src", "index.ts") : n.existsSync(m.join(w, "src", "index.jsx")) ? m.join(w, "src", "index.jsx") : m.join(w, "src", "index.js") ].filter(Boolean),
         output: {
             publicPath: E,
             globalObject: '(typeof WorkerGlobalScope !== "undefined"?\n\nWorkerGlobalScope:\n\ntypeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : ( Function(\'return this\')()))',
             filename: S ? "[name].[fullhash].js" : "[name].[contenthash].js",
-            path: m.join(q, "dist"),
+            path: m.join(w, "dist"),
             chunkFilename: S ? "[name].[fullhash].js" : "[name].[contenthash].js"
         },
         module: {
@@ -112,7 +111,7 @@ Object.defineProperty(exports, "__esModule", {
                     } ], require.resolve("@babel/preset-typescript"), _ && [ require.resolve("babel-preset-react-app"), {} ] ].filter(Boolean),
                     customize: require.resolve("babel-preset-react-app/webpack-overrides"),
                     babelrc: !1,
-                    configFile: !!n.existsSync(m.resolve(q, "babel.config.js")) && m.resolve(q, "babel.config.js"),
+                    configFile: !!n.existsSync(m.resolve(w, "babel.config.js")) && m.resolve(w, "babel.config.js"),
                     cacheDirectory: !0,
                     cacheCompression: _,
                     compact: _
@@ -135,7 +134,7 @@ Object.defineProperty(exports, "__esModule", {
                 }, {
                     loader: require.resolve("postcss-loader"),
                     options: {
-                        postcssOptions: P(),
+                        postcssOptions: M(),
                         sourceMap: O
                     }
                 }, {
@@ -154,7 +153,27 @@ Object.defineProperty(exports, "__esModule", {
                 test: /\.vue$/,
                 loader: require.resolve(s())
             }, {
-                test: /\.(css|sass|scss)$/,
+                test: /\.(css)$/,
+                use: [ S ? {
+                    loader: require.resolve("style-loader"),
+                    options: {}
+                } : {
+                    loader: d.loader
+                }, {
+                    loader: require.resolve("css-loader"),
+                    options: {
+                        importLoaders: 1,
+                        sourceMap: O
+                    }
+                }, {
+                    loader: require.resolve("postcss-loader"),
+                    options: {
+                        postcssOptions: M(),
+                        sourceMap: O
+                    }
+                } ]
+            }, {
+                test: /\.(sass|scss)$/,
                 use: [ S ? {
                     loader: require.resolve("style-loader"),
                     options: {}
@@ -169,7 +188,7 @@ Object.defineProperty(exports, "__esModule", {
                 }, {
                     loader: require.resolve("postcss-loader"),
                     options: {
-                        postcssOptions: P(),
+                        postcssOptions: M(),
                         sourceMap: O
                     }
                 }, {
@@ -178,7 +197,7 @@ Object.defineProperty(exports, "__esModule", {
                 } ]
             }, {
                 test: /\.(js|mjs)$/,
-                exclude: [ /@babel(?:\/|\\{1,2})runtime/, m.resolve(q, "src") ],
+                exclude: [ /@babel(?:\/|\\{1,2})runtime/, m.resolve(w, "src") ],
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
                 options: {
@@ -204,7 +223,7 @@ Object.defineProperty(exports, "__esModule", {
                         runtime: "automatic"
                     } ] ].filter(Boolean),
                     babelrc: !1,
-                    configFile: !!n.existsSync(m.resolve(q, "babel.config.js")) && m.resolve(q, "babel.config.js"),
+                    configFile: !!n.existsSync(m.resolve(w, "babel.config.js")) && m.resolve(w, "babel.config.js"),
                     cacheDirectory: !0,
                     cacheCompression: _,
                     compact: _
@@ -218,7 +237,7 @@ Object.defineProperty(exports, "__esModule", {
                 use: [ {
                     loader: require.resolve("ts-loader"),
                     options: {
-                        configFile: !!n.existsSync(m.resolve(q, "tsconfig.json")) && m.resolve(q, "tsconfig.json"),
+                        configFile: !!n.existsSync(m.resolve(w, "tsconfig.json")) && m.resolve(w, "tsconfig.json"),
                         compilerOptions: {
                             sourceMap: !0,
                             strict: !0
@@ -241,7 +260,7 @@ Object.defineProperty(exports, "__esModule", {
                     },
                     include: [ "src" ]
                 },
-                configFile: !!n.existsSync(m.resolve(q, "tsconfig.json")) && m.resolve(q, "tsconfig.json")
+                configFile: !!n.existsSync(m.resolve(w, "tsconfig.json")) && m.resolve(w, "tsconfig.json")
             }
         }), _ && new h({
             verbose: !0
@@ -250,9 +269,9 @@ Object.defineProperty(exports, "__esModule", {
                 globOptions: {
                     ignore: [ "**/index.html" ]
                 },
-                from: m.join(q, "public"),
+                from: m.join(w, "public"),
                 toType: "dir",
-                to: m.join(q, "dist"),
+                to: m.join(w, "dist"),
                 filter: function(e) {
                     return console.log("copy-webpack-plugin", e), !0;
                 }
@@ -299,7 +318,7 @@ Object.defineProperty(exports, "__esModule", {
                 minifyURLs: !0,
                 removeAttributeQuotes: !1
             },
-            template: m.join(q, "public", "index.html")
+            template: m.join(w, "public", "index.html")
         }), new g({
             rel: "preload",
             include: "asyncChunks"
@@ -375,9 +394,9 @@ Object.defineProperty(exports, "__esModule", {
             }) ]
         }
     };
-    function P() {
+    function M() {
         return {
-            config: !!n.existsSync(m.resolve(q, "postcss.config.js")) && m.resolve(q, "postcss.config.js"),
+            config: !!n.existsSync(m.resolve(w, "postcss.config.js")) && m.resolve(w, "postcss.config.js"),
             plugins: [ require("postcss-flexbugs-fixes"), require("postcss-preset-env")({
                 autoprefixer: {
                     flexbox: "no-2009"
