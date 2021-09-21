@@ -140,6 +140,7 @@
         "vue": "2.6.14"
     },
     "resolutions": {
+        "nth-check": "2.0.1",
         "url-parse": "1.5.3",
         "glob-parent": "5.1.2",
         "object-path": "0.11.8",
