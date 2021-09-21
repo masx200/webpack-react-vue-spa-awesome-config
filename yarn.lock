@@ -3839,7 +3839,7 @@ html-minifier-terser@^5.0.1:
     relateurl "^0.2.7"
     terser "^4.6.3"
 
-html-webpack-plugin@^5.3.1:
+html-webpack-plugin@^5.3.2:
   version "5.3.2"
   resolved "https://registry.nlark.com/html-webpack-plugin/download/html-webpack-plugin-5.3.2.tgz#7b04bf80b1f6fe84a6d3f66c8b79d64739321b08"
   integrity sha1-ewS/gLH2/oSm0/Zsi3nWRzkyGwg=
@@ -6851,15 +6851,20 @@ webpack-sources@^2.0.0, webpack-sources@^2.3.0:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack-sources@^3.1.1, webpack-sources@^3.2.0:
+webpack-sources@^3.0.1:
+  version "3.2.1"
+  resolved "https://registry.nlark.com/webpack-sources/download/webpack-sources-3.2.1.tgz#251a7d9720d75ada1469ca07dbb62f3641a05b6d"
+  integrity sha1-JRp9lyDXWtoUacoH27YvNkGgW20=
+
+webpack-sources@^3.2.0:
   version "3.2.0"
   resolved "https://registry.nlark.com/webpack-sources/download/webpack-sources-3.2.0.tgz?cache=0&sync_timestamp=1627898333297&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwebpack-sources%2Fdownload%2Fwebpack-sources-3.2.0.tgz#b16973bcf844ebcdb3afde32eda1c04d0b90f89d"
   integrity sha1-sWlzvPhE682zr94y7aHATQuQ+J0=
 
-webpack@5.47:
-  version "5.47.1"
-  resolved "https://registry.nlark.com/webpack/download/webpack-5.47.1.tgz?cache=0&sync_timestamp=1630682901437&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwebpack%2Fdownload%2Fwebpack-5.47.1.tgz#20fb7d76f68912a2249a6dd7ff16faa178049ad2"
-  integrity sha1-IPt9dvaJEqIkmm3X/xb6oXgEmtI=
+webpack@5.47.0:
+  version "5.47.0"
+  resolved "https://registry.nlark.com/webpack/download/webpack-5.47.0.tgz?cache=0&sync_timestamp=1631803313218&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwebpack%2Fdownload%2Fwebpack-5.47.0.tgz#3c13862b5d7b428792bfe76c5f67a0f43ba685f8"
+  integrity sha1-PBOGK117QoeSv+dsX2eg9Dumhfg=
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.50"
@@ -6883,7 +6888,7 @@ webpack@5.47:
     tapable "^2.1.1"
     terser-webpack-plugin "^5.1.3"
     watchpack "^2.2.0"
-    webpack-sources "^3.1.1"
+    webpack-sources "^3.0.1"
 
 webpack@^5, webpack@^5.1.0, webpack@^5.4.0:
   version "5.45.1"

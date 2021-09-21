@@ -8,7 +8,19 @@ export type Configuration = import("webpack").Configuration & {
     entry: string[];
     plugins: WebpackPluginInstance[];
     module: ModuleOptions & { rules: RuleSetRule[] };
-} & { devServer: import("webpack-dev-server").Configuration };
+} & { devServer: import("webpack-dev-server").Configuration } & {
+    optimization: NonNullable<
+        import("webpack").Configuration["optimization"]
+    > & {
+        splitChunks: Nonfalseable<
+            NonNullable<
+                import("webpack").Configuration["optimization"]
+            >["splitChunks"]
+        >;
+    };
+};
+type Nonfalseable<T> = T extends false ? never : T;
+
 export function createconfig(
     env: Record<string, any>,
     argv: Record<string, any>
@@ -161,7 +173,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
             strictExportPresence: !0,
             rules: [
                 {
-                    test: /\.(js|mjs|jsx|ts|tsx)$/,
+                    test: /\.(cjs|js|mjs|jsx|ts|tsx)$/,
                     type: "javascript/auto",
                     loader: require.resolve("babel-loader"),
                     options: getbabelconfig(),
@@ -699,5 +711,18 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
         ];
     }
     afterconfig(config);
+    if (config.optimization.splitChunks) {
+        config.optimization.splitChunks.cacheGroups = {
+            ...config.optimization.splitChunks?.cacheGroups,
+
+            commons: {
+                test: /[\\/]node_modules[\\/]/,
+                name: "vendors",
+                chunks: "initial",
+            },
+        };
+    } else {
+        config.optimization.splitChunks = {};
+    }
     return config;
 }
