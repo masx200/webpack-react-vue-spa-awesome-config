@@ -121,7 +121,7 @@ Object.defineProperty(exports, "__esModule", {
         module: {
             strictExportPresence: !0,
             rules: [ {
-                test: /\.(js|mjs|jsx|ts|tsx)$/,
+                test: /\.(cjs|js|mjs|jsx|ts|tsx)$/,
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
                 options: {
