@@ -2,7 +2,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "./bin/config.d.ts",
     "type": "commonjs",
-    "version": "4.3.7",
+    "version": "4.3.8",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
@@ -141,10 +141,12 @@
         "vue": "2.6.14"
     },
     "resolutions": {
+        "caniuse-lite":"1.0.30001312",
         "nth-check": "2.0.1",
         "glob-parent": "5.1.2",
         "object-path": "0.11.8",
         "ansi-html": "npm:ansi-html-community",
-        "nanoid": "3.3.1"
+        "nanoid": "3.3.1",
+        "follow-redirects":"1.14.9"
     }
 }
