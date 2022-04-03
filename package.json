@@ -1,5 +1,6 @@
 {
     "files": [
+        "release/config/webpack.config.js",
         "bin/cli.js",
         "bin/config.js",
         "bin/config.d.ts",
@@ -9,7 +10,7 @@
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "bin/config.d.ts",
     "type": "commonjs",
-    "version": "4.4.0",
+    "version": "4.4.1",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
