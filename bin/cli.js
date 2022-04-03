@@ -56,6 +56,8 @@ function u(e, o) {
             writable: !0,
             configurable: !0
         }
+    }), Object.defineProperty(e, "prototype", {
+        writable: !1
     }), o && s(e, o);
 }
 
