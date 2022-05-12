@@ -137,7 +137,7 @@
         "typescript": "^4.3.5",
         "vue": "^2.6.14",
         "webpack-merge": "^5.8.0",
-        "yargs-parser": "^20.2.9"
+        "yargs-parser": "^21.0.1"
     },
     "repository": "https://github.com/masx200/webpack-react-vue-spa-awesome-config.git",
     "author": "masx200 <34191203+masx200@users.noreply.github.com>",
