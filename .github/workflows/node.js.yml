@@ -26,5 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install --force
+    - run: npm run rollup
+    - run: npm run build
     - run: npm run test3
     - run: npm run test5

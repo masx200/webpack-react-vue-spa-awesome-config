@@ -33,7 +33,7 @@ export function createconfig(
         try {
             //@ts-ignore
             vueversion = require("vue").version;
-        } catch (e) {
+        } catch (e: any) {
             if (e?.code === "MODULE_NOT_FOUND") {
                 return require.resolve("vue-loader");
             } else {
@@ -605,7 +605,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
         if (isEnvDevelopment) {
             try {
                 require("react");
-            } catch (error) {
+            } catch (error: any) {
                 if (error?.code === "MODULE_NOT_FOUND") {
                     return;
                 } else {
