@@ -153,7 +153,7 @@ function m(e) {
     return i.default.join(__dirname, "../", "node_modules", ".bin", e.trim() + ("win32" === l.default.platform ? ".cmd" : ""));
 }
 
-var h = l.default.cwd(), w = [ "public/index.html", "src/index.js", "public/favicon.ico" ], x = w.map((function(e) {
+var h = l.default.cwd(), w = [ "public/index.html", "src/index.js",  ], x = w.map((function(e) {
     return i.default.resolve(__dirname, "../", "release", e);
 })), k = w.map((function(e) {
     return i.default.resolve(h, e);

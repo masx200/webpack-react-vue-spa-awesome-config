@@ -1,5 +1,5 @@
-import "./index.css";
-console.log("hello world");
+// import "./index.css";
+// console.log("hello world");
 /*import "../registerserviceworker.js";
 
  import React from "react";

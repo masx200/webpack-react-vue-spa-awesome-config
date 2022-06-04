@@ -1,16 +1,17 @@
 {
     "files": [
         "release/config/webpack.config.js",
+        "release/public/index.html",
         "bin/cli.js",
         "bin/config.js",
         "bin/config.d.ts",
         "registerserviceworker.js",
-        "registerserviceworker.d.ts"
+        "registerserviceworker.d.ts","release/src/index.js"
     ],
     "name": "@masx200/webpack-react-vue-spa-awesome-config",
     "types": "bin/config.d.ts",
     "type": "commonjs",
-    "version": "4.4.1",
+    "version": "4.5.0",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
         "access": "public"
