@@ -25,7 +25,7 @@
         "dev": "node ./bin/cli.js  --config=./webpack.config.js  --mode=development --port=11111",
         "build": "node ./bin/cli.js --config=./webpack.config.js  --mode=production",
         "rollup": "rollup -c rollup.config.js",
-        "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./*/*/*.ts ./*/*/*.js **/*.css **/*.html */*/*.js */*.jsx */*.less",
+        "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts  ./*/*/*.js **/*.css **/*.html */*/*.js */*.jsx */*.less",
         "test1": "node ./bin/cli.js start --port=11111  --config=./webpack.config.js",
         "test2": "node ./bin/cli.js --mode=development --port=11111  --config=./webpack.config.js",
         "test3": "node ./bin/cli.js build  --config=./webpack.config.js",

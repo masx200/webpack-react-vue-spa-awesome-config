@@ -37,13 +37,9 @@ render(
 
 !(async () => {
     console.log(Vue);
-    Vue.component("helloworld", helloworld);
-    Vue.config.errorHandler = function (err, vm, info) {
-        console.error(err, vm, info);
-        throw err;
-    };
 
-    const App2 = Vue.createApp({
+    const App2 = Vue.defineComponent({
+        components: { helloworld },
         template: `<div>
     <div>
     
@@ -73,5 +69,11 @@ render(
         },
     });
     vm.mount(document.body.appendChild(document.createElement("div")));
+    vm.component("helloworld", helloworld);
+    vm.config.errorHandler = function (err, vm, info) {
+        console.error(err, vm, info);
+        throw err;
+    };
+
     console.log(vm);
 })();
