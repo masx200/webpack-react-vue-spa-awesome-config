@@ -22,7 +22,7 @@
     "scripts": {
         "precommit": "npm run format || node -v",
         "prepublish": "git config --global core.safecrlf false && git config --global core.autocrlf false ",
-        "start": "node ./bin/cli.js  --config=./webpack.config.js  --mode=development --port=11111",
+        "dev": "node ./bin/cli.js  --config=./webpack.config.js  --mode=development --port=11111",
         "build": "node ./bin/cli.js --config=./webpack.config.js  --mode=production",
         "rollup": "rollup -c rollup.config.js",
         "format": "prettier --write **/*.ts *.md *.json **/*.js   *.js *.ts ./*/*/*.ts ./*/*/*.js **/*.css **/*.html */*/*.js */*.jsx */*.less",
