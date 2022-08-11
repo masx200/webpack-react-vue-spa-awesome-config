@@ -4,7 +4,7 @@ const { createconfig } = require("./bin/config.js");
 
 module.exports = (env, argv) => {
     const config = createconfig(env, argv);
-    const myconf = { resolve: { alias: { vue: "vue/dist/vue.js" } } };
+    const myconf = { resolve: { alias: { vue: "vue/dist/vue.esm-bundler.js" } } };
 
     const newconf = merge(config, myconf);
     // console.log(newconf);

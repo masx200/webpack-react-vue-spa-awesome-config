@@ -42,7 +42,7 @@ export function createconfig(
         }
 
         if ("3" === vueversion.split(".")[0]) {
-            return require.resolve("vue-loader-16");
+            return require.resolve("vue-loader");
         } else {
             return require.resolve("vue-loader");
         }

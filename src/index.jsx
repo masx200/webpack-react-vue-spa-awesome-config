@@ -1,7 +1,7 @@
 import htm from "htm";
 import React, { createElement } from "react";
 import { render } from "react-dom";
-import Vue from "vue";
+import * as Vue from "vue";
 import "../registerserviceworker.js";
 import { App1 } from "./App1";
 import { App2 } from "./App2";
@@ -43,7 +43,7 @@ render(
         throw err;
     };
 
-    const App2 = Vue.extend({
+    const App2 = Vue.createApp({
         template: `<div>
     <div>
     
@@ -63,7 +63,7 @@ render(
         mounted() {},
     });
 
-    const vm = new Vue({
+    const vm = Vue.createApp({
         components: {
             App2,
         },
@@ -72,6 +72,6 @@ render(
             return {};
         },
     });
-    vm.$mount(document.body.appendChild(document.createElement("div")));
+    vm.mount(document.body.appendChild(document.createElement("div")));
     console.log(vm);
 })();
