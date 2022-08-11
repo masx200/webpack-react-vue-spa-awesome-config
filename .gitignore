@@ -6,7 +6,7 @@ node_modules
 debug.log
 *.log
 dist/
-
+yarn.lock
 dist
 
 polyfill/src/.vs/slnx.sqlite
