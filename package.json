@@ -77,7 +77,7 @@
         "browserslist": "^4.19.3",
         "caniuse-lite": "^1.0.30001312",
         "clean-webpack-plugin": "^4.0.0-alpha.0",
-        "copy-webpack-plugin": "^8.1.1",
+        "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.2.0",
         "cssnano": "^5.0.8",
         "fast-sass-loader": "^2.0.0",
