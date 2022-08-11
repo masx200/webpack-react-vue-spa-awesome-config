@@ -66,7 +66,7 @@ Object.defineProperty(exports, "__esModule", {
             if ("MODULE_NOT_FOUND" === (null == e ? void 0 : e.code)) return require.resolve("vue-loader");
             throw e;
         }
-        return "3" === e.split(".")[0] ? require.resolve("vue-loader-16") : require.resolve("vue-loader");
+        return e.split(".")[0], require.resolve("vue-loader");
     }
     console.log("env:", e, "\n", "argv:", o);
     var n = require("fork-ts-checker-webpack-plugin"), i = require("fs"), l = require("copy-webpack-plugin"), a = require("workbox-webpack-plugin"), c = require("postcss-safe-parser"), p = require("optimize-css-assets-webpack-plugin"), u = require("terser-webpack-plugin"), d = require(t()).VueLoaderPlugin, m = require("mini-css-extract-plugin"), b = require("path"), f = require("html-webpack-plugin"), v = require("webpack"), g = require("postcss-normalize"), h = require("@vue/preload-webpack-plugin"), y = require("clean-webpack-plugin").CleanWebpackPlugin, j = o, x = j["output-public-path"], w = j.mode;
