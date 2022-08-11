@@ -21,7 +21,7 @@
     "main": "bin/config.js",
     "scripts": {
         "precommit": "npm run format || node -v",
-        "prepare": "husky install",
+        
         "prepublish": "git config --global core.safecrlf false && git config --global core.autocrlf false ",
         "start": "node ./bin/cli.js  --config=./webpack.config.js  --mode=development --port=11111",
         "build": "node ./bin/cli.js --config=./webpack.config.js  --mode=production",
