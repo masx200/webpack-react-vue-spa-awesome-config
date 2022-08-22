@@ -99,7 +99,7 @@
         "react-app-polyfill": "^3.0.0",
         "react-refresh": "^0.14.0",
         "regenerator-runtime": "^0.13.7",
-        "sass": "1.35.2",
+        "sass": "1.54.5",
         "style-loader": "^2.0.0",
         "terser": "5.14.2",
         "terser-webpack-plugin": "^5.1.4",
