@@ -4,6 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import json from "@rollup/plugin-json";
 import typescript from "rollup-plugin-ts";
+import rollupExternalModules from "rollup-external-modules";
 const manglecompressplugin = terser({
     toplevel: true,
     //   sourcemap: true,
@@ -18,7 +19,7 @@ const manglecompressplugin = terser({
 const banner = `#!/usr/bin/env node\n`;
 export default [
     {
-        external: ["path", "fs", "process", "child_process"],
+        external: rollupExternalModules,
         input: "./cli/index.ts",
         output: [
             {
@@ -43,7 +44,7 @@ export default [
         ],
     },
     {
-        external: ["path", "fs", "process", "child_process"],
+        external: rollupExternalModules,
         input: "./lib/index.ts",
         output: [
             {

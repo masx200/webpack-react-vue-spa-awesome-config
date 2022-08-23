@@ -56,15 +56,13 @@ function u(e, o) {
             writable: !0,
             configurable: !0
         }
-    }), Object.defineProperty(e, "prototype", {
-        writable: !1
     }), o && s(e, o);
 }
 
 function s(e, o) {
-    return s = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(e, o) {
+    return (s = Object.setPrototypeOf || function(e, o) {
         return e.__proto__ = o, e;
-    }, s(e, o);
+    })(e, o);
 }
 
 function f(e, o) {
@@ -166,7 +164,7 @@ function S(e, o) {
     }));
 }
 
-function j(e, o, n) {
+function E(e, o, n) {
     c.default.existsSync(e) || (o.unshift("webpack"), n("npx" + ("win32" === l.default.platform ? ".cmd" : "")));
 }
 
@@ -176,12 +174,12 @@ console.log("\n"), console.log("Fast, zero-configuration web application packagi
 console.log("\n"), console.log("\nworking directory : ".concat(l.default.cwd(), "\n")), 
 console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-var E = l.default.argv.slice(2);
+var _ = l.default.argv.slice(2);
 
-console.log("\u63a5\u6536\u7684\u53c2\u6570", E);
+console.log("\u63a5\u6536\u7684\u53c2\u6570", _);
 
-var _, O = E.includes("start") ? "start" : E.includes("build") ? "build" : void 0, A = (_ = {}, 
-E.filter((function(e) {
+var j, O = _.includes("start") ? "start" : _.includes("build") ? "build" : void 0, A = (j = {}, 
+_.filter((function(e) {
     return e.startsWith("--");
 })).map((function(e) {
     return a(/\x2D\x2D(.+?)=(.+)/g, {
@@ -190,8 +188,8 @@ E.filter((function(e) {
     }).exec(e);
 })).forEach((function(e) {
     var o, n, t, r = null === (o = e) || void 0 === o ? void 0 : o.groups, l = null === (n = r) || void 0 === n ? void 0 : n.key, c = null === (t = r) || void 0 === t ? void 0 : t.value;
-    l && c && (_[l] = c);
-})), _);
+    l && c && (j[l] = c);
+})), j);
 
 console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(A, null, 4)), 
 function(e, o) {
@@ -199,14 +197,14 @@ function(e, o) {
     Reflect.set(o, "config", r);
     var c, a, u = o.mode;
     if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
-    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, k), j(c = m("webpack"), a = [ "serve" ], (function(e) {
+    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, k), E(c = m("webpack"), a = [ "serve" ], (function(e) {
         c = e;
     })), S(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
         var s, f;
         console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
         console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
-        b(x, k), j(s = m("webpack"), f = [ "build" ], (function(e) {
+        b(x, k), E(s = m("webpack"), f = [ "build" ], (function(e) {
             s = e;
         })), S(o, f), v(s, f);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 

@@ -617,11 +617,11 @@ function addreactfresh(config: Configuration, srcfoldepath: string) {
 }
 function createTerserPlugin() {
     const terserconfig: {
-        minify: typeof TerserPlugin.terserMinify;
+        // minify: typeof TerserPlugin.terserMinify;
         parallel: boolean;
         terserOptions: MinifyOptions;
     } = {
-        minify: TerserPlugin.terserMinify,
+        // minify: TerserPlugin.terserMinify,
         terserOptions: {
             ecma: 5,
             parse: {
@@ -652,9 +652,10 @@ function createTerserPlugin() {
             terserconfig,
             require(path.resolve(__dirname, "terser.config.js"))
         ) as typeof terserconfig;
+        //@ts-ignore
         return new TerserPlugin<MinifyOptions>(mergedconfig);
     }
-
+    //@ts-ignore
     return new TerserPlugin<MinifyOptions>(terserconfig);
 }
 function afterconfig(
@@ -744,4 +745,4 @@ function getpostcssoptions() {
 }
 import postcssNormalize from "postcss-normalize";
 import merge from "merge";
-import { MinifyOptions } from "terser";
+import type { MinifyOptions } from "terser";
