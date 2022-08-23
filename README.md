@@ -36,6 +36,8 @@ https://github.com/masx200/webpack-react-vue-spa-awesome-config
 
 "postcss.config.js"
 
+"terser.config.js"
+
 # 更新：添加了 `fork-ts-checker-webpack-plugin`
 
 # 更新：添加了 `ts-loader`

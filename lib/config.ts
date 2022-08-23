@@ -1,9 +1,13 @@
-("use strict");
 import type {
-    WebpackPluginInstance,
     ModuleOptions,
     RuleSetRule,
+    WebpackPluginInstance,
 } from "webpack";
+import fs from "fs";
+import path from "path";
+import TerserPlugin from "terser-webpack-plugin";
+("use strict");
+
 export type Configuration = import("webpack").Configuration & {
     entry: string[];
     plugins: WebpackPluginInstance[];
@@ -20,49 +24,46 @@ export type Configuration = import("webpack").Configuration & {
     };
 };
 type Nonfalseable<T> = T extends false ? never : T;
+function resolvevueloadermodulepath() {
+    var vueversion;
 
+    try {
+        //@ts-ignore
+        vueversion = require("vue").version;
+    } catch (e: any) {
+        if (e?.code === "MODULE_NOT_FOUND") {
+            return require.resolve("vue-loader");
+        } else {
+            throw e;
+        }
+    }
+
+    if ("3" === vueversion.split(".")[0]) {
+        return require.resolve("vue-loader");
+    } else {
+        return require.resolve("vue-loader");
+    }
+}
 export function createconfig(
     env: Record<string, any>,
     argv: Record<string, any>
 ): Configuration {
     console.log("env:", env, "\n", "argv:", argv);
 
-    function resolvevueloadermodulepath() {
-        var vueversion;
-
-        try {
-            //@ts-ignore
-            vueversion = require("vue").version;
-        } catch (e: any) {
-            if (e?.code === "MODULE_NOT_FOUND") {
-                return require.resolve("vue-loader");
-            } else {
-                throw e;
-            }
-        }
-
-        if ("3" === vueversion.split(".")[0]) {
-            return require.resolve("vue-loader");
-        } else {
-            return require.resolve("vue-loader");
-        }
-    }
-
     // const ReactRefreshTypeScript = require("react-refresh-typescript");
     const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
     // const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-    const fs = require("fs");
+
     const CopyPlugin = require("copy-webpack-plugin");
     const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
     const safePostCssParser = require("postcss-safe-parser");
     const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-    const TerserPlugin = require("terser-webpack-plugin");
+
     const { VueLoaderPlugin } = require(resolvevueloadermodulepath());
     const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-    const path = require("path");
+
     const HtmlWebpackPlugin = require("html-webpack-plugin");
     const webpack = require("webpack");
-    const postcssNormalize = require("postcss-normalize");
 
     const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
@@ -176,7 +177,10 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                     test: /\.(cjs|js|mjs|jsx|ts|tsx)$/,
                     type: "javascript/auto",
                     loader: require.resolve("babel-loader"),
-                    options: getbabelconfig(),
+                    options: getbabelconfig(
+                        shouldUseSourceMap,
+                        isEnvProduction
+                    ),
                     include: [srcfoldepath],
                     exclude: [/node_modules/],
                 },
@@ -551,31 +555,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
                   },
             minimize: isEnvProduction,
             minimizer: [
-                new TerserPlugin({
-                    terserOptions: {
-                        ecma: 5,
-                        parse: {
-                            ecma: 8,
-                        },
-                        compress: {
-                            warnings: !1,
-                            comparisons: !1,
-                            inline: 2,
-                            drop_console: true,
-                            drop_debugger: true,
-                            pure_funcs: ["console.log"],
-                        },
-                        mangle: {
-                            safari10: !0,
-                        },
-                        output: {
-                            ecma: 5,
-                            comments: !1,
-                            ascii_only: !0,
-                        },
-                    },
-                    parallel: !0,
-                }),
+                createTerserPlugin(),
                 new OptimizeCSSAssetsPlugin({
                     cssProcessorPluginOptions: {
                         preset: [
@@ -601,116 +581,7 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
         },
     };
 
-    function afterconfig(config: Configuration) {
-        if (isEnvDevelopment) {
-            try {
-                require("react");
-            } catch (error: any) {
-                if (error?.code === "MODULE_NOT_FOUND") {
-                    return;
-                } else {
-                    throw error;
-                }
-            }
-            addreactfresh(config);
-        }
-    }
-
-    function getpostcssoptions() {
-        return {
-            config: fs.existsSync(path.resolve(__dirname, "postcss.config.js"))
-                ? path.resolve(__dirname, "postcss.config.js")
-                : false,
-
-            plugins: [
-                require("postcss-flexbugs-fixes"),
-                require("postcss-preset-env")({
-                    autoprefixer: {
-                        flexbox: "no-2009",
-                    },
-                    stage: 3,
-                }),
-                postcssNormalize(),
-            ],
-        };
-    }
-
-    function getbabelconfig() {
-        return {
-            sourceMaps: shouldUseSourceMap,
-            plugins: [
-                [
-                    require.resolve("babel-plugin-htm"),
-                    {
-                        pragma: "h",
-                        tag: "html",
-                        useBuiltIns: true,
-                        useNativeSpread: true,
-                    },
-                ],
-                [
-                    "@babel/plugin-proposal-private-methods",
-                    {
-                        loose: true,
-                    },
-                ],
-                [
-                    require.resolve("@babel/plugin-proposal-decorators"),
-                    {
-                        legacy: true,
-                    },
-                ],
-                [
-                    "@babel/plugin-proposal-class-properties",
-                    {
-                        loose: true,
-                    },
-                ],
-            ].filter(Boolean),
-            presets: [
-                ["@babel/preset-react", { runtime: "automatic" }],
-
-                require.resolve("@babel/preset-typescript"),
-                isEnvProduction && [
-                    require.resolve("babel-preset-react-app"),
-                    {},
-                ],
-            ].filter(Boolean),
-            customize: require.resolve(
-                "babel-preset-react-app/webpack-overrides"
-            ),
-            babelrc: false,
-            configFile: fs.existsSync(
-                path.resolve(__dirname, "babel.config.js")
-            )
-                ? path.resolve(__dirname, "babel.config.js")
-                : false,
-
-            cacheDirectory: !0,
-            cacheCompression: isEnvProduction,
-            compact: isEnvProduction,
-        };
-    }
-
-    function addreactfresh(config: Configuration) {
-        const ReactRefreshWebpackPlugin =
-            require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
-        config.entry = [
-            require.resolve("@next/react-refresh-utils/runtime"),
-            ...config.entry,
-        ];
-        config.plugins = [new ReactRefreshWebpackPlugin(), ...config.plugins];
-        config.module.rules = [
-            {
-                test: /\.(tsx|ts|js|mjs|jsx)$/,
-                include: [srcfoldepath],
-                exclude: [/node_modules/],
-                use: [require.resolve("@next/react-refresh-utils/loader")],
-            },
-            ...config.module.rules,
-        ];
-    }
-    afterconfig(config);
+    afterconfig(config, isEnvDevelopment, srcfoldepath);
     if (config.optimization.splitChunks) {
         config.optimization.splitChunks.cacheGroups = {
             ...config.optimization.splitChunks?.cacheGroups,
@@ -726,3 +597,151 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
     }
     return config;
 }
+function addreactfresh(config: Configuration, srcfoldepath: string) {
+    const ReactRefreshWebpackPlugin =
+        require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
+    config.entry = [
+        require.resolve("@next/react-refresh-utils/runtime"),
+        ...config.entry,
+    ];
+    config.plugins = [new ReactRefreshWebpackPlugin(), ...config.plugins];
+    config.module.rules = [
+        {
+            test: /\.(tsx|ts|js|mjs|jsx)$/,
+            include: [srcfoldepath],
+            exclude: [/node_modules/],
+            use: [require.resolve("@next/react-refresh-utils/loader")],
+        },
+        ...config.module.rules,
+    ];
+}
+function createTerserPlugin() {
+    const terserconfig: {
+        minify: typeof TerserPlugin.terserMinify;
+        parallel: boolean;
+        terserOptions: MinifyOptions;
+    } = {
+        minify: TerserPlugin.terserMinify,
+        terserOptions: {
+            ecma: 5,
+            parse: {
+                ecma: 2015,
+            },
+            compress: {
+                // warnings: !1,
+                comparisons: !1,
+                inline: 2,
+                drop_console: true,
+                drop_debugger: true,
+                pure_funcs: ["console.log"],
+            },
+            mangle: {
+                safari10: !0,
+            },
+            output: {
+                ecma: 5,
+                comments: !1,
+                ascii_only: !0,
+            },
+        },
+        parallel: !0,
+    };
+    if (fs.existsSync(path.resolve(__dirname, "terser.config.js"))) {
+        const mergedconfig = merge.recursive(
+            true,
+            terserconfig,
+            require(path.resolve(__dirname, "terser.config.js"))
+        ) as typeof terserconfig;
+        return new TerserPlugin<MinifyOptions>(mergedconfig);
+    }
+
+    return new TerserPlugin<MinifyOptions>(terserconfig);
+}
+function afterconfig(
+    config: Configuration,
+    isEnvDevelopment: boolean,
+    srcfoldepath: string
+) {
+    if (isEnvDevelopment) {
+        try {
+            require("react");
+        } catch (error: any) {
+            if (error?.code === "MODULE_NOT_FOUND") {
+                return;
+            } else {
+                throw error;
+            }
+        }
+        addreactfresh(config, srcfoldepath);
+    }
+}
+function getbabelconfig(shouldUseSourceMap: boolean, isEnvProduction: boolean) {
+    return {
+        sourceMaps: shouldUseSourceMap,
+        plugins: [
+            [
+                require.resolve("babel-plugin-htm"),
+                {
+                    pragma: "h",
+                    tag: "html",
+                    useBuiltIns: true,
+                    useNativeSpread: true,
+                },
+            ],
+            [
+                "@babel/plugin-proposal-private-methods",
+                {
+                    loose: true,
+                },
+            ],
+            [
+                require.resolve("@babel/plugin-proposal-decorators"),
+                {
+                    legacy: true,
+                },
+            ],
+            [
+                "@babel/plugin-proposal-class-properties",
+                {
+                    loose: true,
+                },
+            ],
+        ].filter(Boolean),
+        presets: [
+            ["@babel/preset-react", { runtime: "automatic" }],
+
+            require.resolve("@babel/preset-typescript"),
+            isEnvProduction && [require.resolve("babel-preset-react-app"), {}],
+        ].filter(Boolean),
+        customize: require.resolve("babel-preset-react-app/webpack-overrides"),
+        babelrc: false,
+        configFile: fs.existsSync(path.resolve(__dirname, "babel.config.js"))
+            ? path.resolve(__dirname, "babel.config.js")
+            : false,
+
+        cacheDirectory: !0,
+        cacheCompression: isEnvProduction,
+        compact: isEnvProduction,
+    };
+}
+function getpostcssoptions() {
+    return {
+        config: fs.existsSync(path.resolve(__dirname, "postcss.config.js"))
+            ? path.resolve(__dirname, "postcss.config.js")
+            : false,
+
+        plugins: [
+            require("postcss-flexbugs-fixes"),
+            require("postcss-preset-env")({
+                autoprefixer: {
+                    flexbox: "no-2009",
+                },
+                stage: 3,
+            }),
+            postcssNormalize(),
+        ],
+    };
+}
+import postcssNormalize from "postcss-normalize";
+import merge from "merge";
+import { MinifyOptions } from "terser";
