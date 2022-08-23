@@ -599,9 +599,9 @@ typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ?
 }
 function addreactfresh(config: Configuration, srcfoldepath: string) {
     const ReactRefreshWebpackPlugin =
-        require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
+        require("@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin").default;
     config.entry = [
-        require.resolve("@next/react-refresh-utils/runtime"),
+        require.resolve("@next/react-refresh-utils/dist/runtime"),
         ...config.entry,
     ];
     config.plugins = [new ReactRefreshWebpackPlugin(), ...config.plugins];
@@ -610,7 +610,7 @@ function addreactfresh(config: Configuration, srcfoldepath: string) {
             test: /\.(tsx|ts|js|mjs|jsx)$/,
             include: [srcfoldepath],
             exclude: [/node_modules/],
-            use: [require.resolve("@next/react-refresh-utils/loader")],
+            use: [require.resolve("@next/react-refresh-utils/dist/loader")],
         },
         ...config.module.rules,
     ];
