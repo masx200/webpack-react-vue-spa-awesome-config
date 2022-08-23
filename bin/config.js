@@ -472,13 +472,13 @@ exports.createconfig = function(e, r) {
                 throw e;
             }
             !function(e, r) {
-                var o = require("@next/react-refresh-utils/ReactRefreshWebpackPlugin").default;
-                e.entry = [ require.resolve("@next/react-refresh-utils/runtime") ].concat(m(e.entry)), 
+                var o = require("@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin").default;
+                e.entry = [ require.resolve("@next/react-refresh-utils/dist/runtime") ].concat(m(e.entry)), 
                 e.plugins = [ new o ].concat(m(e.plugins)), e.module.rules = [ {
                     test: /\.(tsx|ts|js|mjs|jsx)$/,
                     include: [ r ],
                     exclude: [ /node_modules/ ],
-                    use: [ require.resolve("@next/react-refresh-utils/loader") ]
+                    use: [ require.resolve("@next/react-refresh-utils/dist/loader") ]
                 } ].concat(m(e.module.rules));
             }(e, o);
         }
