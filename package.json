@@ -139,7 +139,7 @@
         "rollup-external-modules": "^2.0.0",
         "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-ts": "^3.0.2",
-        "tslib": "2.4.0",
+        "tslib": "2.5.3",
         "typescript": "^4.7.4",
         "vue": "^3.2.37",
         "webpack-merge": "^5.8.0",
