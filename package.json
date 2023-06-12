@@ -135,7 +135,7 @@
         "prettier": "^2.7.1",
         "react": "18",
         "react-dom": "18",
-        "rollup": "^2.77.3",
+        "rollup": "^3.25.1",
         "rollup-external-modules": "^2.0.0",
         "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-ts": "^3.0.2",
