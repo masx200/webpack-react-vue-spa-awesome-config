@@ -59,7 +59,7 @@
         "@next/react-refresh-utils": "^13.2.4",
         "@types/html-webpack-plugin": "^3.2.5",
         "@types/mini-css-extract-plugin": "^2.5.1",
-        "@types/node": "^18.7.11",
+        "@types/node": "^20.4.6",
         "@types/optimize-css-assets-webpack-plugin": "^5.0.4",
         "@types/postcss-normalize": "^9.0.1",
         "@types/react": "^18.0.17",
