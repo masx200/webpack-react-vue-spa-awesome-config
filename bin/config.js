@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: !0
 });
 
-var e = require("fs"), r = require("path"), o = require("terser-webpack-plugin"), t = require("postcss-normalize"), s = require("merge");
+var e = require("fs"), r = require("path"), t = require("terser-webpack-plugin"), o = require("postcss-normalize"), s = require("merge");
 
 function n(e) {
     return e && "object" == typeof e && "default" in e ? e : {
@@ -12,61 +12,72 @@ function n(e) {
     };
 }
 
-var i = n(e), l = n(r), a = n(o), c = n(t), u = n(s);
+var i = n(e), l = n(r), a = n(t), c = n(o), u = n(s);
 
 function p(e, r) {
-    var o = Object.keys(e);
-    if (Object.getOwnPropertySymbols) {
-        var t = Object.getOwnPropertySymbols(e);
-        r && (t = t.filter((function(r) {
-            return Object.getOwnPropertyDescriptor(e, r).enumerable;
-        }))), o.push.apply(o, t);
-    }
+    (null == r || r > e.length) && (r = e.length);
+    for (var t = 0, o = Array(r); t < r; t++) o[t] = e[t];
     return o;
 }
 
-function d(e) {
+function d(e, r, t) {
+    return (r = function(e) {
+        var r = function(e, r) {
+            if ("object" != typeof e || !e) return e;
+            var t = e[Symbol.toPrimitive];
+            if (void 0 !== t) {
+                var o = t.call(e, r || "default");
+                if ("object" != typeof o) return o;
+                throw new TypeError("@@toPrimitive must return a primitive value.");
+            }
+            return ("string" === r ? String : Number)(e);
+        }(e, "string");
+        return "symbol" == typeof r ? r : r + "";
+    }(r)) in e ? Object.defineProperty(e, r, {
+        value: t,
+        enumerable: !0,
+        configurable: !0,
+        writable: !0
+    }) : e[r] = t, e;
+}
+
+function f(e, r) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+        var o = Object.getOwnPropertySymbols(e);
+        r && (o = o.filter((function(r) {
+            return Object.getOwnPropertyDescriptor(e, r).enumerable;
+        }))), t.push.apply(t, o);
+    }
+    return t;
+}
+
+function m(e) {
     for (var r = 1; r < arguments.length; r++) {
-        var o = null != arguments[r] ? arguments[r] : {};
-        r % 2 ? p(Object(o), !0).forEach((function(r) {
-            f(e, r, o[r]);
-        })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(o)) : p(Object(o)).forEach((function(r) {
-            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(o, r));
+        var t = null != arguments[r] ? arguments[r] : {};
+        r % 2 ? f(Object(t), !0).forEach((function(r) {
+            d(e, r, t[r]);
+        })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : f(Object(t)).forEach((function(r) {
+            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
         }));
     }
     return e;
 }
 
-function f(e, r, o) {
-    return r in e ? Object.defineProperty(e, r, {
-        value: o,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : e[r] = o, e;
-}
-
-function m(e) {
+function b(e) {
     return function(e) {
-        if (Array.isArray(e)) return b(e);
+        if (Array.isArray(e)) return p(e);
     }(e) || function(e) {
         if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e);
     }(e) || function(e, r) {
-        if (!e) return;
-        if ("string" == typeof e) return b(e, r);
-        var o = Object.prototype.toString.call(e).slice(8, -1);
-        "Object" === o && e.constructor && (o = e.constructor.name);
-        if ("Map" === o || "Set" === o) return Array.from(e);
-        if ("Arguments" === o || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(o)) return b(e, r);
+        if (e) {
+            if ("string" == typeof e) return p(e, r);
+            var t = {}.toString.call(e).slice(8, -1);
+            return "Object" === t && e.constructor && (t = e.constructor.name), "Map" === t || "Set" === t ? Array.from(e) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? p(e, r) : void 0;
+        }
     }(e) || function() {
         throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
-}
-
-function b(e, r) {
-    (null == r || r > e.length) && (r = e.length);
-    for (var o = 0, t = new Array(r); o < r; o++) t[o] = e[o];
-    return t;
 }
 
 function v() {
@@ -153,7 +164,7 @@ function y() {
 
 exports.createconfig = function(e, r) {
     console.log("env:", e, "\n", "argv:", r);
-    var o = require("fork-ts-checker-webpack-plugin"), t = require("copy-webpack-plugin"), s = require("workbox-webpack-plugin"), n = require("postcss-safe-parser"), a = require("optimize-css-assets-webpack-plugin"), c = require(v()).VueLoaderPlugin, u = require("mini-css-extract-plugin"), p = require("html-webpack-plugin"), f = require("webpack"), b = require("@vue/preload-webpack-plugin"), j = require("clean-webpack-plugin").CleanWebpackPlugin, x = r, w = x["output-public-path"], q = x.mode;
+    var t = require("fork-ts-checker-webpack-plugin"), o = require("copy-webpack-plugin"), s = require("workbox-webpack-plugin"), n = require("postcss-safe-parser"), a = require("optimize-css-assets-webpack-plugin"), c = require(v()).VueLoaderPlugin, u = require("mini-css-extract-plugin"), p = require("html-webpack-plugin"), d = require("webpack"), f = require("@vue/preload-webpack-plugin"), j = require("clean-webpack-plugin").CleanWebpackPlugin, x = r, w = x["output-public-path"], q = x.mode;
     process.env.NODE_ENV = "production" === x.mode ? "production" : "development" === x.mode ? "development" : process.env.NODE_ENV;
     var k = Number(x.port) || 1e4 + parseInt(String(1e4 * Math.random()));
     console.log("\nwebpack config filename : ".concat(__filename, "\n")), console.log("\nworking directory : ".concat(process.cwd(), "\n"));
@@ -344,7 +355,7 @@ exports.createconfig = function(e, r) {
                 type: "asset"
             } ]
         },
-        plugins: [ new o({
+        plugins: [ new t({
             typescript: {
                 configOverwrite: {
                     compilerOptions: {
@@ -357,7 +368,7 @@ exports.createconfig = function(e, r) {
             }
         }), P && new j({
             verbose: !0
-        }), new t({
+        }), new o({
             patterns: [ {
                 globOptions: {
                     ignore: [ "**/index.html" ]
@@ -369,7 +380,7 @@ exports.createconfig = function(e, r) {
                     return console.log("copy-webpack-plugin", e), !0;
                 }
             } ]
-        }), S && new f.HotModuleReplacementPlugin, P && new s.GenerateSW({
+        }), S && new d.HotModuleReplacementPlugin, P && new s.GenerateSW({
             skipWaiting: !0,
             clientsClaim: !0,
             runtimeCaching: [ {
@@ -412,7 +423,7 @@ exports.createconfig = function(e, r) {
                 removeAttributeQuotes: !1
             },
             template: l.default.join(O, "public", "index.html")
-        }), new b({
+        }), new f({
             rel: "preload",
             include: "asyncChunks"
         }) ].filter(Boolean),
@@ -463,7 +474,7 @@ exports.createconfig = function(e, r) {
             }) ]
         }
     };
-    return function(e, r, o) {
+    return function(e, r, t) {
         if (r) {
             try {
                 require("react");
@@ -472,17 +483,17 @@ exports.createconfig = function(e, r) {
                 throw e;
             }
             !function(e, r) {
-                var o = require("@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin").default;
-                e.entry = [ require.resolve("@next/react-refresh-utils/dist/runtime") ].concat(m(e.entry)), 
-                e.plugins = [ new o ].concat(m(e.plugins)), e.module.rules = [ {
+                var t = require("@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin").default;
+                e.entry = [ require.resolve("@next/react-refresh-utils/dist/runtime") ].concat(b(e.entry)), 
+                e.plugins = [ new t ].concat(b(e.plugins)), e.module.rules = [ {
                     test: /\.(tsx|ts|js|mjs|jsx)$/,
                     include: [ r ],
                     exclude: [ /node_modules/ ],
                     use: [ require.resolve("@next/react-refresh-utils/dist/loader") ]
-                } ].concat(m(e.module.rules));
-            }(e, o);
+                } ].concat(b(e.module.rules));
+            }(e, t);
         }
-    }(M, S, A), M.optimization.splitChunks ? M.optimization.splitChunks.cacheGroups = d(d({}, null === (D = M.optimization.splitChunks) || void 0 === D ? void 0 : D.cacheGroups), {}, {
+    }(M, S, A), M.optimization.splitChunks ? M.optimization.splitChunks.cacheGroups = m(m({}, null === (D = M.optimization.splitChunks) || void 0 === D ? void 0 : D.cacheGroups), {}, {
         commons: {
             test: /[\\/]node_modules[\\/]/,
             name: "vendors",

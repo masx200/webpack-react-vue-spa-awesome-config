@@ -11,29 +11,111 @@ function r(e) {
 
 var l = r(e), c = r(o), i = r(n);
 
-function a() {
-    a = function(e, o) {
+function a(e, o) {
+    (null == o || o > e.length) && (o = e.length);
+    for (var n = 0, t = Array(o); n < o; n++) t[n] = e[n];
+    return t;
+}
+
+function u(e, o) {
+    if ("function" != typeof o && null !== o) throw new TypeError("Super expression must either be null or a function");
+    e.prototype = Object.create(o && o.prototype, {
+        constructor: {
+            value: e,
+            writable: !0,
+            configurable: !0
+        }
+    }), Object.defineProperty(e, "prototype", {
+        writable: !1
+    }), o && s(e, o);
+}
+
+function s(e, o) {
+    return s = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(e, o) {
+        return e.__proto__ = o, e;
+    }, s(e, o);
+}
+
+function f(e, o) {
+    return function(e) {
+        if (Array.isArray(e)) return e;
+    }(e) || function(e, o) {
+        var n = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+        if (null != n) {
+            var t, r, l, c, i = [], a = !0, u = !1;
+            try {
+                if (l = (n = n.call(e)).next, 0 === o) {
+                    if (Object(n) !== n) return;
+                    a = !1;
+                } else for (;!(a = (t = l.call(n)).done) && (i.push(t.value), i.length !== o); a = !0) ;
+            } catch (e) {
+                u = !0, r = e;
+            } finally {
+                try {
+                    if (!a && null != n.return && (c = n.return(), Object(c) !== c)) return;
+                } finally {
+                    if (u) throw r;
+                }
+            }
+            return i;
+        }
+    }(e, o) || d(e, o) || function() {
+        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }();
+}
+
+function p(e) {
+    return function(e) {
+        if (Array.isArray(e)) return a(e);
+    }(e) || function(e) {
+        if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e);
+    }(e) || d(e) || function() {
+        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }();
+}
+
+function d(e, o) {
+    if (e) {
+        if ("string" == typeof e) return a(e, o);
+        var n = {}.toString.call(e).slice(8, -1);
+        return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(e) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? a(e, o) : void 0;
+    }
+}
+
+function g() {
+    g = function(e, o) {
         return new n(e, void 0, o);
     };
     var e = RegExp.prototype, o = new WeakMap;
     function n(e, t, r) {
-        var l = new RegExp(e, t);
+        var l = RegExp(e, t);
         return o.set(l, r || o.get(e)), s(l, n.prototype);
     }
     function t(e, n) {
         var t = o.get(n);
         return Object.keys(t).reduce((function(o, n) {
-            return o[n] = e[t[n]], o;
+            var r = t[n];
+            if ("number" == typeof r) o[n] = e[r]; else {
+                for (var l = 0; void 0 === e[r[l]] && l + 1 < r.length; ) l++;
+                o[n] = e[r[l]];
+            }
+            return o;
         }), Object.create(null));
     }
     return u(n, RegExp), n.prototype.exec = function(o) {
         var n = e.exec.call(this, o);
-        return n && (n.groups = t(n, this)), n;
+        if (n) {
+            n.groups = t(n, this);
+            var r = n.indices;
+            r && (r.groups = t(r, this));
+        }
+        return n;
     }, n.prototype[Symbol.replace] = function(n, r) {
         if ("string" == typeof r) {
             var l = o.get(this);
             return e[Symbol.replace].call(this, n, r.replace(/\$<([^>]+)>/g, (function(e, o) {
-                return "$" + l[o];
+                var n = l[o];
+                return "$" + (Array.isArray(n) ? n.join("$") : n);
             })));
         }
         if ("function" == typeof r) {
@@ -45,78 +127,14 @@ function a() {
             }));
         }
         return e[Symbol.replace].call(this, n, r);
-    }, a.apply(this, arguments);
-}
-
-function u(e, o) {
-    if ("function" != typeof o && null !== o) throw new TypeError("Super expression must either be null or a function");
-    e.prototype = Object.create(o && o.prototype, {
-        constructor: {
-            value: e,
-            writable: !0,
-            configurable: !0
-        }
-    }), o && s(e, o);
-}
-
-function s(e, o) {
-    return (s = Object.setPrototypeOf || function(e, o) {
-        return e.__proto__ = o, e;
-    })(e, o);
-}
-
-function f(e, o) {
-    return function(e) {
-        if (Array.isArray(e)) return e;
-    }(e) || function(e, o) {
-        var n = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
-        if (null == n) return;
-        var t, r, l = [], c = !0, i = !1;
-        try {
-            for (n = n.call(e); !(c = (t = n.next()).done) && (l.push(t.value), !o || l.length !== o); c = !0) ;
-        } catch (e) {
-            i = !0, r = e;
-        } finally {
-            try {
-                c || null == n.return || n.return();
-            } finally {
-                if (i) throw r;
-            }
-        }
-        return l;
-    }(e, o) || d(e, o) || function() {
-        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
-}
-
-function p(e) {
-    return function(e) {
-        if (Array.isArray(e)) return g(e);
-    }(e) || function(e) {
-        if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e);
-    }(e) || d(e) || function() {
-        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
-}
-
-function d(e, o) {
-    if (e) {
-        if ("string" == typeof e) return g(e, o);
-        var n = Object.prototype.toString.call(e).slice(8, -1);
-        return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(e) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? g(e, o) : void 0;
-    }
-}
-
-function g(e, o) {
-    (null == o || o > e.length) && (o = e.length);
-    for (var n = 0, t = new Array(o); n < o; n++) t[n] = e[n];
-    return t;
+    }, g.apply(this, arguments);
 }
 
 function v(e, o) {
     console.log("\n"), console.log([ e ].concat(p(o)));
     var n = t.spawn(e, o, {
-        stdio: [ "pipe", "pipe", "pipe" ]
+        stdio: [ "pipe", "pipe", "pipe" ],
+        shell: !0
     });
     n.stdout.on("data", (function(e) {
         console.log(" ".concat(e).split("\n").filter((function(e) {
@@ -151,21 +169,21 @@ function m(e) {
     return i.default.join(__dirname, "../", "node_modules", ".bin", e.trim() + ("win32" === l.default.platform ? ".cmd" : ""));
 }
 
-var h = l.default.cwd(), w = [ "public/index.html", "src/index.js" ], x = w.map((function(e) {
+var h = l.default.cwd(), w = [ "public/index.html", "src/index.js" ], j = w.map((function(e) {
     return i.default.resolve(__dirname, "../", "release", e);
-})), k = w.map((function(e) {
+})), x = w.map((function(e) {
     return i.default.resolve(h, e);
-}));
+})), S = "webpack";
 
-function S(e, o) {
+function E(e, o) {
     Object.entries(e).forEach((function(e) {
         var n = f(e, 2), t = n[0], r = n[1];
         o.push("--".concat(t, "=").concat(r));
     }));
 }
 
-function E(e, o, n) {
-    c.default.existsSync(e) || (o.unshift("webpack"), n("npx" + ("win32" === l.default.platform ? ".cmd" : "")));
+function _(e, o, n) {
+    c.default.existsSync(e) || (o.unshift(S), n("npx" + ("win32" === l.default.platform ? ".cmd" : "")));
 }
 
 console.log("\n"), console.log("webpack-react-vue-spa-awesome-config"), console.log("\n"), 
@@ -174,43 +192,43 @@ console.log("\n"), console.log("Fast, zero-configuration web application packagi
 console.log("\n"), console.log("\nworking directory : ".concat(l.default.cwd(), "\n")), 
 console.log("\ncommand filename : ".concat(__filename, "\n"));
 
-var _ = l.default.argv.slice(2);
+var k = l.default.argv.slice(2);
 
-console.log("\u63a5\u6536\u7684\u53c2\u6570", _);
+console.log("\u63a5\u6536\u7684\u53c2\u6570", k);
 
-var j, O = _.includes("start") ? "start" : _.includes("build") ? "build" : void 0, A = (j = {}, 
-_.filter((function(e) {
+var O, A = k.includes("start") ? "start" : k.includes("build") ? "build" : void 0, N = (O = {}, 
+k.filter((function(e) {
     return e.startsWith("--");
 })).map((function(e) {
-    return a(/\x2D\x2D(.+?)=(.+)/g, {
+    return g(/--(.+?)=(.+)/g, {
         key: 1,
         value: 2
     }).exec(e);
 })).forEach((function(e) {
     var o, n, t, r = null === (o = e) || void 0 === o ? void 0 : o.groups, l = null === (n = r) || void 0 === n ? void 0 : n.key, c = null === (t = r) || void 0 === t ? void 0 : t.value;
-    l && c && (j[l] = c);
-})), j);
+    l && c && (O[l] = c);
+})), O);
 
-console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(A, null, 4)), 
+console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(N, null, 4)), 
 function(e, o) {
     var n = o.config, t = require.resolve(i.default.resolve(__dirname, "../", "./release/config/webpack.config.js")), r = n ? i.default.resolve(n) : t;
     Reflect.set(o, "config", r);
     var c, a, u = o.mode;
     if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
-    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(x, k), E(c = m("webpack"), a = [ "serve" ], (function(e) {
+    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(j, x), _(c = m(S), a = [ "serve" ], (function(e) {
         c = e;
-    })), S(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
+    })), E(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
         var s, f;
         console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
         console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
-        b(x, k), E(s = m("webpack"), f = [ "build" ], (function(e) {
+        b(j, x), _(s = m(S), f = [ "build" ], (function(e) {
             s = e;
-        })), S(o, f), v(s, f);
+        })), E(o, f), v(s, f);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config start --mode=development"), 
     console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config build --mode=production"), 
     console.log("\n"), l.default.exit(1);
-}(O, A);
+}(A, N);
 //# sourceMappingURL=cli.js.map
