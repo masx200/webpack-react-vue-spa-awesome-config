@@ -14,3 +14,4 @@ polyfill/src/.vs/slnx.sqlite-journal
 package-lock.json
 *.zip
 .yarn/install-state.gz
+pnpm-lock.yaml

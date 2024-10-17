@@ -15,6 +15,7 @@ function 执行命令(
     console.log([command, ...commandargs]);
     const runobj = spawn(command, commandargs, {
         stdio: ["pipe", "pipe", "pipe"],
+        shell: true,
     });
     runobj.stdout.on("data", (data) => {
         console.log(
