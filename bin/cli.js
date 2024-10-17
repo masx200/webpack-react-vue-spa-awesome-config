@@ -1,234 +1,93 @@
 #!/usr/bin/env node
 "use strict";
 
-var e = require("process"), o = require("fs"), n = require("path"), t = require("child_process");
+var o = require("process"), e = require("fs"), n = require("path"), l = require("child_process");
 
-function r(e) {
-    return e && "object" == typeof e && "default" in e ? e : {
-        default: e
-    };
-}
-
-var l = r(e), c = r(o), i = r(n);
-
-function a(e, o) {
-    (null == o || o > e.length) && (o = e.length);
-    for (var n = 0, t = Array(o); n < o; n++) t[n] = e[n];
-    return t;
-}
-
-function u(e, o) {
-    if ("function" != typeof o && null !== o) throw new TypeError("Super expression must either be null or a function");
-    e.prototype = Object.create(o && o.prototype, {
-        constructor: {
-            value: e,
-            writable: !0,
-            configurable: !0
-        }
-    }), Object.defineProperty(e, "prototype", {
-        writable: !1
-    }), o && s(e, o);
-}
-
-function s(e, o) {
-    return s = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(e, o) {
-        return e.__proto__ = o, e;
-    }, s(e, o);
-}
-
-function f(e, o) {
-    return function(e) {
-        if (Array.isArray(e)) return e;
-    }(e) || function(e, o) {
-        var n = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
-        if (null != n) {
-            var t, r, l, c, i = [], a = !0, u = !1;
-            try {
-                if (l = (n = n.call(e)).next, 0 === o) {
-                    if (Object(n) !== n) return;
-                    a = !1;
-                } else for (;!(a = (t = l.call(n)).done) && (i.push(t.value), i.length !== o); a = !0) ;
-            } catch (e) {
-                u = !0, r = e;
-            } finally {
-                try {
-                    if (!a && null != n.return && (c = n.return(), Object(c) !== c)) return;
-                } finally {
-                    if (u) throw r;
-                }
-            }
-            return i;
-        }
-    }(e, o) || d(e, o) || function() {
-        throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
-}
-
-function p(e) {
-    return function(e) {
-        if (Array.isArray(e)) return a(e);
-    }(e) || function(e) {
-        if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e);
-    }(e) || d(e) || function() {
-        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
-}
-
-function d(e, o) {
-    if (e) {
-        if ("string" == typeof e) return a(e, o);
-        var n = {}.toString.call(e).slice(8, -1);
-        return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(e) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? a(e, o) : void 0;
-    }
-}
-
-function g() {
-    g = function(e, o) {
-        return new n(e, void 0, o);
-    };
-    var e = RegExp.prototype, o = new WeakMap;
-    function n(e, t, r) {
-        var l = RegExp(e, t);
-        return o.set(l, r || o.get(e)), s(l, n.prototype);
-    }
-    function t(e, n) {
-        var t = o.get(n);
-        return Object.keys(t).reduce((function(o, n) {
-            var r = t[n];
-            if ("number" == typeof r) o[n] = e[r]; else {
-                for (var l = 0; void 0 === e[r[l]] && l + 1 < r.length; ) l++;
-                o[n] = e[r[l]];
-            }
-            return o;
-        }), Object.create(null));
-    }
-    return u(n, RegExp), n.prototype.exec = function(o) {
-        var n = e.exec.call(this, o);
-        if (n) {
-            n.groups = t(n, this);
-            var r = n.indices;
-            r && (r.groups = t(r, this));
-        }
-        return n;
-    }, n.prototype[Symbol.replace] = function(n, r) {
-        if ("string" == typeof r) {
-            var l = o.get(this);
-            return e[Symbol.replace].call(this, n, r.replace(/\$<([^>]+)>/g, (function(e, o) {
-                var n = l[o];
-                return "$" + (Array.isArray(n) ? n.join("$") : n);
-            })));
-        }
-        if ("function" == typeof r) {
-            var c = this;
-            return e[Symbol.replace].call(this, n, (function() {
-                var e = arguments;
-                return "object" != typeof e[e.length - 1] && (e = [].slice.call(e)).push(t(e, c)), 
-                r.apply(this, e);
-            }));
-        }
-        return e[Symbol.replace].call(this, n, r);
-    }, g.apply(this, arguments);
-}
-
-function v(e, o) {
-    console.log("\n"), console.log([ e ].concat(p(o)));
-    var n = t.spawn(e, o, {
+function c(e, n) {
+    console.log("\n"), console.log([ e, ...n ]);
+    const c = l.spawn(e, n, {
         stdio: [ "pipe", "pipe", "pipe" ],
         shell: !0
     });
-    n.stdout.on("data", (function(e) {
-        console.log(" ".concat(e).split("\n").filter((function(e) {
-            return "" !== e;
-        })).join("\n\n")), console.log("\n");
-    })), n.stderr.on("data", (function(e) {
-        console.error(" ".concat(e).split("\n").filter((function(e) {
-            return "" !== e;
-        })).join("\n\n")), console.log("\n");
-    })), n.on("close", (function(e) {
-        console.log("child process exited with code ".concat(e)), l.default.exit(e || 0);
+    c.stdout.on("data", (o => {
+        console.log(` ${o}`.split("\n").filter((o => "" !== o)).join("\n\n")), console.log("\n");
+    })), c.stderr.on("data", (o => {
+        console.error(` ${o}`.split("\n").filter((o => "" !== o)).join("\n\n")), console.log("\n");
+    })), c.on("close", (e => {
+        console.log(`child process exited with code ${e}`), o.exit(e || 0);
     }));
 }
 
-var y = l.default.cwd();
+const s = o.cwd();
 
-function b(e, o) {
-    o.forEach((function(o, n) {
-        c.default.existsSync(o) || (console.log("inputfile  not exsited! ".concat(o, "\n")), 
-        console.log("initialize inputfile from ".concat(e[n], "\n")), [ "public", "src" ].map((function(e) {
-            return i.default.resolve(y, e);
-        })).forEach((function(e) {
-            return function(e) {
-                c.default.existsSync(e) || (console.log("\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55", e), 
-                console.log("\n"), c.default.mkdirSync(e));
-            }(e);
-        })), c.default.copyFileSync(e[n], o));
+function i(o, l) {
+    l.forEach(((l, c) => {
+        e.existsSync(l) || (console.log(`inputfile  not exsited! ${l}\n`), console.log(`initialize inputfile from ${o[c]}\n`), 
+        [ "public", "src" ].map((o => n.resolve(s, o))).forEach((o => function(o) {
+            e.existsSync(o) || (console.log("\u6240\u9700\u7684\u76ee\u5f55\u4e0d\u5b58\u5728,\u521b\u5efa\u76ee\u5f55", o), 
+            console.log("\n"), e.mkdirSync(o));
+        }(o))), e.copyFileSync(o[c], l));
     }));
 }
 
-function m(e) {
-    return i.default.join(__dirname, "../", "node_modules", ".bin", e.trim() + ("win32" === l.default.platform ? ".cmd" : ""));
+function t(e) {
+    return n.join(__dirname, "../", "node_modules", ".bin", e.trim() + ("win32" === o.platform ? ".cmd" : ""));
 }
 
-var h = l.default.cwd(), w = [ "public/index.html", "src/index.js" ], j = w.map((function(e) {
-    return i.default.resolve(__dirname, "../", "release", e);
-})), x = w.map((function(e) {
-    return i.default.resolve(h, e);
-})), S = "webpack";
+const r = o.cwd(), a = [ "public/index.html", "src/index.js" ], g = a.map((o => n.resolve(__dirname, "../", "release", o))), p = a.map((o => n.resolve(r, o))), d = "webpack";
 
-function E(e, o) {
-    Object.entries(e).forEach((function(e) {
-        var n = f(e, 2), t = n[0], r = n[1];
-        o.push("--".concat(t, "=").concat(r));
+function u(o, e) {
+    Object.entries(o).forEach((o => {
+        let [n, l] = o;
+        e.push(`--${n}=${l}`);
     }));
 }
 
-function _(e, o, n) {
-    c.default.existsSync(e) || (o.unshift(S), n("npx" + ("win32" === l.default.platform ? ".cmd" : "")));
+function f(n, l, c) {
+    e.existsSync(n) || (l.unshift(d), c("npx" + ("win32" === o.platform ? ".cmd" : "")));
 }
 
 console.log("\n"), console.log("webpack-react-vue-spa-awesome-config"), console.log("\n"), 
 console.log("\u6781\u901f\u3001\u96f6\u914d\u7f6e\u7684 web \u5e94\u7528\u6253\u5305\u5de5\u5177, \u540c\u65f6\u652f\u6301 react \u548c vue \u7684\u5355\u9875\u9762\u5e94\u7528,\u63d0\u4f9b\u5f00\u7bb1\u5373\u7528\u652f\u6301,\u57fa\u4e8ewebpack "), 
 console.log("\n"), console.log("Fast, zero-configuration web application packaging tool that supports both single-page applications for react and vue, out-of-the-box support"), 
-console.log("\n"), console.log("\nworking directory : ".concat(l.default.cwd(), "\n")), 
-console.log("\ncommand filename : ".concat(__filename, "\n"));
+console.log("\n"), console.log(`\nworking directory : ${o.cwd()}\n`), console.log(`\ncommand filename : ${__filename}\n`);
 
-var k = l.default.argv.slice(2);
+const v = o.argv.slice(2);
 
-console.log("\u63a5\u6536\u7684\u53c2\u6570", k);
+console.log("\u63a5\u6536\u7684\u53c2\u6570", v);
 
-var O, A = k.includes("start") ? "start" : k.includes("build") ? "build" : void 0, N = (O = {}, 
-k.filter((function(e) {
-    return e.startsWith("--");
-})).map((function(e) {
-    return g(/--(.+?)=(.+)/g, {
-        key: 1,
-        value: 2
-    }).exec(e);
-})).forEach((function(e) {
-    var o, n, t, r = null === (o = e) || void 0 === o ? void 0 : o.groups, l = null === (n = r) || void 0 === n ? void 0 : n.key, c = null === (t = r) || void 0 === t ? void 0 : t.value;
-    l && c && (O[l] = c);
-})), O);
+const m = v.includes("start") ? "start" : v.includes("build") ? "build" : void 0, b = function(o) {
+    const e = {};
+    return o.filter((o => o.startsWith("--"))).map((o => /--(?<key>.+?)=(?<value>.+)/g.exec(o))).forEach((o => {
+        var n, l, c;
+        const s = null === (n = o) || void 0 === n ? void 0 : n.groups, i = null === (l = s) || void 0 === l ? void 0 : l.key, t = null === (c = s) || void 0 === c ? void 0 : c.value;
+        i && t && (e[i] = t);
+    })), e;
+}(v);
 
-console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(N, null, 4)), 
-function(e, o) {
-    var n = o.config, t = require.resolve(i.default.resolve(__dirname, "../", "./release/config/webpack.config.js")), r = n ? i.default.resolve(n) : t;
-    Reflect.set(o, "config", r);
-    var c, a, u = o.mode;
-    if ("start" === e || "development" === u) l.default.env.NODE_ENV = "development", 
-    Reflect.set(o, "mode", l.default.env.NODE_ENV), b(j, x), _(c = m(S), a = [ "serve" ], (function(e) {
-        c = e;
-    })), E(o, a), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
-    console.log("\n"), v(c, a); else if ("build" === e || "production" === u) {
-        var s, f;
+console.log("\u89e3\u6790\u7684\u53c2\u6570:"), console.log(JSON.stringify(b, null, 4)), 
+function(e, l) {
+    const s = l.config, r = require.resolve(n.resolve(__dirname, "../", "./release/config/webpack.config.js")), a = s ? n.resolve(s) : r;
+    Reflect.set(l, "config", a);
+    const v = l.mode;
+    if ("start" === e || "development" === v) {
+        let e, n;
+        o.env.NODE_ENV = "development", Reflect.set(l, "mode", o.env.NODE_ENV), i(g, p), 
+        e = t(d), n = [ "serve" ], f(e, n, (o => {
+            e = o;
+        })), u(l, n), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f \u542f\u52a8 webpack-dev-server"), 
+        console.log("\n"), c(e, n);
+    } else if ("build" === e || "production" === v) {
+        let e, n;
         console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f \u542f\u52a8 webpack"), 
-        console.log("\n"), l.default.env.NODE_ENV = "production", Reflect.set(o, "mode", l.default.env.NODE_ENV), 
-        b(j, x), _(s = m(S), f = [ "build" ], (function(e) {
-            s = e;
-        })), E(o, f), v(s, f);
+        console.log("\n"), o.env.NODE_ENV = "production", Reflect.set(l, "mode", o.env.NODE_ENV), 
+        i(g, p), e = t(d), n = [ "build" ], f(e, n, (o => {
+            e = o;
+        })), u(l, n), c(e, n);
     } else console.log("\n"), console.log("usage:"), console.log("\n"), console.log("\u5f00\u53d1\u6a21\u5f0f\n\u542f\u52a8 webpack-dev-server"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config start --mode=development"), 
     console.log("\n"), console.log("\u751f\u4ea7\u6a21\u5f0f\n\u542f\u52a8 webpack"), 
     console.log("\n"), console.log("webpack-react-vue-spa-awesome-config build --mode=production"), 
-    console.log("\n"), l.default.exit(1);
-}(A, N);
+    console.log("\n"), o.exit(1);
+}(m, b);
 //# sourceMappingURL=cli.js.map

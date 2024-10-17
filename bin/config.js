@@ -1,98 +1,20 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
+var e = require("fs"), s = require("path"), o = require("terser-webpack-plugin"), r = require("postcss-normalize"), t = require("merge");
 
-var e = require("fs"), r = require("path"), t = require("terser-webpack-plugin"), o = require("postcss-normalize"), s = require("merge");
-
-function n(e) {
-    return e && "object" == typeof e && "default" in e ? e : {
-        default: e
-    };
-}
-
-var i = n(e), l = n(r), a = n(t), c = n(o), u = n(s);
-
-function p(e, r) {
-    (null == r || r > e.length) && (r = e.length);
-    for (var t = 0, o = Array(r); t < r; t++) o[t] = e[t];
-    return o;
-}
-
-function d(e, r, t) {
-    return (r = function(e) {
-        var r = function(e, r) {
-            if ("object" != typeof e || !e) return e;
-            var t = e[Symbol.toPrimitive];
-            if (void 0 !== t) {
-                var o = t.call(e, r || "default");
-                if ("object" != typeof o) return o;
-                throw new TypeError("@@toPrimitive must return a primitive value.");
-            }
-            return ("string" === r ? String : Number)(e);
-        }(e, "string");
-        return "symbol" == typeof r ? r : r + "";
-    }(r)) in e ? Object.defineProperty(e, r, {
-        value: t,
-        enumerable: !0,
-        configurable: !0,
-        writable: !0
-    }) : e[r] = t, e;
-}
-
-function f(e, r) {
-    var t = Object.keys(e);
-    if (Object.getOwnPropertySymbols) {
-        var o = Object.getOwnPropertySymbols(e);
-        r && (o = o.filter((function(r) {
-            return Object.getOwnPropertyDescriptor(e, r).enumerable;
-        }))), t.push.apply(t, o);
-    }
-    return t;
-}
-
-function m(e) {
-    for (var r = 1; r < arguments.length; r++) {
-        var t = null != arguments[r] ? arguments[r] : {};
-        r % 2 ? f(Object(t), !0).forEach((function(r) {
-            d(e, r, t[r]);
-        })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : f(Object(t)).forEach((function(r) {
-            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
-        }));
-    }
-    return e;
-}
-
-function b(e) {
-    return function(e) {
-        if (Array.isArray(e)) return p(e);
-    }(e) || function(e) {
-        if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e);
-    }(e) || function(e, r) {
-        if (e) {
-            if ("string" == typeof e) return p(e, r);
-            var t = {}.toString.call(e).slice(8, -1);
-            return "Object" === t && e.constructor && (t = e.constructor.name), "Map" === t || "Set" === t ? Array.from(e) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? p(e, r) : void 0;
-        }
-    }(e) || function() {
-        throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
-}
-
-function v() {
+function i() {
     var e;
     try {
         e = require("vue").version;
     } catch (e) {
-        if ("MODULE_NOT_FOUND" === (null == e ? void 0 : e.code)) return require.resolve("vue-loader");
+        if ("MODULE_NOT_FOUND" === e?.code) return require.resolve("vue-loader");
         throw e;
     }
     return e.split(".")[0], require.resolve("vue-loader");
 }
 
-function g() {
-    var e = {
+function n() {
+    const r = {
         terserOptions: {
             ecma: 5,
             parse: {
@@ -116,16 +38,16 @@ function g() {
         },
         parallel: !0
     };
-    if (i.default.existsSync(l.default.resolve(__dirname, "terser.config.js"))) {
-        var r = u.default.recursive(!0, e, require(l.default.resolve(__dirname, "terser.config.js")));
-        return new a.default(r);
+    if (e.existsSync(s.resolve(__dirname, "terser.config.js"))) {
+        const e = t.recursive(!0, r, require(s.resolve(__dirname, "terser.config.js")));
+        return new o(e);
     }
-    return new a.default(e);
+    return new o(r);
 }
 
-function h(e, r) {
+function l(o, r) {
     return {
-        sourceMaps: e,
+        sourceMaps: o,
         plugins: [ [ require.resolve("babel-plugin-htm"), {
             pragma: "h",
             tag: "html",
@@ -143,55 +65,55 @@ function h(e, r) {
         } ], require.resolve("@babel/preset-typescript"), r && [ require.resolve("babel-preset-react-app"), {} ] ].filter(Boolean),
         customize: require.resolve("babel-preset-react-app/webpack-overrides"),
         babelrc: !1,
-        configFile: !!i.default.existsSync(l.default.resolve(__dirname, "babel.config.js")) && l.default.resolve(__dirname, "babel.config.js"),
+        configFile: !!e.existsSync(s.resolve(__dirname, "babel.config.js")) && s.resolve(__dirname, "babel.config.js"),
         cacheDirectory: !0,
         cacheCompression: r,
         compact: r
     };
 }
 
-function y() {
+function a() {
     return {
-        config: !!i.default.existsSync(l.default.resolve(__dirname, "postcss.config.js")) && l.default.resolve(__dirname, "postcss.config.js"),
+        config: !!e.existsSync(s.resolve(__dirname, "postcss.config.js")) && s.resolve(__dirname, "postcss.config.js"),
         plugins: [ require("postcss-flexbugs-fixes"), require("postcss-preset-env")({
             autoprefixer: {
                 flexbox: "no-2009"
             },
             stage: 3
-        }), c.default() ]
+        }), r() ]
     };
 }
 
-exports.createconfig = function(e, r) {
-    console.log("env:", e, "\n", "argv:", r);
-    var t = require("fork-ts-checker-webpack-plugin"), o = require("copy-webpack-plugin"), s = require("workbox-webpack-plugin"), n = require("postcss-safe-parser"), a = require("optimize-css-assets-webpack-plugin"), c = require(v()).VueLoaderPlugin, u = require("mini-css-extract-plugin"), p = require("html-webpack-plugin"), d = require("webpack"), f = require("@vue/preload-webpack-plugin"), j = require("clean-webpack-plugin").CleanWebpackPlugin, x = r, w = x["output-public-path"], q = x.mode;
-    process.env.NODE_ENV = "production" === x.mode ? "production" : "development" === x.mode ? "development" : process.env.NODE_ENV;
-    var k = Number(x.port) || 1e4 + parseInt(String(1e4 * Math.random()));
-    console.log("\nwebpack config filename : ".concat(__filename, "\n")), console.log("\nworking directory : ".concat(process.cwd(), "\n"));
-    var O = process.cwd();
-    console.log("\nwebpack mode : ".concat(process.env.NODE_ENV, " \n"));
-    var _ = process.env.NODE_ENV, S = "development" === _, E = S, P = "production" === _;
+exports.createconfig = function(o, r) {
+    console.log("env:", o, "\n", "argv:", r);
+    const t = require("fork-ts-checker-webpack-plugin"), c = require("copy-webpack-plugin"), p = require("workbox-webpack-plugin"), u = require("postcss-safe-parser"), d = require("optimize-css-assets-webpack-plugin"), {VueLoaderPlugin: m} = require(i()), b = require("mini-css-extract-plugin"), f = require("html-webpack-plugin"), g = require("webpack"), v = require("@vue/preload-webpack-plugin"), {CleanWebpackPlugin: h} = require("clean-webpack-plugin"), j = r, x = j["output-public-path"], y = j.mode;
+    process.env.NODE_ENV = "production" === j.mode ? "production" : "development" === j.mode ? "development" : process.env.NODE_ENV;
+    const q = Number(j.port) || 1e4 + parseInt(String(1e4 * Math.random()));
+    console.log(`\nwebpack config filename : ${__filename}\n`), console.log(`\nworking directory : ${process.cwd()}\n`);
+    var w = process.cwd();
+    console.log(`\nwebpack mode : ${process.env.NODE_ENV} \n`);
+    const k = process.env.NODE_ENV, _ = "development" === k, S = _, E = "production" === k;
     process.env.BABEL_ENV = process.env.NODE_ENV;
-    var C = P ? "./" : "/";
-    "production" === process.env.NODE_ENV && w && w.length && (console.log("  output-public-path  :  ".concat(w)), 
-    console.log("\n"), C = w);
-    var N = !!e.WEBPACK_SERVE;
-    S && N && console.log("open in browser: http://localhost:" + k);
-    var D, A = l.default.join(O), M = {
+    let O = E ? "./" : "/";
+    "production" === process.env.NODE_ENV && x && x.length && (console.log(`  output-public-path  :  ${x}`), 
+    console.log("\n"), O = x);
+    const C = !!o.WEBPACK_SERVE;
+    _ && C && console.log("open in browser: http://localhost:" + q);
+    const N = s.join(w), $ = {
         stats: {
             children: !0
         },
-        target: S ? "web" : "browserslist:" + [ ">0.2%", "not dead", "not op_mini all" ].join(","),
+        target: _ ? "web" : "browserslist:" + [ ">0.2%", "not dead", "not op_mini all" ].join(","),
         resolve: {
             extensions: [ ".ts", ".js", ".tsx", ".jsx", ".cjs", ".mjs" ],
             alias: {
-                "@": l.default.join(O, "src"),
-                "~": l.default.join(O)
+                "@": s.join(w, "src"),
+                "~": s.join(w)
             }
         },
         devServer: {
             static: {
-                directory: l.default.join(O, "public"),
+                directory: s.join(w, "public"),
                 watch: !0
             },
             client: {
@@ -201,17 +123,17 @@ exports.createconfig = function(e, r) {
             compress: !0,
             historyApiFallback: !0,
             hot: !0,
-            port: k
+            port: q
         },
-        devtool: !!S && "eval-cheap-module-source-map",
-        mode: q,
-        entry: [ i.default.existsSync(l.default.join(O, "src", "index.tsx")) ? l.default.join(O, "src", "index.tsx") : i.default.existsSync(l.default.join(O, "src", "index.ts")) ? l.default.join(O, "src", "index.ts") : i.default.existsSync(l.default.join(O, "src", "index.jsx")) ? l.default.join(O, "src", "index.jsx") : l.default.join(O, "src", "index.js") ].filter(Boolean),
+        devtool: !!_ && "eval-cheap-module-source-map",
+        mode: y,
+        entry: [ e.existsSync(s.join(w, "src", "index.tsx")) ? s.join(w, "src", "index.tsx") : e.existsSync(s.join(w, "src", "index.ts")) ? s.join(w, "src", "index.ts") : e.existsSync(s.join(w, "src", "index.jsx")) ? s.join(w, "src", "index.jsx") : s.join(w, "src", "index.js") ].filter(Boolean),
         output: {
-            publicPath: C,
+            publicPath: O,
             globalObject: '(typeof WorkerGlobalScope !== "undefined"?\n\nWorkerGlobalScope:\n\ntypeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : ( Function(\'return this\')()))',
-            filename: S ? "[name].[fullhash].js" : "[name].[contenthash].js",
-            path: l.default.join(O, "dist"),
-            chunkFilename: S ? "[name].[fullhash].js" : "[name].[contenthash].js"
+            filename: _ ? "[name].[fullhash].js" : "[name].[contenthash].js",
+            path: s.join(w, "dist"),
+            chunkFilename: _ ? "[name].[fullhash].js" : "[name].[contenthash].js"
         },
         module: {
             strictExportPresence: !0,
@@ -219,32 +141,32 @@ exports.createconfig = function(e, r) {
                 test: /\.(cjs|js|mjs|jsx|ts|tsx)$/,
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
-                options: h(E, P),
-                include: [ A ],
+                options: l(S, E),
+                include: [ N ],
                 exclude: [ /node_modules/ ]
             }, {
                 test: /\.(less)$/,
-                use: [ S ? {
+                use: [ _ ? {
                     loader: require.resolve("style-loader"),
                     options: {}
                 } : {
-                    loader: u.loader
+                    loader: b.loader
                 }, {
                     loader: require.resolve("css-loader"),
                     options: {
                         importLoaders: 2,
-                        sourceMap: E
+                        sourceMap: S
                     }
                 }, {
                     loader: require.resolve("postcss-loader"),
                     options: {
-                        postcssOptions: y(),
-                        sourceMap: E
+                        postcssOptions: a(),
+                        sourceMap: S
                     }
                 }, {
                     loader: require.resolve("less-loader"),
                     options: {
-                        sourceMap: E
+                        sourceMap: S
                     }
                 } ]
             }, {
@@ -255,45 +177,45 @@ exports.createconfig = function(e, r) {
                 }
             }, {
                 test: /\.vue$/,
-                loader: require.resolve(v())
+                loader: require.resolve(i())
             }, {
                 test: /\.(css)$/,
-                use: [ S ? {
+                use: [ _ ? {
                     loader: require.resolve("style-loader"),
                     options: {}
                 } : {
-                    loader: u.loader
+                    loader: b.loader
                 }, {
                     loader: require.resolve("css-loader"),
                     options: {
                         importLoaders: 1,
-                        sourceMap: E
+                        sourceMap: S
                     }
                 }, {
                     loader: require.resolve("postcss-loader"),
                     options: {
-                        postcssOptions: y(),
-                        sourceMap: E
+                        postcssOptions: a(),
+                        sourceMap: S
                     }
                 } ]
             }, {
                 test: /\.(sass|scss)$/,
-                use: [ S ? {
+                use: [ _ ? {
                     loader: require.resolve("style-loader"),
                     options: {}
                 } : {
-                    loader: u.loader
+                    loader: b.loader
                 }, {
                     loader: require.resolve("css-loader"),
                     options: {
                         importLoaders: 2,
-                        sourceMap: E
+                        sourceMap: S
                     }
                 }, {
                     loader: require.resolve("postcss-loader"),
                     options: {
-                        postcssOptions: y(),
-                        sourceMap: E
+                        postcssOptions: a(),
+                        sourceMap: S
                     }
                 }, {
                     loader: require.resolve("fast-sass-loader"),
@@ -301,19 +223,19 @@ exports.createconfig = function(e, r) {
                 } ]
             }, {
                 test: /\.(js|mjs)$/,
-                exclude: [ /@babel(?:\/|\\{1,2})runtime/, l.default.resolve(O, "src") ],
+                exclude: [ /@babel(?:\/|\\{1,2})runtime/, s.resolve(w, "src") ],
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
                 options: {
                     babelrc: !1,
                     configFile: !1,
                     compact: !1,
-                    presets: [ P && [ require.resolve("babel-preset-react-app"), {} ], [ require.resolve("babel-preset-react-app/dependencies"), {
+                    presets: [ E && [ require.resolve("babel-preset-react-app"), {} ], [ require.resolve("babel-preset-react-app/dependencies"), {
                         helpers: !0
                     } ] ].filter(Boolean),
                     cacheDirectory: !0,
-                    cacheCompression: P,
-                    sourceMaps: E
+                    cacheCompression: E,
+                    sourceMaps: S
                 },
                 include: [ /node_modules/ ]
             }, {
@@ -321,27 +243,27 @@ exports.createconfig = function(e, r) {
                 type: "javascript/auto",
                 loader: require.resolve("babel-loader"),
                 options: {
-                    sourceMaps: E,
+                    sourceMaps: S,
                     plugins: [].filter(Boolean),
                     presets: [ [ "@babel/preset-react", {
                         runtime: "automatic"
                     } ] ].filter(Boolean),
                     babelrc: !1,
-                    configFile: !!i.default.existsSync(l.default.resolve(O, "babel.config.js")) && l.default.resolve(O, "babel.config.js"),
+                    configFile: !!e.existsSync(s.resolve(w, "babel.config.js")) && s.resolve(w, "babel.config.js"),
                     cacheDirectory: !0,
-                    cacheCompression: P,
-                    compact: P
+                    cacheCompression: E,
+                    compact: E
                 },
-                include: [ A ],
+                include: [ N ],
                 exclude: [ /node_modules/ ]
             }, {
-                include: [ A ],
+                include: [ N ],
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: [ {
                     loader: require.resolve("ts-loader"),
                     options: {
-                        configFile: !!i.default.existsSync(l.default.resolve(O, "tsconfig.json")) && l.default.resolve(O, "tsconfig.json"),
+                        configFile: !!e.existsSync(s.resolve(w, "tsconfig.json")) && s.resolve(w, "tsconfig.json"),
                         compilerOptions: {
                             sourceMap: !0,
                             strict: !0
@@ -364,23 +286,21 @@ exports.createconfig = function(e, r) {
                     },
                     include: [ "src" ]
                 },
-                configFile: !!i.default.existsSync(l.default.resolve(O, "tsconfig.json")) && l.default.resolve(O, "tsconfig.json")
+                configFile: !!e.existsSync(s.resolve(w, "tsconfig.json")) && s.resolve(w, "tsconfig.json")
             }
-        }), P && new j({
+        }), E && new h({
             verbose: !0
-        }), new o({
+        }), new c({
             patterns: [ {
                 globOptions: {
                     ignore: [ "**/index.html" ]
                 },
-                from: l.default.join(O, "public"),
+                from: s.join(w, "public"),
                 toType: "dir",
-                to: l.default.join(O, "dist"),
-                filter: function(e) {
-                    return console.log("copy-webpack-plugin", e), !0;
-                }
+                to: s.join(w, "dist"),
+                filter: e => (console.log("copy-webpack-plugin", e), !0)
             } ]
-        }), S && new d.HotModuleReplacementPlugin, P && new s.GenerateSW({
+        }), _ && new g.HotModuleReplacementPlugin, E && new p.GenerateSW({
             skipWaiting: !0,
             clientsClaim: !0,
             runtimeCaching: [ {
@@ -401,10 +321,10 @@ exports.createconfig = function(e, r) {
                     }
                 }
             } ]
-        }), new u({
+        }), new b({
             filename: "[name].[contenthash].css",
             chunkFilename: "[name].[contenthash].css"
-        }), new c, new p({
+        }), new m, new f({
             hash: !1,
             filename: "index.html",
             title: " Progressive Web Application",
@@ -422,17 +342,17 @@ exports.createconfig = function(e, r) {
                 minifyURLs: !0,
                 removeAttributeQuotes: !1
             },
-            template: l.default.join(O, "public", "index.html")
-        }), new f({
+            template: s.join(w, "public", "index.html")
+        }), new v({
             rel: "preload",
             include: "asyncChunks"
         }) ].filter(Boolean),
         optimization: {
-            moduleIds: S ? "named" : "natural",
-            chunkIds: S ? "named" : "natural",
+            moduleIds: _ ? "named" : "natural",
+            chunkIds: _ ? "named" : "natural",
             usedExports: !0,
             runtimeChunk: "single",
-            splitChunks: P ? {
+            splitChunks: E ? {
                 chunks: "all",
                 minSize: 3e4,
                 maxSize: 7e4,
@@ -453,8 +373,8 @@ exports.createconfig = function(e, r) {
                 chunks: "all",
                 maxSize: 2e4
             },
-            minimize: P,
-            minimizer: [ g(), new a({
+            minimize: E,
+            minimizer: [ n(), new d({
                 cssProcessorPluginOptions: {
                     preset: [ "default", {
                         discardComments: {
@@ -465,8 +385,8 @@ exports.createconfig = function(e, r) {
                 },
                 canPrint: !0,
                 cssProcessorOptions: {
-                    parser: n,
-                    map: !!E && {
+                    parser: u,
+                    map: !!S && {
                         inline: !1,
                         annotation: !0
                     }
@@ -474,31 +394,32 @@ exports.createconfig = function(e, r) {
             }) ]
         }
     };
-    return function(e, r, t) {
-        if (r) {
+    return function(e, s, o) {
+        if (s) {
             try {
                 require("react");
             } catch (e) {
-                if ("MODULE_NOT_FOUND" === (null == e ? void 0 : e.code)) return;
+                if ("MODULE_NOT_FOUND" === e?.code) return;
                 throw e;
             }
-            !function(e, r) {
-                var t = require("@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin").default;
-                e.entry = [ require.resolve("@next/react-refresh-utils/dist/runtime") ].concat(b(e.entry)), 
-                e.plugins = [ new t ].concat(b(e.plugins)), e.module.rules = [ {
+            !function(e, s) {
+                const o = require("@next/react-refresh-utils/dist/ReactRefreshWebpackPlugin").default;
+                e.entry = [ require.resolve("@next/react-refresh-utils/dist/runtime"), ...e.entry ], 
+                e.plugins = [ new o, ...e.plugins ], e.module.rules = [ {
                     test: /\.(tsx|ts|js|mjs|jsx)$/,
-                    include: [ r ],
+                    include: [ s ],
                     exclude: [ /node_modules/ ],
                     use: [ require.resolve("@next/react-refresh-utils/dist/loader") ]
-                } ].concat(b(e.module.rules));
-            }(e, t);
+                }, ...e.module.rules ];
+            }(e, o);
         }
-    }(M, S, A), M.optimization.splitChunks ? M.optimization.splitChunks.cacheGroups = m(m({}, null === (D = M.optimization.splitChunks) || void 0 === D ? void 0 : D.cacheGroups), {}, {
+    }($, _, N), $.optimization.splitChunks ? $.optimization.splitChunks.cacheGroups = {
+        ...$.optimization.splitChunks?.cacheGroups,
         commons: {
             test: /[\\/]node_modules[\\/]/,
             name: "vendors",
             chunks: "initial"
         }
-    }) : M.optimization.splitChunks = {}, M;
+    } : $.optimization.splitChunks = {}, $;
 };
 //# sourceMappingURL=config.js.map
