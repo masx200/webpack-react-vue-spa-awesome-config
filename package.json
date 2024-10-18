@@ -98,7 +98,7 @@
         "postcss-loader": "^7.0.1",
         "postcss-normalize": "^10.0.1",
         "postcss-preset-env": "^7.7.2",
-        "postcss-safe-parser": "^6.0.0",
+        "postcss-safe-parser": "^7.0.1",
         "purgecss-webpack-plugin": "^5.0.0",
         "react-app-polyfill": "^3.0.0",
         "react-refresh": "^0.14.0",
