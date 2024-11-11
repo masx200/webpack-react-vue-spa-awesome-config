@@ -84,7 +84,7 @@
         "cssnano": "^5.0.8",
         "fast-sass-loader": "^2.0.0",
         "file-loader": "^6.2.0",
-        "fork-ts-checker-webpack-plugin": "^8.0.0",
+        "fork-ts-checker-webpack-plugin": "^9.0.2",
         "htm": "^3.0.4",
         "html-webpack-plugin": "^5.5.0",
         "json-loader": "^0.5.7",
