@@ -104,7 +104,7 @@
         "react-refresh": "^0.14.0",
         "regenerator-runtime": "^0.13.7",
         "sass": "1.64.2",
-        "style-loader": "^3.3.1",
+        "style-loader": "^4.0.0",
         "terser": "5.36.0",
         "terser-webpack-plugin": "^5.3.5",
         "to-string-loader": "^1.1.6",
