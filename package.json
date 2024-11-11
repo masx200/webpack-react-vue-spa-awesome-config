@@ -80,7 +80,7 @@
         "caniuse-lite": "1.0.30001669",
         "clean-webpack-plugin": "^4.0.0-alpha.0",
         "copy-webpack-plugin": "^11.0.0",
-        "css-loader": "^6.2.0",
+        "css-loader": "^7.1.2",
         "cssnano": "^5.0.8",
         "fast-sass-loader": "^2.0.0",
         "file-loader": "^6.2.0",
