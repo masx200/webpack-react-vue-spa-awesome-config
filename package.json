@@ -58,7 +58,7 @@
         "@babel/preset-react": "7",
         "@babel/preset-typescript": "7",
         "@babel/runtime": "7",
-        "@next/react-refresh-utils": "^13.2.4",
+        "@next/react-refresh-utils": "^15.1.1",
         "@types/html-webpack-plugin": "^3.2.5",
         "@types/mini-css-extract-plugin": "^2.5.1",
         "@types/node": "22.7.6",
